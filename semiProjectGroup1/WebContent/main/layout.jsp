@@ -11,12 +11,23 @@
 		<div id="header">
 			<jsp:include page="/main/header.jsp" />
 		</div>
-		<div id="header">
+		<div id="content">
 			<jsp:include page="${pages }" />
 		</div>
-		<div id="header">
+		<div id="footer">
 			<jsp:include page="/main/footer.jsp" />
 		</div>
+	</div>
+	<div>
+	<!-- 로그인 유무 -->
+		<c:choose>
+			<c:when test="">
+				<a href="">로그인</a>
+			</c:when>
+			<c:otherwise>
+				<a href="">로그아웃</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>

@@ -16,7 +16,6 @@ public class HomeController extends HttpServlet {
 		String cp = request.getContextPath();
 		ServletContext application = getServletContext();
 		application.setAttribute("cp", cp);
-		System.out.println(cp);
 		request.setAttribute("pages", "/main/main.jsp");
 		request.getRequestDispatcher("/main/layout.jsp").forward(request, response);
 	}
