@@ -1,16 +1,16 @@
 package vo;
 
-public class Movie_ReviewImage {
+public class Movie_ReviewImageVo {
 	private int imageNum;
 	private int imageType;
 	private String imageOrgName;
 	private String imageSavName;
 	private int movieNum;
 
-	public Movie_ReviewImage() {
+	public Movie_ReviewImageVo() {
 	}
 
-	public Movie_ReviewImage(int imageNum, int imageType, String imageOrgName, String imageSavName, int movieNum) {
+	public Movie_ReviewImageVo(int imageNum, int imageType, String imageOrgName, String imageSavName, int movieNum) {
 		super();
 		this.imageNum = imageNum;
 		this.imageType = imageType;

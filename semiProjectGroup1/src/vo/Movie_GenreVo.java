@@ -1,13 +1,13 @@
 package vo;
 
-public class Movie_Genre {
+public class Movie_GenreVo {
 	private int genreNum;
 	private String genreName;
 
-	public Movie_Genre() {
+	public Movie_GenreVo() {
 	}
 
-	public Movie_Genre(int genreNum, String genreName) {
+	public Movie_GenreVo(int genreNum, String genreName) {
 		super();
 		this.genreNum = genreNum;
 		this.genreName = genreName;

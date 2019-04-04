@@ -1,15 +1,15 @@
 package vo;
 
-public class Movie_RateTable {
+public class Movie_RateTableVo {
 	private double rate;
 	private String rateComm;
 	private String UserId;
 	private int movieNum;
 
-	public Movie_RateTable() {
+	public Movie_RateTableVo() {
 	}
 
-	public Movie_RateTable(double rate, String rateComm, String userId, int movieNum) {
+	public Movie_RateTableVo(double rate, String rateComm, String userId, int movieNum) {
 		super();
 		this.rate = rate;
 		this.rateComm = rateComm;

@@ -1,15 +1,15 @@
 package vo;
 
-public class Movie_CharInfo {
+public class Movie_CharInfoVo {
 	private int charNum;
 	private String charName;
 	private String charOrgFileName;
 	private String charSavFileName;
 
-	public Movie_CharInfo() {
+	public Movie_CharInfoVo() {
 	}
 
-	public Movie_CharInfo(int charNum, String charName, String charOrgFileName, String charSavFileName) {
+	public Movie_CharInfoVo(int charNum, String charName, String charOrgFileName, String charSavFileName) {
 		super();
 		this.charNum = charNum;
 		this.charName = charName;

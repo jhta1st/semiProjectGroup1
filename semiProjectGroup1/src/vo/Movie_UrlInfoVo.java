@@ -1,15 +1,15 @@
 package vo;
 
-public class Movie_UrlInfo {
+public class Movie_UrlInfoVo {
 	private int urlNum;
 	private int urlType;
 	private String urlAddr;
 	private int movieNum;
 
-	public Movie_UrlInfo() {
+	public Movie_UrlInfoVo() {
 	}
 
-	public Movie_UrlInfo(int urlNum, int urlType, String urlAddr, int movieNum) {
+	public Movie_UrlInfoVo(int urlNum, int urlType, String urlAddr, int movieNum) {
 		super();
 		this.urlNum = urlNum;
 		this.urlType = urlType;

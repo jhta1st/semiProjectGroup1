@@ -1,16 +1,16 @@
 package vo;
 
-public class Movie_CastInfo {
+public class Movie_CastInfoVo {
 	private int castNum;
 	private int charNum;
 	private int castDoNum;
 	private String castDoName;
 	private int movieNum;
 
-	public Movie_CastInfo() {
+	public Movie_CastInfoVo() {
 	}
 
-	public Movie_CastInfo(int castNum, int charNum, int castDoNum, String castDoName, int movieNum) {
+	public Movie_CastInfoVo(int castNum, int charNum, int castDoNum, String castDoName, int movieNum) {
 		super();
 		this.castNum = castNum;
 		this.charNum = charNum;
