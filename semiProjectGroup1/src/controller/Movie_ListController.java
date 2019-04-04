@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Movie_GenreDao;
-import dao.Movie_MovieInfoDao;
 import vo.Movie_GenreVo;
-import vo.Movie_MovieInfoVo;
 
 /**
  * Servlet implementation class Movie_ListController
