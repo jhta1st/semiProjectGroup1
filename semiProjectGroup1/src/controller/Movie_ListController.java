@@ -22,24 +22,10 @@ public class Movie_ListController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String keyword = req.getParameter("keyword");
-		String genreName = req.getParameter("genreName");
 		Movie_GenreDao genreDao = Movie_GenreDao.getInstance();
 		ArrayList<Movie_GenreVo> genreNamelist = genreDao.getGenreName();
 		req.setAttribute("genreNamelist", genreNamelist);
-		if (keyword == null) {
-			req.setAttribute("pages", "/Movie/movie_mainlist.jsp");
-			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
-		} else {
-			int genreNum=Integer.parseInt(genreName);
-			Movie_MovieInfoDao movieDao = Movie_MovieInfoDao.getInstance();
-			ArrayList<Movie_MovieInfoVo> serchList = movieDao.getSearchList(keyword, genreNum);
-			req.setAttribute("serchList", serchList);
-			req.setAttribute("keyword", keyword);
-			req.setAttribute("genreNum", genreNum);
-			req.setAttribute("pages", "/Movie/movie_searchlist.jsp");
-			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
-
-		}
+		req.setAttribute("pages", "/Movie/movie_mainlist.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

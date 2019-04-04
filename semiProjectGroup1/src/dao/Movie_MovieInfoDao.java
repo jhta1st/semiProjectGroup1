@@ -20,7 +20,7 @@ public class Movie_MovieInfoDao {
 	private Movie_MovieInfoDao() {
 	}
 
-	public ArrayList<Movie_MovieInfoVo> getSearchList(String keyword, int genreNum) {
+	public ArrayList<Movie_MovieInfoVo> getSearchList(String keyword, String[] genreNum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -28,8 +28,10 @@ public class Movie_MovieInfoDao {
 		String sql = "SELECT * FROM MOVIE_VIEW WHERE MOVIENAME LIKE '%' || ? || '%'";
 		try {
 			con = JDBCUtil.getConn();
-			if (genreNum != 0) {
-				sql = sql.concat(" AND GENRENUM=" + genreNum);
+			if (genreNum != null) {
+				for (int i = 0; i < genreNum.length; i++) {
+					sql = sql.concat(" AND GENRENUM=" + genreNum[i]);
+				}
 			}
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, keyword);
