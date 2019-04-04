@@ -275,4 +275,4 @@ CREATE SEQUENCE movieInfo_SEQ;
 CREATE SEQUENCE urlInfo_SEQ;
 
 /* 관리자 계정 만들기 */
-INSERT INTO USERINFO VALUE('Master','immaster','관리자','99','99999999',SYSDATE,1);
+INSERT INTO USERINFO VALUES('Master','immaster','관리자','99','99999',SYSDATE,1);

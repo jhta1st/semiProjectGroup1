@@ -30,6 +30,6 @@ public class User_UserInfoRegistrationController extends HttpServlet {
 		} else {
 			req.setAttribute("code", "fail");
 		}
-		req.getRequestDispatcher("/user/user_result.jsp").forward(req, resp);
+		req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
 	}
 }

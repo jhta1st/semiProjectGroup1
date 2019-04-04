@@ -13,16 +13,13 @@ import vo.User_UserInfoVo;
 public class User_UserInfoDao {
 	//회원가입
 	public int insert(User_UserInfoVo vo) {
-		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
 			con=JDBCUtil.getConn();
 			String sql="INSERT INTO USERINFO VALUES(?,?,?,1,0,sysdate,2)";
 			pstmt=con.prepareStatement(sql);
-			System.out.println("id:" + vo.getUserId());
 			pstmt.setString(1,vo.getUserId());
-			System.out.println("pwd:" + vo.getUserPwd());
 			pstmt.setString(2, vo.getUserPwd());
 			pstmt.setString(3,vo.getUserNickName());
 			return pstmt.executeUpdate();
@@ -65,8 +62,8 @@ public class User_UserInfoDao {
 		}		
 	}
 	
-	//회원검색(필요없지만...혹시나해서..)
-	public User_UserInfoVo getinfo(String userId){
+	//마이페이지
+	public User_UserInfoVo detail(String userId){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -96,7 +93,7 @@ public class User_UserInfoDao {
 		}
 	}
 	
-	//회원삭제(이건 좀더 생각을 일단 기본 삭제 쿼리만 작성!
+	//회원삭제(이건 좀더 생각을 일단 기본 삭제 쿼리만 작성!)
 	public int delete(String userId) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
