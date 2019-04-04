@@ -13,6 +13,7 @@ public class JDBCUtil {
 			Class.forName("oracle.jdbc.OracleDriver");
 			String url="jdbc:oracle:thin:@localhost:1521:xe";
 			con=DriverManager.getConnection(url, "scott", "tiger");
+			con.setAutoCommit(false);
 			return con;
 		} catch (ClassNotFoundException ce) {
 			System.out.println(ce.getMessage());
