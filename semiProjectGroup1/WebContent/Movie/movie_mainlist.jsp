@@ -16,11 +16,19 @@
 			<h2>인기영화</h2>
 			<div></div>
 		</div>
-		<c:forEach var="vo" items="${genreNamelist }">
-			<div>
-				<h2>${vo.genreName }</h2>
-				<div></div>
-			</div>
+		<c:forEach var="list" items="${movieMainList }">
+			<c:forEach var="map" items="${list }">
+				<div>
+					<h2>${map.get("genreName") }</h2>
+					<div>
+						<div>
+							<img src="${cp }/Movie/images/${map.get('imageSavName')}" alt="이미지">
+							<br>
+							<label>${map.get('movieName') }</label>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 		</c:forEach>
 
 	</div>

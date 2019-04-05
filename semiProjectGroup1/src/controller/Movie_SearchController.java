@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +27,7 @@ public class Movie_SearchController extends HttpServlet {
 		req.setAttribute("genreNamelist", genreNamelist);
 
 		Movie_MovieInfoDao movieDao = Movie_MovieInfoDao.getInstance();
-		ArrayList<Movie_MovieInfoVo> serchList = movieDao.getSearchList(keyword, genreName);
+		ArrayList<HashMap<String, Object>> serchList = movieDao.getSearchList(keyword, genreName);
 		req.setAttribute("serchList", serchList);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("genreNum", genreName);
