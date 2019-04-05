@@ -93,15 +93,16 @@ public class User_UserInfoDao {
 		}
 	}
 	
-	//회원삭제(이건 좀더 생각을 일단 기본 삭제 쿼리만 작성!)
-	public int delete(String userId) {
+	//회원삭제
+	public int update1(User_UserInfoVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
 			con=JDBCUtil.getConn();
-			String sql="DELETE FROM USERINFO WHERE USERID=?";
+			String sql="UPDATE USERINFO SET USERPOWER=3 WHERE USERID=? AND USERPWD=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userId);
+			pstmt.setString(1,vo.getUserId());
+			pstmt.setString(2,vo.getUserPwd());
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
