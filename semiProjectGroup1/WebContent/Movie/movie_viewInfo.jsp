@@ -6,5 +6,8 @@
 	<div>${genreName }</div>
 	<div>${movieAge }</div>
 	<div>${rate }</div>
-	<div><input type="button" value="좋아요"></div>
+	<div>
+		<input type="button" value="좋아요">
+	</div>
+	<div></div>
 </div>
