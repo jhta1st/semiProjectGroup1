@@ -10,11 +10,11 @@
 	<div>
 		<!-- 로그인 유무 -->
 		<c:choose>
-			<c:when test="">
-				<a href="">로그인</a>
+			<c:when test="${sessionScope.id==null }">
+				<a href="${cp }/main/login.do">로그인</a>
 			</c:when>
 			<c:otherwise>
-				<a href="">로그아웃</a>
+				<a href="${cp }/main/login.do">로그아웃</a>
 			</c:otherwise>
 		</c:choose>
 	</div>

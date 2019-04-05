@@ -3,82 +3,82 @@ package vo;
 import java.sql.Date;
 
 public class User_UserInfoVo {
-	private String UserId;
-	private String UserPwd;
-	private String UserNickName; 
-	private int UserLev; 
-	private int UserExp; 
-	private Date UserJdate;
-	private int UserPower;
-	
+	private String userId;
+	private String userPwd;
+	private String userNickName;
+	private int userLev;
+	private int userExp;
+	private Date userJdate;
+	private int userPower;
+
 	public User_UserInfoVo() {}
 
 	public User_UserInfoVo(String userId, String userPwd, String userNickName, int userLev, int userExp, Date userJdate,
 			int userPower) {
 		super();
-		UserId = userId;
-		UserPwd = userPwd;
-		UserNickName = userNickName;
-		UserLev = userLev;
-		UserExp = userExp;
-		UserJdate = userJdate;
-		UserPower = userPower;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userNickName = userNickName;
+		this.userLev = userLev;
+		this.userExp = userExp;
+		this.userJdate = userJdate;
+		this.userPower = userPower;
 	}
 
 	public String getUserId() {
-		return UserId;
+		return userId;
 	}
 
 	public void setUserId(String userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 
 	public String getUserPwd() {
-		return UserPwd;
+		return userPwd;
 	}
 
 	public void setUserPwd(String userPwd) {
-		UserPwd = userPwd;
+		this.userPwd = userPwd;
 	}
 
 	public String getUserNickName() {
-		return UserNickName;
+		return userNickName;
 	}
 
 	public void setUserNickName(String userNickName) {
-		UserNickName = userNickName;
+		this.userNickName = userNickName;
 	}
 
 	public int getUserLev() {
-		return UserLev;
+		return userLev;
 	}
 
 	public void setUserLev(int userLev) {
-		UserLev = userLev;
+		this.userLev = userLev;
 	}
 
 	public int getUserExp() {
-		return UserExp;
+		return userExp;
 	}
 
 	public void setUserExp(int userExp) {
-		UserExp = userExp;
+		this.userExp = userExp;
 	}
 
 	public Date getUserJdate() {
-		return UserJdate;
+		return userJdate;
 	}
 
 	public void setUserJdate(Date userJdate) {
-		UserJdate = userJdate;
+		this.userJdate = userJdate;
 	}
 
 	public int getUserPower() {
-		return UserPower;
+		return userPower;
 	}
 
 	public void setUserPower(int userPower) {
-		UserPower = userPower;
+		this.userPower = userPower;
 	}
-	
+
 }

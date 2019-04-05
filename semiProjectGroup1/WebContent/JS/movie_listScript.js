@@ -12,14 +12,11 @@ function checkAll() {
 	}
 }
 
-function checkAllch() {
+function checkAllch(chk) {
+	console.log("checkAll.checked:" + chk.checked)
 	var checkAll = document.getElementById("0");
-	var checkbox = document.getElementsByName("genreName");
-	if (checkAll.checked == true) {
-		for (var i = 0; i < checkbox.length; i++) {
-			if (checkbox[i].checked = false) {
-				checkAll.checked == false;
-			}
-		}
+	if (chk.checked == false) {
+		console.log("mmm")
+		checkAll.checked = false;
 	}
 }
