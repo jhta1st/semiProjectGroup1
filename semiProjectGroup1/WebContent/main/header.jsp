@@ -12,9 +12,11 @@
 		<c:choose>
 			<c:when test="${sessionScope.id==null }">
 				<a href="${cp }/main/login.do">로그인</a>
+				<a href="${cp }/user/registration.do">회원가입</a>
 			</c:when>
 			<c:otherwise>
 				<a href="${cp }/main/login.do">로그아웃</a>
+				<a href="${cp }/user/detail.do">마이페이지</a>
 			</c:otherwise>
 		</c:choose>
 	</div>
