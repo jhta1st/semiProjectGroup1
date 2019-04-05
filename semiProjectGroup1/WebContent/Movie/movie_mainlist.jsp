@@ -17,15 +17,24 @@
 			<div></div>
 		</div>
 		<c:forEach var="list" items="${movieMainList }">
-			<c:forEach var="map" items="${list }">
+			<c:forEach var="map" items="${list }" varStatus="st">
 				<div>
-					<h2>${map.get("genreName") }</h2>
+					<c:if test="${st.index==0 }">
+						<h2>${map.get("genreName") }</h2>
+					</c:if>
+
 					<div>
+						<c:if test="${st.index==0 }">
+							<input type="button" value="<">
+						</c:if>
 						<div>
 							<img src="${cp }/Movie/images/${map.get('imageSavName')}" alt="이미지">
 							<br>
 							<label>${map.get('movieName') }</label>
 						</div>
+						<c:if test="${st.last }">
+							<input type="button" value=">">
+						</c:if>
 					</div>
 				</div>
 			</c:forEach>
