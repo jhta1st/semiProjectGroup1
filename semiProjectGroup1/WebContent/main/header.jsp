@@ -17,7 +17,7 @@
 			<c:otherwise>
 				<a href="${cp }/main/login.do">로그아웃</a>
 				<a href="${cp }/user/detail.do?userId=${id}">마이페이지</a>
-				<a href="${cp }/user/myMsgList.do?userId=${id}">쪽지</a>
+				<a href="${cp }/user/myMsgList.do?userId=${id}">쪽지1</a>
 			</c:otherwise>
 		</c:choose>
 	</div>
