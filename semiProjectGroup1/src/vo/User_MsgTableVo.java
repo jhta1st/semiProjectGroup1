@@ -5,20 +5,20 @@ import java.sql.Date;
 public class User_MsgTableVo {
 	private int msgNum;
 	private String msgContent;
-	private String ReceiveUserId;
 	private String SendUserId;
+	private String ReceiveUserId;
 	private Date msgWdate;
 	private int msgCheck;
 	
 	public User_MsgTableVo() {}
 
-	public User_MsgTableVo(int msgNum, String msgContent, String receiveUserId, String sendUserId, Date msgWdate,
+	public User_MsgTableVo(int msgNum, String msgContent, String sendUserId, String receiveUserId, Date msgWdate,
 			int msgCheck) {
 		super();
 		this.msgNum = msgNum;
 		this.msgContent = msgContent;
-		ReceiveUserId = receiveUserId;
 		SendUserId = sendUserId;
+		ReceiveUserId = receiveUserId;
 		this.msgWdate = msgWdate;
 		this.msgCheck = msgCheck;
 	}
@@ -39,20 +39,20 @@ public class User_MsgTableVo {
 		this.msgContent = msgContent;
 	}
 
-	public String getReceiveUserId() {
-		return ReceiveUserId;
-	}
-
-	public void setReceiveUserId(String receiveUserId) {
-		ReceiveUserId = receiveUserId;
-	}
-
 	public String getSendUserId() {
 		return SendUserId;
 	}
 
 	public void setSendUserId(String sendUserId) {
 		SendUserId = sendUserId;
+	}
+
+	public String getReceiveUserId() {
+		return ReceiveUserId;
+	}
+
+	public void setReceiveUserId(String receiveUserId) {
+		ReceiveUserId = receiveUserId;
 	}
 
 	public Date getMsgWdate() {
@@ -70,5 +70,7 @@ public class User_MsgTableVo {
 	public void setMsgCheck(int msgCheck) {
 		this.msgCheck = msgCheck;
 	}
+
+	
 }
 
