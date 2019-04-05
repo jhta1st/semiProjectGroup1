@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/user/user_result.jsp</title>
+<title>/User/user_result.jsp</title>
 </head>
 <body>
 	<c:choose>
@@ -16,6 +16,6 @@
 			<h1>요청하신 작업을 오류로 인해 수행하지 못하였습니다.</h1>
 		</c:otherwise>
 	</c:choose>
-	<a href="${pageContext.request.contextPath }/User/user_registration.jsp">가입페이지로</a>
+	<a href="${pageContext.request.contextPath }/main/home.do">홈으로</a>
 </body>
 </html>

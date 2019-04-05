@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/user/user_registration.jsp</title>
+<title>/User/user_registration.jsp</title>
 <script type="text/javascript">
 function checkData() {
 	var userId = document.getElementsByName("userId")[0];

@@ -22,7 +22,7 @@ public class User_UpdateController extends HttpServlet{
 		User_UserInfoDao dao=new User_UserInfoDao();
 		User_UserInfoVo vo=dao.detail(userId);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/user/user_update.jsp").forward(req, resp);
+		req.getRequestDispatcher("/User/user_update.jsp").forward(req, resp);
 	}
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,6 +38,6 @@ public class User_UpdateController extends HttpServlet{
 			}else {
 				req.setAttribute("code", "fail");
 			}
-			req.getRequestDispatcher("/user/user_result.jsp").forward(req, resp);
+			req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
 	}
 }

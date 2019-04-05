@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>member/list.jsp</title>
+<title>/User/user_myPage.jsp</title>
 </head>
 <body>
 <h1>마이페이지</h1>

@@ -16,7 +16,7 @@
 			</c:when>
 			<c:otherwise>
 				<a href="${cp }/main/login.do">로그아웃</a>
-				<a href="${cp }/user/detail.do">마이페이지1</a>
+				<a href="${cp }/user/detail.do?userId=${id}">마이페이지</a>
 			</c:otherwise>
 		</c:choose>
 	</div>

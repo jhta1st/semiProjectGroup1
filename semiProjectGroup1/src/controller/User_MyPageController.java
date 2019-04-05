@@ -15,9 +15,12 @@ public class User_MyPageController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userId=req.getParameter("userId");
+		System.out.println("id"+userId);
 		User_UserInfoDao dao = new User_UserInfoDao();
 		User_UserInfoVo vo = dao.detail(userId);
+		System.out.println("vo"+vo);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/main/layout.jsp?spage=/user/user_myPage.jsp").forward(req, resp);
+		req.setAttribute("pages", "/User/user_myPage.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

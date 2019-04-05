@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/user/user_delete.jsp</title>
+<title>/User/user_delete.jsp</title>
 </head>
 <body>
 <h1>회원탈퇴</h1>
-gg:${vo.userId }
 <form method="post" action="${pageContext.request.contextPath}/delete.do?userId=${userId}">
 <table style="width: 500px;">
 	<tr>

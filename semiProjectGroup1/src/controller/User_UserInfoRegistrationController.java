@@ -14,7 +14,7 @@ import vo.User_UserInfoVo;
 public class User_UserInfoRegistrationController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect(req.getContextPath()+"/user/user_registration.jsp");
+		resp.sendRedirect(req.getContextPath()+"/User/user_registration.jsp");
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

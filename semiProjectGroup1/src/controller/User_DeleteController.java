@@ -18,7 +18,7 @@ public class User_DeleteController extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		String userId=req.getParameter("userId");
 		req.setAttribute("userId", userId);
-		req.getRequestDispatcher("/user/user_delete.jsp").forward(req, resp);
+		req.getRequestDispatcher("/User/user_delete.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,11 +37,11 @@ public class User_DeleteController extends HttpServlet{
 			}else {
 				req.setAttribute("code", "fail");
 			}
-			req.getRequestDispatcher("/user/user_result.jsp").forward(req, resp);
+			req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
 		}else {
 			req.setAttribute("userId", userId);
 			req.setAttribute("msg", "비밀번호가 일치하지 않습니다.");
-			req.getRequestDispatcher("/user/user_delete.jsp").forward(req, resp);
+			req.getRequestDispatcher("/User/user_delete.jsp").forward(req, resp);
 		}
 	}
 }

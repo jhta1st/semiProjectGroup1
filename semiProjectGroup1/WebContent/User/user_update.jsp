@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/user/user_update.jsp</title>
+<title>/User/user_update.jsp</title>
 </head>
 <body>
 <h1>회원 정보 수정</h1>
