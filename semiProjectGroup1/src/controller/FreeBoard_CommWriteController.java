@@ -21,15 +21,12 @@ public class FreeBoard_CommWriteController extends HttpServlet{
 		String userId=req.getParameter("userId");
 		FreeBoard_FreeBoardCommVo vo=new FreeBoard_FreeBoardCommVo(0, freeBoardCommContent, null, freeBoardNum, userId);
 		FreeBoard_FreeBoardCommDao dao=FreeBoard_FreeBoardCommDao.getInstance();
-		for(int i=0;i<30;i++) {
-			if(dao.commWrite(vo)>0) {
-				
-			}else {
-				req.setAttribute("errCode", "-1");
-				req.setAttribute("errMsg", "CommWrite실패");
-				req.getRequestDispatcher("/ETC/error.jsp").forward(req, resp);
-			}
-		}
-		
+		if(dao.commWrite(vo)>0) {
+			
+		}else {
+			req.setAttribute("errCode", "-1");
+			req.setAttribute("errMsg", "CommWrite실패");
+			req.getRequestDispatcher("/ETC/error.jsp").forward(req, resp);
+		}		
 	}
 }

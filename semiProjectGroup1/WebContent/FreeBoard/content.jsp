@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	var endPageNum=null;
+	var pageCount=null;
 	var commInsertXhr=null;
 	function commInsert(){
 		var freeBoardCommContent=document.getElementById("freeBoardCommContent").value;
@@ -21,11 +21,11 @@
 	}
 	function commInsertOk(){
 		if(commInsertXhr.readyState==4 && commInsertXhr.status==200){
-			commList(endPageNum);
+			commList(pageCount);
 		}
 	}
 	function commEndPageList(){
-		commList(endPageNum);
+		commList(pageCount);
 	}
 	var commListXhr=null;
 	function commList(pageNum){
@@ -65,9 +65,9 @@
 			}
 			var commListPage=document.getElementById("commListPage");
 			var pageNum=result.getElementsByTagName("pageNum")[0].firstChild.nodeValue;
-			var pageCount=result.getElementsByTagName("pageCount")[0].firstChild.nodeValue;
+			pageCount=result.getElementsByTagName("pageCount")[0].firstChild.nodeValue;
 			var startPageNum=result.getElementsByTagName("startPageNum")[0].firstChild.nodeValue;
-			endPageNum=result.getElementsByTagName("endPageNum")[0].firstChild.nodeValue;
+			var endPageNum=result.getElementsByTagName("endPageNum")[0].firstChild.nodeValue;
 			var inner="";
 			if(startPageNum!=1){
 				inner+="<a href=javascript:commList("+(parseInt(startPageNum)-1)+");><span>◀</span></a>";
