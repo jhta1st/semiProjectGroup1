@@ -26,6 +26,7 @@ public class Movie_ListController extends HttpServlet {
 		ArrayList<Movie_GenreVo> genreNamelist = genreDao.getGenreName();
 		ArrayList<ArrayList<HashMap<String, Object>>> movieMainList = genreDao.getMovieList();
 		req.setAttribute("genreNamelist", genreNamelist);
+		req.setAttribute("movieMainList", movieMainList);
 		req.setAttribute("pages", "/Movie/movie_mainlist.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
