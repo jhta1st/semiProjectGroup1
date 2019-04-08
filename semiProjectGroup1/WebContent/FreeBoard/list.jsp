@@ -27,7 +27,7 @@
 				<c:otherwise><a href="${cp }/FreeBoard/list.do?pageNum=${i}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}"><span>${i }</span></a></c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:if test="${endPageNum!=pageCount }"><a href="${cp }/FreeBoard/list.do?pageNum=${startPageNum+1}"><span>▶</span></a></c:if>
+		<c:if test="${endPageNum!=pageCount }"><a href="${cp }/FreeBoard/list.do?pageNum=${endPageNum+1}"><span>▶</span></a></c:if>
 	</div>
 	<div><!-- 검색 -->
 		<form method="post" action="${cp }/FreeBoard/list.do">
@@ -39,7 +39,9 @@
 			</select>
 			<input type="text" size="" name="freeBoardSearchKeyword" value="${freeBoardSearchKeyword }">
 			<input type="submit" value="검색">
-			<input type="button" value="글쓰기" onclick="javascript:location.href='${cp}/FreeBoard/write.do'">
+			<c:if test="${sessionScope.id!=null }">
+				<input type="button" value="글쓰기" onclick="javascript:location.href='${cp}/FreeBoard/write.do'">
+			</c:if>
 		</form>
 	</div>
 </body>

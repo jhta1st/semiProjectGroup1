@@ -21,7 +21,11 @@
 	}
 	function commInsertOk(){
 		if(commInsertXhr.readyState==4 && commInsertXhr.status==200){
-			commList(pageCount);
+			if(pageCount>1){
+				commList(pageCount);
+			}else{
+				commList(1);
+			}
 		}
 	}
 	function commEndPageList(){
@@ -54,7 +58,7 @@
 				var userId=comms[i].getElementsByTagName("userId")[0].firstChild.nodeValue;
 				var div=document.createElement("div");
 				div.innerHTML="<div style='display: inline-block;'><strong>"+userId+"</strong><br>"+freeBoardCommContent;
-				if('Master'==userId){<!-- "${sessionScope.userId } -->
+				if("${sessionScope.id }"==userId){
 					div.innerHTML+="<div style='float:right';>"+
 					"<a href=javascript:commUpdate(" + freeBoardCommNum + ")>수정</a><br>"+
 					"<a href=javascript:commDelete(" + freeBoardCommNum + ")>삭제</a>"+
@@ -142,11 +146,20 @@
 	<div><!-- 내용 -->
 		<table border="1" width="500px">
 			<tr><td>${vo.freeBoardNum }</td><td>${vo.freeBoardTitle }</td><td>${vo.userId }</td><td>${vo.freeBoardWdate }</td></tr>
-			<tr><td colspan="4">${vo.freeBoardContent }</td></tr>
-			<tr><td colspan="4">파일</td></tr>
+			<tr><td colspan="4">
+			<c:forEach var="list" items="${vo1}">
+				<img src="${cp }/FreeBoard/FreeBoardImageUpload/${list.freeBoardSavImgName }" style="width: 200px; height: 200px;"><br>
+			</c:forEach>
+			${vo.freeBoardContent }
+			</td></tr>
+			<c:forEach var="list" items="${vo1}">
+				<tr><td colspan="4">${list.freeBoardOrgImgName }</td></tr>
+			</c:forEach>
 		</table>
-		<a href="${cp }/FreeBoard/ContentUpdate.do?freeBoardNum=${vo.freeBoardNum}">수정</a><br>
-		<a href="${cp }/FreeBoard/ContentDelete.do?freeBoardNum=${vo.freeBoardNum}">삭제</a><br>
+		<c:if test="${sessionScope.id==vo.userId}">
+			<a href="${cp }/FreeBoard/ContentUpdate.do?freeBoardNum=${vo.freeBoardNum}">수정</a><br>
+			<a href="${cp }/FreeBoard/ContentDelete.do?freeBoardNum=${vo.freeBoardNum}">삭제</a><br>
+		</c:if>
 		<a href="${cp }/FreeBoard/list.do?pageNum=${pageNum}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}">목록</a><br>
 	</div>
 	<div id="commList"><!-- 댓글리스트 -->
@@ -157,10 +170,12 @@
 	</div>
 	<div><!-- 댓글쓰기 -->
 			<a href="javascript:commEndPageList()">댓글새로고침</a><br>
-			<textarea rows="5" cols="100%" name="freeBoardCommContent" id="freeBoardCommContent" draggable="false"></textarea>
-			<input type="hidden" name="userId" id="userId" value="Master"><!-- value="${sessionScope.userId } -->
-			<input type="hidden" name="freeBoardCommNum" id="freeBoardCommNum" value="">
-			<input type="button" value="입력" id="commBtn" onclick="commInsert();">
+			<c:if test="${sessionScope.id!=null }">
+				<textarea rows="5" cols="100%" name="freeBoardCommContent" id="freeBoardCommContent" draggable="false"></textarea>
+				<input type="hidden" name="userId" id="userId" value="${sessionScope.id }">
+				<input type="hidden" name="freeBoardCommNum" id="freeBoardCommNum" value="">
+				<input type="button" value="입력" id="commBtn" onclick="commInsert();">
+			</c:if>
 	</div>
 </body>
 </html>

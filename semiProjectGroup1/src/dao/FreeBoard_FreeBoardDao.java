@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import db.JDBCUtil;
+import vo.FreeBoard_FreeBoardImageVo;
 import vo.FreeBoard_FreeBoardVo;
 
 public class FreeBoard_FreeBoardDao {
@@ -44,7 +45,7 @@ public class FreeBoard_FreeBoardDao {
 		}finally {
 			JDBCUtil.close(con,pstmt,null);
 		}
-	}
+	}	
 	public FreeBoard_FreeBoardVo getContentInfo(int freeBoardNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -147,6 +148,8 @@ public class FreeBoard_FreeBoardDao {
 	public int write(FreeBoard_FreeBoardVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
+		PreparedStatement pstmt2=null;
+		ResultSet rs=null;
 		try {
 			con=JDBCUtil.getConn();
 			String sql="insert into freeBoard values(FREEBOARD_SEQ.nextval,?,?,sysdate,?)";
@@ -154,11 +157,20 @@ public class FreeBoard_FreeBoardDao {
 			pstmt.setString(1, vo.getFreeBoardTitle());
 			pstmt.setString(2, vo.getFreeBoardContent());
 			pstmt.setString(3, vo.getUserId());
-			return pstmt.executeUpdate();
+			pstmt.executeUpdate();
+			String sql2="select FREEBOARD_SEQ.currval as freeBoardNum from dual";
+			pstmt2=con.prepareStatement(sql2);
+			rs=pstmt2.executeQuery();
+			if(rs.next()) {
+				int freeBoardNum=rs.getInt("freeBoardNum");
+				return freeBoardNum;
+			}
+			return -1;
 		}catch(SQLException se) {
 			se.printStackTrace();
 			return -1;
 		}finally {
+			JDBCUtil.close(null,pstmt2,null);
 			JDBCUtil.close(con,pstmt,null);
 		}
 	}
