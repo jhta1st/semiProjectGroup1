@@ -25,16 +25,24 @@
 			<td>${vo.userJdate }</td>	
 			<td><c:choose>
 			<c:when test="${vo.userPower==1 }">
-			관리자
+			관리자(1)
 			</c:when>
 			<c:when test="${vo.userPower==2 }">
-			일반회원
+			일반회원(2)
 			</c:when>
 			<c:when test="${vo.userPower==3 }">
-			탈퇴회원
+			탈퇴회원(3)
 			</c:when>
 			</c:choose></td>
-			<td><a href="${pageContext.request.contextPath}/admin/delete.do?userId=${vo.userId}">삭제</a></td>	
+			<td><c:choose>
+			<c:when test="${vo.userPower==1 }">
+			</c:when>
+			<c:when test="${vo.userPower==2 }">
+			<a href="${pageContext.request.contextPath}/admin/delete.do?userId=${vo.userId}">삭제</a>
+			</c:when>
+			<c:when test="${vo.userPower==3 }">
+			</c:when>
+			</c:choose></td>
 		</tr>
 	</c:forEach>
 </table>

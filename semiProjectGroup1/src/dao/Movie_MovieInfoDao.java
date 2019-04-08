@@ -155,7 +155,6 @@ public class Movie_MovieInfoDao {
 				map.put("imageNum", imageNum);
 				map.put("imageSavName", imageSavName);
 				list.add(map);
-
 			}
 			return list;
 		} catch (SQLException e) {
