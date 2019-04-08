@@ -18,7 +18,7 @@ function checkUser() {
 	}
 	xhr=new XMLHttpRequest();
 	xhr.onreadystatechange=checkUserResult;
-	xhr.open("post","${pageContext.request.contextPath}/user/check.do",true);	//post방식인 경우는 아래와 같이 설정해 주기
+	xhr.open("post","${pageContext.request.contextPath}/user/check.do",true);	
 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	xhr.send("userId=" + userId.value);
 }
@@ -57,7 +57,7 @@ function sendMessage() {
 	var contHtml = content.value.replace(/\r/g,'').replace(/\n/g,'<br/>');
 	xhr=new XMLHttpRequest();
 	xhr.onreadystatechange=sendMessageResult;
-	xhr.open("post","${pageContext.request.contextPath}/user/msgSendForm.do",true);	//post방식인 경우는 아래와 같이 설정해 주기
+	xhr.open("post","${pageContext.request.contextPath}/user/msgSendForm.do",true);	
 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	xhr.send("sendUserId=${userId}&receiveUserId=" + userId.value+"&content="+contHtml);
 }
@@ -79,7 +79,7 @@ function deleteMessage(num){
 	}
 	xhr=new XMLHttpRequest();
 	xhr.onreadystatechange=deleteMessageResult;
-	xhr.open("post","${pageContext.request.contextPath}/user/msgDelete.do",true);	//post방식인 경우는 아래와 같이 설정해 주기
+	xhr.open("post","${pageContext.request.contextPath}/user/msgDelete.do",true);	
 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	xhr.send("msgNum="+num+"&userId=${userId}");
 }

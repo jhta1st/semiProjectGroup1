@@ -23,7 +23,17 @@
 			<td>${vo.userLev}</td>
 			<td>${vo.userExp}</td>
 			<td>${vo.userJdate }</td>	
-			<td>${vo.userPower }</td>
+			<td><c:choose>
+			<c:when test="${vo.userPower==1 }">
+			관리자
+			</c:when>
+			<c:when test="${vo.userPower==2 }">
+			일반회원
+			</c:when>
+			<c:when test="${vo.userPower==3 }">
+			탈퇴회원
+			</c:when>
+			</c:choose></td>
 			<td><a href="${pageContext.request.contextPath}/admin/delete.do?userId=${vo.userId}">삭제</a></td>	
 		</tr>
 	</c:forEach>
