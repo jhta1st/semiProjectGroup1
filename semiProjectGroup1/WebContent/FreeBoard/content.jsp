@@ -153,7 +153,7 @@
 			${vo.freeBoardContent }
 			</td></tr>
 			<c:forEach var="list" items="${vo1}">
-				<tr><td colspan="4">${list.freeBoardOrgImgName }</td></tr>
+				<tr><td colspan="4">${list.freeBoardOrgImgName }1</td></tr>
 			</c:forEach>
 		</table>
 		<c:if test="${sessionScope.id==vo.userId}">
