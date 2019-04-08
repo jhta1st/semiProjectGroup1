@@ -8,6 +8,8 @@
 				<h3>${map.movieName }</h3>
 			</c:if>
 			<div>${map.genreName }</div>
+		</c:forEach>
+		<c:forEach var="map" items="${movieInfolist }" varStatus="st">
 			<c:if test="${st.index==0 }">
 				<div>${map.movieAge }</div>
 				<div>${map.rate }</div>

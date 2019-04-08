@@ -19,6 +19,9 @@ INSERT INTO CASTINFO VALUES(castInfo_SEQ.NEXTVAL,7,2,'다라 더들리',22);
 INSERT INTO CASTINFO VALUES(castInfo_SEQ.NEXTVAL,8,2,'브롬필드',22);
 INSERT INTO CASTINFO VALUES(castInfo_SEQ.NEXTVAL,9,11,'감독',22);
 
+insert into movieinfo values(movieInfo_SEQ.nextval,'샤잠',
+'모든 히어로의 능력이 하나로 모였다!<BR>솔로몬의 지혜, 헤라클레스의 힘, 아틀라스의 체력, 제우스의 권능, 아킬레스의 용기, 머큐리의 스피드까지<BR>우연히 슈퍼 파워를 얻게 된 소년. 자신의 능력을 깨닫고 악당을 물리치는 슈퍼히어로로 다시 태어난다!<BR><BR>주문을 외쳐라, ‘샤잠’!',
+'2019 .04.03',132,'워너브러더스','워너브러더스','미국',12);
 
 INSERT INTO MOVIEGENRE VALUES(4,22);
 INSERT INTO MOVIEGENRE VALUES(2,22);
