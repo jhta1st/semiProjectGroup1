@@ -19,5 +19,4 @@ public class HomeController extends HttpServlet {
 		request.setAttribute("pages", "/main/main.jsp");
 		request.getRequestDispatcher("/main/layout.jsp").forward(request, response);
 	}
-
 }
