@@ -26,6 +26,12 @@
 				</div>
 			</div>
 		</c:forEach>
-
+		<div>
+			<c:choose>
+				<c:when test="${startPage>10 }">
+					<a href="${cp }/Movie/moviesearch.do?pageNum=${startPage-1 }&keyword=${keyword}&">[이전]</a>
+				</c:when>
+			</c:choose>
+		</div>
 	</div>
 </div>

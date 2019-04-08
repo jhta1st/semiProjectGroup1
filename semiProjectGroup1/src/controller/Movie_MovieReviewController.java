@@ -44,7 +44,7 @@ public class Movie_MovieReviewController extends HttpServlet {
 		} else if (detail.equals("vedio")) {
 			movieotherList = urlInfoDao.getVedioUrl(movieNum);
 		} else if (detail.equals("rate")) {
-			movieotherList = movieInfolist;
+			movieotherList = movieInfolist;//¿Ã∞≈ πŸ≤„æﬂ µ 
 		}
 		request.setAttribute("movieNum", movieNum);
 		request.setAttribute("movieInfolist", movieInfolist);

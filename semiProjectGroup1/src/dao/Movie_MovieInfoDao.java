@@ -22,7 +22,8 @@ public class Movie_MovieInfoDao {
 	private Movie_MovieInfoDao() {
 	}
 
-	public ArrayList<HashMap<String, Object>> getSearchList(String keyword, String[] genreNum) {
+	public ArrayList<HashMap<String, Object>> getSearchList(String keyword, String[] genreNum, int startRow,
+			int endRow) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -43,9 +44,11 @@ public class Movie_MovieInfoDao {
 					}
 				}
 			}
-			sql = sql.concat(") WHERE RNUM<=20");
+			sql = sql.concat(") WHERE RNUM>=? AND RNUM<=?");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, keyword);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int movieNum = rs.getInt("movieNum");
@@ -161,6 +164,38 @@ public class Movie_MovieInfoDao {
 			// TODO 자동 생성된 catch 블록
 			e.printStackTrace();
 			return null;
+		} finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
+
+	public int getCountNum(String keyword, String[] genreNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "SELECT NVL(COUNT(*),0) FROM MOVIE_VIEW M,REVIEWIMAGE R "
+					+ "WHERE M.MOVIENUM=R.MOVIENUM AND M.MOVIENAME LIKE '%'|| ? ||'%' AND R.IMAGETYPE=1";
+			if (genreNum != null && Integer.parseInt(genreNum[0]) != 0) {
+				sql = sql.concat(" OR ");
+				for (int i = 0; i < genreNum.length; i++) {
+					sql = sql.concat("GENRENUM=" + genreNum[i]);
+					if (genreNum.length - 1 != i) {
+						sql = sql.concat(" OR ");
+					}
+				}
+			}
+			pstmt = con.prepareStatement(sql);
+			System.out.println(sql);
+			pstmt.setString(1, keyword);
+			rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO 자동 생성된 catch 블록
+			e.printStackTrace();
+			return -1;
 		} finally {
 			JDBCUtil.close(con, pstmt, rs);
 		}
