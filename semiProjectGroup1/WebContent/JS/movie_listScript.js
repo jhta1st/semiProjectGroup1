@@ -13,10 +13,12 @@ function checkAll() {
 }
 
 function checkAllch(chk) {
-	console.log("checkAll.checked:" + chk.checked)
 	var checkAll = document.getElementById("0");
 	if (chk.checked == false) {
-		console.log("mmm")
 		checkAll.checked = false;
 	}
+}
+
+function rateInsert() {
+
 }

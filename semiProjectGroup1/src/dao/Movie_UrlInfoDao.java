@@ -9,37 +9,30 @@ import java.util.HashMap;
 
 import db.JDBCUtil;
 
-public class Movie_CharInfoDao {
-	private static Movie_CharInfoDao instance = new Movie_CharInfoDao();
+public class Movie_UrlInfoDao {
+	private static Movie_UrlInfoDao instance = new Movie_UrlInfoDao();
 
-	public static Movie_CharInfoDao getInstance() {
+	public static Movie_UrlInfoDao getInstance() {
 		return instance;
 	}
 
-	private Movie_CharInfoDao() {
+	private Movie_UrlInfoDao() {
 	}
 
-	public ArrayList<HashMap<String, Object>> getCharinfo(int movieNum) {
-		// TODO 자동 생성된 메소드 스텁
+	public ArrayList<HashMap<String, Object>> getVedioUrl(int movieNum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "SELECT CH.*,CAST.CASTNUM,CAST.CASTDONUM,CAST.CASTDONAME FROM CHARINFO CH,CASTINFO CAST "
-					+ "WHERE CH.CHARNUM=CAST.CHARNUM AND CAST.MOVIENUM=? ORDER BY CAST.CASTDONUM";
+			String sql = "SELECT * FROM URLINFO WHERE MOVIENUM=? ORDER BY URLTYPE";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, movieNum);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
-				map.put("charNum", rs.getInt("charNum"));
-				map.put("charName", rs.getString("charName"));
-				map.put("charSavFileName", rs.getString("charSavFileName"));
-				map.put("castNum", rs.getInt("castNum"));
-				map.put("castDoNum", rs.getInt("castDoNum"));
-				map.put("castDoName", rs.getString("castDoName"));
+				map.put("urlAddr", rs.getString("urlAddr"));
 				list.add(map);
 			}
 			return list;
@@ -51,5 +44,4 @@ public class Movie_CharInfoDao {
 			JDBCUtil.close(con, pstmt, rs);
 		}
 	}
-
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src="${cp }/JS/movie_listScript.js"></script>
 <div>
 	<div>
 		<c:forEach var="map" items="${movieInfolist }" varStatus="st">
@@ -172,10 +173,24 @@
 					</c:choose>
 
 				</c:when>
-				<c:when test="${detail eq 'photo' }">${detail }</c:when>
-				<c:when test="${detail eq 'vedio' }">${detail }</c:when>
-				<c:when test="${detail eq 'rate' }">${detail }</c:when>
-				<c:otherwise></c:otherwise>
+				<c:when test="${detail eq 'photo' }">
+					<img src="${cp}/Movie/images/photo/${map.get('ImageSavName')}">
+				</c:when>
+				<c:when test="${detail eq 'vedio' }">${map.urlAddr }</c:when>
+				<c:when test="${detail eq 'rate' }">
+					<c:if test="${st.index==0 }">
+						<select name="rate">
+							<option value="5">★★★★★</option>
+							<option value="4">☆★★★★</option>
+							<option value="3">☆☆★★★</option>
+							<option value="2">☆☆☆★★</option>
+							<option value="1">☆☆☆☆★</option>
+						</select>
+						<input type="text" name="rateComm">
+						<input type="button" value="입력" onclick="rateInsert()">
+					</c:if>
+					
+				</c:when>
 			</c:choose>
 		</div>
 	</c:forEach>
