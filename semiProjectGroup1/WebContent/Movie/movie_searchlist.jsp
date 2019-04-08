@@ -20,8 +20,10 @@
 		<c:forEach var="result" items="${serchList }">
 			<div>
 				<div>
-					<img alt="이미지" src="${cp }/Movie/images/${result.imageSavName}">
-					<br>${result.movieName }</div>
+					<a href="${cp }/Movie//Movie/review.do?movieNum=${result.get('movieNum')}"><img alt="이미지" src="${cp }/Movie/images/${result.imageSavName}"></a>
+					<br>
+					<a href="${cp }/Movie//Movie/review.do?movieNum=${result.get('movieNum')}">${result.movieName }</a>
+				</div>
 			</div>
 		</c:forEach>
 

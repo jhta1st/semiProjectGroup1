@@ -116,4 +116,55 @@ public class Movie_MovieInfoDao {
 		}
 	}
 
+	public ArrayList<HashMap<String, Object>> getInfo(int movieNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "SELECT M.*,R.IMAGENUM,R.IMAGETYPE,R.IMAGESAVNAME,R.MOVIENUM MNUM "
+					+ "FROM MOVIE_VIEW M,REVIEWIMAGE R WHERE M.MOVIENUM=R.MOVIENUM AND M.MOVIENUM=? AND R.IMAGETYPE=1";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, movieNum);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String movieName = rs.getString("movieName");
+				String movieIntro = rs.getString("movieIntro");
+				Date movieReleaseDate = rs.getDate("movieReleaseDate");
+				int movieRunTime = rs.getInt("movieRunTime");
+				String movieProduction = rs.getString("movieProduction");
+				String movieDistributer = rs.getString("movieDistributer");
+				String nation = rs.getString("nation");
+				int movieAge = rs.getInt("movieAge");
+				String genreName = rs.getString("genreName");
+				int imageNum = rs.getInt("imageNum");
+				String imageSavName = rs.getString("imageSavName");
+				HashMap<String, Object> map = new HashMap<String, Object>();
+
+				map.put("movieNum", movieNum);
+				map.put("movieName", movieName);
+				map.put("movieIntro", movieIntro);
+				map.put("movieReleaseDate", movieReleaseDate);
+				map.put("movieRunTime", movieRunTime);
+				map.put("movieProduction", movieProduction);
+				map.put("movieDistributer", movieDistributer);
+				map.put("nation", nation);
+				map.put("movieAge", movieAge);
+				map.put("genreName", genreName);
+				map.put("imageNum", imageNum);
+				map.put("imageSavName", imageSavName);
+				list.add(map);
+
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO 자동 생성된 catch 블록
+			e.printStackTrace();
+			return null;
+		} finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
+
 }

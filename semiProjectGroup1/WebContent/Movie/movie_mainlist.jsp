@@ -28,9 +28,9 @@
 							<input type="button" value="<">
 						</c:if>
 						<div>
-							<img src="${cp }/Movie/images/${map.get('imageSavName')}" alt="이미지">
+							<a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum')}"> <img src="${cp }/Movie/images/${map.get('imageSavName')}" alt="이미지"></a>
 							<br>
-							<label>${map.get('movieName') }</label>
+							<a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum')}"><label>${map.get('movieName') }</label></a>
 						</div>
 						<c:if test="${st.last }">
 							<input type="button" value=">">
