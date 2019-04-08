@@ -19,7 +19,7 @@ public class User_MsgReceiveListController extends HttpServlet {
 				
 		req.setCharacterEncoding("utf-8");
 
-		String userId = req.getParameter("userId").trim();
+		String userId = req.getParameter("userId");
 		String spageNum = req.getParameter("pageNum");
 		
 		//검색조건

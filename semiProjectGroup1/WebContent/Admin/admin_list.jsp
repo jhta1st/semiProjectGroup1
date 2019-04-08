@@ -85,6 +85,11 @@
 				selected='selected'
 			</c:if>
 			>가입일</option>
+			<option value="userPower"
+			<c:if test="${field=='userPower' }">
+				selected='selected'
+			</c:if>
+			>권한레벨</option>
 		</select>
 		<input type="text" name="keyword" value="${keyword }">
 		<input type="submit" value="검색">

@@ -125,7 +125,7 @@ function detailClose() {
 </h1>
 <hr>
 <div style="float: left;">
-	<table border="1" width="600" style="table-layout:fixed;">
+	<table border="1" style="width:600px; table-layout:fixed;">
 		<tr>
 			<th>${type=="SEND" ? "받은사람" : "보낸사람"}</th>
 			<th style="width:200px;">쪽지내용</th>
@@ -143,7 +143,68 @@ function detailClose() {
 		</tr>
 		</c:forEach>
 	</table>
+	<div>
+	<c:if test="${type=='RECEIVE'}">
+	<c:choose>
+		<c:when test="${startPage>10 }">
+			<a href="${cp }/user/msgReceiveList.do?pageNum=${startPage-1}">[이전]</a>
+		</c:when>
+		<c:otherwise>
+			[이전]
+		</c:otherwise>
+	</c:choose>
+	<c:forEach var="i" begin="${startPage }" end="${endPage }">
+		<c:choose>
+			<c:when test="${pageNum==i }">
+				<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color:pink">[${i }]</span></a>	
+			</c:when>
+			<c:otherwise>
+				<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color:#999">[${i }]</span></a>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+	<c:choose>
+		<c:when test="${endPage<pageCount}">
+			<a href="${cp }/user/msgReceiveList.do?pageNum=${endPage+1}">[다음]</a>
+		</c:when>
+		<c:otherwise>
+			[다음]
+		</c:otherwise>
+	</c:choose>
+	</c:if>
+	</div>
+	<div>
+<c:if test="${type=='SEND'}">
+	<c:choose>
+		<c:when test="${startPage>10 }">
+			<a href="${cp }/user/msgSendList.do?pageNum=${startPage-1}">[이전]</a>
+		</c:when>
+		<c:otherwise>
+			[이전]
+		</c:otherwise>
+	</c:choose>
+	<c:forEach var="i" begin="${startPage }" end="${endPage }">
+		<c:choose>
+			<c:when test="${pageNum==i }">
+				<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color:pink">[${i }]</span></a>	
+			</c:when>
+			<c:otherwise>
+				<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color:#999">[${i }]</span></a>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+	<c:choose>
+		<c:when test="${endPage<pageCount}">
+			<a href="${cp }/user/msgSendList.do?pageNum=${endPage+1}">[다음]</a>
+		</c:when>
+		<c:otherwise>
+			[다음]
+		</c:otherwise>
+	</c:choose>
+		</c:if>
 </div>
+</div>
+<br>
 <div style="float: right;" id="msg_detail"></div>
 <div style="clear:both; display:block; ">
 	<br/>

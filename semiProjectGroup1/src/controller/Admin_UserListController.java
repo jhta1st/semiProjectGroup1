@@ -18,6 +18,7 @@ public class Admin_UserListController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String spageNum = req.getParameter("pageNum");
+		int userPower = Integer.parseInt(req.getParameter("userPower"));
 		
 		String field =req.getParameter("field");
 		String keyword = req.getParameter("keyword");
