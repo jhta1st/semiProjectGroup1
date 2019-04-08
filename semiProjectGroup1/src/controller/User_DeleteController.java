@@ -24,12 +24,9 @@ public class User_DeleteController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String userId=req.getParameter("userId");
-		System.out.println("1"+userId);
 		String userPwd = req.getParameter("userPwd");
-		System.out.println("2"+userPwd);
 		User_UserInfoDao dao = new User_UserInfoDao();
 		User_UserInfoVo vo = dao.detail(userId);
-		System.out.println(vo.getUserPwd());
 		if(userPwd.equals(vo.getUserPwd())) {
 			int n = dao.update1(vo);
 			if(n > 0) {

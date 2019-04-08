@@ -136,14 +136,14 @@ public class Admin_adminDao {
 		}
 	}
 	
-	public int delete(String userId) {
+	public int update1(User_UserInfoVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
 			con=JDBCUtil.getConn();
-			String sql="delete from UserInfo where userId=?";
+			String sql="UPDATE USERINFO SET USERPOWER=3 WHERE USERID=? AND USERPOWER=2";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, userId);
+			pstmt.setString(1,vo.getUserId());
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
