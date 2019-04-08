@@ -9,7 +9,7 @@
 <body>
 <ul>
 	<li><a href="${pageContext.request.contextPath }/admin/list.do">회원목록</a></li>
-	<li><a href="${pageContext.request.contextPath }/admin/listInsert.do">영화등록</a></li>	
+	<li><a href="${pageContext.request.contextPath }/admin/registration.do">영화등록</a></li>	
 </ul>
 </body>
 </html>
