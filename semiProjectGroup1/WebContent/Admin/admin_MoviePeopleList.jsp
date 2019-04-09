@@ -12,7 +12,7 @@
 <h1>인물목록</h1>
 <table border="1" width="600">
 	<tr>
-		<th>인물명</th><th>인물사진</th>
+		<th>인물번호</th><th>인물명</th>
 	</tr>
 	<c:forEach var="vo" items="${list }">
 		<tr>
