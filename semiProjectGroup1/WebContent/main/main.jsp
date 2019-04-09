@@ -13,8 +13,4 @@
 		<h2>개봉 예정 영화</h2>
 		<div id="list_of_upcoming_movies"></div>
 	</div>
-	<div>
-		<h2>게시판 인기글</h2>
-		<table border="1"></table>
-	</div>
 </div>

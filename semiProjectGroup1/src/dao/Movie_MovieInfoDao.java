@@ -28,7 +28,7 @@ public class Movie_MovieInfoDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
-		String sql = "SELECT * FROM (SELECT AA.*,ROWNUM RNUM FROM ("
+		String sql = "SELECT DISTINCT(MOVIENUM),MOVIENAME,IMAGESAVNAME FROM (SELECT AA.*,ROWNUM RNUM FROM ("
 				+ "SELECT M.*,R.IMAGENUM,R.IMAGETYPE,R.IMAGESAVNAME,R.MOVIENUM MNUM "
 				+ "FROM MOVIE_VIEW M,REVIEWIMAGE R "
 				+ "WHERE M.MOVIENUM=R.MOVIENUM AND M.MOVIENAME LIKE '%'|| ? ||'%' AND R.IMAGETYPE=1 "
@@ -53,14 +53,10 @@ public class Movie_MovieInfoDao {
 			while (rs.next()) {
 				int movieNum = rs.getInt("movieNum");
 				String movieName = rs.getString("movieName");
-				String genreName = rs.getString("genreName");
-				int imageNum = rs.getInt("imageNum");
 				String imageSavName = rs.getString("imageSavName");
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("movieNum", movieNum);
 				map.put("movieName", movieName);
-				map.put("genreName", genreName);
-				map.put("imageNum", imageNum);
 				map.put("imageSavName", imageSavName);
 				list.add(map);
 			}
@@ -175,7 +171,7 @@ public class Movie_MovieInfoDao {
 		ResultSet rs = null;
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "SELECT NVL(COUNT(*),0) FROM MOVIE_VIEW M,REVIEWIMAGE R "
+			String sql = "SELECT NVL(*),0) FROM MOVIE_VIEW M,REVIEWIMAGE R "
 					+ "WHERE M.MOVIENUM=R.MOVIENUM AND M.MOVIENAME LIKE '%'|| ? ||'%' AND R.IMAGETYPE=1";
 			if (genreNum != null && Integer.parseInt(genreNum[0]) != 0) {
 				sql = sql.concat(" OR ");
@@ -187,7 +183,6 @@ public class Movie_MovieInfoDao {
 				}
 			}
 			pstmt = con.prepareStatement(sql);
-			System.out.println(sql);
 			pstmt.setString(1, keyword);
 			rs = pstmt.executeQuery();
 			rs.next();

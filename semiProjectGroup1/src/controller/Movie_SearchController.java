@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Movie_GenreDao;
 import dao.Movie_MovieInfoDao;
 import vo.Movie_GenreVo;
-import vo.Movie_MovieInfoVo;
 
 @WebServlet("/Movie/moviesearch.do")
 public class Movie_SearchController extends HttpServlet {
@@ -36,13 +35,16 @@ public class Movie_SearchController extends HttpServlet {
 
 		Movie_MovieInfoDao movieDao = Movie_MovieInfoDao.getInstance();
 		ArrayList<HashMap<String, Object>> serchList = movieDao.getSearchList(keyword, genreName, startRow, endRow);
-		int pageCount = (int) Math.ceil(movieDao.getCountNum(keyword, genreName) / 10.0);
+		int pageCount = (int) Math.ceil(movieDao.getCountNum(keyword, genreName) / 30.0);
 		int startPageNum = ((pageNum - 1) / 10 * 10) + 1;
 		int endPageNum = startPageNum + 9;
 		if (endPageNum > pageCount) {
 			endPageNum = pageCount;
 		}
-
+		String ss = "";
+		for (int i = 0; i < genreName.length; i++) {
+			ss = ss + "&genreName=" + genreName[i];
+		}
 		req.setAttribute("serchList", serchList);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("genreNum", genreName);
@@ -50,6 +52,8 @@ public class Movie_SearchController extends HttpServlet {
 		req.setAttribute("startPage", startPageNum);
 		req.setAttribute("endPage", endPageNum);
 		req.setAttribute("pageNum", pageNum);
+		req.setAttribute("search", ss);
+		req.setAttribute("resultCount", movieDao.getCountNum(keyword, genreName));
 		req.setAttribute("pages", "/Movie/movie_searchlist.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 
