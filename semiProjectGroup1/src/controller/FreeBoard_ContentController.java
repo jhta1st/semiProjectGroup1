@@ -31,6 +31,7 @@ public class FreeBoard_ContentController extends HttpServlet{
 		req.setAttribute("freeBoardSearchKeyword", freeBoardSearchKeyword);
 		req.setAttribute("vo", vo);
 		req.setAttribute("vo1", vo1);
-		req.getRequestDispatcher("/FreeBoard/content.jsp").forward(req, resp);
+		req.setAttribute("pages", "/FreeBoard/content.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

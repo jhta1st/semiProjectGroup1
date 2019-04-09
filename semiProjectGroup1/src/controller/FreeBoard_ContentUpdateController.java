@@ -69,7 +69,8 @@ public class FreeBoard_ContentUpdateController extends HttpServlet{
 					if(dao1.writeImg(vo1)<0) {
 						req.setAttribute("errCode", "-1");
 						req.setAttribute("errMsg", "ImgWrite실패");
-						req.getRequestDispatcher("/ETC/error.jsp").forward(req, resp);
+						req.setAttribute("pages", "/ETC/error.jsp");
+						req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 						return;
 					}
 				}
@@ -77,7 +78,8 @@ public class FreeBoard_ContentUpdateController extends HttpServlet{
 			}else {
 				req.setAttribute("errCode", "-1");
 				req.setAttribute("errMsg", "Update실패");
-				req.getRequestDispatcher("/ETC/error.jsp").forward(req, resp);
+				req.setAttribute("pages", "/ETC/error.jsp");
+				req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 			}			
 		}catch(Exception ex) {
 			ex.printStackTrace();

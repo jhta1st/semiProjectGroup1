@@ -26,7 +26,8 @@ public class FreeBoard_CommWriteController extends HttpServlet{
 		}else {
 			req.setAttribute("errCode", "-1");
 			req.setAttribute("errMsg", "CommWrite½ÇÆÐ");
-			req.getRequestDispatcher("/ETC/error.jsp").forward(req, resp);
+			req.setAttribute("pages", "/ETC/error.jsp");			
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		}		
 	}
 }

@@ -6,11 +6,35 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import db.JDBCUtil;
 import vo.FreeBoard_FreeBoardCommVo;
 
 public class FreeBoard_FreeBoardCommDao {
+	public HashMap<Integer, Integer> commCount() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select freeboardnum,NVL(count(freeBoardNum),0) from freeboardcomm group by freeboardnum order by freeboardnum";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			HashMap<Integer, Integer> map=new HashMap<Integer, Integer>();
+			while(rs.next()) {
+				int freeBoardNum=rs.getInt(1);
+				int commCount=rs.getInt(2);
+				map.put(freeBoardNum, commCount);
+			}
+			return map;
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(con,pstmt,rs);
+		}
+	}
 	public int contentCommUpdate(FreeBoard_FreeBoardCommVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;

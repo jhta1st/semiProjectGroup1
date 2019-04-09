@@ -1,19 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
 <body>
 	<div><!-- 리스트 -->
 		<table border="1" width="500px">
 			<tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th></tr>
 			<c:forEach var="vo" items="${list }">
 				<tr><td>${vo.freeBoardNum }</td>
-				<td><a href="${cp }/FreeBoard/Content.do?pageNum=${i}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}&freeBoardNum=${vo.freeBoardNum}">${vo.freeBoardTitle }</a></td>
+				<td><a href="${cp }/FreeBoard/Content.do?pageNum=${i}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}&freeBoardNum=${vo.freeBoardNum}">${vo.freeBoardTitle }</a>
+				<c:if test="${commCount.get(vo.freeBoardNum)>0}">[${commCount.get(vo.freeBoardNum)}]</c:if><c:if test="${imgCount.get(vo.freeBoardNum)>0}">[이미지]</c:if></td>
 				<td>${vo.userId }</td>
 				<td>${vo.freeBoardWdate }</td></tr>
 			</c:forEach>
@@ -45,4 +40,3 @@
 		</form>
 	</div>
 </body>
-</html>

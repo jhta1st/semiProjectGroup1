@@ -21,7 +21,8 @@ public class FreeBoard_CommDeleteController extends HttpServlet{
 		}else {
 			req.setAttribute("errCode", "-1");
 			req.setAttribute("errMsg", "CommDelete½ÇÆÐ");
-			req.getRequestDispatcher("/ETC/error.jsp").forward(req, resp);
+			req.setAttribute("pages", "/ETC/error.jsp");			
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		}
 	}
 }

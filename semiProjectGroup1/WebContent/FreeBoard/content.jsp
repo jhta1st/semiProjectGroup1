@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <script type="text/javascript">
 	var pageCount=null;
 	var commInsertXhr=null;
@@ -141,7 +136,6 @@
 		}
 	}
 </script>
-</head>
 <body onload="commList(1)">
 	<div><!-- 내용 -->
 		<table border="1" width="500px">
@@ -153,7 +147,7 @@
 			${vo.freeBoardContent }
 			</td></tr>
 			<c:forEach var="list" items="${vo1}">
-				<tr><td colspan="4">${list.freeBoardOrgImgName }1</td></tr>
+				<tr><td colspan="4">${list.freeBoardOrgImgName }</td></tr>
 			</c:forEach>
 		</table>
 		<c:if test="${sessionScope.id==vo.userId}">
@@ -178,4 +172,3 @@
 			</c:if>
 	</div>
 </body>
-</html>

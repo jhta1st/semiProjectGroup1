@@ -6,12 +6,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import db.JDBCUtil;
 import vo.FreeBoard_FreeBoardCommVo;
 import vo.FreeBoard_FreeBoardImageVo;
 
 public class FreeBoard_FreeBoardImageDao {
+	public HashMap<Integer, Integer> imgCount() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select freeboardnum,NVL(count(freeBoardNum),0) from freeboardimage group by freeboardnum order by freeboardnum";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			HashMap<Integer, Integer> map=new HashMap<Integer, Integer>();
+			while(rs.next()) {
+				int freeBoardNum=rs.getInt(1);
+				int imgCount=rs.getInt(2);
+				map.put(freeBoardNum, imgCount);
+			}
+			return map;
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(con,pstmt,rs);
+		}
+	}
 	public int contentImgDelete(int freeBoardImgNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
