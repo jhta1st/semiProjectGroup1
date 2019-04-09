@@ -79,8 +79,9 @@ public class Movie_MovieInfoDao {
 			con = JDBCUtil.getConn();
 			String sql = "SELECT * FROM (SELECT AA.*,ROWNUM RNUM FROM ("
 					+ "SELECT M.*,R.IMAGENUM,R.IMAGETYPE,R.IMAGESAVNAME,R.MOVIENUM MNUM "
-					+ "FROM MOVIE_VIEW M,REVIEWIMAGE R " + "WHERE M.MOVIENUM=R.MOVIENUM AND M.GENRENUM=? "
-					+ "ORDER BY M.MOVIENUM DESC)AA" + ") WHERE RNUM<=20";
+					+ "FROM MOVIE_VIEW M,REVIEWIMAGE R "
+					+ "WHERE M.MOVIENUM=R.MOVIENUM AND M.GENRENUM=? AND R.IMAGETYPE=1 ORDER BY M.MOVIENUM DESC)AA"
+					+ ") WHERE RNUM>=1 AND RNUM<=10";
 			for (int i = 0; i < genreNamelist.size(); i++) {
 				pstmt[i] = con.prepareStatement(sql);
 				pstmt[i].setInt(1, genreNamelist.get(i).getGenreNum());
@@ -191,6 +192,47 @@ public class Movie_MovieInfoDao {
 			// TODO 자동 생성된 catch 블록
 			e.printStackTrace();
 			return -1;
+		} finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
+
+	public ArrayList<HashMap<String, Object>> getMovieList(int genreNum, int startNum, int endNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<HashMap<String, Object>> setList = new ArrayList<HashMap<String, Object>>();
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "SELECT * FROM (SELECT AA.*,ROWNUM RNUM FROM ("
+					+ "SELECT M.*,R.IMAGENUM,R.IMAGETYPE,R.IMAGESAVNAME,R.MOVIENUM MNUM "
+					+ "FROM MOVIE_VIEW M,REVIEWIMAGE R "
+					+ "WHERE M.MOVIENUM=R.MOVIENUM AND M.GENRENUM=? AND R.IMAGETYPE=1 ORDER BY M.MOVIENUM DESC)AA"
+					+ ") WHERE RNUM>=? AND RNUM<=?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, genreNum);
+			pstmt.setInt(2, startNum);
+			pstmt.setInt(3, endNum);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int movieNum = rs.getInt("movieNum");
+				String movieName = rs.getString("movieName");
+				String genreName = rs.getString("genreName");
+				int imageNum = rs.getInt("imageNum");
+				String imageSavName = rs.getString("imageSavName");
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("movieNum", movieNum);
+				map.put("movieName", movieName);
+				map.put("genreName", genreName);
+				map.put("imageNum", imageNum);
+				map.put("imageSavName", imageSavName);
+				setList.add(map);
+			}
+			return setList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		} finally {
 			JDBCUtil.close(con, pstmt, rs);
 		}

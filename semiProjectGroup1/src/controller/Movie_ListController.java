@@ -24,11 +24,11 @@ public class Movie_ListController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		Movie_GenreDao genreDao = Movie_GenreDao.getInstance();
-		Movie_MovieInfoDao movieDao = Movie_MovieInfoDao.getInstance();
+		//Movie_MovieInfoDao movieDao = Movie_MovieInfoDao.getInstance();
 		ArrayList<Movie_GenreVo> genreNamelist = genreDao.getGenreName();
-		ArrayList<ArrayList<HashMap<String, Object>>> movieMainList = movieDao.getMovieList(genreNamelist);
+		//ArrayList<ArrayList<HashMap<String, Object>>> movieMainList = movieDao.getMovieList(genreNamelist);
 		req.setAttribute("genreNamelist", genreNamelist);
-		req.setAttribute("movieMainList", movieMainList);
+		//req.setAttribute("movieMainList", movieMainList);
 		req.setAttribute("pages", "/Movie/movie_mainlist.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
