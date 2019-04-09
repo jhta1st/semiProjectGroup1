@@ -62,10 +62,11 @@ function listOk() {
 				mainlist.appendChild(d1);
 				var leftbutton=document.createElement("button");				
 				var lb=document.createTextNode("<");
+				leftbutton.onclick(getActionList());
 				leftbutton.appendChild(lb);
 				
 				var ul = document.createElement("ul");
-				var rightbutton=document.createElement("button");				
+				var rightbutton=document.createElement("button");
 				var rb=document.createTextNode(">");
 				rightbutton.appendChild(rb);
 				a++;
@@ -91,4 +92,8 @@ function delComm() {
 		var child = childs.item(i);
 		mainlist.removeChild(child);
 	}
+}
+
+function getActionList() {
+	
 }
