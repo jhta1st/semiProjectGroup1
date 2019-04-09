@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,8 +9,37 @@ import java.util.ArrayList;
 
 import db.JDBCUtil;
 import vo.Admin_CharInfoVo;
+import vo.User_UserInfoVo;
 
 public class Admin_CharInfoDao {
+	
+	public Admin_CharInfoVo detail(int charNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from charInfo where charNum=?";
+		try {
+			con = JDBCUtil.getConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, charNum);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				charNum=rs.getInt("charNum");
+				String charName=rs.getString("charName");
+				String charOrgFileName=rs.getString("charOrgFileName");
+				String charSavFileName=rs.getString("charSavFileName");
+				Admin_CharInfoVo vo = new Admin_CharInfoVo(charNum, charName, charOrgFileName, charSavFileName);
+				return vo;
+			}
+			return null;
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		} finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
+	
 	public int getMaxNum() {
 		Connection con = null;
 		PreparedStatement pstmt = null;

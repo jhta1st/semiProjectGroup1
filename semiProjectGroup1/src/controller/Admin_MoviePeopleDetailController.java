@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Admin_CharInfoDao;
+import vo.Admin_CharInfoVo;
 import vo.Movie_CharInfoVo;
 
 @WebServlet("/admin/MoviePeopDetail.do")
@@ -21,11 +22,11 @@ public class Admin_MoviePeopleDetailController extends HttpServlet {
 		String keyword = req.getParameter("keyword");
 		
 		Admin_CharInfoDao dao = Admin_CharInfoDao.getInstance();
-		//Movie_CharInfoVo vo = dao.detail(charNum);
-		//req.setAttribute("vo", vo);
+		Admin_CharInfoVo vo = dao.detail(charNum);
+		req.setAttribute("vo", vo);
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("field", field);
 		req.setAttribute("keyword", keyword);
-		req.getRequestDispatcher("/board/detail.jsp").forward(req, resp);
+		req.getRequestDispatcher("/Admin/admin_MoviePeopleDetail.jsp").forward(req, resp);
 	}
 }
