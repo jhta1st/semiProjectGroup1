@@ -4,7 +4,7 @@
 <strong>정보관리</strong>
 <ul>
 	<li><a href="${pageContext.request.contextPath }/admin/list.do">회원목록</a></li>
-	<li><a href="">인물목록</a></li>
+	<li><a href="${pageContext.request.contextPath }/admin/MoviePeopleList.do">인물목록</a></li>
 	<li><a href="">영화목록</a>
 		<ol>
 			<li><a href="">장르목록</a></li>
