@@ -6,18 +6,18 @@ import java.sql.SQLException;
 
 import db.JDBCUtil;
 import vo.Admin_CharInfoVo;
+import vo.Admin_MovieGenreVo;
 
-public class Admin_CharInfoDao {
-	public int charWrite(Admin_CharInfoVo vo) {
+public class Admin_MovieGenreDao {
+	public int movieGenreWrite(Admin_MovieGenreVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
 			con=JDBCUtil.getConn();
-			String sql="insert into charInfo values(charinfo_SEQ.nextval,?,?,?)";
+			String sql="insert into movieGenre values(?,?)";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, vo.getCharName());
-			pstmt.setString(2, vo.getCharOrgFileName());
-			pstmt.setString(3, vo.getCharSavFileName());
+			pstmt.setInt(1, vo.getGenreNum());
+			pstmt.setInt(2, vo.getMovieNum());
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -26,9 +26,9 @@ public class Admin_CharInfoDao {
 			JDBCUtil.close(con,pstmt,null);
 		}
 	}
-	public static Admin_CharInfoDao instance=new Admin_CharInfoDao();
-	private Admin_CharInfoDao() {}
-	public static Admin_CharInfoDao getInstance() {
+	public static Admin_MovieGenreDao instance=new Admin_MovieGenreDao();
+	private Admin_MovieGenreDao() {}
+	public static Admin_MovieGenreDao getInstance() {
 		return instance;
 	}
 }

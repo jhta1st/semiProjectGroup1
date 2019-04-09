@@ -1,12 +1,12 @@
 package vo;
 
-public class Admin_charInfoVo {
+public class Admin_CharInfoVo {
 	private int charNum;
 	private String charName;
 	private String charOrgFileName;
 	private String charSavFileName;
-	public Admin_charInfoVo() {}
-	public Admin_charInfoVo(int charNum, String charName, String charOrgFileName, String charSavFileName) {
+	public Admin_CharInfoVo() {}
+	public Admin_CharInfoVo(int charNum, String charName, String charOrgFileName, String charSavFileName) {
 		super();
 		this.charNum = charNum;
 		this.charName = charName;

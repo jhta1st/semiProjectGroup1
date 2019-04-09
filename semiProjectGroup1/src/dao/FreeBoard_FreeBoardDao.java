@@ -171,7 +171,7 @@ public class FreeBoard_FreeBoardDao {
 			return -1;
 		}finally {
 			JDBCUtil.close(null,pstmt2,null);
-			JDBCUtil.close(con,pstmt,null);
+			JDBCUtil.close(con,pstmt,rs);
 		}
 	}
 	public static FreeBoard_FreeBoardDao instance=new FreeBoard_FreeBoardDao();

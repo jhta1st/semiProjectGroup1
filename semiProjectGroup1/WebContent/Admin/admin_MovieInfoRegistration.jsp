@@ -2,14 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <body>
-<form method="post" action="${pageContext.request.contextPath }/admin/movieRegistration.do" enctype="multipart/form-data">
+<form method="post" action="${pageContext.request.contextPath }/admin/movieInfoRegistration.do">
 	제목<input type="text" id="movieName" name="movieName" /><br/> 
 	장르
 	<c:forEach var="vo" items="${genreList }">
-	<label><input type="checkbox" name="movieGenre" name="${vo.genreNum }">${vo.genreName }</label></c:forEach><br>
+	<label><input type="checkbox" name="movieGenre" value="${vo.genreNum }">${vo.genreName }</label></c:forEach><br>
 	소개<textarea rows="10" cols="100%" id="movieIntro" name="movieIntro"></textarea><br/>
 	개봉일자<input type="text" id="movieReleaseDate" name="movieReleaseDate" /><br/>
-	상영일자<input type="text" id="movieRunTime" name="movieRunTime" /><br/>
+	상영시간<input type="text" id="movieRunTime" name="movieRunTime" /><br/>
 	제작사<input type="text" id="movieProduction" name="movieProduction" /><br/>
 	배급사<input type="text" id="movieDistributer" name="movieDistributer" /><br/>
 	<label>국가
@@ -259,12 +259,12 @@
 	</select></label><br>
 	<label>관람나이
 	<select name="movieAge">
-		<option value="전체 관람가">전체 관람가</option>
-		<option value="12세 관람가">12세 관람가</option>
-		<option value="15 관람가">15세 관람가</option>
-		<option value="청소년관람불가">청소년관람불가</option>
-		<option value="제한상영가">제한상영가</option>
-	</select></label>
+		<option value="0">전체 관람가</option>
+		<option value="1">12세 관람가</option>
+		<option value="2">15세 관람가</option>
+		<option value="3">청소년관람불가</option>
+		<option value="4">제한상영가</option>
+	</select></label><br>
 	<input type="submit" value="등록" /><input type="reset" value="취소" />
 </form>
 </body>

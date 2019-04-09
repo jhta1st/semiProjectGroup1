@@ -13,7 +13,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.Admin_CharInfoDao;
-import vo.Admin_charInfoVo;
+import vo.Admin_CharInfoVo;
 
 @WebServlet("/admin/moviePeopleRegistration.do")
 public class Admin_MoviePeopleRegistrationController extends HttpServlet {
@@ -39,7 +39,7 @@ public class Admin_MoviePeopleRegistrationController extends HttpServlet {
 				String name=em.nextElement();
 				String charOrgFileName=mr.getOriginalFileName(name);
 				String charSavFileName=mr.getFilesystemName(name);
-				Admin_charInfoVo vo=new Admin_charInfoVo(0, charName, charOrgFileName, charSavFileName);
+				Admin_CharInfoVo vo=new Admin_CharInfoVo(0, charName, charOrgFileName, charSavFileName);
 				Admin_CharInfoDao dao=Admin_CharInfoDao.getInstance();
 				if(dao.charWrite(vo)>0){
 					resp.sendRedirect(req.getContextPath()+"/Admin/MoviePeopleList.do");
