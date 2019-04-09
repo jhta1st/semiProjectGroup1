@@ -17,7 +17,8 @@ public class FreeBoard_ContentDeleteController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String freeBoardNum=req.getParameter("freeBoardNum");
 		req.setAttribute("freeBoardNum", freeBoardNum);
-		req.getRequestDispatcher("/FreeBoard/contentDelete.jsp").forward(req, resp);
+		req.setAttribute("pages", "/FreeBoard/contentDelete.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

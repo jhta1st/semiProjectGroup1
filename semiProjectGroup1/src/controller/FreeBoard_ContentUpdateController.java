@@ -29,7 +29,8 @@ public class FreeBoard_ContentUpdateController extends HttpServlet{
 		ArrayList<FreeBoard_FreeBoardImageVo> vo1=dao1.getContentImageInfo(freeBoardNum);
 		req.setAttribute("vo", vo);
 		req.setAttribute("vo1", vo1);
-		req.getRequestDispatcher("/FreeBoard/contentUpdate.jsp").forward(req, resp);
+		req.setAttribute("pages", "/FreeBoard/contentUpdate.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
