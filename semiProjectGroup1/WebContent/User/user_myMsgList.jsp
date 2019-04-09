@@ -131,6 +131,7 @@ function detailClose() {
 			<th style="width:200px;">쪽지내용</th>
 			<th>작성일</th>
 			<c:if test="${type=='SEND'}"><th>읽기여부</th></c:if>
+			<th>삭제</th>
 		</tr>
 		<c:forEach var="vo" items="${list}">
 		<tr>
@@ -140,6 +141,7 @@ function detailClose() {
 			</td>
 			<td>${vo.msgWdate}</td>
 			<c:if test="${type=='SEND'}"><td>${vo.msgCheck > 0 ? "읽음" : "안읽음"}</td></c:if>
+			<td><a href="${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}">삭제</a></td>
 		</tr>
 		</c:forEach>
 	</table>

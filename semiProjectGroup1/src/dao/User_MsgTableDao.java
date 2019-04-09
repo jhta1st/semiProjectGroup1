@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import db.JDBCUtil;
 import vo.User_MsgTableVo;
+import vo.User_UserInfoVo;
 
 public class User_MsgTableDao {
 	
@@ -39,7 +40,6 @@ public class User_MsgTableDao {
 			con = JDBCUtil.getConn();
 			String sql = "select NVL(COUNT(MSGNUM),0) COUNT from MSGTABLE";
 			sql += " where "+msgType+"USERID='"+userId+"'";
-			//sql += " and DELETEUSERID not like '%"+userId+"%'";
 			if(field!=null && !field.equals("")) {//검색조건이 있는 경우
 				sql +=" and "+field + " like '%" + keyword +"%'";
 			}
@@ -57,6 +57,7 @@ public class User_MsgTableDao {
 	}
 	
 	public ArrayList<User_MsgTableVo> getList(String msgType, String userId, int startRow, int endRow,String field, String keyword) {
+		System.out.println("userId:" + userId);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -65,17 +66,18 @@ public class User_MsgTableDao {
 			con = JDBCUtil.getConn();
 			sql += "select * from (";
 			sql += " select AA.*, ROWNUM RNUM from (";
-			sql += "  select * from MSGTABLE";
-			sql += "   where "+msgType+"USERID='"+userId+"'";
-			//sql += " and DELETEUSERID not like '%"+userId+"%'";
-			if(field!=null && !field.equals("")) {//검색조건이 있는 경우
+			sql += "  select * from MSGTABLE where NVL(MSGDELETE,' ')  != ? ";
+			sql += "   and "+msgType+"USERID='"+userId+"'";
+			if(field!=null && !field.equals("")) {
 				sql +=" and "+field + " like '%" + keyword +"%'";
 			}
 			sql += " order by MSGWDATE desc) AA";
 			sql += ") where RNUM>=? and RNUM<=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			System.out.println("sql:" + sql);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			ArrayList<User_MsgTableVo> list = new ArrayList<User_MsgTableVo>();
 			while (rs.next()) {
@@ -86,8 +88,10 @@ public class User_MsgTableDao {
 				vo.setSendUserId(rs.getString("SENDUSERID"));
 				vo.setMsgWdate(rs.getDate("MSGWDATE"));
 				vo.setMsgCheck(rs.getInt("MSGCHECK"));
+				vo.setMsgDelete(rs.getString("MSGDELETE"));
 				list.add(vo);
 			}
+			System.out.println("list:" + list);
 			return list;
 		} catch (SQLException se) {
 			System.out.println(se.getMessage());
@@ -115,6 +119,7 @@ public class User_MsgTableDao {
 				vo.setSendUserId(rs.getString("SENDUSERID"));
 				vo.setMsgWdate(rs.getDate("MSGWDATE"));
 				vo.setMsgCheck(rs.getInt("MSGCHECK"));
+				vo.setMsgDelete(rs.getString("MSGDELETE"));
 				return vo;
 			}
 			return null;
@@ -143,15 +148,14 @@ public class User_MsgTableDao {
 		}
 	}
 	
-	public int updateDeleteUser(int msgNum, String userId) {
+	public int updateMsgCheck(User_MsgTableVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
 			con=JDBCUtil.getConn();
-			String sql="update MSGTABLE set DELETEUSERID=CONCAT(DELETEUSERID,?) where MSGNUM=?";
+			String sql="UPDATE MSGTABLE SET updateMsgCheck=2 WHERE MSGNUM=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userId+"|");
-			pstmt.setInt(2,msgNum);
+			pstmt.setInt(1,vo.getMsgNum());
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -168,7 +172,7 @@ public class User_MsgTableDao {
 		PreparedStatement pstmt2=null;
 		try {
 			con=JDBCUtil.getConn();
-			String sql="insert into MSGTABLE values(MsgTable_SEQ.nextval,?,?,?,sysdate,0)";
+			String sql="insert into MSGTABLE values(MsgTable_SEQ.nextval,?,?,?,sysdate,0,1)";
 			pstmt2=con.prepareStatement(sql);
 			pstmt2.setString(1,vo.getMsgContent());
 			pstmt2.setString(2,vo.getReceiveUserId());
@@ -191,6 +195,24 @@ public class User_MsgTableDao {
 			String sql="delete from MSGTABLE where where MSGNUM=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1,msgNum);
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con, pstmt,null);
+		}
+	}
+	
+	public int update1(User_MsgTableVo vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="UPDATE MSGTABLE SET MSGDELETE=? WHERE MSGNUM=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,vo.getMsgDelete());
+			pstmt.setInt(2,vo.getMsgNum());
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
