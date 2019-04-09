@@ -42,7 +42,7 @@ public class Admin_MoviePeopleRegistrationController extends HttpServlet {
 				Admin_CharInfoVo vo=new Admin_CharInfoVo(0, charName, charOrgFileName, charSavFileName);
 				Admin_CharInfoDao dao=Admin_CharInfoDao.getInstance();
 				if(dao.charWrite(vo)>0){
-					resp.sendRedirect(req.getContextPath()+"/Admin/MoviePeopleList.do");
+					resp.sendRedirect(req.getContextPath()+"/admin/MoviePeopleList.do");
 				}else {
 					req.setAttribute("errCode", "-1");
 					req.setAttribute("errMsg", "charWrite½ÇÆÐ");

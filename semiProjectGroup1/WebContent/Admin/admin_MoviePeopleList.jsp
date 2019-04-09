@@ -16,15 +16,15 @@
 	</tr>
 	<c:forEach var="vo" items="${list }">
 		<tr>
-			<td>${vo.charName}</td>
-			<td>${vo.charSavFileName }</td>
+			<td>${vo.charNum}</td>
+			<td><a href="${cp }/admin/MoviePeopDetail.do?charNum=${vo.charNum}&field=${field}&keyword=${keyword}&pageNum=${pageNum }">${vo.charName}</a></td>
 		</tr>
 	</c:forEach>
 </table>
 <div>
 	<c:choose>
 		<c:when test="${startPage>10 }">
-			<a href="${cp }/admin/list.do?pageNum=${startPage-1}">[이전]</a>
+			<a href="${cp }/admin/MoviePeopleList.do?pageNum=${startPage-1}">[이전]</a>
 		</c:when>
 		<c:otherwise>
 			[이전]
@@ -33,16 +33,16 @@
 	<c:forEach var="i" begin="${startPage }" end="${endPage }">
 		<c:choose>
 			<c:when test="${pageNum==i }">
-				<a href="${cp }/admin/list.do?pageNum=${i}&field=${field}&keyword=${keyword}"><span style="color:pink">[${i }]</span></a>	
+				<a href="${cp }/admin/MoviePeopleList.do?pageNum=${i}&field=${field}&keyword=${keyword}"><span style="color:pink">[${i }]</span></a>	
 			</c:when>
 			<c:otherwise>
-				<a href="${cp }/admin/list.do?pageNum=${i}&field=${field}&keyword=${keyword}"><span style="color:#999">[${i }]</span></a>
+				<a href="${cp }/admin/MoviePeopleList.do?pageNum=${i}&field=${field}&keyword=${keyword}"><span style="color:#999">[${i }]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	<c:choose>
 		<c:when test="${endPage<pageCount}">
-			<a href="${cp }/admin/list.do?pageNum=${endPage+1}">[다음]</a>
+			<a href="${cp }/admin/MoviePeopleList.do?pageNum=${endPage+1}">[다음]</a>
 		</c:when>
 		<c:otherwise>
 			[다음]
@@ -51,28 +51,13 @@
 </div>
 <!-- 검색창 -->
 <div>
-	<form method="post" action="${cp }/admin/list.do">
+	<form method="post" action="${cp }/admin/MoviePeopleList.do">
 		<select name="field">
-			<option value="userNickName"
-			<c:if test="${field=='userNickName' }">
+			<option value="charName"
+			<c:if test="${field=='charName' }">
 				selected='selected'
 			</c:if>
-			>닉네임</option>
-			<option value="userLev"
-			<c:if test="${field=='userLev' }">
-				selected='selected'
-			</c:if>
-			>레벨</option>
-			<option value="userJdate"
-			<c:if test="${field=='userJdate' }">
-				selected='selected'
-			</c:if>
-			>가입일</option>
-			<option value="userPower"
-			<c:if test="${field=='userPower' }">
-				selected='selected'
-			</c:if>
-			>권한레벨</option>
+			>인물명</option>
 		</select>
 		<input type="text" name="keyword" value="${keyword }">
 		<input type="submit" value="검색">
