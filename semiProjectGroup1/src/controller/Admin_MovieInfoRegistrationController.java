@@ -56,7 +56,7 @@ public class Admin_MovieInfoRegistrationController extends HttpServlet {
 					req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 				}
 			}
-			resp.sendRedirect(req.getContextPath()+"/Admin/MovieInfoList.do");
+			resp.sendRedirect(req.getContextPath()+"/admin/MovieInfoList.do");
 		}else {
 			req.setAttribute("errCode", "-1");
 			req.setAttribute("errMsg", "movieInfoWrite½ÇÆÐ");
