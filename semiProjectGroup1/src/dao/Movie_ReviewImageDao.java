@@ -35,6 +35,7 @@ public class Movie_ReviewImageDao {
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("ImageSavName", rs.getString("ImageSavName"));
+				map.put("ImageType", rs.getString("ImageType"));
 				list.add(map);
 			}
 			return list;
@@ -46,23 +47,24 @@ public class Movie_ReviewImageDao {
 			JDBCUtil.close(con, pstmt, rs);
 		}
 	}
+
 	public int reviewImgWrite(Movie_ReviewImageVo vo) {
-		Connection con=null;
-		PreparedStatement pstmt=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		try {
-			con=JDBCUtil.getConn();
-			String sql="insert into reviewImage values(reviewimage_seq.nextval,?,?,?,?)";
-			pstmt=con.prepareStatement(sql);
+			con = JDBCUtil.getConn();
+			String sql = "insert into reviewImage values(reviewimage_seq.nextval,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, vo.getImageType());
 			pstmt.setString(2, vo.getImageOrgName());
 			pstmt.setString(3, vo.getImageSavName());
 			pstmt.setInt(4, vo.getMovieNum());
 			return pstmt.executeUpdate();
-		}catch(SQLException se) {
+		} catch (SQLException se) {
 			se.printStackTrace();
 			return -1;
-		}finally {
-			JDBCUtil.close(con,pstmt,null);
+		} finally {
+			JDBCUtil.close(con, pstmt, null);
 		}
 	}
 }

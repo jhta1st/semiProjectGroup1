@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Admin_MovieViewDao;
+import dao.Movie_ReviewImageDao;
+import dao.Movie_UrlInfoDao;
 import vo.Admin_MovieViewVo;
 
 @WebServlet("/admin/MovieViewDetail.do")
@@ -18,8 +22,13 @@ public class Admin_MovieInfoDetailController extends HttpServlet {
 		int movieNum = Integer.parseInt(req.getParameter("movieNum"));
 		Admin_MovieViewDao dao = Admin_MovieViewDao.getInstance();
 		Admin_MovieViewVo vo = dao.detail(movieNum);
-		req.setAttribute("movieNum", movieNum);
+		Movie_ReviewImageDao reviewImgDao = Movie_ReviewImageDao.getInstance();
+		ArrayList<HashMap<String, Object>> imgList = reviewImgDao.getImages(movieNum);
+		Movie_UrlInfoDao urlInfoDao = Movie_UrlInfoDao.getInstance();
+		ArrayList<HashMap<String, Object>> urlList = urlInfoDao.getVedioUrl(movieNum);
 		req.setAttribute("vo", vo);
+		req.setAttribute("imgList", imgList);
+		req.setAttribute("urlList", urlList);
 		req.getRequestDispatcher("/Admin/admin_MovieInfoDetail.jsp").forward(req, resp);
 	}
 }

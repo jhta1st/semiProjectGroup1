@@ -53,11 +53,78 @@
 			<td>${vo.genreName}</td>
 		</tr>
 	</table>
+	<table border="1">
+		<tr>
+			<th rowspan="6">이미지</th>
+			<th rowspan="2">대표이미지</th>
+			<c:forEach var="vo" items="${imgList }">
+				<c:if test="${vo.get('ImageType')==1 }">
+					<td>
+						<img alt="영화이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<c:forEach var="vo" items="${imgList }">
+				<c:if test="${vo.get('ImageType')==1 }">
+					<td>
+						<a href="">수정</a> <a href="">삭제</a>
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<th rowspan="2">포스터</th>
+			<c:forEach var="vo" items="${imgList }">
+				<c:if test="${vo.get('ImageType')==2 }">
+					<td>
+						<img alt="영화이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<c:forEach var="vo" items="${imgList }">
+				<c:if test="${vo.get('ImageType')==2 }">
+					<td>
+						<a href="">수정</a> <a href="">삭제</a>
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<th rowspan="2">스틸샷</th>
+			<c:forEach var="vo" items="${imgList }">
+				<c:if test="${vo.get('ImageType')==3 }">
+					<td>
+						<img alt="영화이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<c:forEach var="vo" items="${imgList }">
+				<c:if test="${vo.get('ImageType')==3 }">
+					<td>
+						<a href="">수정</a> <a href="">삭제</a>
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<th>동영상</th>
+			<c:forEach var="vo" items="${urlList }">
+				<td>${vo.get('urlAddr') }</td>
+			</c:forEach>
+		</tr>
+	</table>
 	<br>
 	<hr>
 	<a href="${pageContext.request.contextPath }/admin/MovieViewDelete.do">삭제</a>
 	<hr>
-	<a href="${cp }/admin/MovieInfoUpdate.do?movieNum=${movieNum }">영화정보수정</a><br>
+	<a href="${cp }/admin/MovieInfoUpdate.do?movieNum=${movieNum }">영화정보수정</a>
+	<br>
 	<a href="${pageContext.request.contextPath }/admin/MovieInfoList.do">영화정보리스트로</a>
 </body>
 </html>
