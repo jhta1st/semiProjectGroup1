@@ -16,15 +16,10 @@ import vo.Admin_MovieInfoVo;
 import vo.Admin_MovieViewVo;
 import vo.Movie_CharInfoVo;
 
-@WebServlet("/admin/MovieViewDetail.do")
-public class Admin_MovieInfoDetailController extends HttpServlet {
+@WebServlet("/admin/MovieInfoUpdate.do")
+public class Admin_MovieInfoUpdateController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int movieNum=Integer.parseInt(req.getParameter("movieNum"));
-		Admin_MovieViewDao dao = Admin_MovieViewDao.getInstance();
-		ArrayList<Admin_MovieViewVo> vo = dao.detail(movieNum);
-		req.setAttribute("movieNum", movieNum);
-		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/Admin/admin_MovieInfoDetail.jsp").forward(req, resp);
+		
 	}
 }
