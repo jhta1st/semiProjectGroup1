@@ -7,8 +7,11 @@
 	<li><a href="${pageContext.request.contextPath }/admin/MoviePeopleList.do">인물목록</a></li>
 	<li><a href="${pageContext.request.contextPath }/admin/MovieInfoList.do">영화목록</a>
 		<ol>
-			<li><a href="">장르목록</a></li>
-			<li><a href="${pageContext.request.contextPath }/admin/movieGenreRegistration.do">장르등록</a></li>
+			<li><a href="">장르목록</a>
+				<ul>
+					<li><a href="${pageContext.request.contextPath }/admin/movieGenreRegistration.do">장르등록</a></li>
+				</ul>
+			</li>			
 		</ol>
 	</li>	
 	<li>인물관리
