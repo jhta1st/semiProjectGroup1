@@ -51,7 +51,7 @@
 <hr>
 <a href="${pageContext.request.contextPath }/admin/MovieViewDelete.do">삭제</a>
 <hr>
-<a href="${cp }/admin/MovieInfoUpdate.do?movieNum="+${movieNum }>영화정보수정</a><br>
+<a href="${cp }/admin/MovieInfoUpdate.do?movieNum=${movieNum }">영화정보수정</a><br>
 <a href="${pageContext.request.contextPath }/admin/MovieInfoList.do">영화정보리스트로</a>
 </body>
 </html>
