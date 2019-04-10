@@ -63,4 +63,89 @@ public class Movie_GenreDao {
 			JDBCUtil.close(con,pstmt,null);
 		}
 	}
+	
+	public ArrayList<Movie_GenreVo> listAll(){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<Movie_GenreVo> list=new ArrayList<Movie_GenreVo>();
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select * from genre order by GENRENUM desc";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				int genreNum=rs.getInt("genreNum");
+				String genreName=rs.getString("genreName");
+				Movie_GenreVo vo=new Movie_GenreVo(genreNum, genreName);
+				list.add(vo);
+			}
+			return list;		
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}		
+	}
+	
+	public int delete(int genreNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="delete from genre where genreNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,genreNum);
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con, pstmt,null);
+		}
+	}
+	
+	public int update(Movie_GenreVo vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="update genre set genreName=? where genreNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,vo.getGenreName());
+			pstmt.setInt(2,vo.getGenreNum());
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con, pstmt,null);
+		}
+	}
+	
+	public Movie_GenreVo getinfo(int genreNum){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select * from genre where genreNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,genreNum);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				genreNum=rs.getInt("genreNum");
+				String genreName=rs.getString("genreName");
+				Movie_GenreVo vo=new Movie_GenreVo(genreNum, genreName);
+				return vo;
+			}
+			return null;	
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
 }
