@@ -23,18 +23,14 @@ public class Admin_MovieInfoUpdateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int movieNum=Integer.parseInt(req.getParameter("movieNum"));
-		ArrayList<Integer> genreNums=new ArrayList<Integer>();
 		Admin_MovieViewDao dao=Admin_MovieViewDao.getInstance();
-		ArrayList<Admin_MovieViewVo> list=dao.detail(movieNum);
-		for(Admin_MovieViewVo genre:list) {
-			int getGenreNum=genre.getGenreNum();
-			genreNums.add(getGenreNum);
-		}
+		Admin_MovieViewVo vo=dao.detail(movieNum);
+		String[] genres=vo.getGenreName().split("/");
 		Movie_GenreDao dao1=Movie_GenreDao.getInstance();
 		ArrayList<Movie_GenreVo> genreList=dao1.getGenreName();
 		req.setAttribute("genreList", genreList);
-		req.setAttribute("genreNums", genreNums);
-		req.setAttribute("list", list.get(0));
+		req.setAttribute("vo", vo);
+		req.setAttribute("genres", genres);
 		req.setAttribute("pages", "/Admin/admin_MovieInfoUpdate.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
