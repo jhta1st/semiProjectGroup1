@@ -9,9 +9,45 @@ import java.util.ArrayList;
 
 import db.JDBCUtil;
 import vo.Admin_CharInfoVo;
-import vo.User_UserInfoVo;
 
 public class Admin_CharInfoDao {
+	
+	public int update(Admin_CharInfoVo vo) {
+		Connection con =null;
+		PreparedStatement pstmt =null;
+		try {
+		con=JDBCUtil.getConn();
+		String sql="update charInfo set charName=?,charOrgFileName=?,charSavFileName=? where charNum=?";
+		pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, vo.getCharName());
+		pstmt.setString(2, vo.getCharOrgFileName());
+		pstmt.setString(3, vo.getCharSavFileName());
+		pstmt.setInt(4, vo.getCharNum());
+		return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JDBCUtil.close(con, pstmt, null);
+		}
+	}
+	
+	public int delete(int charNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="delete from charInfo where charNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,charNum);
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con, pstmt,null);
+		}
+	}
 	
 	public Admin_CharInfoVo detail(int charNum) {
 		Connection con = null;

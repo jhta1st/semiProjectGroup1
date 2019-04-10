@@ -17,7 +17,7 @@
 	<c:forEach var="vo" items="${list }">
 		<tr>
 			<td>${vo.charNum}</td>
-			<td><a href="${cp }/admin/MoviePeopDetail.do?charNum=${vo.charNum}&field=${field}&keyword=${keyword}&pageNum=${pageNum }">${vo.charName}</a></td>
+			<td><a href="${cp }/admin/MoviePeopleDetail.do?charNum=${vo.charNum}&field=${field}&keyword=${keyword}&pageNum=${pageNum }">${vo.charName}</a></td>
 		</tr>
 	</c:forEach>
 </table>

@@ -24,7 +24,8 @@
 </table>
 <br>
 <hr>
-
+<a href="${pageContext.request.contextPath}/admin/MoviePeopleDelete.do?charNum=${vo.charNum}">삭제</a> |
+<a href="${pageContext.request.contextPath}/admin/MoviePeopleUpdate.do?charNum=${vo.charNum}">인물정보 수정</a>
 <hr>
 <a href="${pageContext.request.contextPath }/main/layout.jsp">홈으로</a>
 </body>

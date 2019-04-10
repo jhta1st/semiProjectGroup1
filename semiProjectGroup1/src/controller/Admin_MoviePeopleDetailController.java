@@ -12,7 +12,7 @@ import dao.Admin_CharInfoDao;
 import vo.Admin_CharInfoVo;
 import vo.Movie_CharInfoVo;
 
-@WebServlet("/admin/MoviePeopDetail.do")
+@WebServlet("/admin/MoviePeopleDetail.do")
 public class Admin_MoviePeopleDetailController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
