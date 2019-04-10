@@ -32,7 +32,7 @@ public class Admin_MoviePeopleUpdateController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String dir=req.getServletContext().getRealPath("/Admin/AdminMoviePeopleImageUpload");
+		String dir=req.getServletContext().getRealPath("/Movie/images/char");
 
 			MultipartRequest mr=new MultipartRequest(
 					req,
