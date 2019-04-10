@@ -51,9 +51,9 @@ function checkUser() {
 	}
 	xhr=new XMLHttpRequest();
 	xhr.onreadystatechange=checkUserResult;
-	xhr.open("post","${pageContext.request.contextPath}/user/check.do",true);	//post방식인 경우는 아래와 같이 설정해 주기
-	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	xhr.send("userId=" + userId.value);
+	xhr.open("get","${pageContext.request.contextPath}/user/check.do?userId=" + userId.value,true);
+	//xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xhr.send();
 }
 function checkUserResult() {
 	if(xhr.readyState==4 && xhr.status==200){
