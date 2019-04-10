@@ -265,6 +265,7 @@
 		<option value="3">청소년관람불가</option>
 		<option value="4">제한상영가</option>
 	</select></label><br>
-	<input type="submit" value="등록" /><input type="reset" value="취소" />
+	<input type="submit" value="등록" /><input type="button" value="취소" onclick="javascript:history.go(-1);">
 </form>
+<div id="result">${errMsg }</div>
 </body>

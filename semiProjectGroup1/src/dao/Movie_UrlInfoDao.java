@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import db.JDBCUtil;
+import vo.Movie_ReviewImageVo;
+import vo.Movie_UrlInfoVo;
 
 public class Movie_UrlInfoDao {
 	private static Movie_UrlInfoDao instance = new Movie_UrlInfoDao();
@@ -42,6 +44,24 @@ public class Movie_UrlInfoDao {
 			return null;
 		} finally {
 			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
+	public int urlInfoWrite(Movie_UrlInfoVo vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="insert into urlInfo values(urlinfo_seq.nextval,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, vo.getUrlType());
+			pstmt.setString(2, vo.getUrlAddr());
+			pstmt.setInt(3, vo.getMovieNum());
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con,pstmt,null);
 		}
 	}
 }

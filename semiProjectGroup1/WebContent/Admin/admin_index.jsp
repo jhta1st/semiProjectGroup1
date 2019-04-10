@@ -8,6 +8,7 @@
 	<li><a href="${pageContext.request.contextPath }/admin/MovieInfoList.do">영화목록</a>
 		<ol>
 			<li><a href="">장르목록</a></li>
+			<li><a href="">장르등록</a></li>
 		</ol>
 	</li>	
 	<li>인물관리
@@ -18,7 +19,6 @@
 	<li>영화관리
 		<ol type="1">
 			<li><a href="${pageContext.request.contextPath }/admin/movieInfoRegistration.do">영화정보등록</a></li>
-			<li><a href="">영화장르등록</a></li>	
 			<li><a href="${pageContext.request.contextPath }/admin/movieTeamRegistration.do">영화출연진등록</a></li>	
 			<li><a href="${pageContext.request.contextPath }/admin/movieImgRegistration.do">영화이미지등록</a></li>
 			<li><a href="${pageContext.request.contextPath }/admin/movieUrlRegistration.do">영화영상물URL등록</a></li>

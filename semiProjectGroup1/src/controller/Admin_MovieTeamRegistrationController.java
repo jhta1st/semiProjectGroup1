@@ -32,12 +32,13 @@ public class Admin_MovieTeamRegistrationController extends HttpServlet {
 		Movie_CastInfoVo vo=new Movie_CastInfoVo(0, charNum, castDoNum, castDoName, movieNum);
 		Admin_CastInfoDao dao=Admin_CastInfoDao.getInstance();
 		if(dao.castInfoWrite(vo)>0) {
-			req.setAttribute("pages", "/Admin/admin_index.jsp");
+			req.setAttribute("errMsg", "등록되었습니다.");
+			req.setAttribute("pages", "/Admin/admin_MovieTeamRegistration.jsp");
 			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		}else {
 			req.setAttribute("errCode", "-1");
 			req.setAttribute("errMsg", "castInfoWrite실패");
-			req.setAttribute("pages", "/ETC/error.jsp");
+			req.setAttribute("pages", "/Admin/admin_MovieTeamRegistration.jsp");
 			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		}
 	}

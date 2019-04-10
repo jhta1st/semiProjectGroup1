@@ -165,6 +165,7 @@
 		<option value="17">촬영</option>
 	</select></label><br>
 	캐릭터이름<input type="text" id="castDoName" name="castDoName" /><br>
-	<input type="submit" value="등록" /><input type="reset" value="취소" />
+	<input type="submit" value="등록" /><input type="button" value="취소" onclick="javascript:history.go(-1);">
 </form>
+<div id="result">${errMsg }</div>
 </body>

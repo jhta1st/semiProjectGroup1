@@ -24,7 +24,7 @@ public class Admin_MoviePeopleRegistrationController extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String dir=req.getServletContext().getRealPath("/Admin/AdminMoviePeopleImageUpload");
+		String dir=req.getServletContext().getRealPath("/Movie/images/char");
 		try {
 			MultipartRequest mr=new MultipartRequest(
 					req,
@@ -42,11 +42,13 @@ public class Admin_MoviePeopleRegistrationController extends HttpServlet {
 				Admin_CharInfoVo vo=new Admin_CharInfoVo(0, charName, charOrgFileName, charSavFileName);
 				Admin_CharInfoDao dao=Admin_CharInfoDao.getInstance();
 				if(dao.charWrite(vo)>0){
-					resp.sendRedirect(req.getContextPath()+"/admin/MoviePeopleList.do");
+					req.setAttribute("errMsg", "등록되었습니다.");
+					req.setAttribute("pages", "/Admin/admin_MoviePeopleRegistration.jsp");
+					req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 				}else {
 					req.setAttribute("errCode", "-1");
 					req.setAttribute("errMsg", "charWrite실패");
-					req.setAttribute("pages", "/ETC/error.jsp");
+					req.setAttribute("pages", "/Admin/admin_MoviePeopleRegistration.jsp");
 					req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 				}
 			}

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import db.JDBCUtil;
+import vo.Movie_CastInfoVo;
+import vo.Movie_ReviewImageVo;
 
 public class Movie_ReviewImageDao {
 	private static Movie_ReviewImageDao instance = new Movie_ReviewImageDao();
@@ -42,6 +44,25 @@ public class Movie_ReviewImageDao {
 			return null;
 		} finally {
 			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
+	public int reviewImgWrite(Movie_ReviewImageVo vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="insert into reviewImage values(reviewimage_seq.nextval,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, vo.getImageType());
+			pstmt.setString(2, vo.getImageOrgName());
+			pstmt.setString(3, vo.getImageSavName());
+			pstmt.setInt(4, vo.getMovieNum());
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con,pstmt,null);
 		}
 	}
 }

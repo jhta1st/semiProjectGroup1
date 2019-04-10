@@ -52,15 +52,17 @@ public class Admin_MovieInfoRegistrationController extends HttpServlet {
 				}else {
 					req.setAttribute("errCode", "-1");
 					req.setAttribute("errMsg", "movieGenreWrite실패");
-					req.setAttribute("pages", "/ETC/error.jsp");
+					req.setAttribute("pages", "/Admin/admin_MovieInfoRegistration.jsp");
 					req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 				}
 			}
-			resp.sendRedirect(req.getContextPath()+"/admin/MovieInfoList.do");
+			req.setAttribute("errMsg", "등록되었습니다.");
+			req.setAttribute("pages", "/Admin/admin_MovieInfoRegistration.jsp");
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		}else {
 			req.setAttribute("errCode", "-1");
 			req.setAttribute("errMsg", "movieInfoWrite실패");
-			req.setAttribute("pages", "/ETC/error.jsp");
+			req.setAttribute("pages", "/Admin/admin_MovieInfoRegistration.jsp");
 			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		}
 	}
