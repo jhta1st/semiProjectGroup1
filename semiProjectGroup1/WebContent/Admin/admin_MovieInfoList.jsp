@@ -17,7 +17,7 @@
 	<c:forEach var="vo" items="${list }">
 		<tr>
 			<td>${vo.movieNum}</td>
-			<td>d${vo.movieName}</td>
+			<td>${vo.movieName}</td>
 		</tr>
 	</c:forEach>
 </table>
