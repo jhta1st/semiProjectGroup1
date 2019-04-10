@@ -9,7 +9,7 @@
 var userChkId = "";
 function checkData() {
 	var userId = document.getElementsByName("userId")[0];
-	if(userId.value.length < 4 ){
+	if(userId.value.length < 6 ){
 		alert("아이디는 최소 5자로 입력하세요.");
 		userId.focus();
 		return false;
@@ -44,7 +44,7 @@ function checkData() {
 var xhr = null;
 function checkUser() {
 	var userId = document.getElementsByName("userId")[0];
-	if(userId.value.length < 4 ){
+	if(userId.value.length < 6 ){
 		alert("아이디는 최소 5자로 입력하세요.");
 		userId.value.focus();
 		return false;

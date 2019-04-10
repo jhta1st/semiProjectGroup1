@@ -29,7 +29,9 @@ public class LoginDao {
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return true;
+				if (rs.getInt("UserPower") != 3) {
+					return true;
+				}
 			}
 			return false;
 		} catch (SQLException e) {
@@ -41,4 +43,28 @@ public class LoginDao {
 		}
 	}
 
+	public int getUserPower(String id, String pwd) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "SELECT * FROM USERINFO WHERE USERID=? AND USERPWD=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				System.out.println(rs.getInt("UserPower"));
+				return rs.getInt("UserPower");
+			}
+			return -1;
+		} catch (SQLException e) {
+			// TODO 자동 생성된 catch 블록
+			e.printStackTrace();
+			return -1;
+		} finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
 }
