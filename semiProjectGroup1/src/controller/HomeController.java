@@ -16,7 +16,6 @@ public class HomeController extends HttpServlet {
 		String cp = request.getContextPath();
 		ServletContext application = getServletContext();
 		application.setAttribute("cp", cp);
-		request.setAttribute("pages", "/Movie/movie_mainlist.jsp");
-		request.getRequestDispatcher("/main/layout.jsp").forward(request, response);
+		request.getRequestDispatcher("/Movie/movielist.do").forward(request, response);
 	}
 }

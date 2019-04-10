@@ -41,8 +41,7 @@ public class LoginController extends HttpServlet {
 		if (result) {// 회원인 경우
 			request.getSession().setAttribute("id", id);
 			request.getSession().setAttribute("userPower", dao.getUserPower(id, pwd));
-			request.setAttribute("pages", "/Movie/movie_mainlist.jsp");
-			request.getRequestDispatcher("/main/layout.jsp").forward(request, response);
+			request.getRequestDispatcher("/main/home.do").forward(request, response);
 		} else {// 회원이 아닌 경우
 			request.setAttribute("errMsg", "아이디 또는 비밀번호가 일치하지 않아요");
 			request.setAttribute("id", id);

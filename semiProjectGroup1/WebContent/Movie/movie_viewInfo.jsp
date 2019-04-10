@@ -25,7 +25,25 @@
 		</c:forEach>
 		<c:forEach var="map" items="${movieInfolist }" varStatus="st">
 			<c:if test="${st.index==0 }">
-				<div>${map.movieAge }</div>
+				<div>
+					<c:choose>
+						<c:when test="${map.movieAge==0 }">
+						전체 관람가
+					</c:when>
+						<c:when test="${map.movieAge==1 }">
+						12세 관람가
+					</c:when>
+						<c:when test="${map.movieAge==2 }">
+						15세 관람가
+					</c:when>
+						<c:when test="${map.movieAge==3 }">
+						청소년관람불가
+					</c:when>
+						<c:when test="${map.movieAge==4 }">
+						제한상영가
+					</c:when>
+					</c:choose>
+				</div>
 				<div>${map.rate }</div>
 			</c:if>
 		</c:forEach>

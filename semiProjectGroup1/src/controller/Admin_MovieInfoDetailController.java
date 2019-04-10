@@ -19,7 +19,6 @@ public class Admin_MovieInfoDetailController extends HttpServlet {
 		Admin_MovieViewDao dao = Admin_MovieViewDao.getInstance();
 		Admin_MovieViewVo vo = dao.detail(movieNum);
 		req.setAttribute("vo", vo);
-		System.out.println(vo);
 		req.getRequestDispatcher("/Admin/admin_MovieInfoDetail.jsp").forward(req, resp);
 	}
 }
