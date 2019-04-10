@@ -11,8 +11,8 @@ import db.JDBCUtil;
 import vo.Admin_MovieViewVo;
 
 public class Admin_MovieViewDao {
-	
-	public ArrayList<Admin_MovieViewVo> detail(int movieNum) {
+
+	public Admin_MovieViewVo detail(int movieNum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -22,22 +22,24 @@ public class Admin_MovieViewDao {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, movieNum);
 			rs = pstmt.executeQuery();
-			ArrayList<Admin_MovieViewVo> detail = new ArrayList<Admin_MovieViewVo>();
+			Admin_MovieViewVo vo = null;
+			String genreName = "";
 			while (rs.next()) {
-				String movieName=rs.getString("movieName");
-				String movieIntro=rs.getString("movieIntro");
-				Date movieReleaseDate=rs.getDate("movieReleaseDate");
+				String movieName = rs.getString("movieName");
+				String movieIntro = rs.getString("movieIntro");
+				Date movieReleaseDate = rs.getDate("movieReleaseDate");
 				int movieRunTime = rs.getInt("movieRunTime");
-				String movieProduction=rs.getString("movieProduction");
-				String movieDistributer=rs.getString("movieDistributer");
-				String nation=rs.getString("nation");
+				String movieProduction = rs.getString("movieProduction");
+				String movieDistributer = rs.getString("movieDistributer");
+				String nation = rs.getString("nation");
 				int movieAge = rs.getInt("movieAge");
 				int genreNum = rs.getInt("genreNum");
-				String genreName=rs.getString("genreName");
-				Admin_MovieViewVo vo = new Admin_MovieViewVo(movieNum, movieName, movieIntro, movieReleaseDate, movieRunTime, movieProduction, movieDistributer, nation, movieAge, genreNum, genreName);
-				detail.add(vo);
+				genreName = genreName.concat(rs.getString("genreName"));
+				vo = new Admin_MovieViewVo(movieNum, movieName, movieIntro, movieReleaseDate, movieRunTime,
+						movieProduction, movieDistributer, nation, movieAge, genreNum, genreName);
+				genreName = genreName.concat("/");
 			}
-			return detail;
+			return vo;
 		} catch (SQLException se) {
 			System.out.println(se.getMessage());
 			return null;
@@ -45,7 +47,7 @@ public class Admin_MovieViewDao {
 			JDBCUtil.close(con, pstmt, rs);
 		}
 	}
-	
+
 	public int getMaxNum() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -75,8 +77,8 @@ public class Admin_MovieViewDao {
 		try {
 			con = JDBCUtil.getConn();
 			String sql = "SELECT NVL(COUNT(movieNum),0) CNT FROM movie_view ";
-			if(field!=null && !field.equals("")) {
-				sql +="WHERE "+field + " LIKE '%" + keyword +"%'";
+			if (field != null && !field.equals("")) {
+				sql += "WHERE " + field + " LIKE '%" + keyword + "%'";
 			}
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -90,30 +92,20 @@ public class Admin_MovieViewDao {
 			JDBCUtil.close(con, pstmt, rs);
 		}
 	}
-	
+
 	public ArrayList<Admin_MovieViewVo> list(int startRow, int endRow, String field, String keyword) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql ="";
-	      if(field==null || field.equals("")) {
-				sql="select * from(" 
-				+ "    select AA.*, rownum rnum from" 
-				+ "    (" 
-				+ "    select * from movie_view"
-				+ "    order by movieNum desc" 
-				+ "    )AA" 
-				+ ")" 
-				+ "where rnum>=? and rnum<=?";
-	      }else {
-	    	    sql="SELECT * FROM ( " +
-					   "  SELECT AA.*,ROWNUM RNUM FROM ( " 
-	    	    	+"	SELECT * FROM movie_view WHERE " 
-				    + field + " LIKE '%" + keyword +"%'"
-	    	    	+" ORDER BY movieNum DESC" 
-	    	    	+"   )AA " 
-				    +")WHERE RNUM>=? AND RNUM<=?";
-	      }
+		String sql = "";
+		if (field == null || field.equals("")) {
+			sql = "select * from(" + "    select AA.*, rownum rnum from" + "    (" + "    select * from movie_view"
+					+ "    order by movieNum desc" + "    )AA" + ")" + "where rnum>=? and rnum<=?";
+		} else {
+			sql = "SELECT * FROM ( " + "  SELECT AA.*,ROWNUM RNUM FROM ( " + "	SELECT * FROM movie_view WHERE " + field
+					+ " LIKE '%" + keyword + "%'" + " ORDER BY movieNum DESC" + "   )AA "
+					+ ")WHERE RNUM>=? AND RNUM<=?";
+		}
 		try {
 			con = JDBCUtil.getConn();
 			pstmt = con.prepareStatement(sql);
@@ -123,17 +115,18 @@ public class Admin_MovieViewDao {
 			ArrayList<Admin_MovieViewVo> list = new ArrayList<Admin_MovieViewVo>();
 			while (rs.next()) {
 				int movieNum = rs.getInt("movieNum");
-				String movieName=rs.getString("movieName");
-				String movieIntro=rs.getString("movieIntro");
-				Date movieReleaseDate=rs.getDate("movieReleaseDate");
+				String movieName = rs.getString("movieName");
+				String movieIntro = rs.getString("movieIntro");
+				Date movieReleaseDate = rs.getDate("movieReleaseDate");
 				int movieRunTime = rs.getInt("movieRunTime");
-				String movieProduction=rs.getString("movieProduction");
-				String movieDistributer=rs.getString("movieDistributer");
-				String nation=rs.getString("nation");
+				String movieProduction = rs.getString("movieProduction");
+				String movieDistributer = rs.getString("movieDistributer");
+				String nation = rs.getString("nation");
 				int movieAge = rs.getInt("movieAge");
 				int genreNum = rs.getInt("genreNum");
-				String genreName=rs.getString("genreName");
-				Admin_MovieViewVo vo = new Admin_MovieViewVo(movieNum, movieName, movieIntro, movieReleaseDate, movieRunTime, movieProduction, movieDistributer, nation, movieAge, genreNum, genreName);
+				String genreName = rs.getString("genreName");
+				Admin_MovieViewVo vo = new Admin_MovieViewVo(movieNum, movieName, movieIntro, movieReleaseDate,
+						movieRunTime, movieProduction, movieDistributer, nation, movieAge, genreNum, genreName);
 				list.add(vo);
 			}
 			return list;
@@ -144,9 +137,12 @@ public class Admin_MovieViewDao {
 			JDBCUtil.close(con, pstmt, rs);
 		}
 	}
-	
-	public static Admin_MovieViewDao instance=new Admin_MovieViewDao();
-	private Admin_MovieViewDao() {}
+
+	public static Admin_MovieViewDao instance = new Admin_MovieViewDao();
+
+	private Admin_MovieViewDao() {
+	}
+
 	public static Admin_MovieViewDao getInstance() {
 		return instance;
 	}
