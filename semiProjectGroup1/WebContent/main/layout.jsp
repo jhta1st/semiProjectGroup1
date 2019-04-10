@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">2
+<meta charset="UTF-8">
 <title>/main/layout.jsp</title>
 </head>
 <body>

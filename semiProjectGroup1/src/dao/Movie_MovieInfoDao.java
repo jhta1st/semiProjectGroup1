@@ -175,8 +175,9 @@ public class Movie_MovieInfoDao {
 			String sql = "SELECT NVL(COUNT(*),0) FROM(SELECT DISTINCT(M.MOVIENUM) "
 					+ "FROM MOVIE_VIEW M,REVIEWIMAGE R WHERE M.MOVIENUM=R.MOVIENUM "
 					+ "AND M.MOVIENAME LIKE '%'|| ? ||'%' AND R.IMAGETYPE=1";
-			if (genreNum != null && Integer.parseInt(genreNum[0]) != 0) {
-				sql = sql.concat(" OR ");
+			System.out.println(Integer.parseInt(genreNum[0]) != 0);
+			if (Integer.parseInt(genreNum[0]) != 0) {
+				sql = sql.concat(" AND( ");
 				for (int i = 0; i < genreNum.length; i++) {
 					sql = sql.concat("GENRENUM=" + genreNum[i]);
 					if (genreNum.length - 1 != i) {
@@ -184,7 +185,7 @@ public class Movie_MovieInfoDao {
 					}
 				}
 			}
-			sql = sql.concat(")");
+			sql = sql.concat("))");
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, keyword);

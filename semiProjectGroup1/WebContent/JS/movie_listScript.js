@@ -24,8 +24,8 @@ function rateInsert() {
 }
 
 var listXhr = null;
-var clickListXhr = null;
 var cp = null;
+var pageCnt=1;
 function getList(cp1) {
 	cp = cp1;
 	listXhr = new XMLHttpRequest();
@@ -41,7 +41,6 @@ function listOk() {
 		delComm();
 		var tempgenreName = [];
 		var a = 0;
-		var b = 0;
 		var comm = eval("(" + data + ")");
 		var html = "";
 
@@ -53,37 +52,68 @@ function listOk() {
 			return array.indexOf(item)===idx;
 		});
 		
+		
 		// 화면구성
 		for (var i = 0; i < comm.length; i++) {
 			if (comm[i].genreName == genreNames[a]) {
-				var d1 = document.createElement("div");
-				d1.innerHTML = "<h2>" + genreNames[a] + "</h2>";
+				var subdiv = document.createElement("div");
+				subdiv.innerHTML = "<h2>" + genreNames[a] + "</h2>";
 
-				mainlist.appendChild(d1);
-				var leftbutton=document.createElement("button");				
+				var leftbutton=document.createElement("button");
+				leftbutton.className="leftbutton";
 				var lb=document.createTextNode("<");
+				var rightclickListXhr=new XMLHttpRequest();
 				leftbutton.onclick=getActionList;
 				leftbutton.appendChild(lb);
 				
 				var ul = document.createElement("ul");
 				var rightbutton=document.createElement("button");
 				var rb=document.createTextNode(">");
-				rightbutton.onclick=getActionList;
+				rightbutton.id=2;
+				var rightclickListXhr=new XMLHttpRequest();
+				rightbutton.onclick=function(){
+					rightclickListXhr.onreadystatechange=function(){
+						if (rightclickListXhr.readyState == 4 && rightclickListXhr.status == 200) {
+							var rightdata = listXhr.responseText;
+							var mainlist = document.getElementById("mainlist");
+							delItem();
+							var a = 0;
+							var comm = eval("(" + data + ")");
+							var html = "";
+						}
+					}
+						rightclickListXhr.open('get', cp + '/Movie/getActionList.do', true);
+						rightclickListXhr.send();
+				}
+				
 				rightbutton.appendChild(rb);
 				a++;
 			}
 			var li=document.createElement("li");
-			var d1=document.createElement("div");
-			d1.innerHTML="<a href='"+cp+"/Movie/review.do?movieNum="+comm[i].movieNum+"'><img src='"+cp+"/Movie/images/photo/"+comm[i].imageSavName+"' alt='이미지'></a>"
+			var clickdiv=document.createElement("div");
+			clickdiv.className="MovieInfoClassDiv";
+			clickdiv.innerHTML="<a href='"+cp+"/Movie/review.do?movieNum="+comm[i].movieNum+"'><img src='"+cp+"/Movie/images/photo/"+comm[i].imageSavName+"' alt='이미지'></a>"
 			+"<br><a href='"+cp+"/Movie/review.do?movieNum="+comm[i].movieNum+"'><label>"+comm[i].movieName+"</label></a>";
-			li.appendChild(d1);
+			
+			li.appendChild(clickdiv);
 			ul.appendChild(li);
-			mainlist.appendChild(leftbutton);
-			mainlist.appendChild(ul);
-			mainlist.appendChild(rightbutton);
+			subdiv.appendChild(leftbutton);
+			subdiv.appendChild(ul);
+			subdiv.appendChild(rightbutton);
+			mainlist.appendChild(subdiv);
 
 		}
 	}
+}
+
+function delItem() {
+
+	var childs=clickdiv.childNodes;
+	for (var i = 0; childs.length-1>=0; i--) {
+		var child = childs.item(i);
+		clickdiv.removeChild(child);
+	}
+	
 }
 
 function delComm() {
@@ -95,6 +125,9 @@ function delComm() {
 	}
 }
 
-function getActionList() {
+function getActionList(e) {
+	if(e.target.className=='leftbutton'){
+		alert("a");
+	}
 	
 }
