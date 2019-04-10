@@ -5,28 +5,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/User/user_myPage.jsp</title>
+<title>/Admin/admin_MovieInfoDetail.jsp</title>
 </head>
 <body>
 <h1>영화정보상세</h1>
 <hr>
 <table border="1">
 	<tr>
-		<th>인물번호</th><th>인물명</th><th>인물사진</th>
+		<th>영화번호</th><th>영화제목</th><th>영화소개</th><th>개봉일자</th><th>상영시간</th>
+		<th>제작사</th><th>배급사</th><th>국가</th><th>관람나이</th>
+		<th>장르번호</th><th>장르명</th>
 	</tr>
+	<c:forEach var="list" items="${vo }">
 		<tr>
-			<td>${vo.charNum}</td>
-			<td>${vo.charName }</td>
-			<td>
-			<img src="${cp }/Admin/AdminMoviePeopleImageUpload/${vo.charSavFileName }" style="width: 200px; height: 200px;">
-			</td>
+			<td>${list.movieNum}</td>
+			<td>${list.movieName }</td>
+			<td>${list.movieIntro}</td>
+			<td>${list.movieReleaseDate }</td>
+			<td>${list.movieRunTime}</td>
+			<td>${list.movieProduction }</td>
+			<td>${list.movieDistributer}</td>
+			<td>${list.nation }</td>
+			<td>${list.movieAge}</td>
+			<td>${list.genreNum }</td>
+			<td>${list.genreName}</td>
 		</tr>
+		</c:forEach>
 </table>
 <br>
 <hr>
-<a href="${pageContext.request.contextPath}/admin/MoviePeopleDelete.do?charNum=${vo.charNum}">삭제</a> |
-<a href="${pageContext.request.contextPath}/admin/MoviePeopleUpdate.do?charNum=${vo.charNum}">인물정보 수정</a>
 <hr>
-<a href="${pageContext.request.contextPath }/main/layout.jsp">홈으로</a>
+<a href="${pageContext.request.contextPath }/admin/MovieInfoList.do">영화정보리스트로</a>
 </body>
 </html>

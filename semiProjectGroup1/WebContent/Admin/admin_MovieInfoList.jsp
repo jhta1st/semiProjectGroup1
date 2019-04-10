@@ -17,7 +17,7 @@
 	<c:forEach var="vo" items="${list }">
 		<tr>
 			<td>${vo.movieNum}</td>
-			<td>${vo.movieName}</td>
+			<td><a href="${pageContext.request.contextPath}/admin/MovieViewDetail.do?movieNum=${vo.movieNum}">${vo.movieName}</a></td>
 		</tr>
 	</c:forEach>
 </table>
