@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import db.JDBCUtil;
+import vo.Admin_CharInfoVo;
 import vo.Movie_GenreVo;
 import vo.Movie_MovieInfoVo;
 import vo.Movie_ReviewImageVo;
@@ -44,6 +45,22 @@ public class Movie_GenreDao {
 		} finally {
 			// TODO: handle finally clause
 			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
+	public int genreWrite(Movie_GenreVo vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="insert into genre values(genre_SEQ.nextval,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, vo.getGenreName());
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con,pstmt,null);
 		}
 	}
 }
