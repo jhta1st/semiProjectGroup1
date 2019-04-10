@@ -28,7 +28,13 @@ public class Movie_SearchController extends HttpServlet {
 		int startRow = endRow - 29;
 
 		String keyword = req.getParameter("keyword");
-		String[] genreName = req.getParameterValues("genreName");
+		String[] genreName = { "0" };
+		if (req.getParameterValues("genreName") != null) {
+			genreName = req.getParameterValues("genreName");
+			if (genreName[0].equals("-1")) {
+				genreName[0] = "0";
+			}
+		}
 		Movie_GenreDao genreDao = Movie_GenreDao.getInstance();
 		ArrayList<Movie_GenreVo> genreNamelist = genreDao.getGenreName();
 		req.setAttribute("genreNamelist", genreNamelist);
@@ -44,16 +50,23 @@ public class Movie_SearchController extends HttpServlet {
 		String ss = "";
 		for (int i = 0; i < genreName.length; i++) {
 			ss = ss + "&genreName=" + genreName[i];
+
 		}
+
 		req.setAttribute("serchList", serchList);
 		req.setAttribute("keyword", keyword);
-		req.setAttribute("genreNum", genreName);
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("startPage", startPageNum);
 		req.setAttribute("endPage", endPageNum);
 		req.setAttribute("pageNum", pageNum);
-		req.setAttribute("search", ss);
 		req.setAttribute("resultCount", movieDao.getCountNum(keyword, genreName));
+		if (genreName.length == 1 && genreName[0].equals("0")) {
+			genreName[0] = "-1";
+			req.setAttribute("genreNum", genreName);
+		} else {
+			req.setAttribute("genreNum", genreName);
+		}
+		req.setAttribute("search", ss);
 		req.setAttribute("pages", "/Movie/movie_searchlist.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 

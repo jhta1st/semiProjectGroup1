@@ -172,8 +172,9 @@ public class Movie_MovieInfoDao {
 		ResultSet rs = null;
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "SELECT NVL(*),0) FROM MOVIE_VIEW M,REVIEWIMAGE R "
-					+ "WHERE M.MOVIENUM=R.MOVIENUM AND M.MOVIENAME LIKE '%'|| ? ||'%' AND R.IMAGETYPE=1";
+			String sql = "SELECT NVL(COUNT(*),0) FROM(SELECT DISTINCT(M.MOVIENUM) "
+					+ "FROM MOVIE_VIEW M,REVIEWIMAGE R WHERE M.MOVIENUM=R.MOVIENUM "
+					+ "AND M.MOVIENAME LIKE '%'|| ? ||'%' AND R.IMAGETYPE=1";
 			if (genreNum != null && Integer.parseInt(genreNum[0]) != 0) {
 				sql = sql.concat(" OR ");
 				for (int i = 0; i < genreNum.length; i++) {
@@ -183,6 +184,8 @@ public class Movie_MovieInfoDao {
 					}
 				}
 			}
+			sql = sql.concat(")");
+			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, keyword);
 			rs = pstmt.executeQuery();
