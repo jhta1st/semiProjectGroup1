@@ -3,6 +3,19 @@
 <script type="text/javascript" src="${cp }/JS/movie_listScript.js"></script>
 <div>
 	<div>
+		<form method="get" action="${cp }/Movie/moviesearch.do">
+			<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword" value="${keyword }"><input type="submit" value="검색">
+			<br>
+			<input type="checkbox" name="genreName" id="0" value="0" <c:if test="${genreNum[0]=='0' }"> checked="checked"</c:if> onclick="checkAll()"><label for="0">전체</label>
+			<c:forEach var="vo" items="${genreNamelist }">
+				<input type="checkbox" name="genreName" id="${vo.genreNum }" value="${vo.genreNum }" <c:forEach var="va" items="${genreNum }">
+				<c:if test="${va==vo.genreNum }"> checked="checked"</c:if>
+				</c:forEach> onclick="checkAllch()">
+				<label for="${vo.genreNum }">${vo.genreName }</label>
+			</c:forEach>
+		</form>
+	</div>
+	<div>
 		<c:forEach var="map" items="${movieInfolist }" varStatus="st">
 			<c:if test="${st.index==0 }">
 				<img alt="대표이미지" src="${cp }/Movie/images/photo/${map.imageSavName}">
@@ -189,7 +202,7 @@
 						<input type="text" name="rateComm">
 						<input type="button" value="입력" onclick="rateInsert()">
 					</c:if>
-					
+
 				</c:when>
 			</c:choose>
 		</div>

@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Movie_CharInfoDao;
+import dao.Movie_GenreDao;
 import dao.Movie_MovieInfoDao;
 import dao.Movie_ReviewImageDao;
 import dao.Movie_UrlInfoDao;
+import vo.Movie_GenreVo;
 
 /**
  * Servlet implementation class Movie_MovieReviewController
@@ -44,9 +46,32 @@ public class Movie_MovieReviewController extends HttpServlet {
 		} else if (detail.equals("vedio")) {
 			movieotherList = urlInfoDao.getVedioUrl(movieNum);
 		} else if (detail.equals("rate")) {
-			movieotherList = movieInfolist;//¿Ã∞≈ πŸ≤„æﬂ µ 
+			movieotherList = movieInfolist;// ¿Ã∞≈ πŸ≤„æﬂ µ 
 		}
 		request.setAttribute("movieNum", movieNum);
+		String keyword = request.getParameter("keyword");
+		String[] genreName = { "0" };
+		if (request.getParameterValues("genreName") != null) {
+			genreName = request.getParameterValues("genreName");
+			if (genreName[0].equals("-1")) {
+				genreName[0] = "0";
+			}
+		}
+		String ss = "";
+		for (int i = 0; i < genreName.length; i++) {
+			ss = ss + "&genreName=" + genreName[i];
+		}
+		Movie_GenreDao genreDao = Movie_GenreDao.getInstance();
+		ArrayList<Movie_GenreVo> genreNamelist = genreDao.getGenreName();
+		request.setAttribute("genreNamelist", genreNamelist);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("search", ss);
+		if (genreName.length == 1 && genreName[0].equals("0")) {
+			genreName[0] = "-1";
+			request.setAttribute("genreNum", genreName);
+		} else {
+			request.setAttribute("genreNum", genreName);
+		}
 		request.setAttribute("movieInfolist", movieInfolist);
 		request.setAttribute("movieotherList", movieotherList);
 		request.setAttribute("detail", detail);

@@ -50,7 +50,6 @@ public class Movie_SearchController extends HttpServlet {
 		String ss = "";
 		for (int i = 0; i < genreName.length; i++) {
 			ss = ss + "&genreName=" + genreName[i];
-
 		}
 
 		req.setAttribute("serchList", serchList);

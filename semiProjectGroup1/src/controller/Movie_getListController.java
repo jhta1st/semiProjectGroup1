@@ -51,6 +51,7 @@ public class Movie_getListController extends HttpServlet {
 				json.put("movieNum", map.get("movieNum"));
 				json.put("movieName", map.get("movieName"));
 				json.put("genreName", map.get("genreName"));
+				json.put("genreNum", map.get("genreNum"));
 				json.put("imageNum", map.get("imageNum"));
 				json.put("imageSavName", map.get("imageSavName"));
 				jsonArray.add(json);

@@ -91,11 +91,13 @@ public class Movie_MovieInfoDao {
 					int movieNum = rs.getInt("movieNum");
 					String movieName = rs.getString("movieName");
 					String genreName = rs.getString("genreName");
+					int genreNum=rs.getInt("genreNum");
 					int imageNum = rs.getInt("imageNum");
 					String imageSavName = rs.getString("imageSavName");
 					HashMap<String, Object> map = new HashMap<String, Object>();
 					map.put("movieNum", movieNum);
 					map.put("movieName", movieName);
+					map.put("genreNum", genreNum);
 					map.put("genreName", genreName);
 					map.put("imageNum", imageNum);
 					map.put("imageSavName", imageSavName);
@@ -175,18 +177,18 @@ public class Movie_MovieInfoDao {
 			String sql = "SELECT NVL(COUNT(*),0) FROM(SELECT DISTINCT(M.MOVIENUM) "
 					+ "FROM MOVIE_VIEW M,REVIEWIMAGE R WHERE M.MOVIENUM=R.MOVIENUM "
 					+ "AND M.MOVIENAME LIKE '%'|| ? ||'%' AND R.IMAGETYPE=1";
-			System.out.println(Integer.parseInt(genreNum[0]) != 0);
 			if (Integer.parseInt(genreNum[0]) != 0) {
 				sql = sql.concat(" AND( ");
 				for (int i = 0; i < genreNum.length; i++) {
 					sql = sql.concat("GENRENUM=" + genreNum[i]);
 					if (genreNum.length - 1 != i) {
 						sql = sql.concat(" OR ");
+					} else {
+						sql = sql.concat(")");
 					}
 				}
 			}
-			sql = sql.concat("))");
-			System.out.println(sql);
+			sql = sql.concat(")");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, keyword);
 			rs = pstmt.executeQuery();

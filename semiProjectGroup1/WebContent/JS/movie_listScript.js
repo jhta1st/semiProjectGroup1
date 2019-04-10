@@ -57,36 +57,8 @@ function listOk() {
 		for (var i = 0; i < comm.length; i++) {
 			if (comm[i].genreName == genreNames[a]) {
 				var subdiv = document.createElement("div");
-				subdiv.innerHTML = "<h2>" + genreNames[a] + "</h2>";
-
-				var leftbutton=document.createElement("button");
-				leftbutton.className="leftbutton";
-				var lb=document.createTextNode("<");
-				var rightclickListXhr=new XMLHttpRequest();
-				leftbutton.onclick=getActionList;
-				leftbutton.appendChild(lb);
-				
+				subdiv.innerHTML = "<h2>" + genreNames[a] + "</h2><span><a href="+cp+"/Movie/moviesearch.do?genreName="+comm[i].genreNum+">더보기</a></span>";
 				var ul = document.createElement("ul");
-				var rightbutton=document.createElement("button");
-				var rb=document.createTextNode(">");
-				rightbutton.id=2;
-				var rightclickListXhr=new XMLHttpRequest();
-				rightbutton.onclick=function(){
-					rightclickListXhr.onreadystatechange=function(){
-						if (rightclickListXhr.readyState == 4 && rightclickListXhr.status == 200) {
-							var rightdata = listXhr.responseText;
-							var mainlist = document.getElementById("mainlist");
-							delItem();
-							var a = 0;
-							var comm = eval("(" + data + ")");
-							var html = "";
-						}
-					}
-						rightclickListXhr.open('get', cp + '/Movie/getActionList.do', true);
-						rightclickListXhr.send();
-				}
-				
-				rightbutton.appendChild(rb);
 				a++;
 			}
 			var li=document.createElement("li");
@@ -97,9 +69,7 @@ function listOk() {
 			
 			li.appendChild(clickdiv);
 			ul.appendChild(li);
-			subdiv.appendChild(leftbutton);
 			subdiv.appendChild(ul);
-			subdiv.appendChild(rightbutton);
 			mainlist.appendChild(subdiv);
 
 		}
