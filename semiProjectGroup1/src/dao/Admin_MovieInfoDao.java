@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import db.JDBCUtil;
 import vo.Admin_CharInfoVo;
+import vo.Admin_MovieGenreVo;
 import vo.Admin_MovieInfoVo;
 
 public class Admin_MovieInfoDao {
@@ -109,7 +110,43 @@ public class Admin_MovieInfoDao {
 		}
 	}
 	
-	
+	public ArrayList<Integer> movieInfoUpdate(Admin_MovieInfoVo vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		PreparedStatement pstmt2=null;
+		ResultSet rs=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="update movieInfo set movieName=?, movieIntro=?, movieReleaseDate=?, movieRunTime=?, movieProduction=?, movieDistributer=?, nation=?, movieAge=? where movieNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, vo.getMovieName());
+			pstmt.setString(2, vo.getMovieIntro());
+			pstmt.setString(3, vo.getMovieReleaseDate());
+			pstmt.setInt(4, vo.getMovieRunTime());
+			pstmt.setString(5, vo.getMovieProduction());
+			pstmt.setString(6, vo.getMovieDistributer());
+			pstmt.setString(7, vo.getNation());
+			pstmt.setInt(8, vo.getMovieAge());
+			pstmt.setInt(9, vo.getMovieNum());
+			pstmt.executeUpdate();
+			String sql2="select genreNum from movieGenre where movieNum=?";
+			pstmt2=con.prepareStatement(sql2);
+			pstmt2.setInt(1, vo.getMovieNum());
+			rs=pstmt2.executeQuery();
+			ArrayList<Integer> list=new ArrayList<Integer>();
+			while(rs.next()) {
+				int genreNum=rs.getInt("genreNum");
+				list.add(genreNum);
+			}
+			return list;
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(null,pstmt2,null);
+			JDBCUtil.close(con,pstmt,rs);
+		}
+	}
 	public int movieInfoWrite(Admin_MovieInfoVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;

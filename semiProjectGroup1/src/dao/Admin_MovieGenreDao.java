@@ -9,6 +9,23 @@ import vo.Admin_CharInfoVo;
 import vo.Admin_MovieGenreVo;
 
 public class Admin_MovieGenreDao {
+	public int movieGenreDelete(Admin_MovieGenreVo vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="delete from movieGenre where genreNum=? and movieNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, vo.getGenreNum());
+			pstmt.setInt(2, vo.getMovieNum());
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con,pstmt,null);
+		}
+	}
 	public int movieGenreWrite(Admin_MovieGenreVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;

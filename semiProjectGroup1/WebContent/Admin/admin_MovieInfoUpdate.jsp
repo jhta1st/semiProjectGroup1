@@ -13,7 +13,7 @@
 	}
 </script>
 <body onload="nationSelect();">
-<form method="post" action="${pageContext.request.contextPath }/admin/movieInfoUpdate.do">
+<form method="post" action="${cp }/admin/MovieInfoUpdate.do">
 	제목<input type="text" id="movieName" name="movieName" value="${vo.movieName }" /><br/> 
 	장르
 	<c:forEach var="vo" items="${genreList }">
@@ -27,6 +27,7 @@
 	상영시간<input type="text" id="movieRunTime" name="movieRunTime" value="${vo.movieRunTime }"/><br/>
 	제작사<input type="text" id="movieProduction" name="movieProduction" value="${vo.movieProduction }"/><br/>
 	배급사<input type="text" id="movieDistributer" name="movieDistributer" value="${vo.movieDistributer }"/><br/>
+	<input type="hidden" id="movieNum" name="movieNum" value="${movieNum }">
 	<input type="hidden" id="nationValue" value="${vo.nation }">
 	<label>국가
 	<select id="nation" name="nation">
