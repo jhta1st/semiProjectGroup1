@@ -26,8 +26,7 @@ public class LoginController extends HttpServlet {
 			request.getRequestDispatcher("/main/layout.jsp").forward(request, response);
 		} else {
 			request.getSession().invalidate();
-			request.setAttribute("pages", "/main/main.jsp");
-			request.getRequestDispatcher("/main/layout.jsp").forward(request, response);
+			request.getRequestDispatcher("/main/home.do").forward(request, response);
 		}
 	}
 
