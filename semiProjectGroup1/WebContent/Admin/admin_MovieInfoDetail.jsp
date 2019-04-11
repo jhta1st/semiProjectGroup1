@@ -98,7 +98,7 @@
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==2 }">
 					<td>
-						<a href="">수정</a> <a href="">삭제</a>
+						<a href="">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -120,7 +120,7 @@
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==3 }">
 					<td>
-						<a href="">수정</a> <a href="">삭제</a>
+						<a href="">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
