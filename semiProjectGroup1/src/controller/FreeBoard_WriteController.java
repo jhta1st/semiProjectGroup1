@@ -22,7 +22,8 @@ import vo.FreeBoard_FreeBoardVo;
 public class FreeBoard_WriteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect(req.getContextPath()+"/FreeBoard/write.jsp");
+		req.setAttribute("pages", "/FreeBoard/write.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,7 +60,8 @@ public class FreeBoard_WriteController extends HttpServlet{
 			User_UserInfoDao uiDao=new User_UserInfoDao();
 			uiDao.expCalc(userId);
 			uiDao.levCalc(userId);
-			resp.sendRedirect(req.getContextPath()+"/FreeBoard/Content.do?freeBoardNum="+freeBoardNum);
+			req.setAttribute("pages", "/FreeBoard/Content.do?freeBoardNum="+freeBoardNum);
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 			}else {
 				req.setAttribute("errCode", "-1");
 				req.setAttribute("errMsg", "Write½ÇÆÐ");
