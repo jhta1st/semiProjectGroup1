@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import db.JDBCUtil;
+import vo.Admin_CharInfoVo;
 import vo.Movie_ReviewImageVo;
 
 public class Movie_ReviewImageDao {
@@ -82,6 +83,55 @@ public class Movie_ReviewImageDao {
 			return -1;
 		}finally {
 			JDBCUtil.close(con, pstmt,null);
+		}
+	}
+
+	public int update(Movie_ReviewImageVo vo) {
+		Connection con =null;
+		PreparedStatement pstmt =null;
+		try {
+		con=JDBCUtil.getConn();
+		String sql="update reviewImage set imageType=?,imageOrgName=?,imageSavName=? where imageNum=? and movieNum=?";
+		pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, vo.getImageType());
+		pstmt.setString(2, vo.getImageOrgName());
+		pstmt.setString(3, vo.getImageSavName());
+		pstmt.setInt(4, vo.getImageNum());
+		pstmt.setInt(4, vo.getMovieNum());
+		return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JDBCUtil.close(con, pstmt, null);
+		}
+	}
+	
+	public Movie_ReviewImageVo detail(int imageNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from reviewImage where imageNum=?";
+		try {
+			con = JDBCUtil.getConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, imageNum);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				imageNum=rs.getInt("imageNum");
+				int imageType=rs.getInt("imageType");
+				String imageOrgName=rs.getString("imageOrgName");
+				String imageSavName=rs.getString("imageSavName");
+				int movieNum=rs.getInt("movieNum");
+				Movie_ReviewImageVo vo = new Movie_ReviewImageVo(imageNum, imageType, imageOrgName, imageSavName, movieNum);
+				return vo;
+			}
+			return null;
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		} finally {
+			JDBCUtil.close(con, pstmt, rs);
 		}
 	}
 }

@@ -76,7 +76,7 @@
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==1 }">
 					<td>
-						<a href="">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
