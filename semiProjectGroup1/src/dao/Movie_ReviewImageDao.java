@@ -33,6 +33,7 @@ public class Movie_ReviewImageDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("ImageNum", rs.getString("ImageNum"));
 				map.put("ImageSavName", rs.getString("ImageSavName"));
 				map.put("ImageType", rs.getInt("ImageType"));
 				list.add(map);
@@ -64,6 +65,23 @@ public class Movie_ReviewImageDao {
 			return -1;
 		} finally {
 			JDBCUtil.close(con, pstmt, null);
+		}
+	}
+	
+	public int delete(int imageNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="delete from reviewImage where imageNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,imageNum);
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			JDBCUtil.close(con, pstmt,null);
 		}
 	}
 }
