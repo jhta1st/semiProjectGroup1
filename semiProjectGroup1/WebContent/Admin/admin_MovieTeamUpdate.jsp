@@ -82,8 +82,10 @@
 			}
 		}
 	}
+	window.onload=function(){
+		castDoNumSelect();
+	}
 </script>
-<body onload="castDoNumSelect();">
 <form method="post" action="${cp }/admin/movieTeamUpdate.do">
 	영화명<input type="text" id="movieInfo" value="${vo.movieName }" disabled="disabled"/><br>
 	<input type="hidden" id="movieNum" name="movieNum" value="${vo.movieNum }">
@@ -111,4 +113,3 @@
 	<input type="submit" value="등록" /><input type="button" value="취소" onclick="javascript:history.go(-1);">
 </form>
 <div id="result">${errMsg }</div>
-</body>

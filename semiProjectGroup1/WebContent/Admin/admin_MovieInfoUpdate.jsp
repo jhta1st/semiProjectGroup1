@@ -11,8 +11,10 @@
 			}
 		}
 	}
+	window.onload=function(){
+		nationSelect();
+	}
 </script>
-<body onload="nationSelect();">
 <form method="post" action="${cp }/admin/MovieInfoUpdate.do">
 	제목<input type="text" id="movieName" name="movieName" value="${vo.movieName }" /><br/> 
 	장르
@@ -295,4 +297,3 @@
 	<input type="submit" value="수정" /><input type="button" value="취소" onclick="javascript:history.go(-1);">
 </form>
 <div id="result">${errMsg }</div>
-</body>
