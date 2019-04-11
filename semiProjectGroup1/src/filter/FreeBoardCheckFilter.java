@@ -15,13 +15,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AdminCheckFilter
  */
-@WebFilter(urlPatterns = { "/Admin/*", "/admin/*" })
-public class AdminCheckFilter implements Filter {
+// 다른아이디로 접속하였을때 타 아이디로 작성한 글의 수정이나 삭제가 불가능하게 필터하는 법 구현
+@WebFilter(urlPatterns = { "/Freeboard/*", "/freeboard/*", "/User/*", "/user/*","/Movie/*", "/movie/*"})
+public class FreeBoardCheckFilter implements Filter {
 
 	/**
 	 * Default constructor.
 	 */
-	public AdminCheckFilter() {
+	public FreeBoardCheckFilter() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -37,20 +38,21 @@ public class AdminCheckFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		boolean admin = false;
+		boolean userId = false;
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		if (session != null) {
 			String id = (String) session.getAttribute("id");
-			if (id != null) {
-				if (id.equals("Master")) {
-					admin = true;
+			int userPower = (int) session.getAttribute("userPower");
+ 			if (id != null) {
+				if (id != null && userPower!=3) {
+					userId = true;
 				}
 			}
 		}
-		if (admin) {// 관리자일 경우 경우
+		if (userId) {
 			chain.doFilter(request, response);
-		} else {// 관리자가 아닐 경우 안한 경우
+		} else {
 			HttpServletResponse resp = (HttpServletResponse) response;
 			resp.sendRedirect(req.getContextPath() + "/main/home.do");
 		}
