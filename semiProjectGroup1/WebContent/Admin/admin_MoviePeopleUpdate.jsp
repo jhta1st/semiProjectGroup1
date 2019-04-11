@@ -15,7 +15,7 @@
 	<input type="hidden" name="charNum" value="${vo.charNum }">
 	인물번호 <input type="text" id="charNum"  value="${vo.charNum }" disabled="disabled"><br>
 	인물명 <input type="text" id="charName" name="charName" value="${vo.charName }"><br>
-	기존파일 <input type="text" disabled="disabled" id="charOrgFileName" value="${ vo1.charOrgFileName}"><br>
+	기존파일 <input type="text" disabled="disabled" id="charOrgFileName" value="${ vo.charOrgFileName}"><br>
 	수정할파일 <input type="file" name="file2"><br>
 	<input type="submit" value="수정">
 </form>
