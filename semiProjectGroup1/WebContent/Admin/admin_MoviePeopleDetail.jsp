@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/User/user_myPage.jsp</title>
-</head>
-<body>
+
+<div>
 <h1>인물상세</h1>
 <hr>
 <table border="1">
@@ -28,5 +23,4 @@
 <a href="${pageContext.request.contextPath}/admin/MoviePeopleUpdate.do?charNum=${vo.charNum}">인물정보 수정</a>
 <hr>
 <a href="${pageContext.request.contextPath }/main/layout.jsp">홈으로</a>
-</body>
-</html>
+</div>

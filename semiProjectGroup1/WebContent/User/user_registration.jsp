@@ -1,10 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/User/user_registration.jsp</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript">
 var userChkId = "";
 function checkData() {
@@ -68,20 +62,27 @@ function checkUserResult() {
 	}
 }
 </script>
-</head>
-<body>
-<h1>회원가입하기</h1>
-<form method="post" action="${pageContext.request.contextPath }/user/registration.do" onsubmit="return checkData();">
-	* 사항은 필수 입력 사항입니다. <br/>
-	아이디*<br/>
-	<input type="text" id="userId" name="userId" /> <input type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span><br>
-	비밀번호*<br/>
-	<input type="password" id="userPwd" name="userPwd" /><br/>
-	비밀번호확인*<br/>
-	<input type="password" id="userPwd1" name="userPwd1" /><br/>
-	닉네임*<br/>
-	<input type="text" id="userNickName" name="userNickName" /><br/>
-	<input type="submit" value="가입" /><input type="reset" value="취소" />
-</form>
-</body>
-</html>
+<div>
+	<h1>회원가입하기</h1>
+	<form method="post" action="${pageContext.request.contextPath }/user/registration.do" onsubmit="return checkData();">
+		* 사항은 필수 입력 사항입니다.
+		<br />
+		아이디*
+		<br />
+		<input type="text" id="userId" name="userId" /> <input type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span>
+		<br>
+		비밀번호*
+		<br />
+		<input type="password" id="userPwd" name="userPwd" />
+		<br />
+		비밀번호확인*
+		<br />
+		<input type="password" id="userPwd1" name="userPwd1" />
+		<br />
+		닉네임*
+		<br />
+		<input type="text" id="userNickName" name="userNickName" />
+		<br />
+		<input type="submit" value="가입" /><input type="reset" value="취소" />
+	</form>
+</div>

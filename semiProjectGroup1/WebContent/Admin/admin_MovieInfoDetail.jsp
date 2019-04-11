@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/Admin/admin_MovieInfoDetail.jsp</title>
-</head>
-<body>
+<div>
 	<h1>영화정보상세</h1>
 	<hr>
 	<table border="1">
@@ -76,8 +70,7 @@
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==1 }">
 					<td>
-						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> 
-						<a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -99,8 +92,7 @@
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==2 }">
 					<td>
-						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> 
-						<a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -122,8 +114,7 @@
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==3 }">
 					<td>
-						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> 
-						<a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -144,8 +135,7 @@
 			<c:forEach var="vo1" items="${urlList }">
 				<c:if test="${vo1.get('urlType')==1 }">
 					<td>
-						<a href="${cp }/admin/movieUrlUpdate.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">수정</a> 
-						<a href="${cp }/admin/MovieUrlDelete.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">삭제</a>
+						<a href="${cp }/admin/movieUrlUpdate.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">수정</a> <a href="${cp }/admin/MovieUrlDelete.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -523,5 +513,4 @@
 	<a href="${cp }/admin/MovieInfoUpdate.do?movieNum=${movieNum }">영화정보수정</a>
 	<br>
 	<a href="${pageContext.request.contextPath }/admin/MovieInfoList.do">영화정보리스트로</a>
-</body>
-</html>
+</div>

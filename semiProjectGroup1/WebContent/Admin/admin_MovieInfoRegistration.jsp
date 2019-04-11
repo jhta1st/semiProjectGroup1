@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<body>
+<div>
 <form method="post" action="${pageContext.request.contextPath }/admin/movieInfoRegistration.do">
 	제목<input type="text" id="movieName" name="movieName" /><br/> 
 	장르
@@ -268,4 +268,4 @@
 	<input type="submit" value="등록" /><input type="button" value="취소" onclick="javascript:history.go(-1);">
 </form>
 <div id="result">${errMsg }</div>
-</body>
+</div>

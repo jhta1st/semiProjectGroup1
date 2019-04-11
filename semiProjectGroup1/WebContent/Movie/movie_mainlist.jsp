@@ -12,63 +12,8 @@
 				<label for="${vo.genreNum }">${vo.genreName }</label>
 			</c:forEach>
 		</form>
-		<div>
-			<h2>인기영화</h2>
-			<div></div>
-		</div>
-		<%-- <c:forEach var="list" items="${movieMainList }">
-			<c:forEach var="map" items="${list }" varStatus="st">
-				<div>
-					<c:if test="${st.index==0 }">
-						<h2>${map.get("genreName") }</h2>
-					</c:if>
-
-					<div>
-						<c:if test="${st.index==0 }">
-							<input type="button" value="<">
-						</c:if>
-						<ul>
-							<li>
-								<div>
-									<a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum')}"><img src="${cp }/Movie/images/photo/${map.get('imageSavName')}" alt="이미지"></a>
-									<br>
-									<a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum')}"><label>${map.get('movieName') }</label></a>
-								</div>
-							</li>
-						</ul>
-						<c:if test="${st.last }">
-							<input type="button" value=">">
-						</c:if>
-					</div>
-				</div>
-			</c:forEach>
-		</c:forEach>
-		<c:forEach var="vo" items="${genreNamelist }">--%>
-		<div id="mainlist">
-			<%--
-				<h2>${vo.genreName }</h2>
-				<div onload="getList(${vo.genreNum})">
-					<c:if test="${st.index==0 }">
-						<input type="button" value="<">
-					</c:if>
-					<ul>
-						<li>
-							<div>
-								<a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum')}"><img src="${cp }/Movie/images/photo/${map.get('imageSavName')}" alt="이미지"></a>
-								<br>
-								<a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum')}"><label>${map.get('movieName') }</label></a>
-							</div>
-						</li>
-					</ul>
-					<c:if test="${st.last }">
-						<input type="button" value=">">
-					</c:if>
-				</div>
-			</div>
-		</c:forEach>
- --%>
-		</div>
 	</div>
+	<div id="mainlist"></div>
 </div>
 <script type="text/javascript">
 	getList('${cp}');

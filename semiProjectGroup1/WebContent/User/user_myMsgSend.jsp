@@ -1,14 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <table border="1">
 	<tr>
-		<td>¹ÞÀ»»ç¶÷</td>
-		<td><input type="text" id="userId" name="userId" value="" /> <input type="button" value="È®ÀÎ" onclick="checkUser()" /><span id="userChk_res"></span></td>
+		<td>ë°›ì„ì‚¬ëžŒ</td>
+		<td>
+			<input type="text" id="userId" name="userId" value="" /> <input type="button" value="í™•ì¸" onclick="checkUser()" /><span id="userChk_res"></span>
+		</td>
 	</tr>
 	<tr>
-		<td>ÂÊÁö³»¿ë</td>
-		<td><textarea rows="5" cols="50" id="content" name="content"></textarea></td>
+		<td>ìª½ì§€ë‚´ìš©</td>
+		<td>
+			<textarea rows="5" cols="50" id="content" name="content"></textarea>
+		</td>
 	</tr>
 </table>
-<input type="button" value="º¸³»±â" onclick="sendMessage()" />
-<input type="button" value="Ãë¼Ò" onclick="detailClose()" />
+<input type="button" value="ë³´ë‚´ê¸°" onclick="sendMessage()" />
+<input type="button" value="ì·¨ì†Œ" onclick="detailClose()" />

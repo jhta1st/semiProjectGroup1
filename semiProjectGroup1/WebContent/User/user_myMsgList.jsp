@@ -1,18 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
 <script>
 var userChkId = "";
 var xhr = null;
 function checkUser() {
 	var userId = document.getElementsByName("userId")[0];
 	if(userId.value.length < 4 ){
-		alert("¾ÆÀÌµğ´Â ÃÖ¼Ò 5ÀÚ·Î ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì•„ì´ë””ëŠ” ìµœì†Œ 5ìë¡œ ì…ë ¥í•˜ì„¸ìš”.");
 		userId.value.focus();
 		return false;
 	}
@@ -27,9 +21,9 @@ function checkUserResult() {
 		var data=xhr.responseText;
 		var result=eval("(" + data +")");
 		if (result.code == "success") {
-			document.getElementById("userChk_res").innerHTML='<font color="gray" id="userChk_ok">»ç¿ë °¡´ÉÇÑ ID ÀÔ´Ï´Ù.</font>';
+			document.getElementById("userChk_res").innerHTML='<font color="gray" id="userChk_ok">ì‚¬ìš© ê°€ëŠ¥í•œ ID ì…ë‹ˆë‹¤.</font>';
 		} else {
-			document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_fail">Á¸ÀçÇÏÁö ¾Ê´Â ID ÀÔ´Ï´Ù.</font>';
+			document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_fail">ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ID ì…ë‹ˆë‹¤.</font>';
 		}
 		userChkId = document.getElementsByName("userId")[0].value;
 	}
@@ -37,20 +31,20 @@ function checkUserResult() {
 function sendMessage() {
 	var userId = document.getElementsByName("userId")[0];
 	if(userId.value.length < 4 ){
-		alert("¾ÆÀÌµğ´Â ÃÖ¼Ò 5ÀÚ·Î ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì•„ì´ë””ëŠ” ìµœì†Œ 5ìë¡œ ì…ë ¥í•˜ì„¸ìš”.");
 		userId.focus();
 		return false;
 	}
 	var userChk = document.getElementById("userChk_ok");
 	if(userChkId != userId.value || userChk == null || userChk.length == 0 ){
-		alert("¾ÆÀÌµğ È®ÀÎÀ» ÇØÁÖ¼¼¿ä.");
+		alert("ì•„ì´ë”” í™•ì¸ì„ í•´ì£¼ì„¸ìš”.");
 		userId.focus();
 		return false;
 	}
 	userChkId = userId.value;
 	var content = document.getElementsByName("content")[0];
 	if(content.value.length == 0 ){
-		alert("ÂÊÁö ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ìª½ì§€ ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		content.focus();
 		return false;
 	}
@@ -66,15 +60,15 @@ function sendMessageResult() {
 		var data=xhr.responseText;
 		var result=eval("(" + data +")");
 		if (result.code == "success") {
-			alert("ÂÊÁö¸¦ º¸³Â½À´Ï´Ù.");
+			alert("ìª½ì§€ë¥¼ ë³´ëƒˆìŠµë‹ˆë‹¤.");
 			document.location="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}";
 		} else {
-			alert("¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			alert("ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 }
 function deleteMessage(num){
-	if(!confirm("ÂÊÁö¸¦ »èÁ¦ ÇÏ½Ã°Ú½À´Ï±î?")) {
+	if(!confirm("ìª½ì§€ë¥¼ ì‚­ì œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
 		return false;
 	}
 	xhr=new XMLHttpRequest();
@@ -88,10 +82,10 @@ function deleteMessageResult() {
 		var data=xhr.responseText;
 		var result=eval("(" + data +")");
 		if (result.code == "success") {
-			alert("ÂÊÁö¸¦ »èÁ¦ ÇÏ¿´½À´Ï´Ù.");
+			alert("ìª½ì§€ë¥¼ ì‚­ì œ í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			location.reload();
 		} else {
-			alert("¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			alert("ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 }
@@ -117,102 +111,105 @@ function detailClose() {
 	document.getElementById("msg_detail").innerHTML="";
 }
 </script>
-</head>
-<body>
-<h1>
-<a href="${pageContext.request.contextPath}/user/msgReceiveList.do?userId=${userId}" style="${type=='SEND' ? 'color:gray;font-weight:normal;font-size:20px;' : ''}">¹ŞÀºÂÊÁöÇÔ</a>
- | <a href="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}" style="${type!='SEND' ? 'color:gray;font-weight:normal;font-size:20px;' : ''}">º¸³½ÂÊÁöÇÔ</a>
-</h1>
-<hr>
-<div style="float: left;">
-	<table border="1" style="width:600px; table-layout:fixed;">
-		<tr>
-			<th>${type=="SEND" ? "¹ŞÀº»ç¶÷" : "º¸³½»ç¶÷"}</th>
-			<th style="width:200px;">ÂÊÁö³»¿ë</th>
-			<th>ÀÛ¼ºÀÏ</th>
-			<c:if test="${type=='SEND'}"><th>ÀĞ±â¿©ºÎ</th></c:if>
-			<th>»èÁ¦</th>
-		</tr>
-		<c:forEach var="vo" items="${list}">
-		<tr>
-			<td>${type=="SEND" ? vo.receiveUserId : vo.sendUserId}</td>
-			<td onclick="detailMessage(${vo.msgNum})" width="200" style="width:200px;text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
-				<a href="#"><nobr>${vo.msgContent.replace("<br/>","")}</nobr></a>
-			</td>
-			<td>${vo.msgWdate}</td>
-			<c:if test="${type=='SEND'}"><td>${vo.msgCheck > 0 ? "ÀĞÀ½" : "¾ÈÀĞÀ½"}</td></c:if>
-			<td><a href="${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}">»èÁ¦</a></td>
-		</tr>
-		</c:forEach>
-	</table>
-	<div>
-	<c:if test="${type=='RECEIVE'}">
-	<c:choose>
-		<c:when test="${startPage>10 }">
-			<a href="${cp }/user/msgReceiveList.do?pageNum=${startPage-1}">[ÀÌÀü]</a>
-		</c:when>
-		<c:otherwise>
-			[ÀÌÀü]
+<div>
+	<h1>
+		<a href="${pageContext.request.contextPath}/user/msgReceiveList.do?userId=${userId}" style="${type=='SEND' ? 'color:gray;font-weight:normal;font-size:20px;' : ''}">ë°›ì€ìª½ì§€í•¨</a> | <a href="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}" style="${type!='SEND' ? 'color:gray;font-weight:normal;font-size:20px;' : ''}">ë³´ë‚¸ìª½ì§€í•¨</a>
+	</h1>
+	<hr>
+	<div style="float: left;">
+		<table border="1" style="width: 600px; table-layout: fixed;">
+			<tr>
+				<th>${type=="SEND" ? "ë°›ì€ì‚¬ëŒ" : "ë³´ë‚¸ì‚¬ëŒ"}</th>
+				<th style="width: 200px;">ìª½ì§€ë‚´ìš©</th>
+				<th>ì‘ì„±ì¼</th>
+				<c:if test="${type=='SEND'}">
+					<th>ì½ê¸°ì—¬ë¶€</th>
+				</c:if>
+				<th>ì‚­ì œ</th>
+			</tr>
+			<c:forEach var="vo" items="${list}">
+				<tr>
+					<td>${type=="SEND" ? vo.receiveUserId : vo.sendUserId}</td>
+					<td onclick="detailMessage(${vo.msgNum})" width="200" style="width: 200px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+						<a href="#"><nobr>${vo.msgContent.replace("<br/>","")}</nobr></a>
+					</td>
+					<td>${vo.msgWdate}</td>
+					<c:if test="${type=='SEND'}">
+						<td>${vo.msgCheck > 0 ? "ì½ìŒ" : "ì•ˆì½ìŒ"}</td>
+					</c:if>
+					<td>
+						<a href="${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}">ì‚­ì œ</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<div>
+			<c:if test="${type=='RECEIVE'}">
+				<c:choose>
+					<c:when test="${startPage>10 }">
+						<a href="${cp }/user/msgReceiveList.do?pageNum=${startPage-1}">[ì´ì „]</a>
+					</c:when>
+					<c:otherwise>
+			[ì´ì „]
 		</c:otherwise>
-	</c:choose>
-	<c:forEach var="i" begin="${startPage }" end="${endPage }">
-		<c:choose>
-			<c:when test="${pageNum==i }">
-				<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color:pink">[${i }]</span></a>	
-			</c:when>
-			<c:otherwise>
-				<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color:#999">[${i }]</span></a>
-			</c:otherwise>
-		</c:choose>
-	</c:forEach>
-	<c:choose>
-		<c:when test="${endPage<pageCount}">
-			<a href="${cp }/user/msgReceiveList.do?pageNum=${endPage+1}">[´ÙÀ½]</a>
-		</c:when>
-		<c:otherwise>
-			[´ÙÀ½]
+				</c:choose>
+				<c:forEach var="i" begin="${startPage }" end="${endPage }">
+					<c:choose>
+						<c:when test="${pageNum==i }">
+							<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color: pink">[${i }]</span></a>
+						</c:when>
+						<c:otherwise>
+							<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color: #999">[${i }]</span></a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${endPage<pageCount}">
+						<a href="${cp }/user/msgReceiveList.do?pageNum=${endPage+1}">[ë‹¤ìŒ]</a>
+					</c:when>
+					<c:otherwise>
+			[ë‹¤ìŒ]
 		</c:otherwise>
-	</c:choose>
-	</c:if>
+				</c:choose>
+			</c:if>
+		</div>
+		<div>
+			<c:if test="${type=='SEND'}">
+				<c:choose>
+					<c:when test="${startPage>10 }">
+						<a href="${cp }/user/msgSendList.do?pageNum=${startPage-1}">[ì´ì „]</a>
+					</c:when>
+					<c:otherwise>
+			[ì´ì „]
+		</c:otherwise>
+				</c:choose>
+				<c:forEach var="i" begin="${startPage }" end="${endPage }">
+					<c:choose>
+						<c:when test="${pageNum==i }">
+							<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color: pink">[${i }]</span></a>
+						</c:when>
+						<c:otherwise>
+							<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color: #999">[${i }]</span></a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${endPage<pageCount}">
+						<a href="${cp }/user/msgSendList.do?pageNum=${endPage+1}">[ë‹¤ìŒ]</a>
+					</c:when>
+					<c:otherwise>
+			[ë‹¤ìŒ]
+		</c:otherwise>
+				</c:choose>
+			</c:if>
+		</div>
 	</div>
-	<div>
-<c:if test="${type=='SEND'}">
-	<c:choose>
-		<c:when test="${startPage>10 }">
-			<a href="${cp }/user/msgSendList.do?pageNum=${startPage-1}">[ÀÌÀü]</a>
-		</c:when>
-		<c:otherwise>
-			[ÀÌÀü]
-		</c:otherwise>
-	</c:choose>
-	<c:forEach var="i" begin="${startPage }" end="${endPage }">
-		<c:choose>
-			<c:when test="${pageNum==i }">
-				<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color:pink">[${i }]</span></a>	
-			</c:when>
-			<c:otherwise>
-				<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color:#999">[${i }]</span></a>
-			</c:otherwise>
-		</c:choose>
-	</c:forEach>
-	<c:choose>
-		<c:when test="${endPage<pageCount}">
-			<a href="${cp }/user/msgSendList.do?pageNum=${endPage+1}">[´ÙÀ½]</a>
-		</c:when>
-		<c:otherwise>
-			[´ÙÀ½]
-		</c:otherwise>
-	</c:choose>
-		</c:if>
+	<br>
+	<div style="float: right;" id="msg_detail"></div>
+	<div style="clear: both; display: block;">
+		<br />
+		<input type="button" value="ìª½ì§€ë³´ë‚´ê¸°" onclick="detailSendForm()" />
+		<hr />
+		<a href="${pageContext.request.contextPath}/main/layout.jsp">í™ˆìœ¼ë¡œ</a>
+	</div>
 </div>
-</div>
-<br>
-<div style="float: right;" id="msg_detail"></div>
-<div style="clear:both; display:block; ">
-	<br/>
-	<input type="button" value="ÂÊÁöº¸³»±â" onclick="detailSendForm()" />
-	<hr/>
-	<a href="${pageContext.request.contextPath}/main/layout.jsp">È¨À¸·Î</a>
-</div>
-</body>
-</html>
