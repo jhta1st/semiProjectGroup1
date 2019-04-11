@@ -226,7 +226,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==2 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -257,7 +257,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==3 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -288,7 +288,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==4 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -311,7 +311,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==11 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -333,7 +333,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==12 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -355,7 +355,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==13 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -377,7 +377,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==14 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -399,7 +399,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==15 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -421,7 +421,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==16 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -443,7 +443,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==17 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="">삭제</a>
+						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
