@@ -19,7 +19,8 @@ public class Admin_MovieGenreDeleteController extends HttpServlet{
 				Movie_GenreDao dao =Movie_GenreDao.getInstance();
 				int n=dao.delete(genreNum);
 				if(n>0) {
-					req.getRequestDispatcher("/admin/movieGenreList.do").forward(req, resp);	
+					req.setAttribute("pages", "/admin/movieGenreList.do");
+					req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 				}else {
 					req.setAttribute("resultCode", "fail");
 					req.getRequestDispatcher("/admin/movieGenreList.do").forward(req, resp);

@@ -20,10 +20,12 @@ public class Admin_MovieImgDeleteController extends HttpServlet {
 		Movie_ReviewImageDao dao = Movie_ReviewImageDao.getInstance();
 		int n = dao.delete(imageNum);
 		if (n > 0) {
-			req.getRequestDispatcher("/admin/MovieViewDetail.do?movieNum=" + movieNum).forward(req, resp);
+			req.setAttribute("pages", "/admin/MovieViewDetail.do?movieNum=" + movieNum);
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		} else {
 			req.setAttribute("code", "fail");
-			req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
+			req.setAttribute("pages", "/User/user_result.jsp");
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		}
 	}
 }

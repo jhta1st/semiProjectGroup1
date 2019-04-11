@@ -21,6 +21,7 @@ public class Admin_MovieGenreListController extends HttpServlet {
 		Movie_GenreDao dao = Movie_GenreDao.getInstance();
 		ArrayList<Movie_GenreVo> list =dao.listAll();
 		req.setAttribute("list", list);
-		req.getRequestDispatcher("/Admin/admin_MovieGenreList.jsp").forward(req, resp);
+		req.setAttribute("pages", "/Admin/admin_MovieGenreList.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

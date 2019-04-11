@@ -20,10 +20,12 @@ public class Admin_MoviePeopleDeleteController extends HttpServlet{
 				Admin_CharInfoDao dao = Admin_CharInfoDao.getInstance();
 				int n=dao.delete(charNum);
 				if(n>0) {
-					req.getRequestDispatcher("/admin/MoviePeopleList.do").forward(req, resp);	
+					req.setAttribute("pages", "/admin/MoviePeopleList.do");
+					req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 				}else {
 					req.setAttribute("code", "fail");
-					req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
+					req.setAttribute("pages", "/User/user_result.jsp");
+					req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 				}	
 	}
 }

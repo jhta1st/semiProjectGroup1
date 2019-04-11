@@ -20,12 +20,12 @@ public class Admin_MovieUrlDeleteController extends HttpServlet {
 		int movieNum = Integer.parseInt(request.getParameter("movieNum"));
 		Movie_UrlInfoDao urlInfodao = Movie_UrlInfoDao.getInstance();
 		if (urlInfodao.urlInfoDelete(urlNum) > 0) {
-			response.sendRedirect(
-					getServletContext().getAttribute("cp") + "/admin/MovieViewDetail.do?movieNum=" + movieNum);
+			request.setAttribute("pages", "/admin/MovieViewDetail.do?movieNum=" + movieNum);
+			request.getRequestDispatcher("/main/layout.jsp").forward(request, response);
 		} else {
 			request.setAttribute("code", "fail");
-			request.getRequestDispatcher("/Admin/urlDelResult.jsp").forward(request, response);
-			;
+			request.setAttribute("pages", "/Admin/urlDelResult.jsp");
+			request.getRequestDispatcher("/main/layout.jsp").forward(request, response);
 		}
 	}
 

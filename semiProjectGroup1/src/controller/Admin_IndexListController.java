@@ -14,6 +14,7 @@ import vo.User_UserInfoVo;
 public class Admin_IndexListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect(req.getContextPath()+"/Admin/admin_index.jsp");
+		req.setAttribute("pages", "/Admin/admin_index.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

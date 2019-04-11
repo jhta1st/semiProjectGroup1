@@ -27,6 +27,7 @@ public class Admin_MoviePeopleDetailController extends HttpServlet {
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("field", field);
 		req.setAttribute("keyword", keyword);
-		req.getRequestDispatcher("/Admin/admin_MoviePeopleDetail.jsp").forward(req, resp);
+		req.setAttribute("pages", "/Admin/admin_MoviePeopleDetail.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

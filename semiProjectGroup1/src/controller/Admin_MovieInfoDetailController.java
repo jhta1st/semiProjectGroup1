@@ -34,6 +34,7 @@ public class Admin_MovieInfoDetailController extends HttpServlet {
 		req.setAttribute("imgList", imgList);
 		req.setAttribute("urlList", urlList);
 		req.setAttribute("crewList", crewList);
-		req.getRequestDispatcher("/Admin/admin_MovieInfoDetail.jsp").forward(req, resp);
+		req.setAttribute("pages", "/Admin/admin_MovieInfoDetail.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

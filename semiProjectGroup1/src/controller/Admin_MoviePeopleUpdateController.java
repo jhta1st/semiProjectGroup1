@@ -64,10 +64,12 @@ public class Admin_MoviePeopleUpdateController extends HttpServlet{
 				n=dao.update(vo2);
 			}
 			if(n>0){
-				resp.sendRedirect(req.getContextPath()+"/admin/MoviePeopleList.do");
+				req.setAttribute("pages", "/admin/MoviePeopleList.do");
+				req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 			}else{
 				req.setAttribute("code", "fail");
-				req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
+				req.setAttribute("pages", "/User/user_result.jsp");
+				req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 			}	
 	}
 }

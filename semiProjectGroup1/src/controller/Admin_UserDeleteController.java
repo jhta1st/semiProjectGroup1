@@ -25,9 +25,11 @@ public class Admin_UserDeleteController extends HttpServlet {
 		Admin_adminDao dao = new Admin_adminDao();
 		int n = dao.update1(vo);
 		if (n > 0) {
-			req.getRequestDispatcher("/admin/list.do").forward(req, resp);
+			req.setAttribute("pages", "/admin/list.do");
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		} else {
 			req.setAttribute("code", "fail");
+			req.setAttribute("pages", "/admin/list.do");
 			req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
 		}
 	}
