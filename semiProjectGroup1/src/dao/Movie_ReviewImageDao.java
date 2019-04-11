@@ -27,14 +27,14 @@ public class Movie_ReviewImageDao {
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "SELECT ImageSavName,NVL(ImageType,0) FROM REVIEWIMAGE WHERE MOVIENUM=? ORDER BY IMAGETYPE";
+			String sql = "SELECT * FROM REVIEWIMAGE WHERE MOVIENUM=? ORDER BY IMAGETYPE";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, movieNum);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("ImageSavName", rs.getString("ImageSavName"));
-				map.put("ImageType", rs.getString("ImageType"));
+				map.put("ImageType", rs.getInt("ImageType"));
 				list.add(map);
 			}
 			return list;

@@ -61,7 +61,7 @@
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==1 }">
 					<td>
-						<img alt="영화이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+						<img alt="영화대표이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
 						<c:set var="tmp" value="${tmp=tmp+1 }" />
 					</td>
 				</c:if>
@@ -86,7 +86,7 @@
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==2 }">
 					<td>
-						<img alt="영화이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+						<img alt="영화포스터이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -108,7 +108,7 @@
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==3 }">
 					<td>
-						<img alt="영화이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+						<img alt="영화스틸샷이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -125,8 +125,6 @@
 				</c:if>
 			</c:forEach>
 		</tr>
-
-		<c:set var="tmp" value="0" />
 		<tr>
 			<th rowspan="4">동영상</th>
 			<th rowspan="2">예고편</th>
@@ -176,10 +174,13 @@
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==1 }">
 					<td>
-						<img alt="조연이미지" src="${cp}/Movie/images/char/${vo.get('charSavFileName')}">
+						<img alt="주연이미지" src="${cp}/Movie/images/char/${vo.get('charSavFileName')}">
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -195,10 +196,13 @@
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==2 }">
 					<td>
-						<img alt="주연이미지" src="${cp}/Movie/images/char/${vo.get('charSavFileName')}">
+						<img alt="조연이미지" src="${cp}/Movie/images/char/${vo.get('charSavFileName')}">
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -218,6 +222,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -237,6 +244,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -257,6 +267,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -276,6 +289,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -295,6 +311,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -314,6 +333,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -333,6 +355,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -352,6 +377,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
@@ -371,6 +399,9 @@
 					</td>
 				</c:if>
 			</c:forEach>
+			<td>
+				<a href="">추가</a>
+			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
