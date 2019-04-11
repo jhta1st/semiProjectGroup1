@@ -14,7 +14,8 @@ import vo.User_UserInfoVo;
 public class User_UserInfoRegistrationController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect(req.getContextPath()+"/User/user_registration.jsp");
+		req.setAttribute("pages", "/User/user_registration.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,6 +31,7 @@ public class User_UserInfoRegistrationController extends HttpServlet {
 		} else {
 			req.setAttribute("code", "fail");
 		}
-		req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
+		req.setAttribute("pages", "/User/user_result.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

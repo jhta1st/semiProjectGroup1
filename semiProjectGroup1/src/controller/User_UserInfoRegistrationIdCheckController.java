@@ -49,7 +49,6 @@ public class User_UserInfoRegistrationIdCheckController extends HttpServlet {
 		} else {
 			json.put("code", "fail");
 		}
-
 		resp.setContentType("text/plain;charset=utf-8");
 		resp.getWriter().print(json.toString());
 	}

@@ -22,7 +22,8 @@ public class User_UpdateController extends HttpServlet{
 		User_UserInfoDao dao=new User_UserInfoDao();
 		User_UserInfoVo vo=dao.detail(userId);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/User/user_update.jsp").forward(req, resp);
+		req.setAttribute("pages", "/User/user_update.jsp");
+		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
