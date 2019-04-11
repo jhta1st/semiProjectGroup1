@@ -55,8 +55,8 @@
 				div.innerHTML="<div style='display: inline-block;'><strong>"+userId+"</strong><br>"+freeBoardCommContent;
 				if("${sessionScope.id }"==userId){
 					div.innerHTML+="<div style='float:right';>"+
-					"<a href=javascript:commUpdate(" + freeBoardCommNum + ")>수정</a><br>"+
-					"<a href=javascript:commDelete(" + freeBoardCommNum + ")>삭제</a>"+
+					"<a href='javascript:commUpdate(" + freeBoardCommNum + ")'>수정</a><br>"+
+					"<a href='javascript:commDelete(\"" + userId +"\"," + freeBoardCommNum + ")'>삭제</a>"+
 					"</div></div>";
 				}
 				//div.className="";
@@ -86,10 +86,10 @@
 		}
 	}
 	var deleteXhr=null;
-	function commDelete(freeBoardCommNum){
+	function commDelete(userId,freeBoardCommNum){
 		deleteXhr=new XMLHttpRequest();
 		deleteXhr.onreadystatechange=commDeleteOk;
-		deleteXhr.open("get", "${cp}/FreeBoard/commDelete.do?freeBoardCommNum="+ freeBoardCommNum, true);
+		deleteXhr.open("get", "${cp}/FreeBoard/commDelete.do?userId=" + userId + "&freeBoardCommNum=" + freeBoardCommNum, true);
 		deleteXhr.send();
 	}
 	function commDeleteOk(){
@@ -152,7 +152,7 @@
 		</table>
 		<c:if test="${sessionScope.id==vo.userId}">
 			<a href="${cp }/FreeBoard/ContentUpdate.do?freeBoardNum=${vo.freeBoardNum}">수정</a><br>
-			<a href="${cp }/FreeBoard/ContentDelete.do?freeBoardNum=${vo.freeBoardNum}">삭제</a><br>
+			<a href="${cp }/FreeBoard/ContentDelete.do?userId=${vo.userId }&freeBoardNum=${vo.freeBoardNum}">삭제</a><br>
 		</c:if>
 		<a href="${cp }/FreeBoard/list.do?pageNum=${pageNum}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}">목록</a><br>
 	</div>

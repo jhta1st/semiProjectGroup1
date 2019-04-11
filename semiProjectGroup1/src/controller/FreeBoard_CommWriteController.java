@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.FreeBoard_FreeBoardCommDao;
+import dao.User_UserInfoDao;
 import vo.FreeBoard_FreeBoardCommVo;
 
 @WebServlet("/FreeBoard/commWrite.do")
@@ -22,7 +23,8 @@ public class FreeBoard_CommWriteController extends HttpServlet{
 		FreeBoard_FreeBoardCommVo vo=new FreeBoard_FreeBoardCommVo(0, freeBoardCommContent, null, freeBoardNum, userId);
 		FreeBoard_FreeBoardCommDao dao=FreeBoard_FreeBoardCommDao.getInstance();
 		if(dao.commWrite(vo)>0) {
-			
+			User_UserInfoDao uiDao=new User_UserInfoDao();
+			uiDao.ExpCalc(userId);
 		}else {
 			req.setAttribute("errCode", "-1");
 			req.setAttribute("errMsg", "CommWrite½ÇÆÐ");

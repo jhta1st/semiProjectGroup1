@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,8 @@ public class User_MyPageController extends HttpServlet {
 		String userId=req.getParameter("userId");
 		User_UserInfoDao dao = new User_UserInfoDao();
 		User_UserInfoVo vo = dao.detail(userId);
+		int exp=dao.ExpCalc(userId);
+		req.setAttribute("exp", exp);
 		req.setAttribute("vo", vo);
 		req.setAttribute("pages", "/User/user_myPage.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);

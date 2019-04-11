@@ -14,6 +14,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.FreeBoard_FreeBoardDao;
 import dao.FreeBoard_FreeBoardImageDao;
+import dao.User_UserInfoDao;
 import vo.FreeBoard_FreeBoardImageVo;
 import vo.FreeBoard_FreeBoardVo;
 
@@ -55,6 +56,8 @@ public class FreeBoard_WriteController extends HttpServlet{
 						req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 					}
 				}
+			User_UserInfoDao uiDao=new User_UserInfoDao();
+			uiDao.ExpCalc(userId);
 			resp.sendRedirect(req.getContextPath()+"/FreeBoard/Content.do?freeBoardNum="+freeBoardNum);
 			}else {
 				req.setAttribute("errCode", "-1");

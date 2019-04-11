@@ -20,7 +20,7 @@
 			<td>${vo.userPwd }</td>
 			<td>${vo.userNickName }</td>
 			<td>${vo.userLev}</td>
-			<td>${vo.userExp}</td>
+			<td>${exp}</td>
 			<td>${vo.userJdate }</td>	
 		</tr>
 </table>
