@@ -19,7 +19,7 @@
 			<td>${vo.userId}</td>
 			<td>${vo.userPwd }</td>
 			<td>${vo.userNickName }</td>
-			<td>${vo.userLev}</td>
+			<td>${lev}</td>
 			<td>${exp}</td>
 			<td>${vo.userJdate }</td>	
 		</tr>

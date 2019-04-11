@@ -18,8 +18,10 @@ public class User_MyPageController extends HttpServlet {
 		String userId=req.getParameter("userId");
 		User_UserInfoDao dao = new User_UserInfoDao();
 		User_UserInfoVo vo = dao.detail(userId);
-		int exp=dao.ExpCalc(userId);
+		int exp=dao.expCalc(userId);
+		int lev=dao.levCalc(userId);
 		req.setAttribute("exp", exp);
+		req.setAttribute("lev", lev);
 		req.setAttribute("vo", vo);
 		req.setAttribute("pages", "/User/user_myPage.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);

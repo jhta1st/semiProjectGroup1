@@ -30,7 +30,8 @@ public class FreeBoard_ContentDeleteController extends HttpServlet{
 		FreeBoard_FreeBoardDao dao=FreeBoard_FreeBoardDao.getInstance();
 		if(dao.contentDelete(freeBoardNum)>0) {
 			User_UserInfoDao uiDao=new User_UserInfoDao();
-			uiDao.ExpCalc(userId);
+			uiDao.expCalc(userId);
+			uiDao.levCalc(userId);
 			resp.sendRedirect(req.getContextPath()+"/FreeBoard/list.do");
 		}else {
 			req.setAttribute("errCode", "-1");

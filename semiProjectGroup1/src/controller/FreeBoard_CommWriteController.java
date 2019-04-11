@@ -24,7 +24,8 @@ public class FreeBoard_CommWriteController extends HttpServlet{
 		FreeBoard_FreeBoardCommDao dao=FreeBoard_FreeBoardCommDao.getInstance();
 		if(dao.commWrite(vo)>0) {
 			User_UserInfoDao uiDao=new User_UserInfoDao();
-			uiDao.ExpCalc(userId);
+			uiDao.expCalc(userId);
+			uiDao.levCalc(userId);
 		}else {
 			req.setAttribute("errCode", "-1");
 			req.setAttribute("errMsg", "CommWrite½ÇÆÐ");

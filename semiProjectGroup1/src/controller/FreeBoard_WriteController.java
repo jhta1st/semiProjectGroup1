@@ -57,7 +57,8 @@ public class FreeBoard_WriteController extends HttpServlet{
 					}
 				}
 			User_UserInfoDao uiDao=new User_UserInfoDao();
-			uiDao.ExpCalc(userId);
+			uiDao.expCalc(userId);
+			uiDao.levCalc(userId);
 			resp.sendRedirect(req.getContextPath()+"/FreeBoard/Content.do?freeBoardNum="+freeBoardNum);
 			}else {
 				req.setAttribute("errCode", "-1");

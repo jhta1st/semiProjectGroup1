@@ -12,12 +12,15 @@ import db.JDBCUtil;
 import vo.User_UserInfoVo;
 
 public class User_UserInfoDao {
-	public int lvCalc(String userId) {
+	public int levCalc(String userId) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		PreparedStatement pstmt2=null;
+		PreparedStatement pstmt3=null;
+		PreparedStatement pstmt4=null;
 		ResultSet rs=null;
 		ResultSet rs2=null;
+		ResultSet rs3=null;
 		HashMap<String, Integer> list=new HashMap<String, Integer>();
 		try {
 			con=JDBCUtil.getConn();
@@ -42,16 +45,35 @@ public class User_UserInfoDao {
 			int writeExp=(list.get("write")*5);
 			int commExp=(list.get("comm")*3);
 			int exp=writeExp+commExp;
-			return exp;
+			String sql3="select userLev from userinfo where userId=?";
+			pstmt3=con.prepareStatement(sql3);
+			pstmt3.setString(1, userId);
+			rs3=pstmt3.executeQuery();
+			int lev=0;
+			if(rs3.next()) {
+				lev=rs3.getInt(1);
+			}
+			lev=(int)(exp/(100*(lev+2)));
+			if(lev<1) {
+				lev=1;
+			}
+			String sql4="update userinfo set userLev=? where userId=?";
+			pstmt4=con.prepareStatement(sql4);
+			pstmt4.setInt(1, lev);
+			pstmt4.setString(2, userId);
+			pstmt4.executeUpdate();
+			return lev;
 		}catch(SQLException se) {
 			se.printStackTrace();
 			return -1;
 		}finally {
+			JDBCUtil.close(null, pstmt4,null);
+			JDBCUtil.close(null, pstmt3,rs3);
 			JDBCUtil.close(null, pstmt2,rs2);
 			JDBCUtil.close(con, pstmt,rs);
 		}
 	}
-	public int ExpCalc(String userId) {
+	public int expCalc(String userId) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		PreparedStatement pstmt2=null;
