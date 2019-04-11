@@ -91,7 +91,7 @@ public class Movie_MovieInfoDao {
 					int movieNum = rs.getInt("movieNum");
 					String movieName = rs.getString("movieName");
 					String genreName = rs.getString("genreName");
-					int genreNum=rs.getInt("genreNum");
+					int genreNum = rs.getInt("genreNum");
 					int imageNum = rs.getInt("imageNum");
 					String imageSavName = rs.getString("imageSavName");
 					HashMap<String, Object> map = new HashMap<String, Object>();
@@ -244,4 +244,36 @@ public class Movie_MovieInfoDao {
 		}
 	}
 
+	public Movie_MovieInfoVo getMovieInfo(int movieNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "SELECT * FROM MOVIEINFO WHERE MOVIENUM=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, movieNum);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String movieName = rs.getString("movieName");
+				String movieIntro = rs.getString("movieIntro");
+				Date movieReleaseDate = rs.getDate("movieReleaseDate");
+				int movieRunTime = rs.getInt("movieRunTime");
+				String movieProduction = rs.getString("movieProduction");
+				String movieDistributer = rs.getString("movieDistributer");
+				String nation = rs.getString("nation");
+				int movieAge = rs.getInt("movieAge");
+				Movie_MovieInfoVo vo = new Movie_MovieInfoVo(movieNum, movieName, movieIntro, movieReleaseDate,
+						movieRunTime, movieProduction, movieDistributer, nation, movieAge);
+				return vo;
+			}
+			return null;
+		} catch (SQLException e) {
+			// TODO 자동 생성된 catch 블록
+			e.printStackTrace();
+			return null;
+		} finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
 }
