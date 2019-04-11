@@ -19,8 +19,28 @@ function checkAllch(chk) {
 	}
 }
 
+var rateXhr=null;
 function rateInsert() {
-
+	var rate=document.getElementsByName("rate")[0].value;
+	var rateComm=document.getElementById("rateComm").value;
+	var movieNum=0;//???
+	rateXhr=new XMLHttpRequest();
+	rateXhr.onreadystatechange=function(){
+		if (listXhr.readyState == 4 && listXhr.status == 200) {
+			var data=rateXhr.responseText;
+			var insertJson=JSON.parse(data);
+			if (insertJson.code=='success') {
+				document.getElementById("rateComm").value="";
+				document.getElementsByName("rate").value="5";
+			}else{
+				alert("등록실패!");
+			}
+		}
+	};
+	rateXhr.open('post', cp+'/Movie/insertRate.do', true);
+	rateXhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+	var insertparam = "rate=" + rate + "&rateComm=" + rateComm + "&movieNum="+movieNum;
+	comXhr.send(insertparam);
 }
 
 var listXhr = null;
@@ -77,7 +97,6 @@ function listOk() {
 }
 
 function delItem() {
-
 	var childs=clickdiv.childNodes;
 	for (var i = 0; childs.length-1>=0; i--) {
 		var child = childs.item(i);
