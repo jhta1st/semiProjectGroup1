@@ -59,7 +59,7 @@ public class Admin_MovieImgUpdateController extends HttpServlet {
 			Movie_ReviewImageVo vo2 = new Movie_ReviewImageVo(imageNum, imageType, imageOrgName, savefile, movieNum);
 			n = dao.update(vo2);
 			// 3. 기존파일삭제
-			String imageSavName = vo2.getImageSavName();
+			String imageSavName = vo1.getImageSavName();
 			File f = new File(dir + "\\" + imageSavName);
 			if (f.delete()) {
 				System.out.println("기존파일삭제 성공!");
