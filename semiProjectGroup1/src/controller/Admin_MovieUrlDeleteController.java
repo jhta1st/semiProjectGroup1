@@ -23,7 +23,7 @@ public class Admin_MovieUrlDeleteController extends HttpServlet {
 			response.sendRedirect(
 					getServletContext().getAttribute("cp") + "/admin/MovieViewDetail.do?movieNum=" + movieNum);
 		} else {
-			request.setAttribute("code", "삭제오류!");
+			request.setAttribute("code", "fail");
 			request.getRequestDispatcher("/Admin/urlDelResult.jsp").forward(request, response);
 			;
 		}
