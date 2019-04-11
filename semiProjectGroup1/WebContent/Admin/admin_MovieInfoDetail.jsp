@@ -169,8 +169,8 @@
 	</table>
 	<table border="1">
 		<tr>
-			<th rowspan="8">출연진</th>
-			<th rowspan="2">주연</th>
+			<th rowspan="12">출연진</th>
+			<th rowspan="3">주연</th>
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==1 }">
 					<td>
@@ -186,13 +186,22 @@
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==1 }">
 					<td>
+						<span>${vo.get('castDoName') }(${vo.get('charName') })</span>
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<c:forEach var="vo" items="${crewList }">
+				<c:if test="${vo.get('castDoNum')==1 }">
+					<td>
 						<a href="">수정</a> <a href="">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
 		</tr>
 		<tr>
-			<th rowspan="2">조연</th>
+			<th rowspan="3">조연</th>
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==2 }">
 					<td>
@@ -208,13 +217,22 @@
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==2 }">
 					<td>
+						<span>${vo.get('castDoName') }(${vo.get('charName') })</span>
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<c:forEach var="vo" items="${crewList }">
+				<c:if test="${vo.get('castDoNum')==2 }">
+					<td>
 						<a href="">수정</a> <a href="">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
 		</tr>
 		<tr>
-			<th rowspan="2">엑스트라</th>
+			<th rowspan="3">엑스트라</th>
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==3 }">
 					<td>
@@ -230,13 +248,22 @@
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==3 }">
 					<td>
+						<span>${vo.get('castDoName') }(${vo.get('charName') })</span>
+					</td>
+				</c:if>
+			</c:forEach>
+		</tr>
+		<tr>
+			<c:forEach var="vo" items="${crewList }">
+				<c:if test="${vo.get('castDoNum')==3 }">
+					<td>
 						<a href="">수정</a> <a href="">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
 		</tr>
 		<tr>
-			<th rowspan="2">까메오</th>
+			<th rowspan="3">까메오</th>
 			<c:forEach var="vo" items="${crewList }">
 				<c:if test="${vo.get('castDoNum')==4 }">
 					<td>
@@ -247,6 +274,15 @@
 			<td>
 				<a href="">추가</a>
 			</td>
+		</tr>
+		<tr>
+			<c:forEach var="vo" items="${crewList }">
+				<c:if test="${vo.get('castDoNum')==4 }">
+					<td>
+						<span>${vo.get('castDoName') }(${vo.get('charName') })</span>
+					</td>
+				</c:if>
+			</c:forEach>
 		</tr>
 		<tr>
 			<c:forEach var="vo" items="${crewList }">
