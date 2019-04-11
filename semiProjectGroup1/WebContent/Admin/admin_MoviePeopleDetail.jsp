@@ -18,7 +18,7 @@
 			<td>${vo.charNum}</td>
 			<td>${vo.charName }</td>
 			<td>
-			<img src="${cp }/Admin/AdminMoviePeopleImageUpload/${vo.charSavFileName }" style="width: 200px; height: 200px;">
+			<img src="${cp }/Movie/images/char/${vo.charSavFileName }" style="width: 200px; height: 200px;">
 			</td>
 		</tr>
 </table>
