@@ -30,6 +30,7 @@ public class Admin_MovieInfoDetailController extends HttpServlet {
 		Movie_CharInfoDao charInfoDao = Movie_CharInfoDao.getInstance();
 		ArrayList<HashMap<String, Object>> crewList = charInfoDao.getCharinfo(movieNum);
 		req.setAttribute("vo", vo);
+		req.setAttribute("movieNum", movieNum);
 		req.setAttribute("imgList", imgList);
 		req.setAttribute("urlList", urlList);
 		req.setAttribute("crewList", crewList);
