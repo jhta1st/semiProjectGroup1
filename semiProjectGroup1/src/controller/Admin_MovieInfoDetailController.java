@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Admin_MovieViewDao;
+import dao.Movie_CharInfoDao;
 import dao.Movie_ReviewImageDao;
 import dao.Movie_UrlInfoDao;
 import vo.Admin_MovieViewVo;
@@ -26,9 +27,12 @@ public class Admin_MovieInfoDetailController extends HttpServlet {
 		ArrayList<HashMap<String, Object>> imgList = reviewImgDao.getImages(movieNum);
 		Movie_UrlInfoDao urlInfoDao = Movie_UrlInfoDao.getInstance();
 		ArrayList<HashMap<String, Object>> urlList = urlInfoDao.getVedioUrl(movieNum);
+		Movie_CharInfoDao charInfoDao = Movie_CharInfoDao.getInstance();
+		ArrayList<HashMap<String, Object>> crewList = charInfoDao.getCharinfo(movieNum);
 		req.setAttribute("vo", vo);
 		req.setAttribute("imgList", imgList);
 		req.setAttribute("urlList", urlList);
+		req.setAttribute("crewList", crewList);
 		req.getRequestDispatcher("/Admin/admin_MovieInfoDetail.jsp").forward(req, resp);
 	}
 }

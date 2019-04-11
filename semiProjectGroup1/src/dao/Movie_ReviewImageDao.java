@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import db.JDBCUtil;
-import vo.Movie_CastInfoVo;
 import vo.Movie_ReviewImageVo;
 
 public class Movie_ReviewImageDao {
@@ -28,7 +27,7 @@ public class Movie_ReviewImageDao {
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		try {
 			con = JDBCUtil.getConn();
-			String sql = "SELECT * FROM REVIEWIMAGE WHERE MOVIENUM=? ORDER BY IMAGETYPE";
+			String sql = "SELECT ImageSavName,NVL(ImageType,0) FROM REVIEWIMAGE WHERE MOVIENUM=? ORDER BY IMAGETYPE";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, movieNum);
 			rs = pstmt.executeQuery();

@@ -34,6 +34,7 @@ public class Movie_UrlInfoDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("urlType", rs.getInt("urlType"));
 				map.put("urlAddr", rs.getString("urlAddr"));
 				list.add(map);
 			}
@@ -46,22 +47,23 @@ public class Movie_UrlInfoDao {
 			JDBCUtil.close(con, pstmt, rs);
 		}
 	}
+
 	public int urlInfoWrite(Movie_UrlInfoVo vo) {
-		Connection con=null;
-		PreparedStatement pstmt=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		try {
-			con=JDBCUtil.getConn();
-			String sql="insert into urlInfo values(urlinfo_seq.nextval,?,?,?)";
-			pstmt=con.prepareStatement(sql);
+			con = JDBCUtil.getConn();
+			String sql = "insert into urlInfo values(urlinfo_seq.nextval,?,?,?)";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, vo.getUrlType());
 			pstmt.setString(2, vo.getUrlAddr());
 			pstmt.setInt(3, vo.getMovieNum());
 			return pstmt.executeUpdate();
-		}catch(SQLException se) {
+		} catch (SQLException se) {
 			se.printStackTrace();
 			return -1;
-		}finally {
-			JDBCUtil.close(con,pstmt,null);
+		} finally {
+			JDBCUtil.close(con, pstmt, null);
 		}
 	}
 }
