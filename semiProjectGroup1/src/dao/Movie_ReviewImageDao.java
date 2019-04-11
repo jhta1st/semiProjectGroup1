@@ -97,7 +97,7 @@ public class Movie_ReviewImageDao {
 		pstmt.setString(2, vo.getImageOrgName());
 		pstmt.setString(3, vo.getImageSavName());
 		pstmt.setInt(4, vo.getImageNum());
-		pstmt.setInt(4, vo.getMovieNum());
+		pstmt.setInt(5, vo.getMovieNum());
 		return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());
