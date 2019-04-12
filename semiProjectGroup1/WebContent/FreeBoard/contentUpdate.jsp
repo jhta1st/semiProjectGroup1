@@ -51,8 +51,7 @@
 			</div>
 			<div id="fileUploadPlusArea">
 				<c:forEach var="list" items="${vo1}">
-					<div>
-						<input type="hidden" name="freeBoardImgNum" disabled="disabled" value="${list.freeBoardImgNum }"> <input type="text" disabled="disabled" value="${list.freeBoardOrgImgName }"> <input type="button" value="삭제" onclick="fileUploadUpdateDelete(event);">
+					<div><input type="hidden" name="freeBoardImgNum" disabled="disabled" value="${list.freeBoardImgNum }"> <input type="text" disabled="disabled" value="${list.freeBoardOrgImgName }"> <input type="button" value="삭제" onclick="fileUploadUpdateDelete(event);">
 					</div>
 				</c:forEach>
 			</div>

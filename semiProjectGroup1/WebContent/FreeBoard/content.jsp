@@ -153,7 +153,7 @@
 		</c:forEach>
 	</table>
 	<c:if test="${sessionScope.id==vo.userId}">
-		<a href="${cp }/FreeBoard/ContentUpdate.do?freeBoardNum=${vo.freeBoardNum}">수정</a><br>
+		<a href="${cp }/FreeBoard/ContentUpdate.do?freeBoardNum=${vo.freeBoardNum}&pageNum=${pageNum}">수정</a><br>
 		<a href="${cp }/FreeBoard/ContentDelete.do?userId=${vo.userId }&freeBoardNum=${vo.freeBoardNum}">삭제</a><br>
 	</c:if>
 	<a href="${cp }/FreeBoard/list.do?pageNum=${pageNum}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}">목록</a><br>

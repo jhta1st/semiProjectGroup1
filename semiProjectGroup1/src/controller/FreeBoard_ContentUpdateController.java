@@ -45,20 +45,22 @@ public class FreeBoard_ContentUpdateController extends HttpServlet{
 				);
 			String freeBoardTitle=mr.getParameter("freeBoardTitle");
 			String freeBoardContent=mr.getParameter("freeBoardContent");
+			String pageNum=mr.getParameter("pageNum");
 			int freeBoardNum=Integer.parseInt(mr.getParameter("freeBoardNum"));
 			FreeBoard_FreeBoardVo vo=new FreeBoard_FreeBoardVo(freeBoardNum, freeBoardTitle, freeBoardContent, null, null);
 			FreeBoard_FreeBoardDao dao=FreeBoard_FreeBoardDao.getInstance();
 			FreeBoard_FreeBoardImageDao dao1=FreeBoard_FreeBoardImageDao.getInstance();
 			if(dao.contentUpdate(vo)>0) {//내용 업데이트 되면 이미지 삭제
 				String[] freeBoardImgNums=mr.getParameterValues("freeBoardImgNum");//이미지 삭제
-				System.out.println("freeBoardImgNums"+freeBoardImgNums);
-				for(int i=0;i<freeBoardImgNums.length;i++) {
-					int freeBoardImgNum=Integer.parseInt(freeBoardImgNums[i]);
-					if(dao1.contentImgDelete(freeBoardImgNum)<0) {
-						req.setAttribute("errCode", "-1");
-						req.setAttribute("errMsg", "ImgDelete실패");
-						req.getRequestDispatcher("/ETC/error.jsp").forward(req, resp);
-						return;
+				if(freeBoardImgNums!=null) {
+					for(int i=0;i<freeBoardImgNums.length;i++) {
+						int freeBoardImgNum=Integer.parseInt(freeBoardImgNums[i]);
+						if(dao1.contentImgDelete(freeBoardImgNum)<0) {
+							req.setAttribute("errCode", "-1");
+							req.setAttribute("errMsg", "ImgDelete실패");
+							req.getRequestDispatcher("/ETC/error.jsp").forward(req, resp);
+							return;
+						}
 					}
 				}
 				Enumeration<String> em=mr.getFileNames();//삭제가 끝나면 이미지 등록
@@ -75,7 +77,7 @@ public class FreeBoard_ContentUpdateController extends HttpServlet{
 						return;
 					}
 				}
-				resp.sendRedirect(req.getContextPath()+"/FreeBoard/Content.do?freeBoardNum="+freeBoardNum);
+				resp.sendRedirect(req.getContextPath()+"/FreeBoard/Content.do?freeBoardNum="+freeBoardNum+"&pageNum="+pageNum);
 			}else {
 				req.setAttribute("errCode", "-1");
 				req.setAttribute("errMsg", "Update실패");

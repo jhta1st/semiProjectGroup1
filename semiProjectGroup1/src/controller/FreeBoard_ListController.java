@@ -24,10 +24,9 @@ public class FreeBoard_ListController extends HttpServlet{
 		String freeBoardSearchField=req.getParameter("freeBoardSearchField");
 		String freeBoardSearchKeyword=req.getParameter("freeBoardSearchKeyword");
 		int pageNum=1;
-		if(sPageNum!=null) {
+		if(sPageNum!=null && sPageNum!="") {
 			pageNum=Integer.parseInt(sPageNum);
 		}
-		System.out.println("pageNum:"+pageNum);
 		int endRow=pageNum*10;
 		int startRow=endRow-9;
 		FreeBoard_FreeBoardDao dao=FreeBoard_FreeBoardDao.getInstance();

@@ -22,7 +22,7 @@
 	<div>
 		<p>내가 좋아하는 영화</p>
 		<c:forEach var="map" items="${list }">
-			<p>map.get("moviName")</p>
+			<p>map.get("movieName")</p>
 		</c:forEach>
 	</div>
 </div>
