@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/main/layout.jsp</title>
+<link rel="stylesheet" type="text/css" href="${cp }/CSS/mainCSS.css"/>
 </head>
 <body>
 	<div id="wrap">
