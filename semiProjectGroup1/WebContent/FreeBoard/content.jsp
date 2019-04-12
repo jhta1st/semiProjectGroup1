@@ -52,12 +52,12 @@
 				var freeBoardNum=comms[i].getElementsByTagName("freeBoardNum")[0].firstChild.nodeValue;
 				var userId=comms[i].getElementsByTagName("userId")[0].firstChild.nodeValue;
 				var div=document.createElement("div");
-				div.innerHTML="<div style='display: inline-block;'><strong>"+userId+"</strong><br>"+freeBoardCommContent;
+				div.innerHTML="<div style='display: inline-block;'><strong>"+userId+"</strong><br>"+freeBoardCommContent+"</div>";
 				if("${sessionScope.id }"==userId){
 					div.innerHTML+="<div style='float:right';>"+
 					"<a href='javascript:commUpdate(" + freeBoardCommNum + ")'>수정</a><br>"+
 					"<a href='javascript:commDelete(\"" + userId +"\"," + freeBoardCommNum + ")'>삭제</a>"+
-					"</div></div>";
+					"</div>";
 				}
 				//div.className="";
 				commList.appendChild(div);

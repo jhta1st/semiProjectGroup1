@@ -5,32 +5,34 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import db.JDBCUtil;
 import vo.Movie_GoodVo;
 
 
 public class Movie_GoodDao {
-	public Movie_GoodVo getinfo(String userId){
+	public ArrayList<Movie_GoodVo> getinfo(String userId){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		ArrayList<Movie_GoodVo> list=new ArrayList<Movie_GoodVo>();
 		try {
 			con=JDBCUtil.getConn();
-			String sql="select * from good where userId=?";
+			String sql="select * from good where userId=? order by rate desc";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,userId);
 			rs=pstmt.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
 				userId=rs.getString("userId");
 				int movienum=rs.getInt("movienum");
 				Date movieReleaseDate=rs.getDate("movieReleaseDate");
 				int rate=rs.getInt("rate");
 				int genreNum=rs.getInt("genreNum");
 				Movie_GoodVo vo=new Movie_GoodVo(userId, movienum, movieReleaseDate, rate, genreNum);
-				return vo;
+				list.add(vo);
 			}
-			return null;	
+			return list;	
 		}catch(SQLException se) {
 			se.printStackTrace();
 			return null;

@@ -3,7 +3,7 @@
 <div>
 	<ul>
 		<li><a href="${cp }/main/home.do">홈</a></li>
-		<li><a href="">영화추천</a></li>
+		<li><a href="${cp }/Admin/movieRecommend.do?userId=${sessionScope.id}">영화추천</a></li>
 		<li><a href="${cp }/FreeBoard/list.do">자유게시판</a></li>
 	</ul>
 	<div>
