@@ -4,6 +4,10 @@
 <script type="text/javascript">
 	var favXhr=null;
 	function fav(){
+		if('${sessionScope.id}'==null || '${sessionScope.id}'==""){
+			location.href="${cp}/main/login.do?pages=/main/login.jsp"
+			return;
+		}
 		favXhr=new XMLHttpRequest();
 		favXhr.onreadystatechange=favOk;
 		favXhr.open("post", "${cp}/Admin/favTableInsert.do", true);
@@ -31,6 +35,11 @@
 		favCheckXhr.send();
 	}
 	function favCheckOk(){
+		if('${sessionScope.id}'==null || '${sessionScope.id}'==""){
+			var favCheck=document.getElementById("favCheck");
+			favCheck.value="♡";
+			return;
+		}
 		if(favCheckXhr.readyState==4 && favCheckXhr.status==200){
 			var data=favCheckXhr.responseText;
 			var check=eval("("+ data +")");
@@ -92,7 +101,7 @@
 				<div>${map.rate }</div>
 			</c:if>
 		</c:forEach>
-		<input type="button" id="favCheck" value="좋아요" onclick="fav();">
+		<input type="button" id="favCheck" onclick="fav();">
 	</div>
 	<div>
 		<ul>
