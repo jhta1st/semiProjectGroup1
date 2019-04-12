@@ -53,6 +53,7 @@
 	}
 	window.onload=function(){
 		favCheck();
+		rateList('${movieNum}', '${cp}')
 	}
 </script>
 <div>
@@ -264,15 +265,17 @@
 				<c:when test="${detail eq 'vedio' }">${map.urlAddr }</c:when>
 				<c:when test="${detail eq 'rate' }">
 					<c:if test="${st.index==0 }">
-						<select name="rate">
-							<option value="5">★★★★★</option>
-							<option value="4">☆★★★★</option>
-							<option value="3">☆☆★★★</option>
-							<option value="2">☆☆☆★★</option>
-							<option value="1">☆☆☆☆★</option>
-						</select>
-						<input type="text" name="rateComm">
-						<input type="button" value="입력" onclick="rateInsert()">
+						<div id="rateAdd">
+							<select name="rate">
+								<option value="5">★★★★★</option>
+								<option value="4">☆★★★★</option>
+								<option value="3">☆☆★★★</option>
+								<option value="2">☆☆☆★★</option>
+								<option value="1">☆☆☆☆★</option>
+							</select>
+							<input type="text" name="rateComm" id="rateComm"> <input type="button" value="입력" onclick="rateInsert('${movieNum}','${cp }')">
+						</div>
+						<div id="rateList"></div>
 					</c:if>
 
 				</c:when>

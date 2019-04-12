@@ -23,9 +23,9 @@ public class Movie_InsertRateController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		int movieNum = Integer.parseInt(request.getParameter("movieNum"));
-		int rate = Integer.parseInt(request.getParameter("rate"));
+		double rate = Double.parseDouble(request.getParameter("rate"));
 		String rateComm = request.getParameter("rateComm");
-		String userId = request.getParameter("userId");
+		String userId = (String) request.getSession().getAttribute("id");
 
 		Movie_RateTableDao rateDao = Movie_RateTableDao.getInstance();
 		Movie_RateTableVo rateVo = new Movie_RateTableVo(rate, rateComm, userId, movieNum);

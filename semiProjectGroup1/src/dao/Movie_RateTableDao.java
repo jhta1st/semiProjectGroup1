@@ -68,15 +68,15 @@ public class Movie_RateTableDao {
 		}
 	}
 
-	public int delete(Movie_RateTableVo vo) {
+	public int delete(int movieNum, String userId) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = JDBCUtil.getConn();
 			String sql = "DELETE FROM RATETABLE WHERE MOVIENUM=? AND USERID=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, vo.getMovieNum());
-			pstmt.setString(2, vo.getUserId());
+			pstmt.setInt(1, movieNum);
+			pstmt.setString(2, userId);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO 자동 생성된 catch 블록
