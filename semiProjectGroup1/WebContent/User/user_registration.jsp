@@ -69,7 +69,7 @@ function checkUserResult() {
 		<br />
 		아이디*
 		<br />
-		<input type="text" id="userId" name="userId" /> <input type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span>
+		<input type="text" id="userId" name="userId" /> <input type="button" value="확인" onclick="checkUser()" />${userId }${vo.userId }<span id="userChk_res"></span>
 		<br>
 		비밀번호*
 		<br />

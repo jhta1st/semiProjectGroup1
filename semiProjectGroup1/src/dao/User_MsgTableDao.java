@@ -57,7 +57,6 @@ public class User_MsgTableDao {
 	}
 	
 	public ArrayList<User_MsgTableVo> getList(String msgType, String userId, int startRow, int endRow,String field, String keyword) {
-		System.out.println("userId:" + userId);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -74,7 +73,6 @@ public class User_MsgTableDao {
 			sql += " order by MSGWDATE desc) AA";
 			sql += ") where RNUM>=? and RNUM<=?";
 			pstmt = con.prepareStatement(sql);
-			System.out.println("sql:" + sql);
 			pstmt.setString(1, userId);
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
@@ -91,7 +89,6 @@ public class User_MsgTableDao {
 				vo.setMsgDelete(rs.getString("MSGDELETE"));
 				list.add(vo);
 			}
-			System.out.println("list:" + list);
 			return list;
 		} catch (SQLException se) {
 			System.out.println(se.getMessage());

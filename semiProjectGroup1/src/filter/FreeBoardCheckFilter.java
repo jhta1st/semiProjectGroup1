@@ -16,7 +16,11 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class FreeBoardCheckFilter
  */
 
-@WebFilter(urlPatterns = { "/Freeboard/*", "/freeboard/*", "/User/*", "/user/*"})
+@WebFilter(urlPatterns = { "/Freeboard/*", "/freeboard/*","/user/update.do","/User/update.do",
+		"/user/delete.do","/User/delete.do","/user/detail.do","/User/detail.do",
+		"/user/msgSendList.do","/User/msgSendList.do","/user/msgSendForm.do","/User/msgSendForm.do",
+		"/user/msgSendDetail.do","/User/msgSendDetail.do","/user/msgReceiveList.do","/User/msgReceiveList.do",
+		"/user/msgReceiveDetail.do","/User/msgReceiveDetail.do","/user/msgDelete.do","/User/msgDelete.do"})
 public class FreeBoardCheckFilter implements Filter {
 
 	/**
