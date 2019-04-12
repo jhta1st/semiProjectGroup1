@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class FreeBoardCheckFilter
  */
 
-@WebFilter(urlPatterns = { "/Freeboard/*", "/freeboard/*", "/User/*", "/user/*","/Movie/*", "/movie/*"})
+@WebFilter(urlPatterns = { "/Freeboard/*", "/freeboard/*", "/User/*", "/user/*"})
 public class FreeBoardCheckFilter implements Filter {
 
 	/**
