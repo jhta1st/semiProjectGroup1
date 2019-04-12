@@ -20,13 +20,14 @@ public class FreeBoard_ListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String sPageNum=req.getParameter("PageNum");
+		String sPageNum=req.getParameter("pageNum");
 		String freeBoardSearchField=req.getParameter("freeBoardSearchField");
 		String freeBoardSearchKeyword=req.getParameter("freeBoardSearchKeyword");
 		int pageNum=1;
 		if(sPageNum!=null) {
 			pageNum=Integer.parseInt(sPageNum);
 		}
+		System.out.println("pageNum:"+pageNum);
 		int endRow=pageNum*10;
 		int startRow=endRow-9;
 		FreeBoard_FreeBoardDao dao=FreeBoard_FreeBoardDao.getInstance();

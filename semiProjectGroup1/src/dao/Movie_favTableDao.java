@@ -4,10 +4,40 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import db.JDBCUtil;
+import sun.security.action.GetIntegerAction;
 
 public class Movie_favTableDao {
+	public ArrayList<HashMap<String, Object>> favList(String userId) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<HashMap<String, Object>> list=new ArrayList<HashMap<String,Object>>();
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select f.userid, f.movienum, m.moviename from favtable f, movieinfo m where f.movienum=m.movienum and userid=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				int movieNum=rs.getInt("movieNum");
+				String movieName=rs.getString("movieName");
+				HashMap<String, Object> map=new HashMap<String, Object>();
+				map.put("movieNum", movieNum);
+				map.put("movieName", movieName);
+				list.add(map);
+			}
+			return list;
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally{
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
 	public int favDelete(String userId, int movieNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;

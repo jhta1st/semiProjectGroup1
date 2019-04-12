@@ -18,6 +18,14 @@
 			<td>${vo.userJdate }</td>	
 		</tr>
 </table>
+<div>
+	<div>
+		<p>내가 좋아하는 영화</p>
+		<c:forEach var="map" items="${list }">
+			<p>map.get("moviName")</p>
+		</c:forEach>
+	</div>
+</div>
 <br>
 <hr>
 <a href="${pageContext.request.contextPath}/delete.do?userId=${vo.userId}">회원 탈퇴</a> |
