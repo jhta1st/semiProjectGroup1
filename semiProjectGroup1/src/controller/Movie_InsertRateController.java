@@ -30,15 +30,18 @@ public class Movie_InsertRateController extends HttpServlet {
 		Movie_RateTableDao rateDao = Movie_RateTableDao.getInstance();
 		Movie_RateTableVo rateVo = new Movie_RateTableVo(rate, rateComm, userId, movieNum);
 		int n = rateDao.insert(rateVo);
-		JSONObject json = new JSONObject();
 		if (n > 0) {
-			json.put("code", "success");
-		} else {
-			json.put("code", "fail");
+			request.setAttribute("movieNum", movieNum);
+			request.setAttribute("detail", "rate");
+			request.getRequestDispatcher("/Movie/review.do").forward(request, response);
+		}else {
+			request.setAttribute("movieNum", movieNum);
+			request.setAttribute("detail", "rate");
+			request.setAttribute("code", "fail");
+			request.setAttribute("rate", rate);
+			request.setAttribute("rateComm", rateComm);
+			request.getRequestDispatcher("/Movie/review.do").forward(request, response);
 		}
-		response.setContentType("text/plain;charset=utf-8");
-		PrintWriter pw = response.getWriter();
-		pw.print(json);
 	}
 
 }

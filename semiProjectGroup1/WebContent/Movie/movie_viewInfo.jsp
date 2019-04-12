@@ -53,7 +53,6 @@
 	}
 	window.onload=function(){
 		favCheck();
-		rateList('${movieNum}', '${cp}')
 	}
 </script>
 <div>
@@ -99,7 +98,17 @@
 					</c:when>
 					</c:choose>
 				</div>
-				<div>${map.rate }</div>
+				<div>
+					<c:choose>
+						<c:when test="${rateAve>=4.5 }">★★★★★</c:when>
+						<c:when test="${rateAve>=3.5 }">☆★★★★</c:when>
+						<c:when test="${rateAve>=2.5 }">☆☆★★★</c:when>
+						<c:when test="${rateAve>=1.5 }">☆☆☆★★</c:when>
+						<c:when test="${rateAve>=0.5 }">☆☆☆☆★</c:when>
+						<c:otherwise>☆☆☆☆☆</c:otherwise>
+					</c:choose>
+					${rateAve }
+				</div>
 			</c:if>
 		</c:forEach>
 		<input type="button" id="favCheck" onclick="fav();">
@@ -110,7 +119,7 @@
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=crew">제작진/출연진</a></li>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=photo">스틸샷</a></li>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=vedio">예고편</a></li>
-			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=rate">평점</a></li>
+			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=rate">회원평점</a></li>
 		</ul>
 	</div>
 	<c:set var="tmp" value="1" />
@@ -265,19 +274,43 @@
 				<c:when test="${detail eq 'vedio' }">${map.urlAddr }</c:when>
 				<c:when test="${detail eq 'rate' }">
 					<c:if test="${st.index==0 }">
-						<div id="rateAdd">
-							<select name="rate">
-								<option value="5">★★★★★</option>
-								<option value="4">☆★★★★</option>
-								<option value="3">☆☆★★★</option>
-								<option value="2">☆☆☆★★</option>
-								<option value="1">☆☆☆☆★</option>
-							</select>
-							<input type="text" name="rateComm" id="rateComm"> <input type="button" value="입력" onclick="rateInsert('${movieNum}','${cp }')">
+						<form method="post" action="${cp }/Movie/rate/insertRate.do">
+							<input type="hidden" name="movieNum" value="${movieNum }">
+							<div id="rateAdd">
+								<select name="rate">
+									<option value="5" <c:if test="${rate==5 }">selected</c:if>>★★★★★</option>
+									<option value="4" <c:if test="${rate==4 }">selected</c:if>>☆★★★★</option>
+									<option value="3" <c:if test="${rate==3 }">selected</c:if>>☆☆★★★</option>
+									<option value="2" <c:if test="${rate==2 }">selected</c:if>>☆☆☆★★</option>
+									<option value="1" <c:if test="${rate==1 }">selected</c:if>>☆☆☆☆★</option>
+								</select>
+								<input type="text" name="rateComm" id="rateComm" value="${rateComm }"> <input type="submit" value="입력">
+							</div>
+						</form>
+						<div>
+							<c:if test="${code=='fail' }">변경 실패!</c:if>
 						</div>
-						<div id="rateList"></div>
+						<div id="rateList">
+							<c:forEach var="maps" items="${movieotherList }">
+								<div>
+									<div>
+										<c:choose>
+											<c:when test="${maps.rate==5 }">★★★★★ (5) </c:when>
+											<c:when test="${maps.rate==4 }">☆★★★★ (4) </c:when>
+											<c:when test="${maps.rate==3 }">☆☆★★★ (3) </c:when>
+											<c:when test="${maps.rate==2 }">☆☆☆★★ (2) </c:when>
+											<c:when test="${maps.rate==1 }">☆☆☆☆★ (1) </c:when>
+										</c:choose>
+										<br>
+										${maps.userId }
+									</div>
+									<div>${maps.rateComm }
+										<a href="${cp }/Movie/rate/deleteRate.do?movieNum=${movieNum}&userId=${maps.userId }">삭제</a>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
 					</c:if>
-
 				</c:when>
 			</c:choose>
 		</div>

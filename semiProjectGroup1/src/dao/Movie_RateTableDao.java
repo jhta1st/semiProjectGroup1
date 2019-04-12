@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import db.JDBCUtil;
 import vo.Movie_RateTableVo;
@@ -40,11 +41,11 @@ public class Movie_RateTableDao {
 		}
 	}
 
-	public ArrayList<Movie_RateTableVo> list(int movieNum) {
+	public ArrayList<HashMap<String, Object>> list(int movieNum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<Movie_RateTableVo> list = new ArrayList<Movie_RateTableVo>();
+		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		try {
 			con = JDBCUtil.getConn();
 			String sql = "SELECT * FROM RATETABLE WHERE MOVIENUM=?";
@@ -52,11 +53,11 @@ public class Movie_RateTableDao {
 			pstmt.setInt(1, movieNum);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				double rate = rs.getDouble("rate");
-				String rateComm = rs.getString("rateComm");
-				String userId = rs.getString("userId");
-				Movie_RateTableVo vo = new Movie_RateTableVo(rate, rateComm, userId, movieNum);
-				list.add(vo);
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("rate", rs.getDouble("rate"));
+				map.put("rateComm", rs.getString("rateComm"));
+				map.put("userId", rs.getString("userId"));
+				list.add(map);
 			}
 			return list;
 		} catch (SQLException e) {
@@ -84,6 +85,29 @@ public class Movie_RateTableDao {
 			return -1;
 		} finally {
 			JDBCUtil.close(con, pstmt, null);
+		}
+	}
+
+	public double rateAve(int movieNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = JDBCUtil.getConn();
+			String sql = "SELECT ROUND(AVG(RATE),2)  FROM RATETABLE GROUP BY MOVIENUM HAVING MOVIENUM=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, movieNum);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getDouble(1);
+			}
+			return 0;
+		} catch (SQLException e) {
+			// TODO 자동 생성된 catch 블록
+			e.printStackTrace();
+			return 0;
+		} finally {
+			JDBCUtil.close(con, pstmt, rs);
 		}
 	}
 }
