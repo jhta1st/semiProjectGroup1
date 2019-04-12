@@ -39,7 +39,7 @@ public class User_UpdateController extends HttpServlet{
 			}else {
 				req.setAttribute("code", "fail");
 			}
-			req.setAttribute("pages", "/User/user_result.jsp");
+			req.setAttribute("pages", "/user/detail.do");
 			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }
