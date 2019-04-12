@@ -239,4 +239,36 @@ public class User_UserInfoDao {
 			JDBCUtil.close(con, pstmt,null);
 		}
 	}
+	
+	//닉네임 중복
+	
+	public User_UserInfoVo detailNick(String userNickName){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JDBCUtil.getConn();
+			String sql="SELECT * FROM USERINFO WHERE userNickName=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,userNickName);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				String userId=rs.getString("userId");
+				String userPwd=rs.getString("userPwd");
+				 userNickName=rs.getString("userNickName");
+				int userLev = rs.getInt("userLev");
+				int userExp = rs.getInt("userExp");
+				Date userJdate=rs.getDate("userJdate");
+				int userPower=rs.getInt("userPower");
+				User_UserInfoVo vo=new User_UserInfoVo(userId, userPwd, userNickName, userLev, userExp, userJdate, userPower);
+				return vo;
+			}
+			return null;	
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(con, pstmt, rs);
+		}
+	}
 }

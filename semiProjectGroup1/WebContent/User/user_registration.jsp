@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript">
 var userChkId = "";
+var userChkNick = "";
 function checkData() {
 	var userId = document.getElementsByName("userId")[0];
 	if(userId.value.length < 6 ){
@@ -61,6 +62,33 @@ function checkUserResult() {
 		userChkId = document.getElementsByName("userId")[0].value;
 	}
 }
+
+//닉네임 중복체크
+var xhrr = null;
+function checkNickName() {
+	var userNickName = document.getElementsByName("userNickName")[0];
+	if(userNickName.value==""){
+		alert("닉네임은 필수 입력사항입니다.");
+		userNickName.focus();
+		return false;
+	}
+	xhrr=new XMLHttpRequest();
+	xhrr.onreadystatechange=checkNickNameResult;
+	xhrr.open("get","${pageContext.request.contextPath}/user/nickNameCheck.do?userNickName=" + userNickName.value,true);
+	xhrr.send();
+}
+function checkNickNameResult() {
+	if(xhrr.readyState==4 && xhrr.status==200){
+		var data=xhrr.responseText;
+		var result=eval("(" + data +")");
+		if (result.code == "success") {
+			document.getElementById("userNickChk_res").innerHTML='<font color="red" id="userNickChk_fail">사용 불가능한 닉네임 입니다.</font>';
+		} else {
+			document.getElementById("userNickChk_res").innerHTML='<font color="gray" id="userNickChk_ok">사용 가능한 닉네임 입니다.</font>';
+		}
+		userChkNick = document.getElementsByName("userNickName")[0].value;
+	}
+}
 </script>
 <div>
 	<h1>회원가입하기</h1>
@@ -69,7 +97,7 @@ function checkUserResult() {
 		<br />
 		아이디*
 		<br />
-		<input type="text" id="userId" name="userId" /> <input type="button" value="확인" onclick="checkUser()" />${userId }${vo.userId }<span id="userChk_res"></span>
+		<input type="text" id="userId" name="userId" /> <input type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span>
 		<br>
 		비밀번호*
 		<br />
@@ -81,7 +109,7 @@ function checkUserResult() {
 		<br />
 		닉네임*
 		<br />
-		<input type="text" id="userNickName" name="userNickName" />
+		<input type="text" id="userNickName" name="userNickName" /> <input type="button" value="확인" onclick="checkNickName()" /><span id="userNickChk_res"></span>
 		<br />
 		<input type="submit" value="가입" /><input type="reset" value="취소" />
 	</form>
