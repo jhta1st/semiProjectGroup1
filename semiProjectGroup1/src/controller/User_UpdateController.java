@@ -13,7 +13,7 @@ import dao.User_UserInfoDao;
 import vo.User_UserInfoVo;
 
 
-@WebServlet("/update.do")
+@WebServlet("/user/update.do")
 public class User_UpdateController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,6 +39,7 @@ public class User_UpdateController extends HttpServlet{
 			}else {
 				req.setAttribute("code", "fail");
 			}
-			req.getRequestDispatcher("/User/user_result.jsp").forward(req, resp);
+			req.setAttribute("pages", "/User/user_result.jsp");
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
 }

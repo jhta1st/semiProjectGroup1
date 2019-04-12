@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.User_UserInfoDao;
 import vo.User_UserInfoVo;
 
-@WebServlet("/delete.do")
+@WebServlet("/user/delete.do")
 public class User_DeleteController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

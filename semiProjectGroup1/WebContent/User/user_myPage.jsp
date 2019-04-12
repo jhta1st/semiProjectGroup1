@@ -50,8 +50,8 @@
 </div>
 <br>
 <hr>
-<a href="${pageContext.request.contextPath}/delete.do?userId=${vo.userId}">회원 탈퇴</a> |
-<a href="${pageContext.request.contextPath}/update.do?userId=${vo.userId}">회원정보 수정</a>
+<a href="${pageContext.request.contextPath}/user/delete.do?userId=${vo.userId}">회원 탈퇴</a> |
+<a href="${pageContext.request.contextPath}/user/update.do?userId=${vo.userId}">회원정보 수정</a>
 <hr>
 <a href="${pageContext.request.contextPath }/main/layout.jsp">홈으로</a>
 </div>
