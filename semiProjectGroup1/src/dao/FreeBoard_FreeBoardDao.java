@@ -113,7 +113,7 @@ public class FreeBoard_FreeBoardDao {
 		try {
 			con=JDBCUtil.getConn();
 			if(freeBoardSearchKeyword==null || freeBoardSearchKeyword.equals("")) {
-				sql="select * from(select AA.*, rownum rnum from(select * from freeBoard order by freeBoardNum)AA) where rnum>=? and rnum<=?";
+				sql="select * from(select AA.*, rownum rnum from(select * from freeBoard order by freeBoardNum desc)AA) where rnum>=? and rnum<=?";
 			}else if(freeBoardSearchField.equals("0")){
 				sql="select * from(select AA.*, rownum rnum from(select * from freeBoard where freeBoardTitle Like '%" + freeBoardSearchKeyword + "%' or freeBoardContent Like '%" + freeBoardSearchKeyword + "%' order by freeBoardNum desc)AA) where rnum>=? and rnum<=?";
 			}else if(freeBoardSearchField.equals("1")){
@@ -121,7 +121,7 @@ public class FreeBoard_FreeBoardDao {
 			}else if(freeBoardSearchField.equals("2")){
 				sql="select * from(select AA.*, rownum rnum from(select * from freeBoard where freeBoardContent Like '%" + freeBoardSearchKeyword + "%' order by freeBoardNum desc)AA) where rnum>=? and rnum<=?";
 			}else if(freeBoardSearchField.equals("3")){
-				sql="select * from(select AA.*, rownum rnum from(select * from freeBoard where UserId Like '%" + freeBoardSearchKeyword + "%' order by freeBoardNum)AA) where rnum>=? and rnum<=?";
+				sql="select * from(select AA.*, rownum rnum from(select * from freeBoard where UserId Like '%" + freeBoardSearchKeyword + "%' order by freeBoardNum desc)AA) where rnum>=? and rnum<=?";
 			}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow);

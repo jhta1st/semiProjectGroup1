@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet Filter implementation class AdminCheckFilter
+ * Servlet Filter implementation class FreeBoardCheckFilter
  */
-// 다른아이디로 접속하였을때 타 아이디로 작성한 글의 수정이나 삭제가 불가능하게 필터하는 법 구현
+
 @WebFilter(urlPatterns = { "/Freeboard/*", "/freeboard/*", "/User/*", "/user/*","/Movie/*", "/movie/*"})
 public class FreeBoardCheckFilter implements Filter {
 
@@ -43,9 +43,8 @@ public class FreeBoardCheckFilter implements Filter {
 		HttpSession session = req.getSession();
 		if (session != null) {
 			String id = (String) session.getAttribute("id");
-			int userPower = (int) session.getAttribute("userPower");
  			if (id != null) {
-				if (id != null && userPower!=3) {
+				if (!id.equals("id")) {
 					userId = true;
 				}
 			}
