@@ -1,6 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="${cp }/JS/movie_listScript.js"></script>
+<script type="text/javascript">
+	var favXhr=null;
+	function fav(){
+		favXhr=new XMLHttpRequest();
+		favXhr.onreadystatechange=favOk;
+		favXhr.open("post", "${cp}/Admin/favTableInsert.do", true);
+		favXhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		var param="userId="+'${sessionScope.id }'+"&movieNum="+'${movieNum}';
+		favXhr.send(param);
+	}
+	function favOk(){
+		if(favXhr.readyState==4 && favXhr.status==200){
+			var data=favXhr.responseText;
+			var check=eval("("+ data +")");
+			var favCheck=document.getElementById("favCheck");
+			if(check.result=='delete'){
+				favCheck.value="♡";
+			}else{
+				favCheck.value="♥";
+			}
+		}
+	}
+	var favCheckXhr=null;
+	function favCheck(){
+		favCheckXhr=new XMLHttpRequest();
+		favCheckXhr.onreadystatechange=favCheckOk;
+		favCheckXhr.open("get", "${cp}/Admin/favTableInsert.do?userId=${sessionScope.id }&movieNum=${movieNum}", true);
+		favCheckXhr.send();
+	}
+	function favCheckOk(){
+		if(favCheckXhr.readyState==4 && favCheckXhr.status==200){
+			var data=favCheckXhr.responseText;
+			var check=eval("("+ data +")");
+			var favCheck=document.getElementById("favCheck");
+			if(check.result=='false'){
+				favCheck.value="♡";
+			}else{
+				favCheck.value="♥";
+			}
+		}
+	}
+	window.onload=function(){
+		favCheck();
+	}
+</script>
 <div>
 	<div>
 		<form method="get" action="${cp }/Movie/moviesearch.do">
@@ -47,7 +92,7 @@
 				<div>${map.rate }</div>
 			</c:if>
 		</c:forEach>
-		<input type="button" value="좋아요">
+		<input type="button" id="favCheck" value="좋아요" onclick="fav();">
 	</div>
 	<div>
 		<ul>

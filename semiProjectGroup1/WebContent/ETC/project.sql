@@ -183,7 +183,9 @@ ALTER TABLE favTable
 	ADD FOREIGN KEY (movieNum)
 	REFERENCES movieInfo (movieNum)
 ;
-
+ALTER TABLE favTable
+	add constrant pk_fav primary key(userId,movieNum)
+;
 
 ALTER TABLE movieGenre
 	ADD FOREIGN KEY (movieNum)
