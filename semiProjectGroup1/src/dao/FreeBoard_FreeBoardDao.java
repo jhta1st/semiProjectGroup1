@@ -12,6 +12,33 @@ import vo.FreeBoard_FreeBoardImageVo;
 import vo.FreeBoard_FreeBoardVo;
 
 public class FreeBoard_FreeBoardDao {
+	public ArrayList<FreeBoard_FreeBoardVo> getListAll(String userId) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<FreeBoard_FreeBoardVo> fbList=new ArrayList<FreeBoard_FreeBoardVo>();
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select * from freeBoard where userId=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();			
+			while(rs.next()) {
+				int freeBoardNum=rs.getInt("freeBoardNum");
+				String freeBoardTitle=rs.getString("freeBoardTitle");
+				String freeBoardContent=rs.getString("freeBoardContent");
+				Date freeBoardWdate=rs.getDate("freeBoardWdate");
+				FreeBoard_FreeBoardVo vo=new FreeBoard_FreeBoardVo(freeBoardNum, freeBoardTitle, freeBoardContent, freeBoardWdate, userId);
+				fbList.add(vo);
+			}
+			return fbList;
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(con,pstmt,rs);
+		}
+	}
 	public int contentDelete(int freeBoardNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;

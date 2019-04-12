@@ -22,6 +22,9 @@
 	<div>
 		<p>내가 좋아하는 영화</p>
 		<ol type="1">
+			<c:if test="${favList==''}">
+				좋아하는 영화가 없습니다.<br>좋아하는 영화를 찾아 ♡ 버튼을 눌러주세요.
+			</c:if>
 			<c:forEach var="map" items="${favList }">
 				<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
 			</c:forEach>
@@ -32,8 +35,11 @@
 	<div>
 		<p>내가 작성한 글</p>
 		<ol type="1">
-			<c:forEach var="map" items="${favList }">
-				<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
+			<c:if test="${fbList==''}">
+				작성한 글이 없습니다.
+			</c:if>
+			<c:forEach var="fbVo" items="${fbList }">
+				<li><a href="${cp }/FreeBoard/Content.do?freeBoardNum=${fbVo.freeBoardNum }">${fbVo.freeBoardTitle}</a> - ${fbVo.freeBoardWdate}</li>
 			</c:forEach>
 		</ol>
 	</div>
@@ -42,8 +48,11 @@
 	<div>
 		<p>내가 작성한 댓글</p>
 		<ol type="1">
-			<c:forEach var="map" items="${favList }">
-				<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
+			<c:if test="${fbcList==''}">
+				작성한 글이 없습니다.
+			</c:if>
+			<c:forEach var="fbcVo" items="${fbcList }">
+				<li><a href="${cp }/FreeBoard/Content.do?freeBoardNum=${fbcVo.freeBoardNum }">${fbcVo.freeBoardCommContent}</a> - ${fbcVo.freeBoardCommWdate}</li>
 			</c:forEach>
 		</ol>
 	</div>

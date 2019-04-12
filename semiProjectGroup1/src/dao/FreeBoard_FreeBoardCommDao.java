@@ -10,8 +10,36 @@ import java.util.HashMap;
 
 import db.JDBCUtil;
 import vo.FreeBoard_FreeBoardCommVo;
+import vo.FreeBoard_FreeBoardVo;
 
 public class FreeBoard_FreeBoardCommDao {
+	public ArrayList<FreeBoard_FreeBoardCommVo> getCommListAll(String userId) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<FreeBoard_FreeBoardCommVo> fbcList=new ArrayList<FreeBoard_FreeBoardCommVo>();
+		try {
+			con=JDBCUtil.getConn();
+			String sql="select * from freeBoardComm where userId=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();			
+			while(rs.next()) {
+				int freeBoardCommNum=rs.getInt("freeBoardCommNum");
+				String freeBoardCommContent=rs.getString("freeBoardCommContent");
+				Date freeBoardCommWdate=rs.getDate("freeBoardCommWdate");
+				int freeBoardNum=rs.getInt("freeBoardNum");
+				FreeBoard_FreeBoardCommVo vo=new FreeBoard_FreeBoardCommVo(freeBoardCommNum, freeBoardCommContent, freeBoardCommWdate, freeBoardNum, userId);
+				fbcList.add(vo);
+			}
+			return fbcList;
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			JDBCUtil.close(con,pstmt,rs);
+		}
+	}
 	public HashMap<Integer, Integer> commCount() {
 		Connection con=null;
 		PreparedStatement pstmt=null;
