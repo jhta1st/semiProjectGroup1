@@ -56,7 +56,6 @@ public class Admin_MoviePeopleUpdateController extends HttpServlet{
 				String charSavFileName=vo.getCharSavFileName();
 				File f=new File(dir +"\\" + charSavFileName);
 				if(f.delete()){
-					System.out.println("기존파일삭제 성공!");
 				}
 			}else{//수정할 파일이 전송되지 않은 경우
 				//기존정보 그대로 유지하기

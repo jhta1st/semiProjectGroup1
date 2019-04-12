@@ -16,7 +16,6 @@ public class FreeBoard_CommDeleteController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userId=req.getParameter("userId");
-		System.out.println("userId:"+userId);
 		int freeBoardCommNum=Integer.parseInt(req.getParameter("freeBoardCommNum"));
 		FreeBoard_FreeBoardCommDao dao=FreeBoard_FreeBoardCommDao.getInstance();
 		if(dao.commDelete(freeBoardCommNum)>0) {

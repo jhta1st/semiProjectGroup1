@@ -45,9 +45,7 @@ public class Admin_MovieImgUpdateController extends HttpServlet {
 				"utf-8", 
 				new DefaultFileRenamePolicy());
 		int imageNum = Integer.parseInt(mr.getParameter("imageNum"));
-		System.out.println("00" + imageNum);
 		int movieNum = Integer.parseInt(mr.getParameter("movieNum"));
-		System.out.println("movieNum" + movieNum);
 		Movie_ReviewImageDao dao = Movie_ReviewImageDao.getInstance();
 		Movie_ReviewImageVo vo1 = dao.detail(imageNum);
 		int imageType = Integer.parseInt(mr.getParameter("imageType"));
@@ -62,7 +60,6 @@ public class Admin_MovieImgUpdateController extends HttpServlet {
 			String imageSavName = vo1.getImageSavName();
 			File f = new File(dir + "\\" + imageSavName);
 			if (f.delete()) {
-				System.out.println("기존파일삭제 성공!");
 			}
 		} else {// 수정할 파일이 전송되지 않은 경우
 				// 기존정보 그대로 유지하기
