@@ -26,3 +26,11 @@ ALTER TABLE freeBoardImage
 	ADD FOREIGN KEY (freeBoardNum)
 	REFERENCES freeBoard (freeBoardNum) on delete cascade
 ;
+
+
+
+
+
+ALTER TABLE favTable
+	add constraint pk_fav primary key(userId,movieNum)
+;

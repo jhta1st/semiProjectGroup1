@@ -22,7 +22,6 @@ import vo.Movie_GenreVo;
  */
 @WebServlet("/Movie/review.do")
 public class Movie_MovieReviewController extends HttpServlet {
-
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String movieNums = request.getParameter("movieNum");
