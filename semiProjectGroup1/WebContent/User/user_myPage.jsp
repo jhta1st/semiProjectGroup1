@@ -21,9 +21,31 @@
 <div>
 	<div>
 		<p>내가 좋아하는 영화</p>
-		<c:forEach var="map" items="${list }">
-			<p>map.get("movieName")</p>
-		</c:forEach>
+		<ol type="1">
+			<c:forEach var="map" items="${favList }">
+				<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
+			</c:forEach>
+		</ol>
+	</div>
+</div>
+<div>
+	<div>
+		<p>내가 작성한 글</p>
+		<ol type="1">
+			<c:forEach var="map" items="${favList }">
+				<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
+			</c:forEach>
+		</ol>
+	</div>
+</div>
+<div>
+	<div>
+		<p>내가 작성한 댓글</p>
+		<ol type="1">
+			<c:forEach var="map" items="${favList }">
+				<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
+			</c:forEach>
+		</ol>
 	</div>
 </div>
 <br>

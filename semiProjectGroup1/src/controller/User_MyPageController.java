@@ -21,10 +21,10 @@ public class User_MyPageController extends HttpServlet {
 		User_UserInfoDao dao = new User_UserInfoDao();
 		User_UserInfoVo vo = dao.detail(userId);
 		Movie_favTableDao ftDao=Movie_favTableDao.getInstance();
-		ArrayList<HashMap<String, Object>> list=ftDao.favList(userId);
+		ArrayList<HashMap<String, Object>> favList=ftDao.favList(userId);
 		int exp=dao.expCalc(userId);
 		int lev=dao.levCalc(userId);
-		req.setAttribute("list", list);
+		req.setAttribute("favList", favList);
 		req.setAttribute("exp", exp);
 		req.setAttribute("lev", lev);
 		req.setAttribute("vo", vo);
