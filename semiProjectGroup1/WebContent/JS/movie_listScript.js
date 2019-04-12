@@ -20,29 +20,94 @@ function checkAllch(chk) {
 }
 
 var rateXhr=null;
-function rateInsert() {
+var listRateXhr=null;
+var delRateXhr=null;
+
+function rateInsert(movieNum,cp) {
 	var rate=document.getElementsByName("rate")[0].value;
 	var rateComm=document.getElementById("rateComm").value;
-	var movieNum=0;//???
 	rateXhr=new XMLHttpRequest();
 	rateXhr.onreadystatechange=function(){
-		if (listXhr.readyState == 4 && listXhr.status == 200) {
+		if (rateXhr.readyState == 4 && rateXhr.status == 200) {
 			var data=rateXhr.responseText;
 			var insertJson=JSON.parse(data);
 			if (insertJson.code=='success') {
+				rateList(movieNum,cp)
 				document.getElementById("rateComm").value="";
-				document.getElementsByName("rate").value="5";
 			}else{
 				alert("등록실패!");
 			}
 		}
 	};
-	rateXhr.open('post', cp+'/Movie/insertRate.do', true);
+	rateXhr.open('post',cp+'/Movie/rate/insertRate.do', true);
 	rateXhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	var insertparam = "rate=" + rate + "&rateComm=" + rateComm + "&movieNum="+movieNum;
-	comXhr.send(insertparam);
+	rateXhr.send(insertparam);
+}
+function rateList(movieNum,cp) {
+	listRateXhr=new XMLHttpRequest();
+	listRateXhr.onreadystatechange=function(){
+		if (listRateXhr.readyState==4&&listRateXhr.status==200) {
+			var data=listRateXhr.responseText;
+			var rateList=document.getElementById("rateList");
+			delRateComm();
+			var comm=eval("("+data+")");
+			for (var i = 0; i < comm.length; i++) {
+				var div=document.createElement("div");
+				var div1=document.createElement("div");
+				var div2=document.createElement("div");
+				var rate="";
+				if (comm[i].rate==1) {
+					rate="☆☆☆☆★ (1) ";
+				}else if (comm[i].rate==2) {
+					rate="☆☆☆★★ (2) ";
+				}else if (comm[i].rate==3) {
+					rate="☆☆★★★ (3) ";
+				}else if (comm[i].rate==4) {
+					rate="☆★★★★ (4) ";
+				}else if (comm[i].rate==5) {
+					rate="★★★★★ (5) ";
+				}
+				div1.innerHTML=rate+"<br>"+comm[i].userId;
+				div2.innerHTML=comm[i].rateComm+"<a href='javascript:removeComm("+movieNum+",\""+cp+"\")'>삭제</a>";
+				div1.className="rate1Div";
+				div2.className="rate2Div";
+				div.appendChild(div1);
+				div.appendChild(div2);
+				div.className="rateComm";
+				rateList.appendChild(div);
+			}
+		}
+	};
+	listRateXhr.open('get', cp+'/Movie/rate/listRate.do?movieNum='+movieNum, true);
+	listRateXhr.send();
 }
 
+function delRateComm() {
+	var rateList=document.getElementById("rateList");
+	var childs=rateList.childNodes;
+	for (var i = childs.length-1; i >= 0; i--) {
+		var child=childs.item(i);
+		rateList.removeChild(child);
+	}
+}
+
+function removeComm(movieNum,cp){
+	var delRateXhr=new XMLHttpRequest();
+	delRateXhr.onreadystatechange=function(){
+		if (delRateXhr.readyState==4&&delRateXhr.status==200) {
+			var data=delRateXhr.responseText;
+			var json=eval("("+data+")");
+			if (json.code=='success') {
+				rateList(movieNum,cp);
+			}else{
+				alert('삭제실패!');
+			}
+		}
+	};
+	delRateXhr.open('get', cp+'/Movie/rate/deleteRate.do?movieNum='+movieNum, true);
+	delRateXhr.send();
+}
 var listXhr = null;
 var cp = null;
 var pageCnt=1;

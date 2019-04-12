@@ -2,48 +2,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="${cp }/JS/movie_listScript.js"></script>
 <script type="text/javascript">
-	var favXhr=null;
-	function fav(){
-		favXhr=new XMLHttpRequest();
-		favXhr.onreadystatechange=favOk;
-		favXhr.open("post", "${cp}/Admin/favTableInsert.do", true);
-		favXhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		var param="userId="+'${sessionScope.id }'+"&movieNum="+'${movieNum}';
-		favXhr.send(param);
-	}
-	function favOk(){
-		if(favXhr.readyState==4 && favXhr.status==200){
-			var data=favXhr.responseText;
-			var check=eval("("+ data +")");
-			var favCheck=document.getElementById("favCheck");
-			if(check.result=='delete'){
-				favCheck.value="♡";
-			}else{
-				favCheck.value="♥";
-			}
-		}
-	}
-	var favCheckXhr=null;
-	function favCheck(){
-		favCheckXhr=new XMLHttpRequest();
-		favCheckXhr.onreadystatechange=favCheckOk;
-		favCheckXhr.open("get", "${cp}/Admin/favTableInsert.do?userId=${sessionScope.id }&movieNum=${movieNum}", true);
-		favCheckXhr.send();
-	}
-	function favCheckOk(){
-		if(favCheckXhr.readyState==4 && favCheckXhr.status==200){
-			var data=favCheckXhr.responseText;
-			var check=eval("("+ data +")");
-			var favCheck=document.getElementById("favCheck");
-			if(check.result=='false'){
-				favCheck.value="♡";
-			}else{
-				favCheck.value="♥";
-			}
-		}
-	}
-	window.onload=function(){
-		favCheck();
+	window.onload = function() {
+		rateList('${movieNum}', '${cp}')
 	}
 </script>
 <div>
@@ -92,7 +52,7 @@
 				<div>${map.rate }</div>
 			</c:if>
 		</c:forEach>
-		<input type="button" id="favCheck" value="좋아요" onclick="fav();">
+		<input type="button" value="좋아요">
 	</div>
 	<div>
 		<ul>
@@ -255,15 +215,17 @@
 				<c:when test="${detail eq 'vedio' }">${map.urlAddr }</c:when>
 				<c:when test="${detail eq 'rate' }">
 					<c:if test="${st.index==0 }">
-						<select name="rate">
-							<option value="5">★★★★★</option>
-							<option value="4">☆★★★★</option>
-							<option value="3">☆☆★★★</option>
-							<option value="2">☆☆☆★★</option>
-							<option value="1">☆☆☆☆★</option>
-						</select>
-						<input type="text" name="rateComm">
-						<input type="button" value="입력" onclick="rateInsert()">
+						<div id="rateAdd">
+							<select name="rate">
+								<option value="5">★★★★★</option>
+								<option value="4">☆★★★★</option>
+								<option value="3">☆☆★★★</option>
+								<option value="2">☆☆☆★★</option>
+								<option value="1">☆☆☆☆★</option>
+							</select>
+							<input type="text" name="rateComm" id="rateComm"> <input type="button" value="입력" onclick="rateInsert('${movieNum}','${cp }')">
+						</div>
+						<div id="rateList"></div>
 					</c:if>
 
 				</c:when>
