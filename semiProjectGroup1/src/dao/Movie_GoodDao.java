@@ -19,7 +19,7 @@ public class Movie_GoodDao {
 		ArrayList<Movie_GoodVo> list=new ArrayList<Movie_GoodVo>();
 		try {
 			con=JDBCUtil.getConn();
-			String sql="select * from good where userId=? order by rate desc";
+			String sql="select * from good where userId=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,userId);
 			rs=pstmt.executeQuery();
