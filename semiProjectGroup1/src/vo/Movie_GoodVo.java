@@ -6,17 +6,15 @@ public class Movie_GoodVo {
 	private String userId;
 	private int movienum;
 	private Date movieReleaseDate;
-	private int rate;
 	private int genreNum;
 
 	public Movie_GoodVo() {}
 
-	public Movie_GoodVo(String userId, int movienum, Date movieReleaseDate, int rate, int genreNum) {
+	public Movie_GoodVo(String userId, int movienum, Date movieReleaseDate, int genreNum) {
 		super();
 		this.userId = userId;
 		this.movienum = movienum;
 		this.movieReleaseDate = movieReleaseDate;
-		this.rate = rate;
 		this.genreNum = genreNum;
 	}
 
@@ -42,14 +40,6 @@ public class Movie_GoodVo {
 
 	public void setMovieReleaseDate(Date movieReleaseDate) {
 		this.movieReleaseDate = movieReleaseDate;
-	}
-
-	public int getRate() {
-		return rate;
-	}
-
-	public void setRate(int rate) {
-		this.rate = rate;
 	}
 
 	public int getGenreNum() {

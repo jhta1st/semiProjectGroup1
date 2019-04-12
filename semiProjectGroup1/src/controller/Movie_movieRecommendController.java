@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,14 +22,30 @@ import vo.Admin_MovieInfoVo;
 import vo.FreeBoard_FreeBoardCommVo;
 import vo.Movie_GoodVo;
 
-@WebServlet("/Admin/movieRecommend.do")
+@WebServlet("/Movie/movieRecommend.do")
 public class Movie_movieRecommendController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userId=req.getParameter("userId");
 		Movie_GoodDao dao=Movie_GoodDao.getInstance();
-		ArrayList<Movie_GoodVo> movieList=dao.getinfo(userId);
-		req.setAttribute("movieList", movieList);
+		ArrayList<HashMap<String, Object>> likeGenreList=dao.getLikeGenre(userId);
+		System.out.println("likeGenreList:"+likeGenreList);
+		if(likeGenreList.size()==0) {
+			ArrayList<HashMap<String, Object>> nMovieList=dao.getMovieList(0);
+			req.setAttribute("movieList", nMovieList);//최신영화
+			System.out.println("nMovieList:"+nMovieList);
+		}else {
+			ArrayList<ArrayList<HashMap<String, Object>>> rMovieList=new ArrayList<ArrayList<HashMap<String, Object>>>();
+			for(int i=0;i<likeGenreList.size();i++) {
+				HashMap<String, Object> map=likeGenreList.get(i);
+				int genreNum=(int)map.get("genreNum");
+				ArrayList<HashMap<String, Object>> genreMovieList=dao.getMovieList(genreNum);
+				rMovieList.add(genreMovieList);
+			}
+			req.setAttribute("movieList", rMovieList);//추천영화
+			System.out.println("rMovieList:"+rMovieList);
+		}			
+		req.setAttribute("likeGenreList", likeGenreList);		
 		req.setAttribute("pages", "/Movie/movie_MovieRecommend.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}

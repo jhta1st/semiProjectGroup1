@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import db.JDBCUtil;
+import vo.Admin_MovieInfoVo;
 import vo.Movie_GenreVo;
 import vo.Movie_MovieInfoVo;
 
@@ -21,7 +22,7 @@ public class Movie_MovieInfoDao {
 
 	private Movie_MovieInfoDao() {
 	}
-
+	
 	public ArrayList<HashMap<String, Object>> getSearchList(String keyword, String[] genreNum, int startRow,
 			int endRow) {
 		Connection con = null;
