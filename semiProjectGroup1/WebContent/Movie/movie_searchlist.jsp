@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="${cp }/JS/movie_listScript.js"></script>
 <div id="movieSearch">
-	<div>
+	<div class="movieSearchView">
 		<form method="get" action="${cp }/Movie/moviesearch.do">
 			<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword" value="${keyword }"><input type="submit" value="검색">
 			<br>
@@ -15,18 +15,18 @@
 			</c:forEach>
 		</form>
 	</div>
-	<div>
+	<div id="movieSearchList">
 		<h2 style="font-size: 20px;font-weight: bold;">${keyword }의 검색결과(${resultCount }건 검색됨)</h2>
 		<div class="movieSearchResult">
 			<c:forEach var="result" items="${serchList }" varStatus="st">
 				<div class="movieSearchResultElement" style="float: <c:choose><c:when test="st.count%5==0">clear;</c:when><c:otherwise>left;</c:otherwise></c:choose>">
-					<a href="${cp }/Movie/review.do?movieNum=${result.get('movieNum')}&keyword=${keyword}${search}"><img alt="이미지" src="${cp }/Movie/images/photo/${result.imageSavName}" class="searchImg" id="searchImg${st.count }"></a>
+					<a href="${cp }/Movie/review.do?movieNum=${result.get('movieNum')}&keyword=${keyword}${search}"><img alt="이미지" src="${cp }/Movie/images/photo/${result.imageSavName}" class="moviesearchImg" id="moviesearchImg${st.count }"></a>
 					<br>
-					<a href="${cp }/Movie/review.do?movieNum=${result.get('movieNum')}&keyword=${keyword}${search}"><label class="searchLabel" id="searchLabel${st.count }">${result.movieName }</label></a>
+					<a href="${cp }/Movie/review.do?movieNum=${result.get('movieNum')}&keyword=${keyword}${search}"><label class="moviesearchLabel" id="moviesearchLabel${st.count }">${result.movieName }</label></a>
 				</div>
 			</c:forEach>
 		</div>
-		<div>
+		<div id="movieSearchPageNum">
 			<c:if test="${startPage>10 }">
 				<a href="${cp }/Movie/moviesearch.do?pageNum=${startPage-1 }&keyword=${keyword}${search}">[이전]</a>
 			</c:if>
