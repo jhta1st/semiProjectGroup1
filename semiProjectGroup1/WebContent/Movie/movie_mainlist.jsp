@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="${cp }/JS/movie_listScript.js"></script>
-<div>
-	<div>
+<div id="movieMain">
+	<div class="movieSearchView">
 		<form method="get" action="${cp }/Movie/moviesearch.do">
 			<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword"><input type="submit" value="검색">
 			<br>

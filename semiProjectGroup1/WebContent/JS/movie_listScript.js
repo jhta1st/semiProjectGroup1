@@ -22,6 +22,7 @@ function checkAllch(chk) {
 var listXhr = null;
 var cp = null;
 var pageCnt=1;
+
 function getList(cp1) {
 	cp = cp1;
 	listXhr = new XMLHttpRequest();
@@ -88,11 +89,4 @@ function delComm() {
 		var child = childs.item(i);
 		mainlist.removeChild(child);
 	}
-}
-
-function getActionList(e) {
-	if(e.target.className=='leftbutton'){
-		alert("a");
-	}
-	
 }
