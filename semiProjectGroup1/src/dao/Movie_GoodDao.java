@@ -40,7 +40,7 @@ public class Movie_GoodDao {
 				HashMap<String, Object> map=new HashMap<String, Object>();
 				map.put("movieNum", movieNum);
 				map.put("movieName", movieName);
-				map.put("genreNum1", genreNum1);
+				map.put("genreNum", genreNum1);
 				map.put("movieReleaseDate", movieReleaseDate);
 				map.put("imageSavName", imageSavName);
 				list.add(map);

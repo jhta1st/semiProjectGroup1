@@ -2,79 +2,59 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
+	var gmlXhr=null;
 	function getMovieList(){
-		//for(var list:${nMovieList}){//ArrayList<HashMap<String, Object>>
-		//	cnt++;
-		//	var div=document.createElement("div");
-		//	if(cnt%5==0){
-		//		div.innerHTML="<div style='display: inline-block; clear: left;'></div>"
-		//		movieListDiv.appendChild(div);
-		//	}
-		//	div.innerHTML="<div style='display: inline-block; float: left;'><a href='${cp}/Movie/review.do?movieNum='"+ list.get('movieNum') +"><img src=${cp}/Movie/images/" + list.get('imgSavName') + "></a><br>" + list.get('movieTitle') + "(" + list.get('movieReleaseDate') +")</div>"
-		//	movieListDiv.appendChild(div);			
-	//	}
+		gmlXhr=new XMLHttpRequest();
+		gmlXhr.onreadystatechange=getMovieListOk;
+		gmlXhr.open('post', '${cp}/Movie/movieRecommend.do?userId=${sessionScope.id}', true);
+		gmlXhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		var param="userId="+'${sessionScope.id}';
+		gmlXhr.send(param);
 	}
-	function nMovieList(list){
-		alert("dd");
-		var movieListDiv=document.getElementById("movieListDiv");
-		var div=document.createElement("div");
-		var cnt=0;
-		cnt++;
-		if(cnt%5==0){
-			div.innerHTML="<div style='display: inline-block; clear: left;'></div>"
-			movieListDiv.appendChild(div);
-			div.innerHTML="<div style='display: inline-block; float: left;'><a href='${cp}/Movie/review.do?movieNum='"+ list.get('movieNum') +"><img src=${cp}/Movie/images/" + list.get('imgSavName') + "></a><br>" + list.get('movieTitle') + "(" + list.get('movieReleaseDate') +")</div>"
-			movieListDiv.appendChild(div);		
+	function getMovieListOk(){
+		if(gmlXhr.readyState==4 && gmlXhr.status==200){
+			var data=gmlXhr.responseText;
+			var list=eval("("+data+")");
+			var likeGenre=document.getElementById("likeGenre"); 
+			if(list[0].likeGenre==null){
+				likeGenre.innerHTML="'<p>아직 좋아하시는 영화가 없으시군요! 좋아하는 영화를 찾아 '♡'를 눌러주세요.</p><Strong>최신 영화</Strong>	<div id='movieListDiv'></div>";
+			}else if(list[0].likeGenre!=null){
+				var likeGenreName="";
+				for(var i=0;i<list.length;i++){
+					likeGenreName+=list[i].likeGenre;
+				}
+				likeGenre.innerHTML="'<p>${sessionScope.id}님의 영화 취향을 분석한 결과입니다.</p><Strong>추천 영화</Strong><div id='movieListDiv'></div>";
+			}
+			var movieListDiv=document.getElementById("movieListDiv");
+			var cnt=0;
+			for (var i=0;i<list.length;i++){
+				if(cnt%5==0){
+					var div=document.createElement("div");
+					div.style='clear: left;';
+					movieListDiv.appendChild(div);
+				}
+				var div=document.createElement("div");
+				div.style='display: inline-block; float: left;';
+				div.innerHTML="<a href='${cp}/Movie/review.do?movieNum="+ list[i].movieNum +"'><img src=${cp}/Movie/images/" + list[i].imageSavName + "></a><br>" + list[i].movieName + "(" + list[i].movieReleaseDate +")";
+				movieListDiv.appendChild(div);
+				cnt++;
+			}
 		}
 	}
 	window.onload=function(){
-		
+		getMovieList();
 	}
 </script>
-<div style="display:none;">
-	<c:if test="${nMovieList!=''}">
-		<c:forEach var="list" items="${nMovieList}" >
-		<script type="text/javascript">
-		nMovieList(list);
-		</script>
-			
-		</c:forEach>		
-	</c:if>
-</div>
 <div>
 	<c:choose>
-		<c:when test="${sessionScope.id=='' }">
-			<div>
-				<span>로그인을 하셔서 좋아요를 눌러주시면 영화를 추천해드립니다.</span>
-			</div>
-			<div>
+		<c:when test="${sessionScope.id==null }">
+			<div id="likeGenre"></div>
+				<p>로그인을 하셔서 좋아요를 눌러주시면 영화를 추천해드립니다.</p>
 				<Strong>최신 영화</Strong>
-				<div id="movieListDiv">
-					
-				</div>
-			</div>
-		</c:when>
-		<c:when test="">
-			<div>
-				<span>${sessionScope.id }님은 ${movieType }타입입니다!</span>
-			</div>
-			<div>
-				<Strong>추천 영화</Strong>
-				<div id="movieListDiv">
-					
-				</div>
-			</div>
+			<div id="movieListDiv"></div>
 		</c:when>
 		<c:otherwise>
-			<div>
-				<span>아직 좋아하시는 영화가 없으시군요! 좋아하는 영화를 찾아 '♡'를 눌러주세요.</span>
-			</div>
-			<div>
-				<Strong>최신 영화</Strong>
-				<div id="movieListDiv">
-					
-				</div>
-			</div>			
+			<div id="likeGenre"></div>
 		</c:otherwise>
 	</c:choose>
 </div>
