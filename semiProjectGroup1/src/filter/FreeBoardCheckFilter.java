@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 		"/user/delete.do","/User/delete.do","/user/detail.do","/User/detail.do",
 		"/user/msgSendList.do","/User/msgSendList.do","/user/msgSendForm.do","/User/msgSendForm.do",
 		"/user/msgSendDetail.do","/User/msgSendDetail.do","/user/msgReceiveList.do","/User/msgReceiveList.do",
-		"/user/msgReceiveDetail.do","/User/msgReceiveDetail.do","/user/msgDelete.do","/User/msgDelete.do"})
+		"/user/msgReceiveDetail.do","/User/msgReceiveDetail.do","/user/msgDelete.do","/User/msgDelete.do","/User/user_myMsgSendPopup.jsp"})
 public class FreeBoardCheckFilter implements Filter {
 
 	/**

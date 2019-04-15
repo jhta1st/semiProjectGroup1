@@ -33,9 +33,7 @@ public class User_DeleteController extends HttpServlet{
 			if(n > 0) {
 				req.setAttribute("code", "success");
 				req.getSession().invalidate();
-				req.setAttribute("pages", "/main/main.jsp");
-				req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
-			}else {
+		 }else {
 				req.setAttribute("code", "fail");
 			}
 			req.setAttribute("pages", "/User/user_result.jsp");

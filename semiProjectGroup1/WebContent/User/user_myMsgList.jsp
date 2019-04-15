@@ -9,6 +9,168 @@
 		border: 1px solid #E7E7E7;
 		background-color: white;
 	}
+	
+.myMsgDeleteBtn {
+	font-weight:bold;
+	text-decoration:none;
+	font-family:Arial;
+	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	background:#787878;
+	background:-o-linear-gradient(90deg, #787878, #454545);
+	background:-moz-linear-gradient( center top, #787878 5%, #454545 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #454545) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#454545');
+	background:-webkit-linear-gradient(#787878, #454545);
+	background:-ms-linear-gradient(#787878, #454545);
+	background:linear-gradient(#787878, #454545);
+	text-indent:0px;
+	line-height:0px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:12px;
+	color:#f7f7f7;
+	width:100px;
+	height:0px;
+	padding:13px;
+	border-color:#2e2e2e;
+	border-width:1px;
+	border-style:solid;
+}
+
+.myMsgDeleteBtn:active {
+	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	position:relative;
+	top:4px
+}
+
+.myMsgDeleteBtn:hover {
+	background:#454545;
+	background:-o-linear-gradient(90deg, #454545, #787878);
+	background:-moz-linear-gradient( center top, #454545 5%, #787878 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #454545), color-stop(1, #787878) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545', endColorstr='#787878');
+	background:-webkit-linear-gradient(#454545, #787878);
+	background:-ms-linear-gradient(#454545, #787878);
+	background:linear-gradient(#454545, #787878);
+}	
+
+.userMyMsgCBBtn {
+	font-weight:bold;
+	text-decoration:none;
+	font-family:Arial;
+	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	background:#787878;
+	background:-o-linear-gradient(90deg, #787878, #454545);
+	background:-moz-linear-gradient( center top, #787878 5%, #454545 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #454545) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#454545');
+	background:-webkit-linear-gradient(#787878, #454545);
+	background:-ms-linear-gradient(#787878, #454545);
+	background:linear-gradient(#787878, #454545);
+	text-indent:0px;
+	line-height:0px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:12px;
+	color:#f7f7f7;
+	width:100px;
+	height:0px;
+	padding:13px;
+	border-color:#2e2e2e;
+	border-width:1px;
+	border-style:solid;
+}
+
+.userMyMsgCBBtn:active {
+	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	position:relative;
+	top:4px
+}
+
+.userMyMsgCBBtn:hover {
+	background:#454545;
+	background:-o-linear-gradient(90deg, #454545, #787878);
+	background:-moz-linear-gradient( center top, #454545 5%, #787878 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #454545), color-stop(1, #787878) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545', endColorstr='#787878');
+	background:-webkit-linear-gradient(#454545, #787878);
+	background:-ms-linear-gradient(#454545, #787878);
+	background:linear-gradient(#454545, #787878);
+}	
+
+.userMyMsgSendBtn {
+	font-weight:bold;
+	text-decoration:none;
+	font-family:Arial;
+	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	background:#787878;
+	background:-o-linear-gradient(90deg, #787878, #454545);
+	background:-moz-linear-gradient( center top, #787878 5%, #454545 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #454545) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#454545');
+	background:-webkit-linear-gradient(#787878, #454545);
+	background:-ms-linear-gradient(#787878, #454545);
+	background:linear-gradient(#787878, #454545);
+	text-indent:0px;
+	line-height:0px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:12px;
+	color:#f7f7f7;
+	width:100px;
+	height:0px;
+	padding:13px;
+	border-color:#2e2e2e;
+	border-width:1px;
+	border-style:solid;
+}
+
+.userMyMsgSendBtn:active {
+	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	position:relative;
+	top:4px
+}
+
+.userMyMsgSendBtn:hover {
+	background:#454545;
+	background:-o-linear-gradient(90deg, #454545, #787878);
+	background:-moz-linear-gradient( center top, #454545 5%, #787878 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #454545), color-stop(1, #787878) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545', endColorstr='#787878');
+	background:-webkit-linear-gradient(#454545, #787878);
+	background:-ms-linear-gradient(#454545, #787878);
+	background:linear-gradient(#454545, #787878);
+}	
 </style>
 <script>
 var userChkId = "";
@@ -148,7 +310,7 @@ function detailClose() {
 						<td>${vo.msgCheck > 0 ? "읽음" : "안읽음"}</td>
 					</c:if>
 					<td>
-						<a href="${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}">삭제</a>
+						<a class="myMsgDeleteBtn" href="${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}">삭제</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -218,8 +380,8 @@ function detailClose() {
 	<div style="float: right;" id="msg_detail"></div>
 	<div style="clear: both; display: block;">
 		<br />
-		<input type="button" value="쪽지보내기" onclick="detailSendForm()" />
+		<input class="userMyMsgSendBtn" type="button" value="쪽지보내기" onclick="detailSendForm()" />
 		<hr />
-		<a href="${pageContext.request.contextPath}/main/home.do">홈으로</a>
+		<a class="userMyMsgCBBtn" href="${pageContext.request.contextPath}/main/home.do">홈으로</a>
 	</div>
 </div>
