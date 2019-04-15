@@ -1,5 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div>
+<style>
+#managementlist {
+	    width: 88%;
+		margin: auto;
+		margin-top: 25px;
+		border-collapse: collapse;
+		border: 1px solid #E7E7E7;
+		background : url('${cp}/Movie/images/photo/sakura.png'); background-size: 100%; background-repeat: no-repeat;
+		}
+#managementlist ul li a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	margin-left: 10px;
+	
+}
+
+#managementlist ul li a:hover {
+	color: purple;
+	font-size: 20px;
+}
+</style>
+<div id="managementlist">
 	<strong>정보관리</strong>
 	<ul>
 		<li><a href="${pageContext.request.contextPath }/admin/list.do">회원목록</a></li>
