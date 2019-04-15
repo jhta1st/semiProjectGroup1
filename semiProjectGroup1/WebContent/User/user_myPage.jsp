@@ -1,7 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div>
+<style>
+	#mypage {
+		width: 100%;
+		margin: auto;
+		margin-top: 25px;
+		border-collapse: collapse;
+		border: 1px solid #E7E7E7;
+		background-color: gray;
+	}
+	#mypage #mypageForm {
+	    margin-left : 15%;
+	    margin-right : 15%;
+		padding-left: 150px;
+		border-collapse: collapse;
+		border: 2px solid gray;
+		background-color: white;
+	}
+	#mypage #mypageForm #set {
+	     margin-left : 150px;
+	}
+	#mypage #mypageForm #set1 {
+	     margin-right : 150px;
+	}
+</style>
+<div id="mypage">
+<div id="mypageForm">
 <h1>마이페이지</h1>
 <hr>
 <table border="1">
@@ -59,7 +84,8 @@
 </div>
 <br>
 <hr>
-<a href="${pageContext.request.contextPath}/user/delete.do?userId=${vo.userId}">회원 탈퇴</a> |
-<a href="${pageContext.request.contextPath}/user/update.do?userId=${vo.userId}">회원정보 수정</a>
+<a id="set" href="${pageContext.request.contextPath}/user/delete.do?userId=${vo.userId}">회원 탈퇴</a> | 
+<a id="set1" href="${pageContext.request.contextPath}/user/update.do?userId=${vo.userId}">회원정보 수정</a>
 <hr>
+</div>
 </div>

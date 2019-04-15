@@ -1,4 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<style>
+	#registration {
+		width: 88%;
+		margin: auto;
+		margin-top: 25px;
+		border-collapse: collapse;
+		border: 1px solid #E7E7E7;
+		background-color: gray;
+	}
+	#registration #registrationForm {
+	    margin-left : 30%;
+	    margin-right : 30%;
+		padding-left: 150px;
+		border-collapse: collapse;
+		border: 2px solid gray;
+		background-color: white;
+	}
+	#registration #registrationForm #set {
+	     margin-left : 50px;
+	}
+</style>
 <script type="text/javascript">
 var userChkId = "";
 var userChkNick = "";
@@ -90,7 +111,8 @@ function checkNickNameResult() {
 	}
 }
 </script>
-<div>
+<div id="registration">
+	<div id="registrationForm">
 	<h1>회원가입하기</h1>
 	<form method="post" action="${pageContext.request.contextPath }/user/registration.do" onsubmit="return checkData();">
 		* 사항은 필수 입력 사항입니다.
@@ -98,7 +120,7 @@ function checkNickNameResult() {
 		아이디*
 		<br />
 		<input type="text" id="userId" name="userId" /> <input type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span>
-		<br>
+		<br/>
 		비밀번호*
 		<br />
 		<input type="password" id="userPwd" name="userPwd" />
@@ -111,6 +133,11 @@ function checkNickNameResult() {
 		<br />
 		<input type="text" id="userNickName" name="userNickName" /> <input type="button" value="확인" onclick="checkNickName()" /><span id="userNickChk_res"></span>
 		<br />
-		<input type="submit" value="가입" /><input type="reset" value="취소" />
+		<br />
+		<input  id="set" type="submit" value="가입" />       |       <input type="reset" value="취소" />
 	</form>
+	</div>
+	
 </div>
+
+	

@@ -2,6 +2,27 @@
 <%@page import="vo.User_UserInfoVo"%>
 <%@page import="dao.User_UserInfoDao"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+#update {
+		width: 88%;
+		margin: auto;
+		margin-top: 25px;
+		border-collapse: collapse;
+		border: 1px solid #E7E7E7;
+		background-color: gray;
+	}
+	#update #updateForm {
+	    margin-left : 30%;
+	    margin-right : 30%;
+		padding-left: 150px;
+		border-collapse: collapse;
+		border: 2px solid gray;
+		background-color: white;
+	}
+	#update #updateForm #set {
+	     margin-left : 50px;
+	}
+</style>
 <script type="text/javascript">
 var userChkNick = "";
 //닉네임 중복체크
@@ -31,14 +52,19 @@ function checkNickNameResult() {
 	}
 }
 </script>
+<div id="update">
+	<div id="updateForm">
 <h1>회원 정보 수정</h1>
 <form method="post" action="${pageContext.request.contextPath }/user/update.do?userId=${vo.userId }">
-	<input type="hidden" name="userId" value="${vo.userId }"> <label for="userId">아이디</label><input type="text" id="userId" value="${vo.userId }" disabled="disabled">
+	<input type="hidden" name="userId" value="${vo.userId }"> <label for="userId">아이디</label><br><input type="text" id="userId" value="${vo.userId }" disabled="disabled">
 	<br>
-	<label for="userPwd">비밀번호</label> <input type="text" name="userPwd" id="userPwd" value="${vo.userPwd}">
+	<label for="userPwd">비밀번호</label><br><input type="text" name="userPwd" id="userPwd" value="${vo.userPwd}">
 	<br>
-	<label for="userNickName">닉네임</label> <input type="text" name="userNickName" id="userNickName" value="${vo.userNickName }">
+	<label for="userNickName">닉네임</label><br><input type="text" name="userNickName" id="userNickName" value="${vo.userNickName }">
 	<input type="button" value="확인" onclick="checkNickName()" /><span id="userNickChk_res"></span>
 	<br>
-	<input type="submit" value="수정">
+	<br>
+	<input  id="set" type="submit" value="수정" />       |       <input type="reset" value="취소" />
 </form>
+</div>
+</div>
