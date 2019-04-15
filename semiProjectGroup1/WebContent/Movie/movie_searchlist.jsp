@@ -5,7 +5,7 @@
 	<div class="movieTop">
 		<div class="movieSearchView">
 			<form method="get" action="${cp }/Movie/moviesearch.do">
-				<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword" value="${keyword }"><input type="submit" value="검색">
+				<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword" value="${keyword }"><input type="submit" value="검색" class="Btn">
 				<div class="movieSearchCheckbox">
 					<input type="checkbox" name="genreName" id="0" value="0" <c:if test="${genreNum[0]=='0' }"> checked="checked"</c:if> onclick="checkAll()"><label for="0">전체</label>
 					<c:forEach var="vo" items="${genreNamelist }">
