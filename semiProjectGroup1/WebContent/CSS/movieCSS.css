@@ -3,7 +3,6 @@
 .movieTop {
 	width: 100%;
 	height: 300px;
-	background-color: #7B7B7B;
 	margin: 0px;
 	padding-top: 50px;
 	padding-bottom: 50px
@@ -147,4 +146,150 @@
 
 #movieSearch #movieSearchPageNum a:hover {
 	color: white;
+}
+
+#movieReview {
+	background-color: #E7E7E7;
+	padding-bottom: 50px;
+}
+
+#movieReview #movieViewBriefIntro {
+	width: 40%;
+	height: 500px;
+	margin: auto;
+	margin-bottom: 30px;
+	margin: auto;
+}
+
+#movieReview #movieViewBriefIntro #movieReviewRepImg {
+	width: 300px;
+	float: left;
+	margin-right: 20px;
+}
+
+#movieReview #movieViewBriefIntro #movieViewBriefIntroInfo {
+	float: left;
+}
+
+#movieReview #movieViewBriefIntro #movieViewBriefIntroInfo #movieReviewAge {
+	font-size: 15px;
+	color: #404040;
+}
+
+#movieReview #movieViewBriefIntro #movieViewBriefIntroInfo h3 {
+	font-size: 60px;
+	font-weight: bold;
+	margin-right: 20px;
+}
+
+#movieReview #movieViewBriefIntro #movieReviewRate {
+	font-size: 30px;
+	margin-top: 10px;
+}
+
+#movieReview #movieViewBriefIntro #movieViewBriefIntroInfo .movieViewBriefGenreInfo {
+	float: left;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#movieReview #movieRevieMoreInfo {
+	background-color: #B3B3B3;
+	text-align: center;
+}
+
+#movieReview #movieRevieMoreInfo ul li {
+	list-style: none;
+	display: inline-block;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+#movieReview #movieRevieMoreInfo ul li a {
+	text-decoration: none;
+	color: black;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#movieReview #movieRevieMoreInfo ul li a:hover {
+	color: white;
+}
+
+#movieReview #movieReviewInfomation {
+	width: 60%;
+	margin: auto;
+	padding: 20px;
+}
+
+#movieReview #movieReviewInfomation h3 {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#movieReview #movieReviewInfomation #movieRevieInfoInfo {
+	padding: 10px;
+	font-weight: bold;
+}
+
+#movieReview #movieReviewInfomation .movieReviewCrewInfo {
+	padding: 10px;
+	font-size: 15px;
+	float: left;
+}
+
+#movieReview #movieReviewInfomation .movieReviewCrewInfo img {
+	width: 100px;
+}
+
+#movieReview #movieReviewInfomation .movieReviewPhoto {
+	width: 500px;
+	margin: auto;
+}
+
+#movieReview #movieReviewInfomation .movieReviewPhoto img {
+	width: 500px;
+	margin-top: 50px;
+}
+
+#movieReview #movieReviewInfomation .movieiFrame {
+	width: 500px;
+	margin: auto;
+}
+
+#movieReview .movieReviewRateInput {
+	width: 70%;
+	margin: auto;
+}
+
+#movieReview .movieReviewRateInput .rateAdd {
+	width: 100%;
+}
+
+#movieReview .movieReviewRateInput .rateAdd input[type='text'] {
+	width: 350px;
+	height: 20px;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+#movieReview #movieReviewInfomation #rateList {
+	width: 400px;
+	padding: 20px;
+	margin: auto;
+}
+
+#movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateScore .movieReviewRateStar {
+	font-weight: bold;
+	font-size: 20px;
+	text-shadow: 3px 4px 1.25px rgba(0,0,0,0.1);
+}
+#movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateScore .movieReviewRateId{
+	font-weight: bold;
+	font-size: 18px;
+}
+#movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateComm{
+	border-bottom: dashed;
+	border-bottom-color: gray;
 }
