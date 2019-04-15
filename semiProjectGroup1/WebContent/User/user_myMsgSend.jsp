@@ -3,7 +3,7 @@
 	<tr>
 		<td>받을사람</td>
 		<td>
-			<input type="text" id="userId" name="userId" value="" /> <input type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span>
+			<input type="text" id="userId" name="userId" value="${param.userId }" /> <input type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span>
 		</td>
 	</tr>
 	<tr>

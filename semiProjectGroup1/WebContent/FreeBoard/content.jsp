@@ -140,9 +140,9 @@
 	}
 </script>
 <div><!-- 내용 -->
-	<table border="1" width="500px">
+	<table class="FreeBoardTable">
 		<tr><td>${vo.freeBoardNum }</td><td>${vo.freeBoardTitle }</td><td>${vo.userId }</td><td>${vo.freeBoardWdate }</td></tr>
-		<tr><td colspan="4">
+		<tr><td colspan="4" class="FreeBoardTableContent">
 		<c:forEach var="list" items="${vo1}">
 			<img src="${cp }/FreeBoard/FreeBoardImageUpload/${list.freeBoardSavImgName }" style="width: 200px; height: 200px;"><br>
 		</c:forEach>
@@ -158,10 +158,10 @@
 	</c:if>
 	<a href="${cp }/FreeBoard/list.do?pageNum=${pageNum}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}">목록</a><br>
 </div>
-<div id="commList"><!-- 댓글리스트 -->
+<div id="commList" class="commList"><!-- 댓글리스트 -->
 	
 </div>
-<div id="commListPage"><!-- 댓글페이징 -->
+<div id="commListPage" class="commListPage"><!-- 댓글페이징 -->
 	
 </div>
 <div><!-- 댓글쓰기 -->

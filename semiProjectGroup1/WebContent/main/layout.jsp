@@ -7,6 +7,7 @@
 <title>/main/layout.jsp</title>
 <link rel="stylesheet" type="text/css" href="${cp }/CSS/mainCSS.css"/>
 <link rel="stylesheet" type="text/css" href="${cp }/CSS/movieCSS.css"/>
+<link href="${cp }/CSS/FreeBoardCss.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="wrap">
