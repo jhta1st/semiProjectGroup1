@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 	#registration {
-		width: 88%;
+		width: 100%;
 		margin: auto;
 		margin-top: 25px;
 		border-collapse: collapse;
-		border: 1px solid #E7E7E7;
 		background-color: gray;
 	}
 	#registration #registrationForm {

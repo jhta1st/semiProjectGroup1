@@ -54,6 +54,12 @@
 	background:-ms-linear-gradient(#454545, #787878);
 	background:linear-gradient(#454545, #787878);
 }
+.tt{
+	margin-left: 60px;
+}
+.tt1{
+	margin-left: 30px;
+}
 </style>
 <div>
 	<script type="text/javascript">
@@ -142,19 +148,19 @@
 	</script>
 	<form method="post" action="${cp }/admin/movieImgRegistration.do" enctype="multipart/form-data">
 		<hr/>
-		영화명 <input type="text" id="movieInfo" /><input class="adminMovieOkBtn" type="button" value="검색" onclick="searchMovieInfo(1);">
+		영화명 <input class="tt" type="text" id="movieInfo" /> <input class="adminMovieOkBtn" type="button" value="검색" onclick="searchMovieInfo(1);">
 		<br>
 		<div id="movieInfoSearchDiv"></div>
 		<div id="movieInfoSearchDivPage" style="clear: left;"></div><br/>
-		<input type="hidden" id="movieNum" name="movieNum"> <label>이미지유형 <select name="imageType">
+		<input type="hidden" id="movieNum" name="movieNum"> <label>이미지유형 <select class="tt1" name="imageType">
 				<option value="1">메인이미지</option>
 				<option value="2">포스터</option>
 				<option value="3">스틸삿</option>
 			</select></label>
 		<br><br/>
-		이미지첨부파일<input type="file" name="file">
+		이미지첨부파일 <input type="file" name="file">
 		<br/><hr/>
-		<input class="adminMovieOkBtn" type="submit" value="등록" /><input class="adminMovieOkBtn" type="button" value="취소" onclick="javascript:history.go(-1);">
+		<input class="adminMovieOkBtn" type="submit" value="등록" /> | <input class="adminMovieOkBtn" type="button" value="취소" onclick="javascript:history.go(-1);">
 		<hr/>
 	</form>
 	<div id="result">${errMsg }</div>

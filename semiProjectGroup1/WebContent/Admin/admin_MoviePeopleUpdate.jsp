@@ -77,5 +77,6 @@
 		수정할파일 <input type="file" name="file2">
 		<br/><br/>
 		<input class="adminMoviePeopleUpdateBtn" type="submit" value="수정">
+		<hr/>
 	</form>
 </div>

@@ -54,6 +54,17 @@
 	background:-ms-linear-gradient(#454545, #787878);
 	background:linear-gradient(#454545, #787878);
 }
+
+.url10{
+	margin-left: 65px;
+}
+.url20{
+	margin-left: 50px;
+}
+.url30{
+	margin-left: 50px;
+}
+	
 </style>
 <div>
 	<script type="text/javascript">
@@ -142,21 +153,21 @@
 	</script>
 	<form method="post" action="${pageContext.request.contextPath }/admin/movieUrlRegistration.do">
 		<hr/>
-		영화명 <input type="text" id="movieInfo" /> <input class="adminUrlOkBtn" type="button" value="검색" onclick="searchMovieInfo(1);">
+		영화명 <input class="url10" type="text" id="movieInfo" /> <input class="adminUrlOkBtn" type="button" value="검색" onclick="searchMovieInfo(1);">
 		<br>
 		<div id="movieInfoSearchDiv"></div>
 		<div id="movieInfoSearchDivPage" style="clear: left;"></div>
-		<input type="hidden" id="movieNum" name="movieNum"><br/> <label>URL유형 <select name="urlType">
+		<input type="hidden" id="movieNum" name="movieNum"><br/> <label>URL유형 <select class="url20" name="urlType">
 				<option value="1">예고편</option>
 				<option value="2">하이라이트</option>
 			</select></label>
 		<br>
 		<br/>
 		URL주소
-		<textarea rows="5" cols="100%" id="urlAddr" name="urlAddr"></textarea>
+		<textarea class="url30" rows="5" cols="100%" id="urlAddr" name="urlAddr"></textarea>
 		<br>
 		<hr/>
-		<input class="adminUrlOkBtn" type="submit" value="등록" /><input class="adminUrlOkBtn" type="button" value="취소" onclick="javascript:history.go(-1);">
+		<input class="adminUrlOkBtn" type="submit" value="등록" /> | <input class="adminUrlOkBtn" type="button" value="취소" onclick="javascript:history.go(-1);">
 		<hr/>
 	</form>
 	<div id="result">${errMsg }</div>

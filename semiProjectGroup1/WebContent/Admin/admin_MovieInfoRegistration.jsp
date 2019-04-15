@@ -109,22 +109,49 @@
 	background:-ms-linear-gradient(#454545, #787878);
 	background:linear-gradient(#454545, #787878);
 }
+.mi1{
+	margin-left: 60px;
+}
+.mi2{
+	margin-left: 10px;
+}
+.mi3{
+	margin-left: 60px;
+}
+.mi4{
+	margin-left: 30px;
+}
+.mi5{
+	margin-left: 30px;
+}
+.mi6{
+	margin-left: 50px;
+}
+.mi7{
+	margin-left: 50px;
+}
+.mi8{
+	margin-left: 65px;
+}
+.mi9{
+	margin-left: 35px;
+}
 
 </style>
 <div>
 <hr/>
 <form method="post" action="${pageContext.request.contextPath }/admin/movieInfoRegistration.do">
-	제목 <input type="text" id="movieName" name="movieName" /><br/><br/> 
+	제목 <input class="mi1" type="text" id="movieName" name="movieName" /><br/><br/> 
 	장르
 	<c:forEach var="vo" items="${genreList }">
-	<label><input type="checkbox" name="movieGenre" value="${vo.genreNum }">${vo.genreName }</label></c:forEach><br/><br/> 
-	소개 <textarea rows="10" cols="100%" id="movieIntro" name="movieIntro"></textarea><br/><br/>
-	개봉일자 <input type="text" id="movieReleaseDate" name="movieReleaseDate" /><br/><br/>
-	상영시간 <input type="text" id="movieRunTime" name="movieRunTime" /><br/><br/>
-	제작사 <input type="text" id="movieProduction" name="movieProduction" /><br/><br/>
-	배급사 <input type="text" id="movieDistributer" name="movieDistributer" /><br/><br/>
+	<label><input class="mi2" type="checkbox" name="movieGenre" value="${vo.genreNum }">${vo.genreName }</label></c:forEach><br/><br/> 
+	소개 <textarea class="mi3" rows="10" cols="100%" id="movieIntro" name="movieIntro"></textarea><br/><br/>
+	개봉일자 <input class="mi4" type="text" id="movieReleaseDate" name="movieReleaseDate" /><br/><br/>
+	상영시간 <input class="mi5" type="text" id="movieRunTime" name="movieRunTime" /><br/><br/>
+	제작사 <input class="mi6" type="text" id="movieProduction" name="movieProduction" /><br/><br/>
+	배급사 <input class="mi7" type="text" id="movieDistributer" name="movieDistributer" /><br/><br/>
 	<label>국가
-	<select name="nation"> 
+	<select class="mi8" name="nation"> 
 		<option value="" selected="selected">Select Country</option> 
 		<option value="United States">United States</option> 
 		<option value="United Kingdom">United Kingdom</option> 
@@ -369,7 +396,7 @@
 		<option value="Zimbabwe">Zimbabwe</option>
 	</select></label><br>
 	<label>관람나이
-	<select name="movieAge">
+	<select class="mi9" name="movieAge">
 		<option value="0">전체 관람가</option>
 		<option value="1">12세 관람가</option>
 		<option value="2">15세 관람가</option>
