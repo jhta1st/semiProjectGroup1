@@ -45,6 +45,7 @@
 		<form method="post" action="${cp }/FreeBoard/ContentUpdate.do" enctype="multipart/form-data">
 			<div>
 				<input type="text" size="100%" name="freeBoardTitle" value="${vo.freeBoardTitle }">
+				<input type="hidden" name="pageNum" value="${pageNum }">
 			</div>
 			<div>
 				<textarea rows="30" cols="100%" draggable="false" name="freeBoardContent">${vo.freeBoardContent }</textarea>

@@ -141,12 +141,14 @@
 </script>
 <div><!-- 내용 -->
 	<table class="FreeBoardTable">
-		<tr><td>${vo.freeBoardNum }</td><td>${vo.freeBoardTitle }</td><td>${vo.userId }</td><td>${vo.freeBoardWdate }</td></tr>
+		<tr class="top"><td>${vo.freeBoardNum }</td><td>${vo.freeBoardTitle }</td><td>${vo.userId }</td><td>${vo.freeBoardWdate }</td></tr>
 		<tr><td colspan="4" class="FreeBoardTableContent">
 		<c:forEach var="list" items="${vo1}">
 			<img src="${cp }/FreeBoard/FreeBoardImageUpload/${list.freeBoardSavImgName }" style="width: 200px; height: 200px;"><br>
 		</c:forEach>
-		${vo.freeBoardContent }
+		<div  style="overflow: auto; width: 1000px; height: 500px">
+			${vo.freeBoardContent }
+		</div>
 		</td></tr>
 		<c:forEach var="list" items="${vo1}">
 			<tr><td colspan="4">${list.freeBoardOrgImgName }</td></tr>

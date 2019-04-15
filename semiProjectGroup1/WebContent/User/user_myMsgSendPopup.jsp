@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <form method="post" action="${pageContext.request.contextPath}/user/msgSendForm.do">
 <script type="text/javascript">
 	function sendMessage() {
@@ -28,21 +29,31 @@
 		}
 	}
 </script>
-	<table border="1">
-		<tr>
-			<td>받을사람</td>
-			<td>
-				<input type="text"  disabled="disabled" value="${param.userId }" />
-				<input type="hidden" name="receiveUserId" value="${param.userId }" />
-				<input type="hidden"id="userId" name="userId" value="${sessionScope.id }" />
-			</td>
-		</tr>
-		<tr>
-			<td>쪽지내용</td>
-			<td>
-				<textarea rows="5" cols="50" id="content" name="content"></textarea>
-			</td>
-		</tr>
-	</table>
-	<input type="button" value="보내기" onclick="sendMessage()"/>
+	<c:choose>
+		<c:when test="${sessionScope.id==null }">
+			<script type="text/javascript">
+				alert('쪽지를 보내려면 로그인을 해주시기 바랍니다.');
+				self.close();
+			</script>
+		</c:when>
+		<c:otherwise>
+			<table border="1">
+				<tr>
+					<td>받을사람</td>
+					<td>
+						<input type="text"  disabled="disabled" value="${param.userId }" />
+						<input type="hidden" name="receiveUserId" value="${param.userId }" />
+						<input type="hidden"id="userId" name="userId" value="${sessionScope.id }" />
+					</td>
+				</tr>
+				<tr>
+					<td>쪽지내용</td>
+					<td>
+						<textarea rows="5" cols="50" id="content" name="content"></textarea>
+					</td>
+				</tr>
+			</table>
+			<input type="button" value="보내기" onclick="sendMessage()"/>
+		</c:otherwise>
+	</c:choose>	
 </form>

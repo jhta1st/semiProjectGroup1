@@ -34,7 +34,7 @@
 		<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 			<c:choose>
 				<c:when test="${pageNum==i }"><a href="${cp }/FreeBoard/list.do?pageNum=${i}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}"><span class="thisPage">${i }</span></a></c:when>
-				<c:otherwise><a href="${cp }/FreeBoard/list.do?pageNum=${i}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}"><span>${i }</span></a></c:otherwise>
+				<c:otherwise><a href="${cp }/FreeBoard/list.do?pageNum=${i}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}"><span class="otherPage">${i }</span></a></c:otherwise>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${endPageNum!=pageCount }"><a href="${cp }/FreeBoard/list.do?pageNum=${endPageNum+1}"><span>▶</span></a></c:if>
@@ -42,15 +42,15 @@
 	<div class="FreeBoardSearchDiv"><!-- 검색 -->
 		<form method="post" action="${cp }/FreeBoard/list.do">
 			<select name="freeBoardSearchField" id="freeBoardSearchField">
-				<option value="0" <c:if test="${freeBoardSearchField=='0' }">selected="selected"</c:if>>제목+내용</option>
-				<option value="1" <c:if test="${freeBoardSearchField=='1' }">selected="selected"</c:if>>제목</option>
-				<option value="2" <c:if test="${freeBoardSearchField=='2' }">selected="selected"</c:if>>내용</option>
-				<option value="3" <c:if test="${freeBoardSearchField=='3' }">selected="selected"</c:if>>작성자</option>
+				<option  value="0" <c:if test="${freeBoardSearchField=='0' }">selected="selected"</c:if>>제목+내용</option>
+				<option  value="1" <c:if test="${freeBoardSearchField=='1' }">selected="selected"</c:if>>제목</option>
+				<option  value="2" <c:if test="${freeBoardSearchField=='2' }">selected="selected"</c:if>>내용</option>
+				<option  value="3" <c:if test="${freeBoardSearchField=='3' }">selected="selected"</c:if>>작성자</option>
 			</select>
-			<input type="text" size="" name="freeBoardSearchKeyword" value="${freeBoardSearchKeyword }">
-			<input class="searchBtn" type="submit" value="검색">
+			<input type="text" class="textType" size="" name="freeBoardSearchKeyword" value="${freeBoardSearchKeyword }">
+			<input class="Btn" type="submit" value="검색">
 			<c:if test="${sessionScope.id!=null }">
-				<input type="button" value="글쓰기" onclick="javascript:location.href='${cp}/FreeBoard/write.do'">
+				<input class="Btn" type="button" value="글쓰기" onclick="javascript:location.href='${cp}/FreeBoard/write.do'">
 			</c:if>
 		</form>
 	</div>

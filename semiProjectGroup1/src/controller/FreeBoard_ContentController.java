@@ -19,6 +19,9 @@ public class FreeBoard_ContentController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pageNum=req.getParameter("pageNum");
+		if(pageNum==null || pageNum=="") {
+			pageNum="1";
+		}
 		String freeBoardSearchField=req.getParameter("freeBoardSearchField");
 		String freeBoardSearchKeyword=req.getParameter("freeBoardSearchKeyword");
 		int freeBoardNum=Integer.parseInt(req.getParameter("freeBoardNum"));

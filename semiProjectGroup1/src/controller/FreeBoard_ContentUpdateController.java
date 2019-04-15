@@ -22,6 +22,7 @@ import vo.FreeBoard_FreeBoardVo;
 public class FreeBoard_ContentUpdateController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int pageNum=Integer.parseInt(req.getParameter("pageNum"));
 		int freeBoardNum=Integer.parseInt(req.getParameter("freeBoardNum"));
 		FreeBoard_FreeBoardDao dao=FreeBoard_FreeBoardDao.getInstance();
 		FreeBoard_FreeBoardVo vo=dao.getContentInfo(freeBoardNum);
@@ -29,6 +30,7 @@ public class FreeBoard_ContentUpdateController extends HttpServlet{
 		ArrayList<FreeBoard_FreeBoardImageVo> vo1=dao1.getContentImageInfo(freeBoardNum);
 		req.setAttribute("vo", vo);
 		req.setAttribute("vo1", vo1);
+		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("pages", "/FreeBoard/contentUpdate.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}
