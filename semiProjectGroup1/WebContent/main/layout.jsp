@@ -16,7 +16,7 @@
 		<div id="content">
 			<jsp:include page="${pages }" />
 		</div>
-		<div id="footer">
+		<div id="footer" style="clear: both;">
 			<jsp:include page="/main/footer.jsp" />
 		</div>
 	</div>

@@ -28,7 +28,7 @@
 				var movieName=movies[i].getElementsByTagName("movieName")[0].firstChild.nodeValue;
 				var movieReleaseDate=movies[i].getElementsByTagName("movieReleaseDate")[0].firstChild.nodeValue;
 				var div=document.createElement("div");
-				div.innerHTML="<div style='float:left;'>"+movieName+"<br>"+movieReleaseDate+"<br>사진<br><a href='javascript:selectMovie(" + movieNum + ",\"" + movieName + "\");'>선택</a></div>";
+				div.innerHTML="<div style='float:left;'>"+movieName+"<br>"+movieReleaseDate+"<br><a href='javascript:selectMovie(" + movieNum + ",\"" + movieName + "\");'>선택</a></div>";
 				//div.className="";
 				movieInfoSearchDiv.appendChild(div);
 			}
