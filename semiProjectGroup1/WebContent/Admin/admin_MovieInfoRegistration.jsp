@@ -376,7 +376,7 @@
 		<option value="3">청소년관람불가</option>
 		<option value="4">제한상영가</option>
 	</select></label><br><hr/>
-	<input class="adminMovieInfoOkBtn" type="submit" value="등록" /><input class="adminMovieInfoNoBtn" type="button" value="취소" onclick="javascript:history.go(-1);">
+	<input class="adminMovieInfoOkBtn" type="submit" value="등록" /> | <input class="adminMovieInfoNoBtn" type="button" value="취소" onclick="javascript:history.go(-1);">
 </form>
 <div id="result">${errMsg }</div>
 </div>

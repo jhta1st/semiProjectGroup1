@@ -116,7 +116,7 @@
 <form method="post" action="${pageContext.request.contextPath }/admin/moviePeopleRegistration.do" enctype="multipart/form-data">
 	배우명<input type="text" id="charName" name="charName" /><br/><br/>
 	이미지첨부파일<input type="file" name="file"><br/><br/><hr/>
-	<input class="adminMoviePeopleOkBtn" type="submit" value="등록" /><input class="adminMoviePeopleNoBtn" type="button" value="취소" onclick="javascript:history.go(-1);">
+	<input class="adminMoviePeopleOkBtn" type="submit" value="등록" /> | <input class="adminMoviePeopleNoBtn" type="button" value="취소" onclick="javascript:history.go(-1);">
 	<hr/>
 </form>
 <div id="result">${errMsg }</div>

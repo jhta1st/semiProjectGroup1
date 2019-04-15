@@ -105,6 +105,7 @@
 	border-color:#2e2e2e;
 	border-width:1px;
 	border-style:solid;
+	margin-left: 40px;
 }
 
 .userUpdateOkBtn:active {

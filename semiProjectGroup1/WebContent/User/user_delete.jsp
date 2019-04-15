@@ -58,6 +58,7 @@
 	border-color: #2e2e2e;
 	border-width: 1px;
 	border-style: solid;
+	margin-left: 60px;
 }
 
 .userDeleteBtn:active {
@@ -94,6 +95,7 @@
 						<td>비밀번호를 입력하세요.</td>
 						<td><input type="password" name="userPwd"></td>
 					</tr>
+					
 					<tr>
 						<td colspan="2"><span style="color: red; font-size: 12px;">${msg }</span>
 						</td>
