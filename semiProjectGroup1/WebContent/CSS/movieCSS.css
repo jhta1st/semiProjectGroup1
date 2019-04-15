@@ -1,23 +1,150 @@
 @charset "UTF-8";
 
-.movieSearchView {
+.movieTop {
+	width: 100%;
+	height: 300px;
+	background-color: #7B7B7B;
+	margin: 0px;
+	padding-top: 50px;
+	padding-bottom: 50px
+}
+
+.movieTop .movieSearchView {
 	width: 1000px;
-	height: 100px;
 	padding: 50px;
 	margin: auto;
-	margin-top: 50px; border-style : double;
+	border-style: double;
 	text-align: center;
 	width: 1000px;
 	border-style: double;
 	background-color: white;
+	border-style: double
 }
 
 .movieSearchView label {
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: bold;
-	
+}
+
+.movieSearchView input[type='text'] {
+	width: 300px;
+	height: 20px;
+	margin-left: 10px;
+	margin-right: 5px;
 }
 
 .movieSearchView .movieSearchCheckbox {
 	margin: 20px;
+}
+
+.movieSearchView .movieSearchCheckbox label {
+	font-size: 20px;
+}
+
+#movieMain, #movieSearch {
+	background-color: #7B7B7B;
+}
+
+#movieMain #mainlist {
+	padding-left: 0px;
+	padding-bottom: 50px;
+}
+
+#movieMain #mainlist .movieGenreInfoList {
+	margin-left: 10px;
+	margin-top: 25px;
+	margin-right: 10px;
+}
+
+#movieMain #mainlist .headerdiv {
+	display: flex;
+}
+
+#movieMain #mainlist .headerdiv h2 {
+	font-size: 35px;
+	margin: 0px;
+	float: left;
+}
+
+#movieMain #mainlist .headerdiv a {
+	margin-left: 5px;
+	position: relative;
+	top: 15px;
+}
+
+#movieMain #mainlist .movieGenreInfoList ul {
+	clear: left;
+	margin: 0px;
+	padding: 0px;
+}
+
+#movieMain #mainlist .movieGenreInfoList ul li {
+	list-style: none;
+	display: inline-block;
+	padding-left: 0px;
+	margin: 0px;
+}
+
+#movieMain #mainlist .movieGenreInfoList ul li .MovieInfoClassDiv {
+	text-align: center;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+#movieMain #mainlist .movieGenreInfoList ul li .MovieInfoClassDiv a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+#movieMain #mainlist .movieGenreInfoList ul li .MovieInfoClassDiv a:hover {
+	color: blue;
+}
+
+#movieMain #mainlist .movieGenreInfoList ul li .MovieInfoClassDiv img {
+	width: 100px;
+}
+
+#movieSearch #movieSearchList {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+#movieSearch #movieSearchList h2 {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#movieSearch #movieSearchList .movieSearchResult .movieSearchResultElement {
+	margin: 10px;
+	text-align: center;
+}
+
+#movieSearch #movieSearchList .movieSearchResult .movieSearchResultElement img {
+	width: 200px;
+}
+
+#movieSearch #movieSearchList .movieSearchResult .movieSearchResultElement a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+#movieSearch #movieSearchList .movieSearchResult .movieSearchResultElement a:hover {
+	color: blue;
+}
+
+#movieSearch #movieSearchPageNum {
+	text-align: center;
+	margin: 20px;
+}
+
+#movieSearch #movieSearchPageNum a {
+	text-decoration: none;
+	font-size: 15px;
+	color: blue;
+}
+
+#movieSearch #movieSearchPageNum a:hover {
+	color: white;
 }

@@ -54,7 +54,11 @@ function listOk() {
 		for (var i = 0; i < comm.length; i++) {
 			if (comm[i].genreName == genreNames[a]) {
 				var subdiv = document.createElement("div");
-				subdiv.innerHTML = "<h2>" + genreNames[a] + "</h2><span><a href="+cp+"/Movie/moviesearch.do?genreName="+comm[i].genreNum+">더보기</a></span>";
+				subdiv.className="movieGenreInfoList";
+				var headerdiv=document.createElement("div");
+				headerdiv.className="headerdiv";
+				headerdiv.innerHTML = "<h2>" + genreNames[a] + "</h2><a href="+cp+"/Movie/moviesearch.do?genreName="+comm[i].genreNum+">더보기</a>";
+				subdiv.appendChild(headerdiv);
 				var ul = document.createElement("ul");
 				a++;
 			}

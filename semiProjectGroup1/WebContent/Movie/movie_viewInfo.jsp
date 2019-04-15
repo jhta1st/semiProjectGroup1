@@ -62,19 +62,21 @@
 	}
 </script>
 <div id="movieReview">
-	<div class="movieSearchView">
-		<form method="get" action="${cp }/Movie/moviesearch.do">
-			<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword" value="${keyword }"><input type="submit" value="검색">
-			<div class="movieSearchCheckbox">
-				<input type="checkbox" name="genreName" id="0" value="0" <c:if test="${genreNum[0]=='0' }"> checked="checked"</c:if> onclick="checkAll()"><label for="0">전체</label>
-				<c:forEach var="vo" items="${genreNamelist }">
-					<input type="checkbox" name="genreName" id="${vo.genreNum }" value="${vo.genreNum }" <c:forEach var="va" items="${genreNum }">
+	<div class="movieTop">
+		<div class="movieSearchView">
+			<form method="get" action="${cp }/Movie/moviesearch.do">
+				<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword" value="${keyword }"><input type="submit" value="검색">
+				<div class="movieSearchCheckbox">
+					<input type="checkbox" name="genreName" id="0" value="0" <c:if test="${genreNum[0]=='0' }"> checked="checked"</c:if> onclick="checkAll()"><label for="0">전체</label>
+					<c:forEach var="vo" items="${genreNamelist }">
+						<input type="checkbox" name="genreName" id="${vo.genreNum }" value="${vo.genreNum }" <c:forEach var="va" items="${genreNum }">
 				<c:if test="${va==vo.genreNum }"> checked="checked"</c:if>
 				</c:forEach> onclick="checkAllch()">
-					<label for="${vo.genreNum }">${vo.genreName }</label>
-				</c:forEach>
-			</div>
-		</form>
+						<label for="${vo.genreNum }">${vo.genreName }</label>
+					</c:forEach>
+				</div>
+			</form>
+		</div>
 	</div>
 	<div id="movieViewBriefIntro">
 		<c:forEach var="map" items="${movieInfolist }" varStatus="st">
@@ -130,6 +132,24 @@
 		</ul>
 	</div>
 	<c:set var="tmp" value="1" />
+	<c:if test="${movieotherList.size()==0 }">
+		<div>
+			<form method="post" action="${cp }/Movie/rate/insertRate.do">
+				<input type="hidden" name="movieNum" value="${movieNum }">
+				<div id="rateAdd">
+					<select name="rate">
+						<option value="5" <c:if test="${rate==5 }">selected</c:if>>★★★★★</option>
+						<option value="4" <c:if test="${rate==4 }">selected</c:if>>☆★★★★</option>
+						<option value="3" <c:if test="${rate==3 }">selected</c:if>>☆☆★★★</option>
+						<option value="2" <c:if test="${rate==2 }">selected</c:if>>☆☆☆★★</option>
+						<option value="1" <c:if test="${rate==1 }">selected</c:if>>☆☆☆☆★</option>
+					</select>
+					<input type="text" name="rateComm" id="rateComm" value="${rateComm }"> <input type="submit" value="입력">
+				</div>
+			</form>
+		</div>
+
+	</c:if>
 	<c:forEach var="map" items="${movieotherList }" varStatus="st">
 		<div>
 			<c:choose>
