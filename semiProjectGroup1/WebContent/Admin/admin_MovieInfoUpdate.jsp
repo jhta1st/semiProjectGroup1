@@ -55,7 +55,33 @@
 	background:-ms-linear-gradient(#454545, #787878);
 	background:linear-gradient(#454545, #787878);
 }
-
+.miu1{
+	margin-left: 60px;
+}
+.miu2{
+	margin-left: 10px;
+}
+.miu3{
+	margin-left: 60px;
+}
+.miu4{
+	margin-left: 30px;
+}
+.miu5{
+	margin-left: 30px;
+}
+.miu6{
+	margin-left: 50px;
+}
+.miu7{
+	margin-left: 50px;
+}
+.miu8{
+	margin-left: 65px;
+}
+.miu9{
+	margin-left: 35px;
+}
 </style>
 <script type="text/javascript">
 	function nationSelect(){
@@ -73,23 +99,23 @@
 </script>
 <form method="post" action="${cp }/admin/MovieInfoUpdate.do">
 	<hr/>
-	제목<input type="text" id="movieName" name="movieName" value="${vo.movieName }" /><br/><br/>
+	제목<input class="miu1" type="text" id="movieName" name="movieName" value="${vo.movieName }" /><br/><br/>
 	장르
 	<c:forEach var="vo" items="${genreList }">
-	<label><input type="checkbox" name="movieGenre" value="${vo.genreNum }"
+	<label><input class="miu2" type="checkbox" name="movieGenre" value="${vo.genreNum }"
 		<c:forEach var="genreName" items="${genres }">
 			<c:if test="${genreName==vo.genreName }">checked="checked"</c:if>
 		</c:forEach>
 	>${vo.genreName }</label></c:forEach><br/><br/>
-	소개<textarea rows="10" cols="100%" id="movieIntro" name="movieIntro">${vo.movieIntro }</textarea><br/><br/>
-	개봉일자<input type="text" id="movieReleaseDate" name="movieReleaseDate" value="${vo.movieReleaseDate }"/><br/><br/>
-	상영시간<input type="text" id="movieRunTime" name="movieRunTime" value="${vo.movieRunTime }"/><br/><br/>
-	제작사<input type="text" id="movieProduction" name="movieProduction" value="${vo.movieProduction }"/><br/><br/>
-	배급사<input type="text" id="movieDistributer" name="movieDistributer" value="${vo.movieDistributer }"/><br/><br/>
+	소개<textarea class="miu3" rows="10" cols="100%" id="movieIntro" name="movieIntro">${vo.movieIntro }</textarea><br/><br/>
+	개봉일자<input class="miu4" type="text" id="movieReleaseDate" name="movieReleaseDate" value="${vo.movieReleaseDate }"/><br/><br/>
+	상영시간<input class="miu5" type="text" id="movieRunTime" name="movieRunTime" value="${vo.movieRunTime }"/><br/><br/>
+	제작사<input class="miu6" type="text" id="movieProduction" name="movieProduction" value="${vo.movieProduction }"/><br/><br/>
+	배급사<input class="miu7" type="text" id="movieDistributer" name="movieDistributer" value="${vo.movieDistributer }"/><br/><br/>
 	<input type="hidden" id="movieNum" name="movieNum" value="${movieNum }">
 	<input type="hidden" id="nationValue" value="${vo.nation }">
 	<label>국가
-	<select id="nation" name="nation">
+	<select class="miu8" id="nation" name="nation">
 		<option value="" selected="selected">Select Country</option> 
 		<option value="United States">United States</option> 
 		<option value="United Kingdom">United Kingdom</option> 
@@ -334,7 +360,7 @@
 		<option value="Zimbabwe">Zimbabwe</option>
 	</select></label><br/><br/>
 	<label>관람나이
-	<select name="movieAge">
+	<select class="miu9" name="movieAge">
 		<option value="0"
 			<c:if test="${vo.movieAge=='0' }">selected="selected"</c:if>
 		>전체 관람가</option>

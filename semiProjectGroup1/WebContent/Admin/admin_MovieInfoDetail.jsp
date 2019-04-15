@@ -14,7 +14,7 @@
 		margin: auto;
 		margin-top: 50px;
 		text-align:center;
-		width: 50%;
+		width: 80%;
 		height: 100px;
 		background-color: white; 
 		text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1); 
@@ -824,7 +824,7 @@
 	<a class="adminMovieInfoDeleteBtn" href="${pageContext.request.contextPath }/admin/MovieViewDelete.do">삭제</a>
 	<hr>
 	<a class="adminMovieInfoUpdateBtn" href="${cp }/admin/MovieInfoUpdate.do?movieNum=${movieNum }">정보수정</a>
-	<br>
+	|
 	<a class="adminMovieInfoCBBtn" href="${pageContext.request.contextPath }/admin/MovieInfoList.do">정보리스트</a>
 </div>
 </div>
