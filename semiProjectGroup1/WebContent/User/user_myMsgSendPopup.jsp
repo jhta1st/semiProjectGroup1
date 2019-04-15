@@ -2,19 +2,18 @@
 <form method="post" action="${pageContext.request.contextPath}/user/msgSendForm.do">
 <script type="text/javascript">
 	function sendMessage() {
-		var userId = document.getElementsByName("userId")[0];
+		var receiveUserId = document.getElementsByName("receiveUserId")[0];
 		var content = document.getElementsByName("content")[0];
 		if(content.value.length == 0 ){
 			alert("쪽지 내용을 입력하세요.");
 			content.focus();
 			return false;
 		}
-		var contHtml = content.value.replace(/\r/g,'').replace(/\n/g,'<br/>');
 		xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=sendMessageResult;
 		xhr.open("post","${pageContext.request.contextPath}/user/msgSendForm.do",true);	
 		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		xhr.send("sendUserId=${sessionScope.id}&receiveUserId=" + userId.value+"&content="+content.value);
+		xhr.send("sendUserId=${sessionScope.id}&receiveUserId=" + receiveUserId.value+"&content="+content.value);
 	}
 	function sendMessageResult() {
 		if(xhr.readyState==4 && xhr.status==200){
