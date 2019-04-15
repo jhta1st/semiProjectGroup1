@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
+<head>
 <script>
 	function msgPopup(userId){
 		if(userId!='${sessionScope.id}'){
 			window.open('${cp}/User/user_myMsgSendPopup.jsp?userId='+userId, '_blank', 'width = 500px, height = 200px');
 		}else{
-			location.href=("${cp}/user/detail.do?userId="+userId);
+			//location.href=("${cp}/user/detail.do?userId="+userId);
 		}
 		
 	}
 </script>
+</head>
+<body>
 <div class="FreeBoardTableDiv">
 	<div><!-- 리스트 -->
 		<table class="FreeBoardTable">
@@ -40,7 +44,7 @@
 		<c:if test="${endPageNum!=pageCount }"><a href="${cp }/FreeBoard/list.do?pageNum=${endPageNum+1}"><span>▶</span></a></c:if>
 	</div>
 	<div class="FreeBoardSearchDiv"><!-- 검색 -->
-		<form method="post" action="${cp }/FreeBoard/list.do">
+		<form method="post" action="${cp }/FreeBoard/list.do" style="margin: auto">
 			<select name="freeBoardSearchField" id="freeBoardSearchField">
 				<option  value="0" <c:if test="${freeBoardSearchField=='0' }">selected="selected"</c:if>>제목+내용</option>
 				<option  value="1" <c:if test="${freeBoardSearchField=='1' }">selected="selected"</c:if>>제목</option>
@@ -55,3 +59,5 @@
 		</form>
 	</div>
 </div>
+</body>
+</html>

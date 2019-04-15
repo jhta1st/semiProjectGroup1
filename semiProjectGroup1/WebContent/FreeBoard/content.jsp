@@ -166,6 +166,7 @@
 	</div>
 </div>
 <div class="FreeBoardSearchDiv"><!-- 댓글쓰기 -->
+	<button class="Btn" type="button" onclick="commEndPageList();"><img src='${cp }/ETC/icons/refresh.png'></button><br>
 		<c:if test="${sessionScope.id!=null }">
 			<div class="commInputArea">
 				<textarea rows="5" cols="95%" name="freeBoardCommContent" id="freeBoardCommContent"></textarea>
@@ -173,7 +174,6 @@
 				<input type="hidden" name="freeBoardCommNum" id="freeBoardCommNum" value="">
 			</div>
 			<div class="commBtns">
-				<button class="Btn" type="button" onclick="commEndPageList();"><img src='${cp }/ETC/icons/refresh.png'></button><br>
 				<input class="Btn" type="button" value="입력" id="commBtn" onclick="commInsert();">
 			</div>
 			<div style="clear:left;"></div>

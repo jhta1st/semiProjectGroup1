@@ -12,7 +12,10 @@
 #wrap #header {
 	width: 100%;
 	height: 150px;
-	background-color: #F9FFE6;
+	background-color: white;
+	border: 2px solid silver;
+	border-radius: 25px;
+	margin-bottom: 5px;
 }
 
 #header ul li {
