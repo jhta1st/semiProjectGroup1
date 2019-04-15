@@ -12,7 +12,8 @@
 		fileDiv.appendChild(fileInput);
 		var fileDelete = document.createElement("input");
 		fileDelete.type = "button";
-		fileDelete.value = "첨부파일삭제";
+		fileDelete.className= "Btn";
+		fileDelete.value = "삭제";
 		fileDelete.id = "fileDelete" + fileCount;
 		fileDelete.onclick = fileUploadDelete;
 		fileDiv.appendChild(fileDelete);
@@ -40,29 +41,30 @@
 		firstchild.disabled = false;
 	}
 </script>
-<div>
-	<div style="border: 2px solid black; width: 800px;">
+<div class="FreeBoardContentUpdateDiv">
+	<div>
 		<form method="post" action="${cp }/FreeBoard/ContentUpdate.do" enctype="multipart/form-data">
-			<div>
+			<div class="FreeBoardContentDiv">
 				<input type="text" size="100%" name="freeBoardTitle" value="${vo.freeBoardTitle }">
 				<input type="hidden" name="pageNum" value="${pageNum }">
 			</div>
-			<div>
-				<textarea rows="30" cols="100%" draggable="false" name="freeBoardContent">${vo.freeBoardContent }</textarea>
+			<div >
+				<textarea rows="30" cols="100%" name="freeBoardContent">${vo.freeBoardContent }</textarea>
 			</div>
 			<div id="fileUploadPlusArea">
 				<c:forEach var="list" items="${vo1}">
-					<div><input type="hidden" name="freeBoardImgNum" disabled="disabled" value="${list.freeBoardImgNum }"> <input type="text" disabled="disabled" value="${list.freeBoardOrgImgName }"> <input type="button" value="삭제" onclick="fileUploadUpdateDelete(event);">
+					<div><input type="hidden" name="freeBoardImgNum" disabled="disabled" value="${list.freeBoardImgNum }"> <input class="textType" type="text" disabled="disabled" value="${list.freeBoardOrgImgName }"> <button type="button" onclick="fileUploadUpdateDelete(event);"><img src="${cp }/ETC/icons/delete.png"></button>
 					</div>
 				</c:forEach>
 			</div>
 			<div id="fileDeleteCheckDiv" style="display: none;"></div>
+			<div class="filePlusDiv">
+				<input class="Btn" type="button" value="첨부" onclick="fileUploadPlus();">
+			</div>
 			<div>
-				<input type="button" value="파일첨부하기" onclick="fileUploadPlus();">
-				<br>
-				<input type="hidden" name="freeBoardNum" value="${vo.freeBoardNum }"> <input type="submit" value="수정"><input type="button" value="취소" onclick="javascript:history.go(-1);">
+				<input type="hidden" name="freeBoardNum" value="${vo.freeBoardNum }"> <input class="Btn" type="submit" value="수정"> <input class="Btn" type="button" value="취소" onclick="javascript:history.go(-1);">
 			</div>
 		</form>
 		<div id="fileCheckDiv" style="display: none;"></div>
-	</div>
+		</div>
 </div>

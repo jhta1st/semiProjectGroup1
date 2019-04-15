@@ -27,6 +27,8 @@ public class FreeBoard_ContentController extends HttpServlet{
 		int freeBoardNum=Integer.parseInt(req.getParameter("freeBoardNum"));
 		FreeBoard_FreeBoardDao dao=FreeBoard_FreeBoardDao.getInstance();
 		FreeBoard_FreeBoardVo vo=dao.getContentInfo(freeBoardNum);
+		String content=vo.getFreeBoardContent().replaceAll("\n", "<br>");
+		vo.setFreeBoardContent(content);		
 		FreeBoard_FreeBoardImageDao dao1=FreeBoard_FreeBoardImageDao.getInstance();
 		ArrayList<FreeBoard_FreeBoardImageVo> vo1=dao1.getContentImageInfo(freeBoardNum);
 		req.setAttribute("pageNum", pageNum);

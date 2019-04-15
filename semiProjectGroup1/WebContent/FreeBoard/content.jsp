@@ -48,15 +48,17 @@
 			for(var i=0;i<comms.length;i++){
 				var freeBoardCommNum=comms[i].getElementsByTagName("freeBoardCommNum")[0].firstChild.nodeValue;
 				var freeBoardCommContent=comms[i].getElementsByTagName("freeBoardCommContent")[0].firstChild.nodeValue;
+				freeBoardCommContent=freeBoardCommContent.replace(/\n+/g,"<br>");
 				var freeBoardCommWdate=comms[i].getElementsByTagName("freeBoardCommWdate")[0].firstChild.nodeValue;
 				var freeBoardNum=comms[i].getElementsByTagName("freeBoardNum")[0].firstChild.nodeValue;
 				var userId=comms[i].getElementsByTagName("userId")[0].firstChild.nodeValue;
 				var div=document.createElement("div");
-				div.innerHTML="<div style='display: inline-block;'><strong>"+userId+"</strong><br>"+freeBoardCommContent+"</div>";
+				div.className="commList";
+				div.innerHTML="<div class='comms' style='display: inline-block;'><strong>"+userId+"</strong><br>"+freeBoardCommContent+"</div>";
 				if("${sessionScope.id }"==userId){
-					div.innerHTML+="<div style='float:right';>"+
-					"<a href='javascript:commUpdate(" + freeBoardCommNum + ")'>수정</a><br>"+
-					"<a href='javascript:commDelete(\"" + userId +"\"," + freeBoardCommNum + ")'>삭제</a>"+
+					div.innerHTML+="<div class='comms' style='float:right';>"+
+					"<a href='javascript:commUpdate(" + freeBoardCommNum + ")'><img src='${cp }/ETC/icons/edit.png'></a><br>"+
+					"<a href='javascript:commDelete(\"" + userId +"\"," + freeBoardCommNum + ")'><img src='${cp }/ETC/icons/delete.png'></a>"+
 					"</div>";
 				}
 				//div.className="";
@@ -69,17 +71,17 @@
 			var endPageNum=result.getElementsByTagName("endPageNum")[0].firstChild.nodeValue;
 			var inner="";
 			if(startPageNum!=1){
-				inner+="<a href=javascript:commList("+(parseInt(startPageNum)-1)+");><span>◀</span></a>";
+				inner+="<a href=javascript:commList("+(parseInt(startPageNum)-1)+");><span class='thisPage'>◀</span></a>";
 			}
 			for(var i=startPageNum;i<=endPageNum;i++){
 				if(pageNum==i){//나중에 CSS할때 현재페이지와 아닌페이지 색깔 구분하기
-					inner+="<a href=javascript:commList("+i+");><span>&nbsp;"+i+"&nbsp;</span></a>";
+					inner+="<a href=javascript:commList("+i+");><span class='thisPage'>&nbsp;"+i+"&nbsp;</span></a>";
 				}else{
-					inner+="<a href=javascript:commList("+i+");><span>&nbsp;"+i+"&nbsp;</span></a>";
+					inner+="<a href=javascript:commList("+i+");><span class='otherPage'>&nbsp;"+i+"&nbsp;</span></a>";
 				}
 			}
 			if(endPageNum!=pageCount){
-				inner+="<a href=javascript:commList("+(parseInt(endPageNum)+1)+");><span>▶</span></a>";
+				inner+="<a href=javascript:commList("+(parseInt(endPageNum)+1)+");><span class='thisPage'>▶</span></a>";
 			}
 			commListPage.innerHTML=inner;
 			document.getElementById("freeBoardCommContent").value="";
@@ -114,6 +116,7 @@
 			button.onclick=commUpdate2;
 			document.getElementById("freeBoardCommContent").value=freeBoardCommContent;
 			document.getElementById("freeBoardCommNum").value=freeBoardCommNum;
+			document.getElementById("freeBoardCommContent").focus();
 		}
 	}
 	var Update2Xhr=null;
@@ -139,39 +142,46 @@
 		commList(1);
 	}
 </script>
-<div><!-- 내용 -->
-	<table class="FreeBoardTable">
-		<tr class="top"><td>${vo.freeBoardNum }</td><td>${vo.freeBoardTitle }</td><td>${vo.userId }</td><td>${vo.freeBoardWdate }</td></tr>
+<div class="FreeBoardTableDiv"><!-- 내용 -->
+	<table class="FreeBoardContentTable">
+		<tr class="top"><td class="td1">${vo.freeBoardNum }</td><td class="td2">${vo.freeBoardTitle }</td><td class="td3">${vo.userId }</td><td class="td4">${vo.freeBoardWdate }</td></tr>
 		<tr><td colspan="4" class="FreeBoardTableContent">
 		<c:forEach var="list" items="${vo1}">
 			<img src="${cp }/FreeBoard/FreeBoardImageUpload/${list.freeBoardSavImgName }" style="width: 200px; height: 200px;"><br>
 		</c:forEach>
-		<div  style="overflow: auto; width: 1000px; height: 500px">
+		<div>
 			${vo.freeBoardContent }
 		</div>
 		</td></tr>
 		<c:forEach var="list" items="${vo1}">
-			<tr><td colspan="4">${list.freeBoardOrgImgName }</td></tr>
+			<tr><td class="td5" colspan="4">${list.freeBoardOrgImgName }</td></tr>
 		</c:forEach>
 	</table>
-	<c:if test="${sessionScope.id==vo.userId}">
-		<a href="${cp }/FreeBoard/ContentUpdate.do?freeBoardNum=${vo.freeBoardNum}&pageNum=${pageNum}">수정</a><br>
-		<a href="${cp }/FreeBoard/ContentDelete.do?userId=${vo.userId }&freeBoardNum=${vo.freeBoardNum}">삭제</a><br>
-	</c:if>
-	<a href="${cp }/FreeBoard/list.do?pageNum=${pageNum}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}">목록</a><br>
-</div>
-<div id="commList" class="commList"><!-- 댓글리스트 -->
-	
-</div>
-<div id="commListPage" class="commListPage"><!-- 댓글페이징 -->
-	
-</div>
-<div><!-- 댓글쓰기 -->
-		<a href="javascript:commEndPageList()">댓글새로고침</a><br>
-		<c:if test="${sessionScope.id!=null }">
-			<textarea rows="5" cols="100%" name="freeBoardCommContent" id="freeBoardCommContent" draggable="false"></textarea>
-			<input type="hidden" name="userId" id="userId" value="${sessionScope.id }">
-			<input type="hidden" name="freeBoardCommNum" id="freeBoardCommNum" value="">
-			<input type="button" value="입력" id="commBtn" onclick="commInsert();">
+	<div class="FreeBoardSearchDiv">
+		<c:if test="${sessionScope.id==vo.userId}">
+			<input class="Btn" type="button" value="수정" onclick="javascript:location.href='${cp }/FreeBoard/ContentUpdate.do?freeBoardNum=${vo.freeBoardNum}&pageNum=${pageNum}'">
+			<input class="Btn" type="button" value="삭제" onclick="javascript:location.href='${cp }/FreeBoard/ContentDelete.do?userId=${vo.userId }&freeBoardNum=${vo.freeBoardNum}'">
 		</c:if>
+		<input class="Btn" type="button" value="목록" onclick="javascript:location.href='${cp }/FreeBoard/list.do?pageNum=${pageNum}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}'">
+	</div>
+</div>
+<div class="FreeBoardSearchDiv"><!-- 댓글쓰기 -->
+		<c:if test="${sessionScope.id!=null }">
+			<div class="commInputArea">
+				<textarea rows="5" cols="95%" name="freeBoardCommContent" id="freeBoardCommContent"></textarea>
+				<input type="hidden" name="userId" id="userId" value="${sessionScope.id }">
+				<input type="hidden" name="freeBoardCommNum" id="freeBoardCommNum" value="">
+			</div>
+			<div class="commBtns">
+				<button class="Btn" type="button" onclick="commEndPageList();"><img src='${cp }/ETC/icons/refresh.png'></button><br>
+				<input class="Btn" type="button" value="입력" id="commBtn" onclick="commInsert();">
+			</div>
+			<div style="clear:left;"></div>
+		</c:if>
+</div>
+<div id="commList"><!-- 댓글리스트 -->
+	
+</div>
+<div id="commListPage" class="FreeBoardPagingDiv"><!-- 댓글페이징 -->
+	
 </div>

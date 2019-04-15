@@ -11,19 +11,19 @@
 		
 	}
 </script>
-<div>
-	<div class="FreeBoardTableDiv"><!-- 리스트 -->
+<div class="FreeBoardTableDiv">
+	<div><!-- 리스트 -->
 		<table class="FreeBoardTable">
 			<c:choose>
 				<c:when test="${list[0]==null }"><tr><th>검색 결과가 없습니다.</th></tr></c:when>
 				<c:otherwise>
 					<tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th></tr>
 					<c:forEach var="vo" items="${list }">
-						<tr><td>${vo.freeBoardNum }</td>
-						<td><a href="${cp }/FreeBoard/Content.do?pageNum=${i}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}&freeBoardNum=${vo.freeBoardNum}">${vo.freeBoardTitle }</a>
-						<c:if test="${commCount.get(vo.freeBoardNum)>0}">[${commCount.get(vo.freeBoardNum)}]</c:if><c:if test="${imgCount.get(vo.freeBoardNum)>0}">[이미지]</c:if></td>
-						<td><a href="javascript:msgPopup('${vo.userId}');">${vo.userId }</a></td>
-						<td>${vo.freeBoardWdate }</td></tr>
+						<tr><td class="td1">${vo.freeBoardNum }</td>
+						<td class="td2"><a href="${cp }/FreeBoard/Content.do?pageNum=${i}&freeBoardSearchField=${freeBoardSearchField}&freeBoardSearchKeyword=${freeBoardSearchKeyword}&freeBoardNum=${vo.freeBoardNum}">${vo.freeBoardTitle }</a>
+						<c:if test="${commCount.get(vo.freeBoardNum)>0}">[${commCount.get(vo.freeBoardNum)}]&nbsp;</c:if><c:if test="${imgCount.get(vo.freeBoardNum)>0}"><img src="${cp }/ETC/icons/img.png"></c:if></td>
+						<td class="td3"><a href="javascript:msgPopup('${vo.userId}');">${vo.userId }</a></td>
+						<td class="td4">${vo.freeBoardWdate }</td></tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>

@@ -1,68 +1,161 @@
 @charset "UTF-8";
 
+.FreeBoardTableDiv {
+	background-color: #cecece;
+}
 .FreeBoardTable {
-		margin: auto;
-		margin-top: 50px;
-		text-align:center;
-		width: 50%;
-		height: 400px;
-		background-color: white; 
-		text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1); 
+	margin: auto;
+	margin-top: 50px;
+	text-align:center;
+	vertical-align:middle;
+	width: 50%;
+	background-color: white; 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1); 
+}
+.FreeBoardTable tr th{
+	width:50px;
+	height: 33px;
+}
+.td1{
+	width:50px;
+	height: 33px;
+}
+.td2{
+	width:500px;
+	height: 33px;
+}
+.td3{
+	width:70px;
+	height: 33px;
+}
+.td4{
+	width:100px;
+	height: 30px;
+}
+.td5{
+	width:100px;
+	height: 30px;
+	text-align: right;
+	padding-right: 10px;
 }
 .FreeBoardTable tr td a:link {
-		color: black;
-		text-decoration: none;
+	color: black;
+	text-decoration: none;
 }
 .FreeBoardTable tr td a:visited {
-		color: silver;
-		text-decoration: none;
+	color: silver;
+	text-decoration: none;
 }
-.FreeBoardTable tr th {
-		border-bottom: 2px dotted silver;
+tr th {
+	border-bottom: 2px dotted silver;
 }
-.FreeBoardTable tr td {
-		border-bottom: 2px dotted silver;
+tr td {
+	border-bottom: 2px dotted silver;
 }
 .FreeBoardPagingDiv {
-		margin: auto;
-		margin-top: 5px;
-		margin-bottom: 10px;
-		text-align: center;
-		font-size: 16px;
-		box-shadow: 3px 4px 1.25px 3.75px rgba(0, 0, 0, 0); 
-		text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
-}
-.FreeBoardTable .top td {
-		height: 40px;
-}
-.FreeBoardTableContent {
-		text-align:left;
-		padding:20px;
-		vertical-align: top;
-		overflow: scroll;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 16px;
+	box-shadow: 3px 4px 1.25px 3.75px rgba(0, 0, 0, 0); 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
 }
 .FreeBoardPagingDiv a:link {
-		text-decoration: none;
+	text-decoration: none;
 }
 .FreeBoardPagingDiv a:visited {
-		text-decoration: none;
+	text-decoration: none;
+}
+.FreeBoardTable .top td {
+	height: 40px;
+}
+.FreeBoardContentTable {
+	margin: auto;
+	margin-top: 50px;
+	text-align:center;
+	vertical-align:middle;
+	width: 50%;
+	height: 431px;
+	background-color: white; 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1); 
+}
+.FreeBoardTableContent {
+	text-align:left;
+	padding:20px;
+	vertical-align: top;
+	overflow: auto;
+}
+.commList{
+	background-color: white; 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1);
+	margin: auto;
+	margin-top: 10px;
+	width: 50%;
+	text-align: left;
+	border-bottom: 2px dotted silver;
+}
+.comms{
+	margin-left: 10px;
+	vertical-align: middle;
+}
+.comms a{
+	margin-right: 10px;
+	text-decoration: none;
+	color: gray;
+}
+.commInputArea{
+	float:left;
+	padding-top: 10px;
+}
+.commBtns{
+	float:left;
+	padding-top: 13px;
 }
 .thisPage {
-		font-size: 20px;
-		color: #F7F7F7;
-		box-shadow: 3px 4px 1.25px 3.75px rgba(0, 0, 0, 0); 
-		text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
+	font-size: 20px;
+	color: black;
+	box-shadow: 3px 4px 1.25px 3.75px rgba(0, 0, 0, 0); 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
 }
 .otherPage {
-		font-size: 16px;
-		color: black;
-		box-shadow: 3px 4px 1.25px 3.75px rgba(0, 0, 0, 0); 
-		text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
+	font-size: 16px;
+	color: #454545;
+	box-shadow: 3px 4px 1.25px 3.75px rgba(0, 0, 0, 0); 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
 }
 .FreeBoardSearchDiv	{
-		margin: auto;
-		text-align: center;
-		font-size: 16px;
+	margin: auto;
+	width: 50%;
+	text-align: center;
+	font-size: 16px;
+}
+.needCenter{
+	background-color: #cecece;
+	border: 2px solid black;
+	width: 20%;
+	margin: auto;
+	margin-top: 15px;
+	padding-bottom: 15px;
+	text-align: center;
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
+}
+.filePlusDiv{
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+.FreeBoardContentUpdateDiv {
+	margin: auto;
+	margin-top: 50px;
+	text-align:center;
+	vertical-align:middle;
+	width: 50%;
+	background-color: white; 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1); 
+}
+.FreeBoardContentDiv{
+	padding-top:20px;
+	margin-bottom:20px;
 }
 .Btn {
 	background:#F7F7F7;
@@ -119,4 +212,7 @@ textType{
 	background:#454545;
 	color:#F7F7F7;
 	font-weight:bold;
+}
+textarea{
+	resize:none;
 }
