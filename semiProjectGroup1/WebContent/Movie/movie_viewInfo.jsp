@@ -2,56 +2,62 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="${cp }/JS/movie_listScript.js"></script>
 <script type="text/javascript">
-	var favXhr=null;
-	function fav(){
-		if('${sessionScope.id}'==null || '${sessionScope.id}'==""){
-			location.href="${cp}/main/login.do?pages=/main/login.jsp"
+	var favXhr = null;
+	function fav() {
+		if ('${sessionScope.id}' == null || '${sessionScope.id}' == "") {
+			location.href = "${cp}/main/login.do?pages=/main/login.jsp"
 			return;
 		}
-		favXhr=new XMLHttpRequest();
-		favXhr.onreadystatechange=favOk;
+		favXhr = new XMLHttpRequest();
+		favXhr.onreadystatechange = favOk;
 		favXhr.open("post", "${cp}/Admin/favTableInsert.do", true);
-		favXhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		var param="userId="+'${sessionScope.id }'+"&movieNum="+'${movieNum}';
+		favXhr.setRequestHeader('Content-Type',
+				'application/x-www-form-urlencoded');
+		var param = "userId=" + '${sessionScope.id }' + "&movieNum="
+				+ '${movieNum}';
 		favXhr.send(param);
 	}
-	function favOk(){
-		if(favXhr.readyState==4 && favXhr.status==200){
-			var data=favXhr.responseText;
-			var check=eval("("+ data +")");
-			var favCheck=document.getElementById("favCheck");
-			if(check.result=='delete'){
-				favCheck.value="♡";
-			}else{
-				favCheck.value="♥";
+	function favOk() {
+		if (favXhr.readyState == 4 && favXhr.status == 200) {
+			var data = favXhr.responseText;
+			var check = eval("(" + data + ")");
+			var favCheck = document.getElementById("favCheck");
+			if (check.result == 'delete') {
+				favCheck.value = "♡";
+			} else {
+				favCheck.value = "♥";
 			}
 		}
 	}
-	var favCheckXhr=null;
-	function favCheck(){
-		favCheckXhr=new XMLHttpRequest();
-		favCheckXhr.onreadystatechange=favCheckOk;
-		favCheckXhr.open("get", "${cp}/Admin/favTableInsert.do?userId=${sessionScope.id }&movieNum=${movieNum}", true);
+	var favCheckXhr = null;
+	function favCheck() {
+		favCheckXhr = new XMLHttpRequest();
+		favCheckXhr.onreadystatechange = favCheckOk;
+		favCheckXhr
+				.open(
+						"get",
+						"${cp}/Admin/favTableInsert.do?userId=${sessionScope.id }&movieNum=${movieNum}",
+						true);
 		favCheckXhr.send();
 	}
-	function favCheckOk(){
-		if('${sessionScope.id}'==null || '${sessionScope.id}'==""){
-			var favCheck=document.getElementById("favCheck");
-			favCheck.value="♡";
+	function favCheckOk() {
+		if ('${sessionScope.id}' == null || '${sessionScope.id}' == "") {
+			var favCheck = document.getElementById("favCheck");
+			favCheck.value = "♡";
 			return;
 		}
-		if(favCheckXhr.readyState==4 && favCheckXhr.status==200){
-			var data=favCheckXhr.responseText;
-			var check=eval("("+ data +")");
-			var favCheck=document.getElementById("favCheck");
-			if(check.result=='false'){
-				favCheck.value="♡";
-			}else{
-				favCheck.value="♥";
+		if (favCheckXhr.readyState == 4 && favCheckXhr.status == 200) {
+			var data = favCheckXhr.responseText;
+			var check = eval("(" + data + ")");
+			var favCheck = document.getElementById("favCheck");
+			if (check.result == 'false') {
+				favCheck.value = "♡";
+			} else {
+				favCheck.value = "♥";
 			}
 		}
 	}
-	window.onload=function(){
+	window.onload = function() {
 		favCheck();
 	}
 </script>
@@ -59,14 +65,15 @@
 	<div class="movieSearchView">
 		<form method="get" action="${cp }/Movie/moviesearch.do">
 			<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword" value="${keyword }"><input type="submit" value="검색">
-			<br>
-			<input type="checkbox" name="genreName" id="0" value="0" <c:if test="${genreNum[0]=='0' }"> checked="checked"</c:if> onclick="checkAll()"><label for="0">전체</label>
-			<c:forEach var="vo" items="${genreNamelist }">
-				<input type="checkbox" name="genreName" id="${vo.genreNum }" value="${vo.genreNum }" <c:forEach var="va" items="${genreNum }">
+			<div class="movieSearchCheckbox">
+				<input type="checkbox" name="genreName" id="0" value="0" <c:if test="${genreNum[0]=='0' }"> checked="checked"</c:if> onclick="checkAll()"><label for="0">전체</label>
+				<c:forEach var="vo" items="${genreNamelist }">
+					<input type="checkbox" name="genreName" id="${vo.genreNum }" value="${vo.genreNum }" <c:forEach var="va" items="${genreNum }">
 				<c:if test="${va==vo.genreNum }"> checked="checked"</c:if>
 				</c:forEach> onclick="checkAllch()">
-				<label for="${vo.genreNum }">${vo.genreName }</label>
-			</c:forEach>
+					<label for="${vo.genreNum }">${vo.genreName }</label>
+				</c:forEach>
+			</div>
 		</form>
 	</div>
 	<div id="movieViewBriefIntro">
@@ -84,16 +91,16 @@
 						<c:when test="${map.movieAge==0 }">
 							전체 관람가
 						</c:when>
-							<c:when test="${map.movieAge==1 }">
+						<c:when test="${map.movieAge==1 }">
 							12세 관람가
 						</c:when>
-							<c:when test="${map.movieAge==2 }">
+						<c:when test="${map.movieAge==2 }">
 							15세 관람가
 						</c:when>
-							<c:when test="${map.movieAge==3 }">
+						<c:when test="${map.movieAge==3 }">
 							청소년관람불가
 						</c:when>
-							<c:when test="${map.movieAge==4 }">
+						<c:when test="${map.movieAge==4 }">
 							제한상영가
 						</c:when>
 					</c:choose>
@@ -126,7 +133,9 @@
 	<c:forEach var="map" items="${movieotherList }" varStatus="st">
 		<div>
 			<c:choose>
-				<c:when test="${detail eq 'info' && st.index eq 0 }"><div id="movieRevieInfoInfo">${map.get('movieIntro')}</div></c:when>
+				<c:when test="${detail eq 'info' && st.index eq 0 }">
+					<div id="movieRevieInfoInfo">${map.get('movieIntro')}</div>
+				</c:when>
 				<c:when test="${detail eq 'crew' }">
 					<c:choose>
 						<c:when test="${map.get('castDoNum')== 1}">
@@ -274,27 +283,27 @@
 				<c:when test="${detail eq 'vedio' }">${map.urlAddr }</c:when>
 				<c:when test="${detail eq 'rate' }">
 					<c:if test="${st.index==0 }">
-					<div>
-						<form method="post" action="${cp }/Movie/rate/insertRate.do">
-							<input type="hidden" name="movieNum" value="${movieNum }">
-							<div id="rateAdd">
-								<select name="rate">
-									<option value="5" <c:if test="${rate==5 }">selected</c:if>>★★★★★</option>
-									<option value="4" <c:if test="${rate==4 }">selected</c:if>>☆★★★★</option>
-									<option value="3" <c:if test="${rate==3 }">selected</c:if>>☆☆★★★</option>
-									<option value="2" <c:if test="${rate==2 }">selected</c:if>>☆☆☆★★</option>
-									<option value="1" <c:if test="${rate==1 }">selected</c:if>>☆☆☆☆★</option>
-								</select>
-								<input type="text" name="rateComm" id="rateComm" value="${rateComm }"> <input type="submit" value="입력">
-							</div>
-						</form>
+						<div>
+							<form method="post" action="${cp }/Movie/rate/insertRate.do">
+								<input type="hidden" name="movieNum" value="${movieNum }">
+								<div id="rateAdd">
+									<select name="rate">
+										<option value="5" <c:if test="${rate==5 }">selected</c:if>>★★★★★</option>
+										<option value="4" <c:if test="${rate==4 }">selected</c:if>>☆★★★★</option>
+										<option value="3" <c:if test="${rate==3 }">selected</c:if>>☆☆★★★</option>
+										<option value="2" <c:if test="${rate==2 }">selected</c:if>>☆☆☆★★</option>
+										<option value="1" <c:if test="${rate==1 }">selected</c:if>>☆☆☆☆★</option>
+									</select>
+									<input type="text" name="rateComm" id="rateComm" value="${rateComm }"> <input type="submit" value="입력">
+								</div>
+							</form>
 						</div>
-						<div style="font-size: 9px;font-weight: bold; color: red;">
+						<div style="font-size: 9px; font-weight: bold; color: red;">
 							<c:if test="${code=='fail' }">변경 실패!</c:if>
 						</div>
 						<div id="rateList">
 							<c:forEach var="maps" items="${movieotherList }">
-								<div  class="movieReviewRateCommAll">
+								<div class="movieReviewRateCommAll">
 									<div class="movieReviewRateScore">
 										<c:choose>
 											<c:when test="${maps.rate==5 }">★★★★★ (5) </c:when>

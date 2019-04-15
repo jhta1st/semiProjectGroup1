@@ -1,1 +1,23 @@
 @charset "UTF-8";
+
+.movieSearchView {
+	width: 1000px;
+	height: 100px;
+	padding: 50px;
+	margin: auto;
+	margin-top: 50px; border-style : double;
+	text-align: center;
+	width: 1000px;
+	border-style: double;
+	background-color: white;
+}
+
+.movieSearchView label {
+	font-size: 20px;
+	font-weight: bold;
+	
+}
+
+.movieSearchView .movieSearchCheckbox {
+	margin: 20px;
+}

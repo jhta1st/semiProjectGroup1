@@ -6,7 +6,7 @@
 		<li><a href="${cp }/Movie/movieRecommend.do">영화추천</a></li>
 		<li><a href="${cp }/FreeBoard/list.do">자유게시판</a></li>
 	</ul>
-	<div>
+	<div id="layoutheaderLogin">
 		<!-- 로그인 유무 -->
 		<c:choose>
 			<c:when test="${sessionScope.id==null }">

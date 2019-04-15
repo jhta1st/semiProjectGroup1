@@ -5,18 +5,19 @@
 	<div class="movieSearchView">
 		<form method="get" action="${cp }/Movie/moviesearch.do">
 			<label for="keyword">영화검색</label><input type="text" id="keyword" name="keyword" value="${keyword }"><input type="submit" value="검색">
-			<br>
-			<input type="checkbox" name="genreName" id="0" value="0" <c:if test="${genreNum[0]=='0' }"> checked="checked"</c:if> onclick="checkAll()"><label for="0">전체</label>
-			<c:forEach var="vo" items="${genreNamelist }">
-				<input type="checkbox" name="genreName" id="${vo.genreNum }" value="${vo.genreNum }" <c:forEach var="va" items="${genreNum }">
+			<div class="movieSearchCheckbox">
+				<input type="checkbox" name="genreName" id="0" value="0" <c:if test="${genreNum[0]=='0' }"> checked="checked"</c:if> onclick="checkAll()"><label for="0">전체</label>
+				<c:forEach var="vo" items="${genreNamelist }">
+					<input type="checkbox" name="genreName" id="${vo.genreNum }" value="${vo.genreNum }" <c:forEach var="va" items="${genreNum }">
 				<c:if test="${va==vo.genreNum }"> checked="checked"</c:if>
 				</c:forEach> onclick="checkAllch()">
-				<label for="${vo.genreNum }">${vo.genreName }</label>
-			</c:forEach>
+					<label for="${vo.genreNum }">${vo.genreName }</label>
+				</c:forEach>
+			</div>
 		</form>
 	</div>
 	<div id="movieSearchList">
-		<h2 style="font-size: 20px;font-weight: bold;">${keyword }의 검색결과(${resultCount }건 검색됨)</h2>
+		<h2 style="font-size: 20px; font-weight: bold;">${keyword }의검색결과(${resultCount }건 검색됨)</h2>
 		<div class="movieSearchResult">
 			<c:forEach var="result" items="${serchList }" varStatus="st">
 				<div class="movieSearchResultElement" style="float: <c:choose><c:when test="st.count%5==0">clear;</c:when><c:otherwise>left;</c:otherwise></c:choose>">
