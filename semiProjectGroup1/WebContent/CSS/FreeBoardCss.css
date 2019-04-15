@@ -2,6 +2,8 @@
 
 .FreeBoardTableDiv {
 	background-color: #cecece;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 .FreeBoardTable {
 	margin: auto;
@@ -10,7 +12,7 @@
 	vertical-align:middle;
 	width: 50%;
 	background-color: white; 
-	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1); 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1);
 }
 .FreeBoardTable tr th{
 	width:50px;
@@ -110,7 +112,7 @@ tr td {
 }
 .commBtns{
 	float:left;
-	padding-top: 13px;
+	padding-top: 35px;
 }
 .thisPage {
 	font-size: 20px;
@@ -125,6 +127,7 @@ tr td {
 	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
 }
 .FreeBoardSearchDiv	{
+	padding-top:10px;
 	margin: auto;
 	width: 50%;
 	text-align: center;
@@ -135,7 +138,7 @@ tr td {
 	border: 2px solid black;
 	width: 20%;
 	margin: auto;
-	margin-top: 15px;
+	margin-top: 150px;
 	padding-bottom: 15px;
 	text-align: center;
 	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
@@ -146,16 +149,39 @@ tr td {
 }
 .FreeBoardContentUpdateDiv {
 	margin: auto;
-	margin-top: 50px;
+	padding-top: 65px;
+	padding-bottom: 50px;
 	text-align:center;
 	vertical-align:middle;
-	width: 50%;
-	background-color: white; 
+	width: 100%;
+	background-color: #cecece; 
 	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1); 
 }
-.FreeBoardContentDiv{
-	padding-top:20px;
-	margin-bottom:20px;
+.MsgPopup{
+	text-align: right;
+	width:450px;
+}
+.MovieRecommendDiv{
+	background-color: #cecece;
+	text-align: center;
+}
+.p1{
+	font-size: 25px;
+	margin:0;
+}
+.p2{
+	text-align:left;
+	padding-left:25px;
+	background-color: #cecece;
+	font-size: 20px;
+	margin:0;
+}
+.MovieListDiv{
+	background-color: #cecece;
+	display: inline-block;
+	float: left;
+	padding-left: 5px;
+	text-align: center;
 }
 .Btn {
 	background:#F7F7F7;

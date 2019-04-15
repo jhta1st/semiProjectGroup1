@@ -185,6 +185,7 @@
 #movieReview #movieViewBriefIntro #movieReviewRate {
 	font-size: 30px;
 	margin-top: 10px;
+	text-shadow: 3px 4px 1.25px rgba(0,0,0,0.1);
 }
 
 #movieReview #movieViewBriefIntro #movieViewBriefIntroInfo .movieViewBriefGenreInfo {
@@ -287,9 +288,10 @@
 }
 #movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateScore .movieReviewRateId{
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 17px;
 }
 #movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateComm{
 	border-bottom: dashed;
 	border-bottom-color: gray;
+	padding-bottom: 15px;
 }
