@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+#myMsg {
+	width: 90%;
+		margin: auto;
+		margin-top: 25px;
+		border-collapse: collapse;
+		border: 1px solid #E7E7E7;
+		background-color: white;
+	}
+</style>
 <script>
 var userChkId = "";
 var xhr = null;
@@ -111,7 +121,7 @@ function detailClose() {
 	document.getElementById("msg_detail").innerHTML="";
 }
 </script>
-<div>
+<div id="myMsg">
 	<h1>
 		<a href="${pageContext.request.contextPath}/user/msgReceiveList.do?userId=${userId}" style="${type=='SEND' ? 'color:gray;font-weight:normal;font-size:20px;' : ''}">받은쪽지함</a> | <a href="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}" style="${type!='SEND' ? 'color:gray;font-weight:normal;font-size:20px;' : ''}">보낸쪽지함</a>
 	</h1>
@@ -210,6 +220,6 @@ function detailClose() {
 		<br />
 		<input type="button" value="쪽지보내기" onclick="detailSendForm()" />
 		<hr />
-		<a href="${pageContext.request.contextPath}/main/layout.jsp">홈으로</a>
+		<a href="${pageContext.request.contextPath}/main/home.do">홈으로</a>
 	</div>
 </div>

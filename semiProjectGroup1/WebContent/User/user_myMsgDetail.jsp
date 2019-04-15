@@ -13,5 +13,4 @@
 	</tr>
 </table>
 <br />
-<!-- <input type="button" value="삭제하기" onclick="deleteMessage(${vo.msgNum})" /> -->
 <input type="button" value="취소" onclick="detailClose()" />
