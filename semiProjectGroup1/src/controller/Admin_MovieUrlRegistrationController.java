@@ -55,8 +55,8 @@ public class Admin_MovieUrlRegistrationController extends HttpServlet {
 		Movie_UrlInfoVo vo = new Movie_UrlInfoVo(0, urlType, urlAddr, movieNum);
 		Movie_UrlInfoDao dao = Movie_UrlInfoDao.getInstance();
 		if (dao.urlInfoWrite(vo) > 0) {
-			req.setAttribute("errMsg", "등록되었습니다.");
-			req.setAttribute("pages", "/Admin/admin_MovieUrlRegistration.jsp");
+			req.setAttribute("movieNum", movieNum);
+			req.setAttribute("pages", "/admin/MovieViewDetail.do");
 			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		} else {
 			req.setAttribute("errMsg", "urlWrite실패");

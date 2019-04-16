@@ -54,8 +54,8 @@ public class Admin_MovieImgRegistrationController extends HttpServlet {
 						movieNum);
 				Movie_ReviewImageDao dao = Movie_ReviewImageDao.getInstance();
 				if (dao.reviewImgWrite(vo) > 0) {
-					req.setAttribute("errMsg", "등록되었습니다.");
-					req.setAttribute("pages", "/Admin/admin_MovieImgRegistration.jsp");
+					req.setAttribute("movieNum", movieNum);
+					req.setAttribute("pages", "/admin/MovieViewDetail.do");
 					req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 				} else {
 					req.setAttribute("errCode", "-1");

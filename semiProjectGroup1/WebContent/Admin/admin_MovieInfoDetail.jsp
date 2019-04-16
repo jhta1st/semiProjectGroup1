@@ -438,21 +438,19 @@
 	<hr/>
 	<br/>
 	<div class="adminMovieInfoDetail1Div">
-	<c:set var="tmp" value="0" />
 	<table class="adminMovieInfoDetail1">
 		<tr>
 			<th rowspan="6">이미지</th>
-			<th rowspan="2">대표이미지</th>
+			<th rowspan="2">대표이미지 ${tmp }</th>
+			<c:if test="${imgList.size()==0 }">
+					<td>
+						<a href="${cp }/admin/movieImgRegistration.do?movieNum=${vo.movieNum }&imageType=1">추가</a>
+					</td>
+				</c:if>
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==1 }">
 					<td>
 						<img alt="영화대표이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}" id="adminMovieDetailImg">
-						<c:set var="tmp" value="${tmp=tmp+1 }" />
-					</td>
-				</c:if>
-				<c:if test="${tmp==0 }">
-					<td>
-						<a href="${cp }/admin/movieImgRegistration.do?movieNum=${vo.movieNum }&imageType=1">추가</a>
 					</td>
 				</c:if>
 			</c:forEach>

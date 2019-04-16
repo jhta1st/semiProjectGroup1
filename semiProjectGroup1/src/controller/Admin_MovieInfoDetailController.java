@@ -20,7 +20,11 @@ import vo.Admin_MovieViewVo;
 public class Admin_MovieInfoDetailController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int movieNum = Integer.parseInt(req.getParameter("movieNum"));
+		String movieNums = req.getParameter("movieNum");
+		if (movieNums == null) {
+			movieNums = (String) req.getAttribute("movieNum");
+		}
+		int movieNum = Integer.parseInt(movieNums);
 		Admin_MovieViewDao dao = Admin_MovieViewDao.getInstance();
 		Admin_MovieViewVo vo = dao.detail(movieNum);
 		Movie_ReviewImageDao reviewImgDao = Movie_ReviewImageDao.getInstance();

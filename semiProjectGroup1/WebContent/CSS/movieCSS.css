@@ -154,10 +154,10 @@
 }
 
 #movieReview #movieViewBriefIntro {
-	width: 50%;
+	width: 65%;
 	margin: auto;
+	margin-top: 30px;
 	margin-bottom: 30px;
-	margin: auto;
 }
 
 #movieReview #movieViewBriefIntro #movieReviewRepImg {
@@ -197,7 +197,7 @@
 #movieReview #movieRevieMoreInfo {
 	background-color: #B3B3B3;
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 100px;
 }
 
 #movieReview #movieRevieMoreInfo ul li {
