@@ -22,7 +22,7 @@ public class Admin_MovieInfoDetailController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String movieNums = req.getParameter("movieNum");
 		if (movieNums == null) {
-			movieNums = (String) req.getAttribute("movieNum");
+			movieNums = String.valueOf(req.getAttribute("movieNum"));
 		}
 		int movieNum = Integer.parseInt(movieNums);
 		Admin_MovieViewDao dao = Admin_MovieViewDao.getInstance();
