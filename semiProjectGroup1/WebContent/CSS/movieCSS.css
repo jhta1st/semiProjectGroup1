@@ -168,6 +168,8 @@
 
 #movieReview #movieViewBriefIntro #movieViewBriefIntroInfo {
 	float: left;
+	position: relative;
+	top:-50px;
 }
 
 #movieReview #movieViewBriefIntro #movieViewBriefIntroInfo #movieReviewAge {
