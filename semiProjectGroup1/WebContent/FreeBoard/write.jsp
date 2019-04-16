@@ -12,7 +12,8 @@
 		fileDiv.appendChild(fileInput);
 		var fileDelete = document.createElement("input");
 		fileDelete.type = "button";
-		fileDelete.value = "첨부파일삭제";
+		fileDelete.className= "Btn";
+		fileDelete.value = "삭제";
 		fileDelete.id = "fileDelete" + fileCount;
 		fileDelete.onclick = fileUploadDelete;
 		fileDiv.appendChild(fileDelete);
@@ -31,20 +32,20 @@
 		fileCount++;
 	}
 </script>
-<div>
-	<div style="border: 2px solid black; width: 800px;">
+<div class="FreeBoardContentUpdateDiv">
+	<div class="FreeBoardContentDiv">
 		<form method="post" action="${cp }/FreeBoard/write.do" enctype="multipart/form-data">
 			<div>
-				<input type="text" size="100%" name="freeBoardTitle">
+				<input class="silverRadius" type="text" style="height: 37px" size="99%" name="freeBoardTitle">
 			</div>
 			<div>
-				<textarea rows="30" cols="100%" draggable="false" name="freeBoardContent"></textarea>
+				<textarea class="silverRadius" rows="30" cols="100%" name="freeBoardContent"></textarea>
 			</div>
 			<div id="fileUploadPlusArea"></div>
 			<div>
-				<input type="button" value="파일첨부하기" onclick="fileUploadPlus();">
+				<input class="Btn" type="button" value="첨부" onclick="fileUploadPlus();">
 				<br>
-				<input type="hidden" name="userId" value="${sessionScope.id }"> <input type="submit" value="전송"><input type="button" value="취소" onclick="javascript:history.go(-1);">
+				<input class="Btn" type="hidden" name="userId" value="${sessionScope.id }"> <input class="Btn" type="submit" value="전송"><input class="Btn" type="button" value="취소" onclick="javascript:history.go(-1);">
 			</div>
 		</form>
 		<div id="fileCheckDiv" style="display: none;"></div>

@@ -178,4 +178,4 @@
 	</tr>
 </table>
 <br />
-<input class="userMyMsgCloseBtn" type="button" value="취소" onclick="detailClose()" />
+<input class="Btn" type="button" value="닫기" onclick="detailClose()" />

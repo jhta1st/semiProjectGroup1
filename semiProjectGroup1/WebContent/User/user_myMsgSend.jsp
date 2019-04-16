@@ -162,7 +162,7 @@
 	background:linear-gradient(#454545, #787878);
 }
 </style>
-<table border="1">
+<table class="myPageTable">
 	<tr>
 		<td>받을사람</td>
 		<td>
@@ -172,7 +172,7 @@
 	<tr>
 		<td>쪽지내용</td>
 		<td>
-			<textarea rows="5" cols="50" id="content" name="content"></textarea>
+			<textarea rows="5" cols="70%" id="textarea1" name="content"></textarea>
 		</td>
 	</tr>
 </table>

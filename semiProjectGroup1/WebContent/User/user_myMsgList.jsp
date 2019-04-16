@@ -171,7 +171,7 @@ var xhr = null;
 function checkUser() {
 	var userId = document.getElementsByName("userId")[0];
 	if(userId.value.length < 4 ){
-		alert("아이디는 최소 5자로 입력하세요.");
+		document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_ok">아이디는 최소 5자로 입력하세요.</font>';
 		userId.value.focus();
 		return false;
 	}
@@ -196,20 +196,20 @@ function checkUserResult() {
 function sendMessage() {
 	var userId = document.getElementsByName("userId")[0];
 	if(userId.value.length < 4 ){
-		alert("아이디는 최소 5자로 입력하세요.");
+		document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_ok">아이디는 최소 5자로 입력하세요.</font>';
 		userId.focus();
 		return false;
 	}
 	var userChk = document.getElementById("userChk_ok");
 	if(userChkId != userId.value || userChk == null || userChk.length == 0 ){
-		alert("아이디 확인을 해주세요.");
+		document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_ok">아이디 확인을 해주세요.</font>';
 		userId.focus();
 		return false;
 	}
 	userChkId = userId.value;
 	var content = document.getElementsByName("content")[0];
 	if(content.value.length == 0 ){
-		alert("쪽지 내용을 입력하세요.");
+		document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_ok">쪽지 내용을 입력하세요.</font>';
 		content.focus();
 		return false;
 	}
@@ -224,33 +224,10 @@ function sendMessageResult() {
 	if(xhr.readyState==4 && xhr.status==200){
 		var data=xhr.responseText;
 		var result=eval("(" + data +")");
-		if (result.code == "success") {
-			alert("쪽지를 보냈습니다.");
-			document.location="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}";
+		if (result.code == "success") {			
+			document.location="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}&errMsg=쪽지를 보냈습니다.";
 		} else {
-			alert("오류가 발생했습니다.");
-		}
-	}
-}
-function deleteMessage(num){
-	if(!confirm("쪽지를 삭제 하시겠습니까?")) {
-		return false;
-	}
-	xhr=new XMLHttpRequest();
-	xhr.onreadystatechange=deleteMessageResult;
-	xhr.open("post","${pageContext.request.contextPath}/user/msgDelete.do",true);	
-	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	xhr.send("msgNum="+num+"&userId=${userId}");
-}
-function deleteMessageResult() {
-	if(xhr.readyState==4 && xhr.status==200){
-		var data=xhr.responseText;
-		var result=eval("(" + data +")");
-		if (result.code == "success") {
-			alert("쪽지를 삭제 하였습니다.");
-			location.reload();
-		} else {
-			alert("오류가 발생했습니다.");
+			document.location="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}&errMsg=오류가 발생했습니다.";
 		}
 	}
 }
@@ -281,6 +258,7 @@ function detailClose() {
 </script>
 <div id="myMsg" class="FreeBoardTableDiv">
 	<div class="myPageBtns">
+		<div id="errMsg" style="text-align: center;"><p>${param.errMsg }</p></div>
 		<div>
 			<a class="userMypageDeleteBtn" href="${pageContext.request.contextPath}/user/msgReceiveList.do?userId=${userId}">받은쪽지함</a> <a class="userMypageDeleteBtn" href="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}">보낸쪽지함</a>
 			<table class="myPageTable">

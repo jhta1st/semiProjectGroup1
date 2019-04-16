@@ -49,6 +49,8 @@
 							likeGenreName+="웃긴 ";
 						}else if(list[i].likeGenre=='스릴러'){
 							likeGenreName+="쫄깃한 ";
+						}else if(list[i].likeGenre=='모험'){
+							likeGenreName+="즐거운 ";
 						}else{
 							likeGenreName+="알수없는 ";
 						}
@@ -82,6 +84,8 @@
 							likeGenreName+="웃긴 ";
 						}else if(list[i].likeGenre=='스릴러'){
 							likeGenreName+="쫄깃한 ";
+						}else if(list[i].likeGenre=='모험'){
+							likeGenreName+="즐거운 ";
 						}else{
 							likeGenreName+="알수없는 ";
 						}			

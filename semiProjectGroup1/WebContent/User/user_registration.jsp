@@ -236,32 +236,32 @@ var userChkNick = "";
 function checkData() {
 	var userId = document.getElementsByName("userId")[0];
 	if(userId.value.length < 6 ){
-		alert("아이디는 최소 6자로 입력하세요.");
+		document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_fail">아이디는 최소 6자로 입력하세요.</font>';
 		userId.focus();
 		return false;
 	}
 	var userChk = document.getElementById("userChk_ok");
 	if(userChkId != userId.value || userChk == null || userChk.length == 0 ){
-		alert("아이디 중복 확인을 해주세요.");
+		document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_fail">아이디 중복 확인을 해주세요.</font>';
 		userId.focus();
 		return false;
 	}
 	userChkId = userId.value;
 	var userPwd = document.getElementsByName("userPwd")[0];
 	if(userPwd.value.length < 4 || userPwd.value.length > 15 ){
-		alert("비밀번호는 4자를 초과하거나 15자 미만으로 입력하세요.");
+		document.getElementById("pwdChk_res").innerHTML='<font color="red" id="userNickChk_fail">비밀번호는 4~15자 입력하세요.</font>';
 		userPwd.focus();
 		return false;
 	}
 	var userPwd1 = document.getElementsByName('userPwd1')[0];
 	if(!(userPwd.value==userPwd1.value)){
-		alert('설정한 비밀번호와 같게 입력하세요.');
+		document.getElementById("pwdChk_res").innerHTML='<font color="red" id="userNickChk_fail">설정한 비밀번호와 같게 입력하세요.</font>';
 		userPwd1.focus();
 		return false;
 	}
 	var userNickName = document.getElementsByName("userNickName")[0];
 	if(userNickName.value==""){
-		alert("닉네임은 필수 입력사항입니다.");
+		document.getElementById("userNickChk_res").innerHTML='<font color="red" id="userNickChk_fail">닉네임은 필수 입력사항입니다.</font>';
 		userNickName.focus();
 		return false;
 	}
@@ -271,7 +271,7 @@ var xhr = null;
 function checkUser() {
 	var userId = document.getElementsByName("userId")[0];
 	if(userId.value.length < 6 ){
-		alert("아이디는 최소 6자로 입력하세요.");
+		document.getElementById("userChk_res").innerHTML='<font color="red" id="userChk_fail">아이디는 최소 6자로 입력하세요.</font>';
 		userId.value.focus();
 		return false;
 	}
@@ -299,7 +299,7 @@ var xhrr = null;
 function checkNickName() {
 	var userNickName = document.getElementsByName("userNickName")[0];
 	if(userNickName.value==""){
-		alert("닉네임은 필수 입력사항입니다.");
+		document.getElementById("userNickChk_res").innerHTML='<font color="red" id="userNickChk_fail">닉네임은 필수 입력사항입니다.</font>';
 		userNickName.focus();
 		return false;
 	}
@@ -340,6 +340,7 @@ function checkNickNameResult() {
 		비밀번호확인*
 		<br />
 		<input type="password" id="userPwd1" name="userPwd1" />
+		<br><span id="pwdChk_res"></span>
 		<br />
 		닉네임*
 		<br />
