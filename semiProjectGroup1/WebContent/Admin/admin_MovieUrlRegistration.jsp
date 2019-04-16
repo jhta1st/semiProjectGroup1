@@ -153,13 +153,13 @@
 	</script>
 	<form method="post" action="${pageContext.request.contextPath }/admin/movieUrlRegistration.do">
 		<hr/>
-		영화명 <input class="url10" type="text" id="movieInfo" /> <input class="adminUrlOkBtn" type="button" value="검색" onclick="searchMovieInfo(1);">
+		영화명 <input class="url10" type="text" id="movieInfo" <c:if test="${movieName!='' }">value="${movieName }" disabled="disabled"</c:if>/> <c:if test="${movieNum=='' }"><input class="adminUrlOkBtn" type="button" value="검색" onclick="searchMovieInfo(1);"></c:if>
 		<br>
 		<div id="movieInfoSearchDiv"></div>
 		<div id="movieInfoSearchDivPage" style="clear: left;"></div>
-		<input type="hidden" id="movieNum" name="movieNum"><br/> <label>URL유형 <select class="url20" name="urlType">
-				<option value="1">예고편</option>
-				<option value="2">하이라이트</option>
+		<input type="hidden" id="movieNum" name="movieNum" value="${movieNum }"><br/> <label>URL유형 <select class="url20" name="urlType">
+				<option value="1" <c:if test="${urlType==1 }">selected</c:if>>예고편</option>
+				<option value="2" <c:if test="${urlType==2 }">selected</c:if>>하이라이트</option>
 			</select></label>
 		<br>
 		<br/>

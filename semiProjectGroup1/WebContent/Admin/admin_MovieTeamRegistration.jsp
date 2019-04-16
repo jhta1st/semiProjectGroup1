@@ -217,27 +217,27 @@
 </script>
 <form method="post" action="${cp }/admin/movieTeamRegistration.do">
 <hr/>
-	영화명<input class="et1" type="text" id="movieInfo"/> <input class="adminMovieTeamBtn" type="button" value="검색" onclick="searchMovieInfo(1);"><br>
+	영화명<input class="et1" type="text" id="movieInfo" <c:if test="${movieName!='' }">value="${movieName }" disabled="disabled"</c:if>/> <c:if test="${movieNum=='' }"><input class="adminMovieTeamBtn" type="button" value="검색" onclick="searchMovieInfo(1);"><br></c:if>
 	<div id="movieInfoSearchDiv"></div>
 	<div id="movieInfoSearchDivPage" style="clear:left;"></div>	
-	<input type="hidden" id="movieNum" name="movieNum"><br/>
+	<input type="hidden" id="movieNum" name="movieNum" value="${movieNum }"><br/>
 	인물명<input class="et2" type="text" id="charInfo"/> <input class="adminMovieTeamBtn" type="button" value="검색" onclick="searchPeopleInfo(1);"><br>
 	<div id="peopleInfoSearchDiv"></div>
 	<div id="peopleInfoSearchDivPage" style="clear:left;"></div>	
 	<input type="hidden" id="charNum" name="charNum"><br/>
 	<label>역할
 	<select class="et3" name="castDoNum">
-		<option value="1">주연</option>
-		<option value="2">조연</option>
-		<option value="3">엑스트라</option>
-		<option value="4">카메오</option>
-		<option value="11">감독</option>
-		<option value="12">조감독</option>
-		<option value="13">각본</option>
-		<option value="14">음악</option>
-		<option value="15">미술</option>
-		<option value="16">소품</option>
-		<option value="17">촬영</option>
+		<option value="1" <c:if test="${castDoNum==1 }">selected</c:if>>주연</option>
+		<option value="2" <c:if test="${castDoNum==2 }">selected</c:if>>조연</option>
+		<option value="3" <c:if test="${castDoNum==3 }">selected</c:if>>엑스트라</option>
+		<option value="4" <c:if test="${castDoNum==4 }">selected</c:if>>카메오</option>
+		<option value="11" <c:if test="${castDoNum==11 }">selected</c:if>>감독</option>
+		<option value="12" <c:if test="${castDoNum==12 }">selected</c:if>>조감독</option>
+		<option value="13" <c:if test="${castDoNum==13 }">selected</c:if>>각본</option>
+		<option value="14" <c:if test="${castDoNum==14 }">selected</c:if>>음악</option>
+		<option value="15" <c:if test="${castDoNum==15 }">selected</c:if>>미술</option>
+		<option value="16" <c:if test="${castDoNum==16 }">selected</c:if>>소품</option>
+		<option value="17" <c:if test="${castDoNum==17 }">selected</c:if>>촬영</option>
 	</select></label><br><br/>
 	캐릭터이름<input class="et4" type="text" id="castDoName" name="castDoName" /><br><hr/>
 	<input class="adminMovieTeamBtn" type="submit" value="등록" /> | <input class="adminMovieTeamBtn" type="button" value="취소" onclick="javascript:history.go(-1);">

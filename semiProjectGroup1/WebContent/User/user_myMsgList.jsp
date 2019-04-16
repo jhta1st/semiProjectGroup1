@@ -36,7 +36,7 @@
 	display:inline-block;
 	font-size:12px;
 	color:#f7f7f7;
-	width:100px;
+	width:60px;
 	height:0px;
 	padding:13px;
 	border-color:#2e2e2e;
