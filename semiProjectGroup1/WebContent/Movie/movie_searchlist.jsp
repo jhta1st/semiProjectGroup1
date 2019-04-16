@@ -11,7 +11,7 @@
 					<c:forEach var="vo" items="${genreNamelist }">
 						<input type="checkbox" name="genreName" id="${vo.genreNum }" value="${vo.genreNum }" <c:forEach var="va" items="${genreNum }">
 				<c:if test="${va==vo.genreNum }"> checked="checked"</c:if>
-				</c:forEach> onclick="checkAllch()">
+				</c:forEach> onclick="checkAllch(this)">
 						<label for="${vo.genreNum }">${vo.genreName }</label>
 					</c:forEach>
 				</div>

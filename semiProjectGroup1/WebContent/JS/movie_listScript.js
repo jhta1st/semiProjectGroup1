@@ -14,8 +14,20 @@ function checkAll() {
 
 function checkAllch(chk) {
 	var checkAll = document.getElementById("0");
+	var checkbox = document.getElementsByName("genreName");
 	if (chk.checked == false) {
 		checkAll.checked = false;
+	}else{
+		var chAllb=true;
+		for (var i = 1; i < checkbox.length; i++) {
+			if (checkbox[i].checked==false) {
+				chAllb=false;
+				break;
+			}
+		}
+		if (chAllb==true) {
+			checkAll.checked = true;
+		}
 	}
 }
 
