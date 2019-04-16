@@ -1,16 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
-#myMsg {
-	width: 90%;
+	#mypage {
+		padding-top:10px;
+		padding-bottom: 10px;
+		width: 100%;
 		margin: auto;
-		margin-top: 25px;
-		border-collapse: collapse;
-		border: 1px solid #E7E7E7;
-		background-color: white;
+		background-color: #cecece;
 	}
-	
-.myMsgDeleteBtn {
+	#mypage #mypageForm {
+	    margin:auto;
+	    width:50%;
+		border: 1px solid silver;
+		background-color: white;
+		border-radius:25px;
+	}
+	#mypage #mypageForm #set {
+	     margin-left : 150px;
+	}
+	#mypage #mypageForm #set1 {
+	     margin-right : 150px;
+	}
+
+.userMypageDeleteBtn{
 	font-weight:bold;
 	text-decoration:none;
 	font-family:Arial;
@@ -35,16 +47,19 @@
 	vertical-align:middle;
 	display:inline-block;
 	font-size:12px;
-	color:#f7f7f7;
-	width:60px;
+	color:white;
+	width:63px;
 	height:0px;
 	padding:13px;
 	border-color:#2e2e2e;
 	border-width:1px;
 	border-style:solid;
 }
+.userMypageDeleteBtn a:link{
+	color: white;
+}
 
-.myMsgDeleteBtn:active {
+.userMypageDeleteBtn:active {
 	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
 	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
 	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
@@ -53,7 +68,7 @@
 	top:4px
 }
 
-.myMsgDeleteBtn:hover {
+.userMypageDeleteBtn:hover {
 	background:#454545;
 	background:-o-linear-gradient(90deg, #454545, #787878);
 	background:-moz-linear-gradient( center top, #454545 5%, #787878 100% );
@@ -62,63 +77,9 @@
 	background:-webkit-linear-gradient(#454545, #787878);
 	background:-ms-linear-gradient(#454545, #787878);
 	background:linear-gradient(#454545, #787878);
-}	
-
-.userMyMsgCBBtn {
-	font-weight:bold;
-	text-decoration:none;
-	font-family:Arial;
-	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
-	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
-	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
-	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
-	background:#787878;
-	background:-o-linear-gradient(90deg, #787878, #454545);
-	background:-moz-linear-gradient( center top, #787878 5%, #454545 100% );
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #454545) );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#454545');
-	background:-webkit-linear-gradient(#787878, #454545);
-	background:-ms-linear-gradient(#787878, #454545);
-	background:linear-gradient(#787878, #454545);
-	text-indent:0px;
-	line-height:0px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-	text-align:center;
-	vertical-align:middle;
-	display:inline-block;
-	font-size:12px;
-	color:#f7f7f7;
-	width:100px;
-	height:0px;
-	padding:13px;
-	border-color:#2e2e2e;
-	border-width:1px;
-	border-style:solid;
 }
 
-.userMyMsgCBBtn:active {
-	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
-	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
-	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
-	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
-	position:relative;
-	top:4px
-}
-
-.userMyMsgCBBtn:hover {
-	background:#454545;
-	background:-o-linear-gradient(90deg, #454545, #787878);
-	background:-moz-linear-gradient( center top, #454545 5%, #787878 100% );
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #454545), color-stop(1, #787878) );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545', endColorstr='#787878');
-	background:-webkit-linear-gradient(#454545, #787878);
-	background:-ms-linear-gradient(#454545, #787878);
-	background:linear-gradient(#454545, #787878);
-}	
-
-.userMyMsgSendBtn {
+.userMypageUpdateBtn {
 	font-weight:bold;
 	text-decoration:none;
 	font-family:Arial;
@@ -152,7 +113,7 @@
 	border-style:solid;
 }
 
-.userMyMsgSendBtn:active {
+.userMypageUpdateBtn:active {
 	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
 	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
 	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
@@ -161,7 +122,7 @@
 	top:4px
 }
 
-.userMyMsgSendBtn:hover {
+.userMypageUpdateBtn:hover {
 	background:#454545;
 	background:-o-linear-gradient(90deg, #454545, #787878);
 	background:-moz-linear-gradient( center top, #454545 5%, #787878 100% );
@@ -170,7 +131,39 @@
 	background:-webkit-linear-gradient(#454545, #787878);
 	background:-ms-linear-gradient(#454545, #787878);
 	background:linear-gradient(#454545, #787878);
-}	
+}
+.myPageTable {
+	border:1px solid silver;
+	border-radius:25px;
+	margin: auto;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	text-align:center;
+	vertical-align:middle;
+	width: 50%;
+	background-color: white; 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1);
+}
+.myPageTable tr td {
+	border-bottom: none;
+}
+.myPageTable a{
+	color: black;
+}
+.myPageTable a:link {
+	text-decoration: none;
+}
+.myPageTable a:visited {
+	color: silver;
+	text-decoration: none;
+}
+.myPageBtns{
+	text-align: center;
+	margin-bottom: 40px;
+}
+.myPageBtnscolor{
+	color: white;
+}
 </style>
 <script>
 var userChkId = "";
@@ -277,111 +270,100 @@ function detailFormHtml(){
 	if(xhr.readyState==4 && xhr.status==200){
 		var resHtml=xhr.responseText;
 		document.getElementById("msg_detail").innerHTML=resHtml;
+		var msgSendBtn=document.getElementById("msgSendBtn");
+		msgSendBtn.style="display:none;";
 	}
 }
 function detailClose() {
 	document.getElementById("msg_detail").innerHTML="";
+	msgSendBtn.style="";
 }
 </script>
-<div id="myMsg">
-	<h1>
-		<a href="${pageContext.request.contextPath}/user/msgReceiveList.do?userId=${userId}" style="${type=='SEND' ? 'color:gray;font-weight:normal;font-size:20px;' : ''}">받은쪽지함</a> | <a href="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}" style="${type!='SEND' ? 'color:gray;font-weight:normal;font-size:20px;' : ''}">보낸쪽지함</a>
-	</h1>
-	<hr>
-	<div style="float: left;">
-		<table border="1" style="width: 600px; table-layout: fixed;">
-			<tr>
-				<th>${type=="SEND" ? "받은사람" : "보낸사람"}</th>
-				<th style="width: 200px;">쪽지내용</th>
-				<th>작성일</th>
-				<c:if test="${type=='SEND'}">
-					<th>읽기여부</th>
-				</c:if>
-				<th>삭제</th>
-			</tr>
-			<c:forEach var="vo" items="${list}">
+<div id="myMsg" class="FreeBoardTableDiv">
+	<div class="myPageBtns">
+		<div>
+			<a class="userMypageDeleteBtn" href="${pageContext.request.contextPath}/user/msgReceiveList.do?userId=${userId}">받은쪽지함</a> <a class="userMypageDeleteBtn" href="${pageContext.request.contextPath}/user/msgSendList.do?userId=${userId}">보낸쪽지함</a>
+			<table class="myPageTable">
 				<tr>
-					<td>${type=="SEND" ? vo.receiveUserId : vo.sendUserId}</td>
-					<td onclick="detailMessage(${vo.msgNum})" width="200" style="width: 200px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-						<a href="#"><nobr>${vo.msgContent.replace("<br/>","")}</nobr></a>
-					</td>
-					<td>${vo.msgWdate}</td>
+					<th>${type=="SEND" ? "받은사람" : "보낸사람"}</th>
+					<th>쪽지내용</th>
+					<th>작성일</th>
 					<c:if test="${type=='SEND'}">
-						<td>${vo.msgCheck > 0 ? "읽음" : "안읽음"}</td>
+						<th>읽기여부</th>
 					</c:if>
-					<td>
-						<a class="myMsgDeleteBtn" href="${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}">삭제</a>
-					</td>
+					<th>삭제</th>
 				</tr>
-			</c:forEach>
-		</table>
-		<div>
-			<c:if test="${type=='RECEIVE'}">
-				<c:choose>
-					<c:when test="${startPage>10 }">
-						<a href="${cp }/user/msgReceiveList.do?pageNum=${startPage-1}">[이전]</a>
-					</c:when>
-					<c:otherwise>
-			[이전]
-		</c:otherwise>
-				</c:choose>
-				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<c:choose>
-						<c:when test="${pageNum==i }">
-							<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color: pink">[${i }]</span></a>
-						</c:when>
-						<c:otherwise>
-							<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color: #999">[${i }]</span></a>
-						</c:otherwise>
-					</c:choose>
+				<c:forEach var="vo" items="${list}">
+					<tr>
+						<td>${type=="SEND" ? vo.receiveUserId : vo.sendUserId}</td>
+						<td onclick="detailMessage(${vo.msgNum})">
+							<a href="#"><nobr>${vo.msgContent.replace("<br/>","")}</nobr></a>
+						</td>
+						<td>${vo.msgWdate}</td>
+						<c:if test="${type=='SEND'}">
+							<td>${vo.msgCheck > 0 ? "읽음" : "안읽음"}</td>
+						</c:if>
+						<td class="userMypageDeleteBtn">
+							<a href="${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}">삭제</a>
+						</td>
+					</tr>
 				</c:forEach>
-				<c:choose>
-					<c:when test="${endPage<pageCount}">
-						<a href="${cp }/user/msgReceiveList.do?pageNum=${endPage+1}">[다음]</a>
-					</c:when>
-					<c:otherwise>
-			[다음]
-		</c:otherwise>
-				</c:choose>
-			</c:if>
-		</div>
-		<div>
-			<c:if test="${type=='SEND'}">
-				<c:choose>
-					<c:when test="${startPage>10 }">
-						<a href="${cp }/user/msgSendList.do?pageNum=${startPage-1}">[이전]</a>
-					</c:when>
-					<c:otherwise>
-			[이전]
-		</c:otherwise>
-				</c:choose>
-				<c:forEach var="i" begin="${startPage }" end="${endPage }">
+			</table>
+			<div>
+				<c:if test="${type=='RECEIVE'}">
 					<c:choose>
-						<c:when test="${pageNum==i }">
-							<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color: pink">[${i }]</span></a>
+						<c:when test="${startPage>10 }">
+							<a href="${cp }/user/msgReceiveList.do?pageNum=${startPage-1}">[이전]</a>
 						</c:when>
-						<c:otherwise>
-							<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color: #999">[${i }]</span></a>
-						</c:otherwise>
 					</c:choose>
-				</c:forEach>
-				<c:choose>
-					<c:when test="${endPage<pageCount}">
-						<a href="${cp }/user/msgSendList.do?pageNum=${endPage+1}">[다음]</a>
-					</c:when>
-					<c:otherwise>
-			[다음]
-		</c:otherwise>
-				</c:choose>
-			</c:if>
+					<c:forEach var="i" begin="${startPage }" end="${endPage }">
+						<c:choose>
+							<c:when test="${pageNum==i }">
+								<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color: black;">[${i }]</span></a>
+							</c:when>
+							<c:otherwise>
+								<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color: silver;">[${i }]</span></a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${endPage<pageCount}">
+							<a href="${cp }/user/msgReceiveList.do?pageNum=${endPage+1}">[다음]</a>
+						</c:when>
+					</c:choose>
+				</c:if>
+			</div>
+			<div>
+				<c:if test="${type=='SEND'}">
+					<c:choose>
+						<c:when test="${startPage>10 }">
+							<a href="${cp }/user/msgSendList.do?pageNum=${startPage-1}">[이전]</a>
+						</c:when>
+					</c:choose>
+					<c:forEach var="i" begin="${startPage }" end="${endPage }">
+						<c:choose>
+							<c:when test="${pageNum==i }">
+								<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color: black;">[${i }]</span></a>
+							</c:when>
+							<c:otherwise>
+								<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color: silver;">[${i }]</span></a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${endPage<pageCount}">
+							<a href="${cp }/user/msgSendList.do?pageNum=${endPage+1}">[다음]</a>
+						</c:when>
+					</c:choose>
+				</c:if>
+			</div>
 		</div>
-	</div>
-	<br>
-	<div style="float: right;" id="msg_detail"></div>
-	<div style="clear: both; display: block;">
-		<br />
-		<input class="userMyMsgSendBtn" type="button" value="쪽지보내기" onclick="detailSendForm()" />
-		<hr />
-		<a class="userMyMsgCBBtn" href="${pageContext.request.contextPath}/main/home.do">홈으로</a>
+		<br>
+		<div id="msg_detail"></div>
+		<div>
+			<br />
+			<input id="msgSendBtn" class="userMypageUpdateBtn" type="button" value="쪽지보내기" onclick="detailSendForm()" /><br><br>
+			<a class="userMypageDeleteBtn" href="${pageContext.request.contextPath}/main/home.do">홈으로</a>
+		</div>
 	</div>
 </div>

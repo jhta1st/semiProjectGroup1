@@ -168,9 +168,32 @@ tr td {
 	width:450px;
 }
 .MovieRecommendDiv{
+	padding-top:25px;
+	font-size:25px;
+	margin:auto;
 	background-color: #cecece;
 	text-align: center;
 	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1); 
+}
+.myTable {
+	padding-top:5px;
+	padding-bottom:5px;
+	vertical-align:middle;
+	margin:auto;
+	border:2px solid silver;
+	width:80%;
+	border-radius:25px;
+	background-color: white; 
+}
+.myTable a {
+	padding-top:5px;
+	padding-bottom:5px;
+	vertical-align:middle;
+	margin:auto;
+	border:2px solid silver;
+	width:80%;
+	border-radius:25px;
+	background-color: white; 
 }
 .p1{
 	font-size: 25px;

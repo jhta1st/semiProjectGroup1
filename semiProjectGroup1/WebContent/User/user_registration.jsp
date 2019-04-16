@@ -330,7 +330,8 @@ function checkNickNameResult() {
 		<br />
 		아이디*
 		<br />
-		<input type="text" id="userId" name="userId" /> <input class="userJoinOkBtn" type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span>
+		<input type="text" id="userId" name="userId" /> <input class="userJoinOkBtn" type="button" value="확인" onclick="checkUser()" />
+		<br><span id="userChk_res"></span>
 		<br/>
 		비밀번호*
 		<br />
@@ -342,7 +343,8 @@ function checkNickNameResult() {
 		<br />
 		닉네임*
 		<br />
-		<input type="text" id="userNickName" name="userNickName" /> <input class="userNickOkBtn" type="button" value="확인" onclick="checkNickName()" /><span id="userNickChk_res"></span>
+		<input type="text" id="userNickName" name="userNickName" /> <input class="userNickOkBtn" type="button" value="확인" onclick="checkNickName()" />
+		<br><span id="userNickChk_res"></span>
 		<br />
 		<br />
 		<input class="userJoinGoBtn" id="set" type="submit" value="가입" /> <input class="userJoinBackBtn" type="reset" value="취소" />
