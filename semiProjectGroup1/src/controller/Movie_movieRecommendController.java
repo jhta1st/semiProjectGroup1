@@ -50,29 +50,37 @@ public class Movie_movieRecommendController extends HttpServlet{
 				jsonArray.add(json);
 			}
 		}else {//추천영화
+			int genreNum=0;
+			JSONObject json0 = new JSONObject();
+			json0.put("likeGenreSize", likeGenreList.size());
+			jsonArray.add(json0);
 			for(int i=0;i<likeGenreList.size();i++) {
 				HashMap<String, Object> gMap=likeGenreList.get(i);
-				int genreNum=(int)gMap.get("genreNum");
-				JSONObject json = new JSONObject();
+				genreNum=(int)gMap.get("genreNum");
 				Movie_GenreDao mgDao=Movie_GenreDao.getInstance();
 				ArrayList<Movie_GenreVo> genreList=mgDao.getGenreName();
 				for(int a=0;a<genreList.size();a++) {
 					Movie_GenreVo vo=genreList.get(a);
-					if(likeGenreList.get(i).get("likeGenre").equals(vo.getGenreNum())) {
+					if(likeGenreList.get(i).get("genreNum").equals(vo.getGenreNum())) {
+						JSONObject json = new JSONObject();
 						json.put("likeGenre",vo.getGenreName());
+						jsonArray.add(json);
 					}
 				}
-				ArrayList<HashMap<String, Object>> genreMovieList=dao.getMovieList(genreNum);
-				for (HashMap<String, Object> map:genreMovieList) {
-					json.put("movieNum", map.get("movieNum"));
-					json.put("movieName", map.get("movieName"));
-					json.put("genreNum", map.get("genreNum"));
-					json.put("movieReleaseDate", String.valueOf(map.get("movieReleaseDate")).substring(0, 4));
-					json.put("imageSavName", map.get("imageSavName"));
-					jsonArray.add(json);
+			}			
+			for(int i=0;i<likeGenreList.size();i++) {
+					ArrayList<HashMap<String, Object>> genreMovieList=dao.getMovieList((int)likeGenreList.get(i).get("genreNum"));
+					for (HashMap<String, Object> map:genreMovieList) {
+						JSONObject json = new JSONObject();
+						json.put("movieNum", map.get("movieNum"));
+						json.put("movieName", map.get("movieName"));
+						json.put("genreNum", map.get("genreNum"));
+						json.put("movieReleaseDate", String.valueOf(map.get("movieReleaseDate")).substring(0, 4));
+						json.put("imageSavName", map.get("imageSavName"));
+						jsonArray.add(json);
+					}
 				}
 			}
-		}
 		resp.setContentType("text/plain;charset=utf-8");	
 		PrintWriter pw = resp.getWriter();
 		pw.print(jsonArray.toString());

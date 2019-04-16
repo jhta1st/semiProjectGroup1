@@ -184,9 +184,13 @@ tr td {
 .MovieListDiv{
 	background-color: #cecece;
 	display: inline-block;
-	float: left;
+	
 	padding-left: 5px;
 	text-align: center;
+}
+.MovieListDiv a img{
+	width: 150px;
+	height: 200px;
 }
 .silverRadius{
 	border:1px solid silver;

@@ -55,7 +55,6 @@ public class LoginDao {
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				System.out.println(rs.getInt("UserPower"));
 				return rs.getInt("UserPower");
 			}
 			return -1;
