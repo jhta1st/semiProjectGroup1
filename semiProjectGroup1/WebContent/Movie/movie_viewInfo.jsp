@@ -118,7 +118,7 @@
 				<div class="movieViewBriefGenreInfo">${map.genreName }&nbsp;</div>
 			</c:forEach>
 			<div style="clear: left;"></div>
-			<button type="button" id="favCheck" onclick="fav();"></button>
+			<button type="button" id="favCheck" onclick="fav();"><img src='${cp }/ETC/icons/fav.png'></button>
 		</div>
 	</div>
 	<div style="clear: left;"></div>
