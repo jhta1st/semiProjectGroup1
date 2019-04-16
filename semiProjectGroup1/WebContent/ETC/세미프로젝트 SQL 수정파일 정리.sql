@@ -22,3 +22,6 @@ ALTER TABLE favTable
 
 --쪽지페이지 삭제 여부 컬럼 추가(Msg Table 컬럼추가)
 ALTER TABLE MsgTable ADD(msgDelete varchar(50) );
+
+--
+ALTER TABLE RATETABLE MODIFY(RATE NUMBER(4,2));

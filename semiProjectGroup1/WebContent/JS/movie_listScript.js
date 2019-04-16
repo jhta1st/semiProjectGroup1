@@ -78,7 +78,7 @@ function listOk() {
 			var clickdiv=document.createElement("div");
 			clickdiv.className="MovieInfoClassDiv";
 			clickdiv.innerHTML="<a href='"+cp+"/Movie/review.do?movieNum="+comm[i].movieNum+"'><img src='"+cp+"/Movie/images/photo/"+comm[i].imageSavName+"' alt='이미지'></a>"
-			+"<br><a href='"+cp+"/Movie/review.do?movieNum="+comm[i].movieNum+"'><label>"+comm[i].movieName+"</label></a>";
+			+"<br><a href='"+cp+"/Movie/review.do?movieNum="+comm[i].movieNum+"'><span>"+comm[i].movieName+"</span></a>";
 			
 			li.appendChild(clickdiv);
 			ul.appendChild(li);
