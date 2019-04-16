@@ -15,25 +15,90 @@
 		if(gmlXhr.readyState==4 && gmlXhr.status==200){
 			var data=gmlXhr.responseText;
 			var list=eval("("+data+")");
+			alert(data);
 			var likeGenre=document.getElementById("likeGenre"); 
-			if(list[0].likeGenre==null){
-				likeGenre.innerHTML="<span class='p1'>아직 좋아하시는 영화가 없으시군요! 좋아하는 영화를 찾아 '♡'를 눌러주세요.</span><p class='p2'><Strong >최신 영화</Strong><br></p><div id='movieListDiv'></div>";
-			}else if(list[0].likeGenre!=null){
+			if(list[0].likeGenreSize==0){
+				likeGenre.innerHTML="<span class='p1'><c:choose><c:when test="${sessionScope.id==null}">로그인을 하시면 취향에 맞추어 영화를 추천해드립니다.</c:when><c:otherwise>아직 좋아하시는 영화가 없으시군요! 좋아하는 영화를 찾아 '♡'를 눌러주세요.</c:otherwise></c:choose></span><p class='p1'><br><Strong >최신 영화</Strong><br></p><div id='movieListDiv'></div>";
+			}else if(list[0].likeGenreSize!=0){
 				var likeGenreName="";
-				for(var i=0;i<list.length;i++){
-					likeGenreName+=list[i].likeGenre;
+				if(list[0].likeGenreSize>3){
+					for(var i=1;i<4;i++){
+						//if(i==3){
+						//	likeGenreName+=list[i].likeGenre;
+						//}else{
+						//	likeGenreName+=list[i].likeGenre+'/';
+						//}
+						if(list[i].likeGenre=='드라마'){
+							likeGenreName+="감동적인 ";
+						}else if(list[i].likeGenre=='판타지'){
+							likeGenreName+="세상에 없는 ";
+						}else if(list[i].likeGenre=='SF'){
+							likeGenreName+="우주를 좋아하는 ";
+						}else if(list[i].likeGenre=='액션'){
+							likeGenreName+="재빠른 ";
+						}else if(list[i].likeGenre=='멜로'){
+							likeGenreName+="사랑에 빠진 ";
+						}else if(list[i].likeGenre=='범죄'){
+							likeGenreName+="부자이고 싶은 ";
+						}else if(list[i].likeGenre=='역사'){
+							likeGenreName+="공부를 좋아하는 ";
+						}else if(list[i].likeGenre=='공포'){
+							likeGenreName+="무서운 ";
+						}else if(list[i].likeGenre=='전쟁'){
+							likeGenreName+="투쟁적인 ";
+						}else if(list[i].likeGenre=='코미디'){
+							likeGenreName+="웃긴 ";
+						}else if(list[i].likeGenre=='스릴러'){
+							likeGenreName+="쫄깃한 ";
+						}else{
+							likeGenreName+="알수없는 ";
+						}
+					}
+				}else{
+					for(var i=1;i<list[0].likeGenreSize+1;i++){
+						//if(i==list[0].likeGenreSize){
+						//	likeGenreName+=list[i].likeGenre;
+						//}else{
+						//	likeGenreName+=list[i].likeGenre+'/';
+						//}
+						if(list[i].likeGenre=='드라마'){
+							likeGenreName+="감동적인 ";
+						}else if(list[i].likeGenre=='판타지'){
+							likeGenreName+="세상에 없는 ";
+						}else if(list[i].likeGenre=='SF'){
+							likeGenreName+="우주를 좋아하는 ";
+						}else if(list[i].likeGenre=='액션'){
+							likeGenreName+="재빠른 ";
+						}else if(list[i].likeGenre=='멜로'){
+							likeGenreName+="사랑에 빠진 ";
+						}else if(list[i].likeGenre=='범죄'){
+							likeGenreName+="부자이고 싶은 ";
+						}else if(list[i].likeGenre=='역사'){
+							likeGenreName+="공부를 좋아하는 ";
+						}else if(list[i].likeGenre=='공포'){
+							likeGenreName+="무서운 ";
+						}else if(list[i].likeGenre=='전쟁'){
+							likeGenreName+="투쟁적인 ";
+						}else if(list[i].likeGenre=='코미디'){
+							likeGenreName+="웃긴 ";
+						}else if(list[i].likeGenre=='스릴러'){
+							likeGenreName+="쫄깃한 ";
+						}else{
+							likeGenreName+="알수없는 ";
+						}			
+					}
 				}
-				likeGenre.innerHTML="<span class='p1'>${sessionScope.id}님의 영화 취향을 분석한 결과입니다.</span><p class='p2'><Strong>추천 영화</Strong><br></p><div id='movieListDiv'></div>";
+				likeGenre.innerHTML="<span class='p1'>${sessionScope.id}님은 "+likeGenreName+"사람입니다.</span><p class='p1'><br><Strong>추천 영화</Strong><br></p><div id='movieListDiv'></div>";
 			}
 			var movieListDiv=document.getElementById("movieListDiv");
 			var cnt=0;
-			for (var i=0;i<list.length;i++){
+			for (var i=list[0].likeGenreSize+1;i<list.length;i++){
 				if(cnt%5==0){
-					var div=document.createElement("div");
-					div.style='clear: left;';
+					var div=document.createElement("br");
+					//div.style='clear: left;';
 					movieListDiv.appendChild(div);
 				}
-				var div=document.createElement("div");
+				var div=document.createElement("span");
 				div.className="MovieListDiv"
 				div.innerHTML="<a href='${cp}/Movie/review.do?movieNum="+ list[i].movieNum +"'><img src='${cp}/Movie/images/photo/" + list[i].imageSavName + "'></a><br>" + list[i].movieName + "<br>(" + list[i].movieReleaseDate +")";
 				movieListDiv.appendChild(div);
