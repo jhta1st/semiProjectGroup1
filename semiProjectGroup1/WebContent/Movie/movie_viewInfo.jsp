@@ -132,13 +132,13 @@
 		<ul>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=info">소개</a></li>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=crew">제작진/출연진</a></li>
-			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=photo">스틸샷</a></li>
+			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=photo">이미지</a></li>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=vedio">예고편</a></li>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=rate">회원평점</a></li>
 		</ul>
 	</div>
 	<c:set var="tmp" value="1" />
-	<c:if test="${movieotherList.size()==0 }">
+	<c:if test="${movieotherList.size()==0 && detail eq 'rate' }">
 		<div class="movieReviewRateInput">
 			<form method="post" action="${cp }/Movie/rate/insertRate.do">
 				<input type="hidden" name="movieNum" value="${movieNum }">
@@ -337,7 +337,7 @@
 								</div>
 							</form>
 						</div>
-						<div style="font-size: 9px; font-weight: bold; color: red;">
+						<div class="movieReviewerrMsg">
 							<c:if test="${code=='fail' }">변경 실패!</c:if>
 						</div>
 						<div id="rateList">
@@ -345,11 +345,21 @@
 								<div class="movieReviewRateCommAll">
 									<div class="movieReviewRateScore">
 										<c:choose>
-											<c:when test="${maps.rate==5 }"><div class="movieReviewRateStar">★★★★★ (5)</div></c:when>
-											<c:when test="${maps.rate==4 }"><div class="movieReviewRateStar">☆★★★★ (4)</div></c:when>
-											<c:when test="${maps.rate==3 }"><div class="movieReviewRateStar">☆☆★★★ (3)</div></c:when>
-											<c:when test="${maps.rate==2 }"><div class="movieReviewRateStar">☆☆☆★★ (2)</div></c:when>
-											<c:when test="${maps.rate==1 }"><div class="movieReviewRateStar">☆☆☆☆★ (1)</div></c:when>
+											<c:when test="${maps.rate==5 }">
+												<div class="movieReviewRateStar">★★★★★ (5)</div>
+											</c:when>
+											<c:when test="${maps.rate==4 }">
+												<div class="movieReviewRateStar">☆★★★★ (4)</div>
+											</c:when>
+											<c:when test="${maps.rate==3 }">
+												<div class="movieReviewRateStar">☆☆★★★ (3)</div>
+											</c:when>
+											<c:when test="${maps.rate==2 }">
+												<div class="movieReviewRateStar">☆☆☆★★ (2)</div>
+											</c:when>
+											<c:when test="${maps.rate==1 }">
+												<div class="movieReviewRateStar">☆☆☆☆★ (1)</div>
+											</c:when>
 										</c:choose>
 										<span class="movieReviewRateId">${maps.userId }</span>
 									</div>
