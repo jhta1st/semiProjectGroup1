@@ -27,13 +27,13 @@
 
 #header ul li a {
 	text-decoration: none;
-	color: black;
+	color: silver;
 	font-weight: bold;
 	margin-left: 10px;
 }
 
 #header ul li a:hover {
-	color: blue;
+	color: black;
 	font-size: 35px;
 }
 
@@ -43,13 +43,14 @@
 
 #header #layoutheaderLogin a {
 	text-decoration: none;
-	color: black;
+	color: silver;
 	font-weight: bold;
 	font-size: 20px;
 }
 
 #header #layoutheaderLogin a:hover {
 	font-size: 25px;
+	color: black;
 }
 	
 #wrap #footer {
@@ -79,8 +80,11 @@
 	margin: auto;
 	margin-top:50px;
 	padding:50px;
-	border: 1px solid silver;
+	border: 2px solid silver;
 	border-radius: 25px;
+}
+#movieLogin .Btn {
+	margin-left:25px;
 }
 
 #movieLogin form label {
@@ -97,4 +101,7 @@
 #movieLogin form #loginerrMsg {
 	font-size: 13px;
 	color: red;
+}
+#footer{
+	text-align: center;
 }

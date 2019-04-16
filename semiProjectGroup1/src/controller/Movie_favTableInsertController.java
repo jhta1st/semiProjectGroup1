@@ -19,7 +19,7 @@ import dao.Movie_favTableDao;
 import vo.Admin_MovieInfoVo;
 import vo.FreeBoard_FreeBoardCommVo;
 
-@WebServlet("/Admin/favTableInsert.do")
+@WebServlet("/Movie/favTableInsert.do")
 public class Movie_favTableInsertController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

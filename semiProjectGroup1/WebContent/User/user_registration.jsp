@@ -5,15 +5,13 @@
 		margin: auto;
 		margin-top: 25px;
 		border-collapse: collapse;
-		background-color: gray;
 	}
 	#registration #registrationForm {
-	    margin-left : 30%;
-	    margin-right : 30%;
-		padding-left: 150px;
-		border-collapse: collapse;
-		border: 2px solid gray;
-		background-color: white;
+	    width: 20%;
+	    margin:auto;
+		padding-left: 85px;
+		border: 2px solid silver;
+		border-radius: 25px;
 	}
 	.userJoinOkBtn {
 	font-weight:bold;
@@ -155,6 +153,7 @@
 	border-color:#2e2e2e;
 	border-width:1px;
 	border-style:solid;
+	margin-left:45px;
 }
 
 .userJoinGoBtn:active {
@@ -328,6 +327,7 @@ function checkNickNameResult() {
 	<form method="post" action="${pageContext.request.contextPath }/user/registration.do" onsubmit="return checkData();">
 		* 사항은 필수 입력 사항입니다.
 		<br />
+		<br />
 		아이디*
 		<br />
 		<input type="text" id="userId" name="userId" /> <input class="userJoinOkBtn" type="button" value="확인" onclick="checkUser()" /><span id="userChk_res"></span>
@@ -345,7 +345,9 @@ function checkNickNameResult() {
 		<input type="text" id="userNickName" name="userNickName" /> <input class="userNickOkBtn" type="button" value="확인" onclick="checkNickName()" /><span id="userNickChk_res"></span>
 		<br />
 		<br />
-		<input  class="userJoinGoBtn" id="set" type="submit" value="가입" />       |       <input class="userJoinBackBtn" type="reset" value="취소" />
+		<input class="userJoinGoBtn" id="set" type="submit" value="가입" /> <input class="userJoinBackBtn" type="reset" value="취소" />
+		<br>
+		<br>
 	</form>
 	</div>
 	

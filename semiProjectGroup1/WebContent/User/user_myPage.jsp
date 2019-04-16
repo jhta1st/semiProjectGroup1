@@ -3,19 +3,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 	#mypage {
+		padding-top:10px;
+		padding-bottom: 10px;
 		width: 100%;
 		margin: auto;
-		margin-top: 25px;
-		border-collapse: collapse;
-		border: 1px solid #E7E7E7;
-		background-color: gray;
+		background-color: #cecece;
 	}
 	#mypage #mypageForm {
-	    margin-left : 15%;
-	    margin-right : 15%;
-		padding-left: 150px;
-		border-collapse: collapse;
-		border: 2px solid gray;
+	    margin:auto;
+	    width:50%;
+		border: 1px solid silver;
 		background-color: white;
 		border-radius:25px;
 	}
@@ -133,68 +130,106 @@
 	background:-ms-linear-gradient(#454545, #787878);
 	background:linear-gradient(#454545, #787878);
 }
+.myPageTable {
+	border:1px solid silver;
+	border-radius:25px;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 25px;
+	text-align:center;
+	vertical-align:middle;
+	width: 80%;
+	background-color: white; 
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1);
+}
+.myPageTable tr td {
+	border-bottom: none;
+}
+.myPageTable a{
+	color: black;
+}
+.myPageTable a:link {
+	text-decoration: none;
+}
+.myPageTable a:visited {
+	color: silver;
+	text-decoration: none;
+}
+.myPageBtns{
+	text-align: center;
+	margin-bottom: 40px;
+}
 </style>
 <div id="mypage">
-<div id="mypageForm">
-<h1>마이페이지</h1>
-<hr>
-<table border="1">
-	<tr>
-		<th>회원아이디</th><th>비밀번호</th><th>닉네임</th><th>레벨</th><th>경험치</th>
-		<th>가입일</th>
-	</tr>
-		<tr>
-			<td>${vo.userId}</td>
-			<td>${vo.userPwd }</td>
-			<td>${vo.userNickName }</td>
-			<td>${lev}</td>
-			<td>${exp}</td>
-			<td>${vo.userJdate }</td>	
-		</tr>
-</table>
-<div>
-	<div>
-		<p>내가 좋아하는 영화</p>
-		<ol type="1">
-			<c:if test="${favList==''}">
-				좋아하는 영화가 없습니다.<br>좋아하는 영화를 찾아 ♡ 버튼을 눌러주세요.
-			</c:if>
-			<c:forEach var="map" items="${favList }">
-				<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
-			</c:forEach>
-		</ol>
+	<div id="mypageForm">
+		<table class="myPageTable">
+			<tr>
+				<th>회원아이디</th><th>비밀번호</th><th>닉네임</th><th>레벨</th><th>경험치</th>
+				<th>가입일</th>
+			</tr>
+				<tr>
+					<td>${vo.userId}</td>
+					<td>${vo.userPwd }</td>
+					<td>${vo.userNickName }</td>
+					<td>${lev}</td>
+					<td>${exp}</td>
+					<td>${vo.userJdate }</td>	
+				</tr>
+		</table>
+		<div>
+			<div class="myPageTable">
+				<p>좋아하는 영화</p>
+				<c:choose>
+					<c:when test="${favList[0]==null}">
+						<p>좋아하는 영화가 없습니다.<br>좋아하는 영화를 찾아 ♡ 버튼을 눌러주세요.</p>
+					</c:when>
+					<c:otherwise>
+						<ol type="1">
+							<c:forEach var="map" items="${favList }">
+								<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
+							</c:forEach>
+						</ol>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		<div>
+			<div class="myPageTable">
+				<p>내가 작성한 글</p>
+				<c:choose>
+					<c:when test="${fbList[0]==null}">
+						<p>작성한 글이 없습니다.</p>
+					</c:when>
+					<c:otherwise>
+						<p>
+							<c:forEach var="fbVo" items="${fbList }">
+								<span><a href="${cp }/FreeBoard/Content.do?freeBoardNum=${fbVo.freeBoardNum }">${fbVo.freeBoardTitle} - ${fbVo.freeBoardWdate}</a><br></span>
+							</c:forEach>
+						</p>
+					</c:otherwise>			
+				</c:choose>
+			</div>
+		</div>
+		<div>
+			<div class="myPageTable">
+				<p>내가 작성한 댓글</p>
+				<c:choose>
+					<c:when test="${fbcList[0]==null}">
+						<p>작성한 댓글이 없습니다.</p>
+					</c:when>
+					<c:otherwise>
+						<p>
+							<c:forEach var="fbcVo" items="${fbcList }">
+								<span><a href="${cp }/FreeBoard/Content.do?freeBoardNum=${fbcVo.freeBoardNum }">${fbcVo.freeBoardCommContent} - ${fbcVo.freeBoardCommWdate}</a></span>
+							</c:forEach>
+						</p>
+					</c:otherwise>			
+				</c:choose>
+			</div>
+			<div class="myPageBtns">
+				<a class="userMypageDeleteBtn" href="${pageContext.request.contextPath}/user/delete.do?userId=${vo.userId}">회원 탈퇴</a>
+				<a class="userMypageUpdateBtn" href="${pageContext.request.contextPath}/user/update.do?userId=${vo.userId}">회원정보 수정</a>
+			</div>
+		</div>
 	</div>
-</div>
-<div>
-	<div>
-		<p>내가 작성한 글</p>
-		<ol type="1">
-			<c:if test="${fbList==''}">
-				작성한 글이 없습니다.
-			</c:if>
-			<c:forEach var="fbVo" items="${fbList }">
-				<li><a href="${cp }/FreeBoard/Content.do?freeBoardNum=${fbVo.freeBoardNum }">${fbVo.freeBoardTitle}</a> - ${fbVo.freeBoardWdate}</li>
-			</c:forEach>
-		</ol>
-	</div>
-</div>
-<div>
-	<div>
-		<p>내가 작성한 댓글</p>
-		<ol type="1">
-			<c:if test="${fbcList==''}">
-				작성한 글이 없습니다.
-			</c:if>
-			<c:forEach var="fbcVo" items="${fbcList }">
-				<li><a href="${cp }/FreeBoard/Content.do?freeBoardNum=${fbcVo.freeBoardNum }">${fbcVo.freeBoardCommContent}</a> - ${fbcVo.freeBoardCommWdate}</li>
-			</c:forEach>
-		</ol>
-	</div>
-</div>
-<br>
-<hr>
-<a class="userMypageDeleteBtn" href="${pageContext.request.contextPath}/user/delete.do?userId=${vo.userId}">회원 탈퇴</a> | 
-<a class="userMypageUpdateBtn" href="${pageContext.request.contextPath}/user/update.do?userId=${vo.userId}">회원정보 수정</a>
-<hr>
-</div>
 </div>

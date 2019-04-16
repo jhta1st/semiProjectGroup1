@@ -15,10 +15,9 @@
 		if(gmlXhr.readyState==4 && gmlXhr.status==200){
 			var data=gmlXhr.responseText;
 			var list=eval("("+data+")");
-			alert(data);
 			var likeGenre=document.getElementById("likeGenre"); 
-			if(list[0].likeGenreSize==0){
-				likeGenre.innerHTML="<span class='p1'><c:choose><c:when test="${sessionScope.id==null}">로그인을 하시면 취향에 맞추어 영화를 추천해드립니다.</c:when><c:otherwise>아직 좋아하시는 영화가 없으시군요! 좋아하는 영화를 찾아 '♡'를 눌러주세요.</c:otherwise></c:choose></span><p class='p1'><br><Strong >최신 영화</Strong><br></p><div id='movieListDiv'></div>";
+			if(list[0].likeGenreSize==null){
+				likeGenre.innerHTML="<span class='p1'><c:choose><c:when test="${sessionScope.id==null}"><br>로그인을 하시면 취향에 맞추어 영화를 추천해드립니다.</c:when><c:otherwise><br>아직 좋아하시는 영화가 없으시군요! 좋아하는 영화를 찾아 '♡'를 눌러주세요.</c:otherwise></c:choose></span><p class='p1'><br><Strong >최신 영화</Strong><br></p><div id='movieListDiv'></div>";
 			}else if(list[0].likeGenreSize!=0){
 				var likeGenreName="";
 				if(list[0].likeGenreSize>3){
@@ -88,21 +87,36 @@
 						}			
 					}
 				}
-				likeGenre.innerHTML="<span class='p1'>${sessionScope.id}님은 "+likeGenreName+"사람입니다.</span><p class='p1'><br><Strong>추천 영화</Strong><br></p><div id='movieListDiv'></div>";
+				likeGenre.innerHTML="<br><span class='p1'>${sessionScope.id}님은 "+likeGenreName+"사람입니다.</span><p class='p1'><br><Strong>추천 영화</Strong><br></p><div id='movieListDiv'></div>";
 			}
 			var movieListDiv=document.getElementById("movieListDiv");
 			var cnt=0;
-			for (var i=list[0].likeGenreSize+1;i<list.length;i++){
-				if(cnt%5==0){
-					var div=document.createElement("br");
-					//div.style='clear: left;';
+			if(list[0].likeGenreSize!=null){			
+				for (var i=list[0].likeGenreSize+1;i<list.length;i++){
+					if(cnt%5==0){
+						var div=document.createElement("br");
+						//div.style='clear: left;';
+						movieListDiv.appendChild(div);
+					}
+					var div=document.createElement("span");
+					div.className="MovieListDiv"
+					div.innerHTML="<a href='${cp}/Movie/review.do?movieNum="+ list[i].movieNum +"'><img src='${cp}/Movie/images/photo/" + list[i].imageSavName + "'></a><br>" + list[i].movieName + "<br>(" + list[i].movieReleaseDate +")";
 					movieListDiv.appendChild(div);
+					cnt++;
 				}
-				var div=document.createElement("span");
-				div.className="MovieListDiv"
-				div.innerHTML="<a href='${cp}/Movie/review.do?movieNum="+ list[i].movieNum +"'><img src='${cp}/Movie/images/photo/" + list[i].imageSavName + "'></a><br>" + list[i].movieName + "<br>(" + list[i].movieReleaseDate +")";
-				movieListDiv.appendChild(div);
-				cnt++;
+			}else{
+				for (var i=0;i<list.length;i++){
+					if(cnt%5==0){
+						var div=document.createElement("br");
+						//div.style='clear: left;';
+						movieListDiv.appendChild(div);
+					}
+					var div=document.createElement("span");
+					div.className="MovieListDiv"
+					div.innerHTML="<a href='${cp}/Movie/review.do?movieNum="+ list[i].movieNum +"'><img src='${cp}/Movie/images/photo/" + list[i].imageSavName + "'><br>" + list[i].movieName + "<br>(" + list[i].movieReleaseDate +")</a>";
+					movieListDiv.appendChild(div);
+					cnt++;
+				}
 			}
 		}
 	}
