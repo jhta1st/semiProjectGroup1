@@ -154,15 +154,28 @@
 	text-decoration: none;
 }
 .myPageTable a:visited {
-	color: silver;
+	color: black;
 	text-decoration: none;
 }
 .myPageBtns{
 	text-align: center;
 	margin-bottom: 40px;
 }
-.myPageBtnscolor{
-	color: white;
+.allBlack{
+	color:black;
+	text-decoration: none;
+}
+.allBlack a{
+	color:black;
+	text-decoration: none;
+}
+.allBlack a:link{
+	color:black;
+	text-decoration: none;
+}
+.allBlack a:visited{
+	color:black;
+	text-decoration: none;
 }
 </style>
 <script>
@@ -275,14 +288,14 @@ function detailClose() {
 					<tr>
 						<td>${type=="SEND" ? vo.receiveUserId : vo.sendUserId}</td>
 						<td onclick="detailMessage(${vo.msgNum})">
-							<a href="#"><nobr>${vo.msgContent.replace("<br/>","")}</nobr></a>
+							<a style="color:black;" href="#"><nobr>${vo.msgContent.replace("<br/>","")}</nobr></a>
 						</td>
 						<td>${vo.msgWdate}</td>
 						<c:if test="${type=='SEND'}">
 							<td>${vo.msgCheck > 0 ? "읽음" : "안읽음"}</td>
 						</c:if>
-						<td class="userMypageDeleteBtn">
-							<a href="${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}">삭제</a>
+						<td>
+							<input class="Btn" type="button" value="삭제" onclick="javascript:location.href='${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}'">
 						</td>
 					</tr>
 				</c:forEach>
@@ -297,10 +310,10 @@ function detailClose() {
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">
 						<c:choose>
 							<c:when test="${pageNum==i }">
-								<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color: black;">[${i }]</span></a>
+								<a class="allBlack" href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span class="thisPage">[${i }]</span></a>
 							</c:when>
 							<c:otherwise>
-								<a href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span style="color: silver;">[${i }]</span></a>
+								<a class="allBlack" href="${cp }/user/msgReceiveList.do?pageNum=${i}&userId=${userId}"><span class="otherPage">[${i }]</span></a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -321,10 +334,10 @@ function detailClose() {
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">
 						<c:choose>
 							<c:when test="${pageNum==i }">
-								<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color: black;">[${i }]</span></a>
+								<a class="allBlack" href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span class="thisPage">[${i }]</span></a>
 							</c:when>
 							<c:otherwise>
-								<a href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span style="color: silver;">[${i }]</span></a>
+								<a class="allBlack" href="${cp }/user/msgSendList.do?pageNum=${i}&userId=${userId}"><span class="otherPage">[${i }]</span></a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>

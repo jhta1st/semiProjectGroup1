@@ -184,11 +184,11 @@
 						<p>좋아하는 영화가 없습니다.<br>좋아하는 영화를 찾아 ♡ 버튼을 눌러주세요.</p>
 					</c:when>
 					<c:otherwise>
-						<ol type="1">
+						<p>
 							<c:forEach var="map" items="${favList }">
-								<li><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></li>
+								<span><a href="${cp }/Movie/review.do?movieNum=${map.get('movieNum') }">${map.get("movieName")}</a></span>
 							</c:forEach>
-						</ol>
+						</p>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -220,7 +220,7 @@
 					<c:otherwise>
 						<p>
 							<c:forEach var="fbcVo" items="${fbcList }">
-								<span><a href="${cp }/FreeBoard/Content.do?freeBoardNum=${fbcVo.freeBoardNum }">${fbcVo.freeBoardCommContent} - ${fbcVo.freeBoardCommWdate}</a></span>
+								<span><a href="${cp }/FreeBoard/Content.do?freeBoardNum=${fbcVo.freeBoardNum }">${fbcVo.freeBoardCommContent} - ${fbcVo.freeBoardCommWdate}</a><br></span>
 							</c:forEach>
 						</p>
 					</c:otherwise>			
