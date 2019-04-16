@@ -49,7 +49,7 @@ public class Admin_MovieImgUpdateController extends HttpServlet {
 		Movie_ReviewImageDao dao = Movie_ReviewImageDao.getInstance();
 		Movie_ReviewImageVo vo1 = dao.detail(imageNum);
 		int imageType = Integer.parseInt(mr.getParameter("imageType"));
-		String imageOrgName = mr.getOriginalFileName("file2");// 전송된 파일명
+		String imageOrgName = mr.getOriginalFileName("file2");// 전송된 파일명임.
 		int n = 0;
 		if (imageOrgName != null) {// 수정할 파일이 전송된 경우
 			String savefile = mr.getFilesystemName("file2");// 저장된 파일명
