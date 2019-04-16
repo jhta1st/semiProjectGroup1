@@ -118,7 +118,9 @@
 				<div class="movieViewBriefGenreInfo">${map.genreName }&nbsp;</div>
 			</c:forEach>
 			<div style="clear: left;"></div>
-			<button type="button" id="favCheck" onclick="fav();"><img src='${cp }/ETC/icons/fav.png'></button>
+			<button type="button" id="favCheck" onclick="fav();">
+				<img src='${cp }/ETC/icons/fav.png'>
+			</button>
 		</div>
 	</div>
 	<div style="clear: left;"></div>
@@ -127,29 +129,29 @@
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=info">소개</a></li>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=crew">제작진/출연진</a></li>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=photo">이미지</a></li>
-			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=vedio">예고편</a></li>
+			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=vedio">동영상</a></li>
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=rate">회원평점</a></li>
 		</ul>
 	</div>
 	<div id="movieReviewInfomation">
-	<c:set var="tmp" value="1" />
-	<c:if test="${movieotherList.size()==0 && detail eq 'rate' }">
-		<div class="movieReviewRateInput">
-			<form method="post" action="${cp }/Movie/rate/insertRate.do">
-				<input type="hidden" name="movieNum" value="${movieNum }">
-				<div class="rateAdd">
-					<select name="rate">
-						<option value="5" <c:if test="${rate==5 }">selected</c:if>>★★★★★</option>
-						<option value="4" <c:if test="${rate==4 }">selected</c:if>>☆★★★★</option>
-						<option value="3" <c:if test="${rate==3 }">selected</c:if>>☆☆★★★</option>
-						<option value="2" <c:if test="${rate==2 }">selected</c:if>>☆☆☆★★</option>
-						<option value="1" <c:if test="${rate==1 }">selected</c:if>>☆☆☆☆★</option>
-					</select>
-					<input type="text" name="rateComm" id="rateComm" value="${rateComm }"> <input type="submit" value="입력">
-				</div>
-			</form>
-		</div>
-	</c:if>
+		<c:set var="tmp" value="1" />
+		<c:if test="${movieotherList.size()==0 && detail eq 'rate' }">
+			<div class="movieReviewRateInput">
+				<form method="post" action="${cp }/Movie/rate/insertRate.do">
+					<input type="hidden" name="movieNum" value="${movieNum }">
+					<div class="rateAdd">
+						<select name="rate">
+							<option value="5" <c:if test="${rate==5 }">selected</c:if>>★★★★★</option>
+							<option value="4" <c:if test="${rate==4 }">selected</c:if>>☆★★★★</option>
+							<option value="3" <c:if test="${rate==3 }">selected</c:if>>☆☆★★★</option>
+							<option value="2" <c:if test="${rate==2 }">selected</c:if>>☆☆☆★★</option>
+							<option value="1" <c:if test="${rate==1 }">selected</c:if>>☆☆☆☆★</option>
+						</select>
+						<input type="text" name="rateComm" id="rateComm" value="${rateComm }"> <input type="submit" value="입력">
+					</div>
+				</form>
+			</div>
+		</c:if>
 		<c:forEach var="map" items="${movieotherList }" varStatus="st">
 			<c:choose>
 				<c:when test="${detail eq 'info' && st.index eq 0 }">
@@ -165,8 +167,8 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
-									<div>배역:${map.castDoName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
+									<div>(${map.castDoName })</div>
 								</div>
 							</div>
 						</c:when>
@@ -179,8 +181,8 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
-									<div>배역:${map.castDoName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
+									<div>(${map.castDoName })</div>
 								</div>
 							</div>
 						</c:when>
@@ -193,8 +195,8 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
-									<div>배역:${map.castDoName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
+									<div>(${map.castDoName })</div>
 								</div>
 							</div>
 						</c:when>
@@ -207,8 +209,8 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
-									<div>배역:${map.castDoName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
+									<div>(${map.castDoName })</div>
 								</div>
 							</div>
 						</c:when>
@@ -221,7 +223,7 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
 								</div>
 							</div>
 						</c:when>
@@ -234,7 +236,7 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
 								</div>
 							</div>
 						</c:when>
@@ -247,7 +249,7 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
 								</div>
 							</div>
 						</c:when>
@@ -260,7 +262,7 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
 								</div>
 							</div>
 						</c:when>
@@ -273,7 +275,7 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
 								</div>
 							</div>
 						</c:when>
@@ -286,7 +288,7 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
 								</div>
 							</div>
 						</c:when>
@@ -299,7 +301,7 @@
 							<div class="movieReviewCrewInfo">
 								<img alt="제작/출연진 사진" src="${cp }/Movie/images/char/${map.charSavFileName}">
 								<div>
-									<div>이름:${map.charName }</div>
+									<div style="font-weight: bold;">${map.charName }</div>
 								</div>
 							</div>
 						</c:when>

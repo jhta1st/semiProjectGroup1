@@ -9,7 +9,7 @@
 }
 
 .movieTop .movieSearchView {
-	width: 1000px;
+	width: 1200px;
 	padding: 50px;
 	margin: auto;
 	text-align: center;
@@ -240,6 +240,7 @@
 	padding: 10px;
 	font-size: 15px;
 	float: left;
+	text-align: center;
 }
 
 #movieReview #movieReviewInfomation .movieReviewCrewInfo img {
