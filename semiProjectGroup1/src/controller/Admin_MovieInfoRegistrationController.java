@@ -34,6 +34,7 @@ public class Admin_MovieInfoRegistrationController extends HttpServlet {
 		String movieName=req.getParameter("movieName");
 		String[] movieGenre=req.getParameterValues("movieGenre");
 		String movieIntro=req.getParameter("movieIntro");
+		movieIntro=movieIntro.replaceAll("'\n'", "<br>");
 		String movieReleaseDate=req.getParameter("movieReleaseDate");
 		int movieRunTime=Integer.parseInt(req.getParameter("movieRunTime"));
 		String movieProduction=req.getParameter("movieProduction");
