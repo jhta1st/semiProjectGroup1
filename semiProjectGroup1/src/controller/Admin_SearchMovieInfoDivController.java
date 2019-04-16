@@ -51,7 +51,7 @@ public class Admin_SearchMovieInfoDivController extends HttpServlet{
 			pw.println("<movies>");
 			pw.println("<movieNum>" + vo.getMovieNum() + "</movieNum>");
 			pw.println("<movieName>" + vo.getMovieName() + "</movieName>");
-			pw.println("<movieIntro>" + vo.getMovieIntro() + "</movieIntro>");
+			pw.println("<movieIntro>" + "null" + "</movieIntro>");
 			pw.println("<movieReleaseDate>" + vo.getMovieReleaseDate().substring(0,4) + "</movieReleaseDate>");
 			pw.println("<movieRunTime>" + vo.getMovieRunTime() + "</movieRunTime>");
 			pw.println("<movieProduction>" + vo.getMovieProduction() + "</movieProduction>");
