@@ -142,6 +142,61 @@
 		text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.15); 
 	}
 
+.adminMovieInfoDetailBtn {
+	font-weight:bold;
+	text-decoration:none;
+	font-family:Arial;
+	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 4px 6px;
+	background:#787878;
+	background:-o-linear-gradient(90deg, #787878, #454545);
+	background:-moz-linear-gradient( center top, #787878 5%, #454545 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #787878), color-stop(1, #454545) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#454545');
+	background:-webkit-linear-gradient(#787878, #454545);
+	background:-ms-linear-gradient(#787878, #454545);
+	background:linear-gradient(#787878, #454545);
+	text-indent:0px;
+	line-height:0px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:12px;
+	color:#f7f7f7;
+	width:63px;
+	height:0px;
+	padding:13px;
+	border-color:#2e2e2e;
+	border-width:1px;
+	border-style:solid;
+}
+
+.adminMovieInfoDetailBtn:active {
+	box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	o-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	-moz-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	-webkit-box-shadow:inset #595959 0px 5px 8px -1px,#a6a6a6 0px 0 6px;
+	position:relative;
+	top:4px
+}
+
+.adminMovieInfoDetailBtn:hover {
+	background:#454545;
+	background:-o-linear-gradient(90deg, #454545, #787878);
+	background:-moz-linear-gradient( center top, #454545 5%, #787878 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #454545), color-stop(1, #787878) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545', endColorstr='#787878');
+	background:-webkit-linear-gradient(#454545, #787878);
+	background:-ms-linear-gradient(#454545, #787878);
+	background:linear-gradient(#454545, #787878);
+}
+
+
 .adminMovieInfoDeleteBtn {
 	font-weight:bold;
 	text-decoration:none;
@@ -303,6 +358,19 @@
 	background:-ms-linear-gradient(#454545, #787878);
 	background:linear-gradient(#454545, #787878);
 }
+
+.adminMovieInfoDetail1Div .adminMovieInfoDetail1 #adminMovieDetailImg {
+	width: 300px;
+	height: 300px;
+	float: left;
+	margin-right: 20px;
+}
+.adminMovieInfoDetail2Div .adminMovieInfoDetail2 #adminMovieDetailImg {
+	width: 300px;
+	height: 300px;
+	float: left;
+	margin-right: 20px;
+}
 </style>
 <div>
 <div class="adminMovieInfoDetailDiv">
@@ -364,7 +432,7 @@
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==1 }">
 					<td>
-						<img alt="영화대표이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+						<img alt="영화대표이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}" id="adminMovieDetailImg">
 						<c:set var="tmp" value="${tmp=tmp+1 }" />
 					</td>
 				</c:if>
@@ -379,7 +447,7 @@
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==1 }">
 					<td>
-						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -389,7 +457,7 @@
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==2 }">
 					<td>
-						<img alt="영화포스터이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+						<img alt="영화포스터이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -401,7 +469,7 @@
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==2 }">
 					<td>
-						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -411,7 +479,7 @@
 			<c:forEach var="vo" items="${imgList }">
 				<c:if test="${vo.get('ImageType')==3 }">
 					<td>
-						<img alt="영화스틸샷이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}">
+						<img alt="영화스틸샷이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -423,7 +491,7 @@
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==3 }">
 					<td>
-						<a href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -444,7 +512,7 @@
 			<c:forEach var="vo1" items="${urlList }">
 				<c:if test="${vo1.get('urlType')==1 }">
 					<td>
-						<a href="${cp }/admin/movieUrlUpdate.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">수정</a> <a href="${cp }/admin/MovieUrlDelete.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieUrlUpdate.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/MovieUrlDelete.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -464,7 +532,7 @@
 			<c:forEach var="vo1" items="${urlList }">
 				<c:if test="${vo1.get('urlType')==2 }">
 					<td>
-						<a href="${cp }/admin/movieUrlUpdate.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">수정</a> <a href="">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieUrlUpdate.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">수정</a> <a href="">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -480,7 +548,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==1 }">
 					<td>
-						<img alt="주연이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="주연이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -501,7 +569,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==1 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -511,7 +579,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==2 }">
 					<td>
-						<img alt="조연이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="조연이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -532,7 +600,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==2 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -542,7 +610,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==3 }">
 					<td>
-						<img alt="엑스트라이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="엑스트라이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -563,7 +631,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==3 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -573,7 +641,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==4 }">
 					<td>
-						<img alt="까메오이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="까메오이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -594,7 +662,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==4 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -605,7 +673,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==11 }">
 					<td>
-						<img alt="감독이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="감독이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -626,7 +694,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==11 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -636,7 +704,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==12 }">
 					<td>
-						<img alt="조감독이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="조감독이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -657,7 +725,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==12 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -667,7 +735,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==13 }">
 					<td>
-						<img alt="각본이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="각본이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -688,7 +756,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==13 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -698,7 +766,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==14 }">
 					<td>
-						<img alt="음악이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="음악이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -719,7 +787,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==14 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -729,7 +797,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==15 }">
 					<td>
-						<img alt="미술이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="미술이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -750,7 +818,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==15 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -760,7 +828,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==16 }">
 					<td>
-						<img alt="소품이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="소품이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -781,7 +849,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==16 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -791,7 +859,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==17 }">
 					<td>
-						<img alt="촬영이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}">
+						<img alt="촬영이미지" src="${cp}/Movie/images/char/${vo1.get('charSavFileName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
@@ -812,7 +880,7 @@
 			<c:forEach var="vo1" items="${crewList }">
 				<c:if test="${vo1.get('castDoNum')==17 }">
 					<td>
-						<a href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamUpdate.do?movieNum=${vo.movieNum}&charNum=${vo1.get('charNum')}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieTeamDelete.do?movieNum=${vo.movieNum}&castNum=${vo1.castNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>

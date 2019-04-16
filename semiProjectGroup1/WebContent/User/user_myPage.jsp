@@ -17,6 +17,7 @@
 		border-collapse: collapse;
 		border: 2px solid gray;
 		background-color: white;
+		border-radius:25px;
 	}
 	#mypage #mypageForm #set {
 	     margin-left : 150px;

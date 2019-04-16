@@ -9,6 +9,7 @@
 		border-collapse: collapse;
 		border: 1px solid #E7E7E7;
 		background-color: gray;
+		border-radius:25px;
 	}
 	#adminMoviePeoplePage #adminMoviePeoplePageForm {
 	    margin-left : 15%;
@@ -17,6 +18,7 @@
 		border-collapse: collapse;
 		border: 2px solid gray;
 		background-color: white;
+		border-radius:25px;
 	}
 	#adminMoviePeoplePage #adminMoviePeoplePageForm .adminMoviePeopleDeleteBtn {
 	     margin-left : 150px;
