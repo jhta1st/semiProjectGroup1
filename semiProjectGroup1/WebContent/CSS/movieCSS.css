@@ -68,6 +68,8 @@
 	margin-left: 5px;
 	position: relative;
 	top: 15px;
+	text-decoration: none;
+	color: #666666;
 }
 
 #movieMain #mainlist .movieGenreInfoList ul {
