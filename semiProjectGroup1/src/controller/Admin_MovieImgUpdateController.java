@@ -68,8 +68,8 @@ public class Admin_MovieImgUpdateController extends HttpServlet {
 			n = dao.update(vo3);
 		}
 		if (n > 0) {
-			req.setAttribute("pages", "/admin/movieGenreList.do");
-			req.getRequestDispatcher("/admin/MovieViewDetail.do?movieNum=" + movieNum).forward(req, resp);
+			req.setAttribute("pages", "/admin/MovieViewDetail.do?movieNum=\" + movieNum");
+			req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 		} else {
 			req.setAttribute("code", "fail");
 			req.setAttribute("pages", "/User/user_result.jsp");
