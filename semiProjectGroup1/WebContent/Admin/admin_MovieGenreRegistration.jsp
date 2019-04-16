@@ -2,6 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
+#adminMovieGenre {
+		width: 100%;
+		margin: auto;
+		margin-top: 25px;
+		border-collapse: collapse;
+		border: 1px solid #E7E7E7;
+		background-color: gray;
+		border-radius:25px;
+	}
+	#adminMovieGenre #adminMovieGenreForm {
+	    margin-left : 15%;
+	    margin-right : 15%;
+		padding-left: 150px;
+		border-collapse: collapse;
+		border: 2px solid gray;
+		background-color: white;
+		border-radius:25px;
+	}
 .adminGenreGoBtn {
 	font-weight:bold;
 	text-decoration:none;
@@ -110,7 +128,8 @@
 	background:linear-gradient(#454545, #787878);
 }
 </style>
-<div>
+<div id="adminMovieGenre">
+<div id="adminMovieGenreForm">
 	<hr/>
 	<form method="post" action="${cp }/admin/movieGenreRegistration.do">
 		장르명<input type="text" id="genreName" name="genreName" /><br/><hr/>
@@ -118,4 +137,5 @@
 		<hr/>
 	</form>
 	<div id="result">${errMsg }</div>
+</div>
 </div>

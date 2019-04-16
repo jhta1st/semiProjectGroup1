@@ -12,12 +12,11 @@
 	width: 1000px;
 	padding: 50px;
 	margin: auto;
-	border-style: double;
 	text-align: center;
 	width: 1000px;
-	border-style: double;
 	background-color: white;
-	border-style: double
+	border: 2px solid silver;
+	border-radius: 25px;
 }
 
 .movieSearchView label {
@@ -185,7 +184,7 @@
 #movieReview #movieViewBriefIntro #movieReviewRate {
 	font-size: 30px;
 	margin-top: 10px;
-	text-shadow: 3px 4px 1.25px rgba(0,0,0,0.1);
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1);
 }
 
 #movieReview #movieViewBriefIntro #movieViewBriefIntroInfo .movieViewBriefGenreInfo {
@@ -275,6 +274,14 @@
 	margin-right: 5px;
 }
 
+#movieReview .movieReviewerrMsg {
+	width: 100px;
+	margin: auto; font-size : 13px;
+	font-weight: bold;
+	color: red;
+	font-size: 13px;
+}
+
 #movieReview #movieReviewInfomation #rateList {
 	width: 400px;
 	padding: 20px;
@@ -284,13 +291,15 @@
 #movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateScore .movieReviewRateStar {
 	font-weight: bold;
 	font-size: 20px;
-	text-shadow: 3px 4px 1.25px rgba(0,0,0,0.1);
+	text-shadow: 3px 4px 1.25px rgba(0, 0, 0, 0.1);
 }
-#movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateScore .movieReviewRateId{
+
+#movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateScore .movieReviewRateId {
 	font-weight: bold;
 	font-size: 17px;
 }
-#movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateComm{
+
+#movieReview #movieReviewInfomation #rateList .movieReviewRateCommAll .movieReviewRateComm {
 	border-bottom: dashed;
 	border-bottom-color: gray;
 	padding-bottom: 15px;

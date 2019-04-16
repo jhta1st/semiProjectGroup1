@@ -3,6 +3,24 @@
 <%@page import="dao.User_UserInfoDao"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
+#adminMoviePeopleUpdate {
+		width: 100%;
+		margin: auto;
+		margin-top: 25px;
+		border-collapse: collapse;
+		border: 1px solid #E7E7E7;
+		background-color: gray;
+		border-radius:25px;
+	}
+	#adminMoviePeopleUpdate #adminMoviePeopleUpdateForm {
+	    margin-left : 15%;
+	    margin-right : 15%;
+		padding-left: 150px;
+		border-collapse: collapse;
+		border: 2px solid gray;
+		background-color: white;
+		border-radius:25px;
+	}
 .adminMoviePeopleUpdateBtn {
 	font-weight:bold;
 	text-decoration:none;
@@ -63,7 +81,8 @@
 	margin-left: 65px;
 }
 </style>
-<div>
+<div id="adminMoviePeopleUpdate">
+<div id="adminMoviePeopleUpdateForm">
 <hr/>
 	<h1>인물정보 수정</h1>
 <hr/>
@@ -79,4 +98,5 @@
 		<input class="adminMoviePeopleUpdateBtn" type="submit" value="수정">
 		<hr/>
 	</form>
+</div>
 </div>

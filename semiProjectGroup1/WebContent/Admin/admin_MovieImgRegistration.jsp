@@ -93,7 +93,7 @@
 					var div = document.createElement("div");
 					div.innerHTML = "<div style='float:left;'>" + movieName
 							+ "<br>" + movieReleaseDate
-							+ "<br>사진<br><a href='javascript:selectMovie("
+							+ "<br><a href='javascript:selectMovie("
 							+ movieNum + ",\"" + movieName
 							+ "\");'>선택</a></div>";
 					//div.className="";

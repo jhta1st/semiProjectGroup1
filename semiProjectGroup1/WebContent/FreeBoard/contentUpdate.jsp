@@ -45,11 +45,11 @@
 	<div>
 		<form method="post" action="${cp }/FreeBoard/ContentUpdate.do" enctype="multipart/form-data">
 			<div class="FreeBoardContentDiv">
-				<input type="text" style="height: 37px" size="99%" name="freeBoardTitle" value="${vo.freeBoardTitle }">
+				<input class="silverRadius" type="text" style="height: 37px" size="99%" name="freeBoardTitle" value="${vo.freeBoardTitle }">
 				<input type="hidden" name="pageNum" value="${pageNum }">
 			</div>
 			<div >
-				<textarea rows="30" cols="100%" name="freeBoardContent">${vo.freeBoardContent }</textarea>
+				<textarea class="silverRadius" rows="30" cols="100%" name="freeBoardContent">${vo.freeBoardContent }</textarea>
 			</div>
 			<div id="fileUploadPlusArea">
 				<c:forEach var="list" items="${vo1}">

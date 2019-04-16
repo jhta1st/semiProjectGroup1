@@ -67,6 +67,12 @@
 .et4{
 	margin-left: 30px;
 }
+.charDiv img{
+	width: 300px;
+	height: 300px;
+	float: left;
+	margin-right: 20px;
+}
 </style>
 <div>
 <script type="text/javascript">
@@ -96,7 +102,7 @@
 				var movieReleaseDate=movies[i].getElementsByTagName("movieReleaseDate")[0].firstChild.nodeValue;
 				var div=document.createElement("div");
 				div.innerHTML="<div style='float:left;'>"+movieName+"<br>"+movieReleaseDate+"<br><a href='javascript:selectMovie(" + movieNum + ",\"" + movieName + "\");'>선택</a></div>";
-				//div.className="";
+				//div.className="charName";
 				movieInfoSearchDiv.appendChild(div);
 			}
 			var movieInfoSearchDivPage=document.getElementById("movieInfoSearchDivPage");
@@ -147,6 +153,7 @@
 				var charOrgFileName=people[i].getElementsByTagName("charOrgFileName")[0].firstChild.nodeValue;
 				var charSavFileName=people[i].getElementsByTagName("charSavFileName")[0].firstChild.nodeValue;
 				var div=document.createElement("div");
+				div.className="charDiv";
 				div.innerHTML="<div style='float:left;'>"+charName+
 				"<br>"+"<img src='${cp }/Movie/images/char/" + charSavFileName +
 				"'><br><a href='javascript:selectPeople(" + charNum + ",\"" + charName + "\");'>선택</a></div>";
@@ -210,11 +217,11 @@
 </script>
 <form method="post" action="${cp }/admin/movieTeamRegistration.do">
 <hr/>
-	영화명<input class="et1" type="text" id="movieInfo"/><input class="adminMovieTeamBtn" type="button" value="검색" onclick="searchMovieInfo(1);"><br>
+	영화명<input class="et1" type="text" id="movieInfo"/> <input class="adminMovieTeamBtn" type="button" value="검색" onclick="searchMovieInfo(1);"><br>
 	<div id="movieInfoSearchDiv"></div>
 	<div id="movieInfoSearchDivPage" style="clear:left;"></div>	
 	<input type="hidden" id="movieNum" name="movieNum"><br/>
-	인물명<input class="et2" type="text" id="charInfo"/><input class="adminMovieTeamBtn" type="button" value="검색" onclick="searchPeopleInfo(1);"><br>
+	인물명<input class="et2" type="text" id="charInfo"/> <input class="adminMovieTeamBtn" type="button" value="검색" onclick="searchPeopleInfo(1);"><br>
 	<div id="peopleInfoSearchDiv"></div>
 	<div id="peopleInfoSearchDivPage" style="clear:left;"></div>	
 	<input type="hidden" id="charNum" name="charNum"><br/>
