@@ -284,21 +284,31 @@ function detailClose() {
 					</c:if>
 					<th>삭제</th>
 				</tr>
-				<c:forEach var="vo" items="${list}">
-					<tr>
-						<td>${type=="SEND" ? vo.receiveUserId : vo.sendUserId}</td>
-						<td onclick="detailMessage(${vo.msgNum})">
-							<a style="color:black;" href="#"><nobr>${vo.msgContent.replace("<br/>","")}</nobr></a>
-						</td>
-						<td>${vo.msgWdate}</td>
-						<c:if test="${type=='SEND'}">
-							<td>${vo.msgCheck > 0 ? "읽음" : "안읽음"}</td>
-						</c:if>
-						<td>
-							<input class="Btn" type="button" value="삭제" onclick="javascript:location.href='${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}'">
-						</td>
-					</tr>
-				</c:forEach>
+				<c:choose>
+					<c:when test="${list[0]==null && type=='SEND'}">
+						<tr><td colspan="5"><p style="text-align: center;">쪽지가 없습니다.</p></td></tr>
+					</c:when>
+					<c:when test="${list[0]==null}">
+						<tr><td colspan="4"><p style="text-align: center;">쪽지가 없습니다.</p></td></tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="vo" items="${list}">
+							<tr>
+								<td>${type=="SEND" ? vo.receiveUserId : vo.sendUserId}</td>
+								<td onclick="detailMessage(${vo.msgNum})">
+									<a style="color:black;" href="#"><nobr>${vo.msgContent.replace("<br/>","")}</nobr></a>
+								</td>
+								<td>${vo.msgWdate}</td>
+								<c:if test="${type=='SEND'}">
+									<td>${vo.msgCheck > 0 ? "읽음" : "안읽음"}</td>
+								</c:if>
+								<td>
+									<input class="Btn" type="button" value="삭제" onclick="javascript:location.href='${pageContext.request.contextPath}/user/msgDelete.do?msgNum=${vo.msgNum}'">
+								</td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</table>
 			<div>
 				<c:if test="${type=='RECEIVE'}">
