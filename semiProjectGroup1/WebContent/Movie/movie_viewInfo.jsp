@@ -21,9 +21,9 @@
 			var check = eval("(" + data + ")");
 			var favCheck = document.getElementById("favCheck");
 			if (check.result == 'delete') {
-				favCheck.value = "♡";
+				favCheck.innerHTML = "<img src='${cp }/ETC/icons/fav.png'>";
 			} else {
-				favCheck.value = "♥";
+				favCheck.innerHTML = "<img src='${cp }/ETC/icons/favOk.png'>";
 			}
 		}
 	}
@@ -45,9 +45,9 @@
 			var check = eval("(" + data + ")");
 			var favCheck = document.getElementById("favCheck");
 			if (check.result == 'false') {
-				favCheck.value = "♡";
+				favCheck.innerHTML = "<img src='${cp }/ETC/icons/fav.png'>";
 			} else {
-				favCheck.value = "♥";
+				favCheck.innerHTML = "<img src='${cp }/ETC/icons/favOk.png'>";
 			}
 		}
 	}
@@ -118,7 +118,7 @@
 				<div class="movieViewBriefGenreInfo">${map.genreName }&nbsp;</div>
 			</c:forEach>
 			<div style="clear: left;"></div>
-			<input type="button" id="favCheck" onclick="fav();">
+			<button type="button" id="favCheck" onclick="fav();"></button>
 		</div>
 	</div>
 	<div style="clear: left;"></div>
