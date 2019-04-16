@@ -40,7 +40,6 @@
 
 #movieMain, #movieSearch {
 	background-color: #cecece;
-	
 }
 
 #movieMain #mainlist {
@@ -155,8 +154,7 @@
 }
 
 #movieReview #movieViewBriefIntro {
-	width: 40%;
-	height: 700px;
+	width: 50%;
 	margin: auto;
 	margin-bottom: 30px;
 	margin: auto;
@@ -278,7 +276,8 @@
 
 #movieReview .movieReviewerrMsg {
 	width: 100px;
-	margin: auto; font-size : 13px;
+	margin: auto;
+	font-size: 13px;
 	font-weight: bold;
 	color: red;
 	font-size: 13px;
