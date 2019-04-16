@@ -378,47 +378,61 @@
 	<hr>
 	<table class="adminMovieInfoDetail">
 		<tr>
-			<th>영화번호</th>
-			<th>영화제목</th>
-			<th>영화소개</th>
-			<th>개봉일자</th>
-			<th>상영시간</th>
-			<th>제작사</th>
-			<th>배급사</th>
-			<th>국가</th>
-			<th>관람나이</th>
-			<th>장르명</th>
-		</tr>
-		<tr>
-			<td>${vo.movieNum}</td>
-			<td>${vo.movieName }</td>
-			<td>${vo.movieIntro}</td>
-			<td>${vo.movieReleaseDate }</td>
-			<td>${vo.movieRunTime}</td>
-			<td>${vo.movieProduction }</td>
-			<td>${vo.movieDistributer}</td>
-			<td>${vo.nation }</td>
-			<td>
-				<c:choose>
-					<c:when test="${vo.movieAge==0 }">
+	<th>영화번호</th>
+	<td>${vo.movieNum}</td>
+</tr>
+<tr>
+	<th>영화제목</th>
+	<td>${vo.movieName }</td>
+</tr>
+<tr>
+	<th>영화소개</th>
+	<td>${vo.movieIntro}</td>
+</tr>
+<tr>
+	<th>개봉일자</th>
+	<td>${vo.movieReleaseDate }</td>
+</tr>
+<tr>
+	<th>상영시간</th>
+	<td>${vo.movieRunTime}</td>
+</tr>
+<tr>
+	<th>제작사</th>
+	<td>${vo.movieProduction }</td>
+</tr>
+<tr>
+	<th>배급사</th>
+	<td>${vo.movieDistributer}</td>
+</tr>
+<tr>
+	<th>국가</th>
+	<td>${vo.nation }</td>
+</tr>
+<tr>
+	<th>관람나이</th>
+	<td><c:choose>
+			<c:when test="${vo.movieAge==0 }">
 						전체 관람가
 					</c:when>
-					<c:when test="${vo.movieAge==1 }">
+			<c:when test="${vo.movieAge==1 }">
 						12세 관람가
 					</c:when>
-					<c:when test="${vo.movieAge==2 }">
+			<c:when test="${vo.movieAge==2 }">
 						15세 관람가
 					</c:when>
-					<c:when test="${vo.movieAge==3 }">
+			<c:when test="${vo.movieAge==3 }">
 						청소년관람불가
 					</c:when>
-					<c:when test="${vo.movieAge==4 }">
+			<c:when test="${vo.movieAge==4 }">
 						제한상영가
 					</c:when>
-				</c:choose>
-			</td>
-			<td>${vo.genreName}</td>
-		</tr>
+		</c:choose></td>
+</tr>
+<tr>
+	<th>장르명</th>
+	<td>${vo.genreName}</td>
+</tr>
 	</table>
 	</div>
 	<hr/>
