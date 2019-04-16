@@ -68,8 +68,8 @@
 	margin-left: 30px;
 }
 .charDiv img{
-	width: 300px;
-	height: 300px;
+	width: 150px;
+	height: 150px;
 	float: left;
 	margin-right: 20px;
 }
