@@ -148,14 +148,14 @@
 	</script>
 	<form method="post" action="${cp }/admin/movieImgRegistration.do" enctype="multipart/form-data">
 		<hr/>
-		영화명 <input class="tt" type="text" id="movieInfo" /> <input class="adminMovieOkBtn" type="button" value="검색" onclick="searchMovieInfo(1);">
+		영화명 <input class="tt" type="text" id="movieInfo" <c:if test="${movieName!='' }">value="${movieName }" disabled="disabled"</c:if>/> <c:if test="${movieNum=='' }"><input class="adminMovieOkBtn" type="button" value="검색" onclick="searchMovieInfo(1);"></c:if>
 		<br>
 		<div id="movieInfoSearchDiv"></div>
 		<div id="movieInfoSearchDivPage" style="clear: left;"></div><br/>
-		<input type="hidden" id="movieNum" name="movieNum"> <label>이미지유형 <select class="tt1" name="imageType">
-				<option value="1">메인이미지</option>
-				<option value="2">포스터</option>
-				<option value="3">스틸삿</option>
+		<input type="hidden" id="movieNum" name="movieNum" value="${movieNum }"> <label>이미지유형 <select class="tt1" name="imageType">
+				<option value="1" <c:if test="${imageType==1 }">selected</c:if>>메인이미지</option>
+				<option value="2" <c:if test="${imageType==2 }">selected</c:if>>포스터</option>
+				<option value="3" <c:if test="${imageType==3 }">selected</c:if>>스틸삿</option>
 			</select></label>
 		<br><br/>
 		이미지첨부파일 <input type="file" name="file">

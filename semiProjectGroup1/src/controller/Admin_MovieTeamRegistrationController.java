@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.Admin_CastInfoDao;
 import dao.Movie_GenreDao;
+import dao.Movie_MovieInfoDao;
 import dao.User_UserInfoDao;
 import vo.Movie_CastInfoVo;
 import vo.Movie_GenreVo;
@@ -19,6 +20,19 @@ import vo.User_UserInfoVo;
 public class Admin_MovieTeamRegistrationController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String movieNum = req.getParameter("movieNum");
+		String castDoNum = req.getParameter("castDoNum");
+		String movieName = "";
+		if (movieNum == null) {
+			movieNum = "";
+			castDoNum = "";
+		} else {
+			Movie_MovieInfoDao movieInfoDao = Movie_MovieInfoDao.getInstance();
+			movieName = movieInfoDao.getMovieInfo(Integer.parseInt(movieNum)).getMovieName();
+		}
+		req.setAttribute("movieNum", movieNum);
+		req.setAttribute("movieName", movieName);
+		req.setAttribute("imageType", castDoNum);
 		req.setAttribute("pages", "/Admin/admin_MovieTeamRegistration.jsp");
 		req.getRequestDispatcher("/main/layout.jsp").forward(req, resp);
 	}

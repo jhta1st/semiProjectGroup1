@@ -452,7 +452,7 @@
 				</c:if>
 				<c:if test="${tmp==0 }">
 					<td>
-						<a href="">추가</a>
+						<a href="${cp }/admin/movieImgRegistration.do?movieNum=${vo.movieNum }&imageType=1">추가</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -461,7 +461,7 @@
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==1 }">
 					<td>
-						<a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -476,36 +476,36 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieImgRegistration.do?movieNum=${vo.movieNum }&imageType=2">추가</a>
 			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==2 }">
 					<td>
-						<a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
 		</tr>
 		<tr>
 			<th rowspan="2">스틸샷</th>
-			<c:forEach var="vo" items="${imgList }">
-				<c:if test="${vo.get('ImageType')==3 }">
+			<c:forEach var="vo1" items="${imgList }">
+				<c:if test="${vo1.get('ImageType')==3 }">
 					<td>
-						<img alt="영화스틸샷이미지" src="${cp}/Movie/images/photo/${vo.get('ImageSavName')}" id="adminMovieDetailImg">
+						<img alt="영화스틸샷이미지" src="${cp}/Movie/images/photo/${vo1.get('ImageSavName')}" id="adminMovieDetailImg">
 					</td>
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieImgRegistration.do?movieNum=${vo.movieNum }&imageType=3">추가</a>
 			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo1" items="${imgList }">
 				<c:if test="${vo1.get('ImageType')==3 }">
 					<td>
-						<a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${pageContext.request.contextPath}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp}/admin/MovieImgUpdate.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp}/admin/MovieImgDelete.do?ImageNum=${vo1.ImageNum}&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -519,7 +519,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieUrlRegistration.do?movieNum=${vo.movieNum }&urlType=1">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -539,14 +539,14 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieUrlRegistration.do?movieNum=${vo.movieNum }&urlType=2">추가</a>
 			</td>
 		</tr>
 		<tr>
 			<c:forEach var="vo1" items="${urlList }">
 				<c:if test="${vo1.get('urlType')==2 }">
 					<td>
-						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieUrlUpdate.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">수정</a> <a href="">삭제</a>
+						<a class="adminMovieInfoDetailBtn" href="${cp }/admin/movieUrlUpdate.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">수정</a> <a class="adminMovieInfoDetailBtn" href="${cp }/admin/MovieUrlDelete.do?urlNum=${vo1.get('urlNum') }&movieNum=${vo.movieNum}">삭제</a>
 					</td>
 				</c:if>
 			</c:forEach>
@@ -567,7 +567,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=1">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -598,7 +598,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=2">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -629,7 +629,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=3">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -660,7 +660,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=4">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -692,7 +692,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=11">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -723,7 +723,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=12">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -754,7 +754,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=13">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -785,7 +785,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=14">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -816,7 +816,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=15">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -847,7 +847,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=16">추가</a>
 			</td>
 		</tr>
 		<tr>
@@ -878,7 +878,7 @@
 				</c:if>
 			</c:forEach>
 			<td>
-				<a href="">추가</a>
+				<a href="${cp }/admin/movieTeamRegistration.do?movieNum=${vo.movieNum }&castDoNum=17">추가</a>
 			</td>
 		</tr>
 		<tr>
