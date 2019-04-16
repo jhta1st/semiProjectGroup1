@@ -197,6 +197,7 @@
 #movieReview #movieRevieMoreInfo {
 	background-color: #B3B3B3;
 	text-align: center;
+	margin-top: 50px;
 }
 
 #movieReview #movieRevieMoreInfo ul li {

@@ -131,6 +131,7 @@
 			<li><a href="${cp }/Movie/review.do?movieNum=${movieNum}&detail=rate">회원평점</a></li>
 		</ul>
 	</div>
+	<div id="movieReviewInfomation">
 	<c:set var="tmp" value="1" />
 	<c:if test="${movieotherList.size()==0 && detail eq 'rate' }">
 		<div class="movieReviewRateInput">
@@ -148,9 +149,7 @@
 				</div>
 			</form>
 		</div>
-
 	</c:if>
-	<div id="movieReviewInfomation">
 		<c:forEach var="map" items="${movieotherList }" varStatus="st">
 			<c:choose>
 				<c:when test="${detail eq 'info' && st.index eq 0 }">
